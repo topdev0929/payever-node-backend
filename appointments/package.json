@@ -1,0 +1,48 @@
+{
+  "name": "appointments",
+  "version": "0.0.1",
+  "description": "appointments service",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "consumer:prod": "node dist/src/consumer.js",
+    "http": "tsc-watch -p tsconfig.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "migrations": "./node_modules/.bin/db-migrate",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "echo 'no tests implemented yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/appointments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pe/business-kit": "^2.1.0",
+    "@pe/common-sdk": "^5.2.0",
+    "@pe/elastic-kit": "^5.1.0",
+    "@pe/folders-plugin": "^19.0.7",
+    "@pe/graphql-kit": "^5.0.0",
+    "@pe/nest-kit": "^10.2.5",
+    "@pe/rules-sdk": "^3.0.0",
+    "qs": "^6.11.1",
+    "remove-accents": "^0.4.4",
+    "slugify": "^1.6.6"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^4.0.2",
+    "@pe/cucumber-sdk": "^6.7.0",
+    "@pe/dev-kit": "^3.0.5",
+    "@pe/pact-kit": "^3.0.3"
+  }
+}

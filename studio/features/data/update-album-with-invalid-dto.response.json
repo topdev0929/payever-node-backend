@@ -1,0 +1,15 @@
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": [
+    {
+      "target": {},
+      "property": "businessId",
+      "children": [],
+      "constraints": {
+        "isNotEmpty": "businessId should not be empty",
+        "isString": "businessId must be a string"
+      }
+    }
+  ]
+}

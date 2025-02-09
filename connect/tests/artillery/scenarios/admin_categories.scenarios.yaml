@@ -1,0 +1,53 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Admin Categories"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/categories"
+      - get:
+          url: "/api/admin/categories"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/admin/categories"
+      - post:
+          url: "/api/admin/categories"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            name: "string"
+            icon: "string"
+
+      - log: "GET /api/admin/categories/{{ categoryId }}"
+      - get:
+          url: "/api/admin/categories/{{ categoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/admin/categories/{{ categoryId }}"
+      - patch:
+          url: "/api/admin/categories/{{ categoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            name: "string"
+            icon: "string"
+
+      - log: "Delete /api/admin/categories/{{ categoryId }}"
+      - delete:
+          url: "/api/admin/categories/{{ categoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      

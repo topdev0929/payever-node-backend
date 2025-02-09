@@ -1,0 +1,57 @@
+scenarios:
+  - name: "Business Integration Subscriptions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PUT /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/switch-off"
+      - put:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/switch-off"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/switch-on"
+      - put:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/switch-on"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule"
+      - post:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ ruleName }}"
+            type: "freeOver"
+            freeOver: 1
+            rate: 1
+            flatRateType: "PerItem"
+            weightRanges: []
+            rateRanges: []
+          capture:
+            - json: "$.rules[0]._id"
+              as: "ruleId"
+      - log: "GET /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rules"
+      - get:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rules"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule/{{ ruleId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule/{{ ruleId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/integration-subscriptions/{{ subscriptionId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Business Integration Subscriptions Rule Types"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/rule-types"
+      - get:
+          url: "/api/business/{{ businessId }}/rule-types"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

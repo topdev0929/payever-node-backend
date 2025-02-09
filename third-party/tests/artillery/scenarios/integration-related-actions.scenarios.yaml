@@ -1,0 +1,18 @@
+scenarios:
+  - name: "Integration Related Actions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/business/{{ businessId }}/integration/{{ integrationName }}/action/{{ action }}"
+      - post:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            test: "test"
+      - log: "POST /api/business/{{ businessId }}/integration/{{ integrationName }}/form"
+      - post:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}/form"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

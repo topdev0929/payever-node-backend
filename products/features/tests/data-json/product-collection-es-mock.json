@@ -1,0 +1,47 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 26.846504,
+    "hits": [
+      {
+        "_index": "product-collection",
+        "_type": "product-collection",
+        "_id": "00266785-f10e-4552-bf1c-985ce0540f1d",
+        "_score": 26.846504,
+        "_source": {
+          "channelSets": [],
+          "ancestors": [],
+          "activeSince": "2021-08-09T11:51:48.534Z",
+          "automaticFillConditions": {
+            "strict": false,
+            "manualProductsList": [],
+            "_id": "611116d46049a00013cd821b",
+            "filters": []
+          },
+          "description": "All",
+          "name": "All",
+          "parent": null,
+          "slug": "All",
+          "createdAt": "2021-08-09T11:51:48.905Z",
+          "updatedAt": "2021-08-09T11:51:48.905Z",
+          "__v": 0,
+          "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "business": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "id": "00266785-f10e-4552-bf1c-985ce0540f1d",
+          "mongoId": "00266785-f10e-4552-bf1c-985ce0540f1d"
+        }
+      }
+    ]
+  }
+}

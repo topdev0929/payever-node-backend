@@ -1,0 +1,18 @@
+<p>
+{% if business.bankAccount.accountNumber is not defined and business.bankAccount.iban is not defined %}
+{{ business.bankAccount.iban }}
+{% endif %}
+</p>
+<p>Guten Tag {{ customer.name }},</p>
+<p>Sie haben kürzlich bei {{ business.name }} eine Bestellung auf Raten getätigt und dabei angegeben, dass Sie einen Teilbetrag vorab als Anzahlung leisten möchten. Bitte überweisen Sie Ihre Anzahlung an unter Verwendung des untenstehenden Verwendungszwecks baldmöglichst an {{ business.name }}. Sobald die Zahlung bei {{ business.name }} eingegangen ist und der Vertrag für die Ratenfinanzierung vollständig abgeschlossen wurde (mittels Video- oder Post-Identverfahren), wird Ihre Bestellung bearbeitet und versandt.</p>
+<p><b>Rechnungsdetails:</b></br>
+Verwendungszweck: {{ payment.reference }}</br>
+Rechnungsbetrag: {{ payment.down_payment }} {{ payment.currency }}
+</p>
+<p>
+<p>
+<b>Bankverbindung:</b></br>
+{% if business.bankAccount.owner is defined %}Kontoinhaber: {{ business.bankAccount.owner }}</br>{% endif %}
+{% if business.bankAccount.iban is defined %}IBAN: {{ business.bankAccount.iban }}</br>{% endif %}
+{% if business.bankAccount.bic %}BIC: {{ business.bankAccount.bic }}{% endif %}
+</p>

@@ -1,0 +1,29 @@
+import { GroupChat } from '../../message/submodules/messaging/group-chats';
+import { GroupChatHttpResponseDto } from '../dto';
+import { memberToResponseDto } from './member-to-response-dto.transformer';
+import { messageToResponseDto } from './message-to-response-dto.transformer';
+import { MessagingTransformerOptionsInterface } from '../interfaces';
+import { AbstractChatMessage, Pinned } from '../submodules/platform';
+import { pinnedToResponseDtoTransformer } from './pinned-to-response-dto.transformer';
+
+export function groupChatToResponseDto(
+  chat: GroupChat,
+  options?: MessagingTransformerOptionsInterface,
+): GroupChatHttpResponseDto {
+  return {
+    _id: chat._id,
+    business: chat.business,
+    createdAt: chat.createdAt,
+    description: chat.description,
+    expiresAt: chat.expiresAt,
+    members: chat.members?.map(memberToResponseDto),
+    messages: chat.lastMessages?.map((msg: AbstractChatMessage) => messageToResponseDto(msg, options)) ?? [],
+    permissions: chat.permissions,
+    photo: chat.photo,
+    pinned: chat.pinned?.map((pinned: Pinned) => pinnedToResponseDtoTransformer(pinned, options)).filter(Boolean),
+    removedMembers: null,
+    title: chat.title,
+    type: chat.type,
+    usedInWidget: chat.usedInWidget,
+  };
+}

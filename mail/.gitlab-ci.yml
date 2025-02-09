@@ -1,0 +1,16 @@
+include:
+  - project: "infra/ci-config"
+    ref: "master"
+    file: "/nodejs-backend/marketing.yml"
+
+Test cucumber:
+  extends: .Test
+  variables:
+    CHROME_BIN: "/usr/bin/chromium-browser"
+    CHROMIUM_BIN: "/usr/bin/chromium-browser"
+    PUPPETEER_EXECUTABLE_PATH: "/usr/bin/chromium-browser"
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+  script:
+    - apk add --no-cache chromium=72.0.3626.121-r0
+    - cp .env.test.dist .env || cp .env.dist .env || true
+    - npm run test:e2e || npm run test:integration

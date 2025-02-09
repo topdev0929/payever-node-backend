@@ -1,0 +1,34 @@
+scenarios:
+  - name: Location
+    flow:
+      - function: defineVariables
+      - log: Login
+      - function: auth
+
+      - log: GET /api/business/{{ businessId }}/location
+      - get:
+          url: /api/business/{{ businessId }}/location
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: POST /api/business/{{ businessId }}/location
+      - post:
+          url: /api/business/{{ businessId }}/location
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            dto: "{{ dto }}"
+
+      - log: PATCH /api/business/{{ businessId }}/location/{{ locationId }}
+      - patch:
+          url: /api/business/{{ businessId }}/location/{{ locationId }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            dto: "{{ dto }}"
+
+      - log: DELETE /api/business/{{ businessId }}/location/{{ locationId }}
+      - delete:
+          url: /api/business/{{ businessId }}/location/{{ locationId }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,17 @@
+<p>Dear Mr / Mrs {{ payment.address.last_name }}</p>
+<p>On day {{ payment.created_at|format_date }} you have decided to purchase on {{business.companyDetails.urlWebsite}} with the following order number {{payment.reference}}.</p>
+<p><b>Please remind that you have the following upcoming payments:</b></p>
+<ul>
+  <li>Account holder: {{accountHolder}}</li>
+  <li>Account number: {{accountNumber}}</li>
+  <li>Amount: {{payment.total}}</li>
+  <li>Due Date: {{dueAt|format_date}}</li>
+  <li>Late payment fees: {{lateFees}}</li>
+</ul>
+<p>Please process the payment no later than the {{dueAt|format_date}} including the order number as the concept of the transfer.</p>
+<p>In case you have made several purchase orders, please make separate payments including the relevant order number in each of them.</p>
+<p>Have you already paid? We have taken into account payments received, returns and cancellations until {{dueAt|format_date}}. If you have already transferred the outstanding amount, you do not need to do anything else, and you can consider this email irrelevant.</p>
+<p>If you have any questions, do not hesitate to contact us at the following email: {{business.user.email}}. For questions related to the products, please contact {{business.companyDetails.urlWebsite}}.</p>
+<p>We hope you enjoy your purchase.</p>
+<p>Kind regards,<br>
+Santander S.A.</p>

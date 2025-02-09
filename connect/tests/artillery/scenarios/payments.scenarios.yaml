@@ -1,0 +1,23 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Payments"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/business/{{ businessId }}/payments/{{ integrationName }}/payload"
+      - get:
+          url: "/api/business/{{ businessId }}/payments/{{ integrationName }}/payload"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "PATCH /api/business/{{ businessId }}/payments/{{ integrationName }}/payload"
+      - patch:
+          url: "/api/business/{{ businessId }}/payments/{{ integrationName }}/payload"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

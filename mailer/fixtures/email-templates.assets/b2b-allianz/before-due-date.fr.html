@@ -1,0 +1,14 @@
+<h3>Cher {{ payment.address.last_name }},</h3>
+<p>Le {{ payment.created_at|format_date }}, vous avez décidé d'effectuer un achat auprès de {{ business.company_name }} avec le numéro de commande suivant {{ payment.reference }}. N'oubliez pas que vous devez effectuer les paiements suivants :</p>
+<ul>
+  <li>Titulaire du compte : {{ business.bankAccount.owner }}</li>
+  <li>Numéro de compte : {{ business.bankAccount.iban }}</li>
+  <li>Montant : {{ payment.total }}</li>
+  <li>Date d’échéance : {{ dueAt|format_date }}</li>
+</ul>
+<p>Veuillez effectuer le paiement au plus tard le {{ dueAt|format_date }} en indiquant le numéro de commande comme concept du transfert.</p>
+<p>Si vous avez passé plusieurs commandes, veuillez effectuer des paiements séparés en indiquant les numéros de commande correspondants pour chacune d'entre elles.</p>
+<p>Avez-vous déjà payé ? Nous avons pris en compte les paiements reçus, les retours et les annulations jusqu'au {{ dueAt|format_date }}. Si vous avez déjà transféré le montant restant, vous ne devez rien faire d'autre et vous pouvez considérer cet e-mail comme sans objet.</p>
+<p>Si vous avez des questions, n'hésitez pas à nous contacter à l'adresse suivante : {{ business.user.email }}. Pour les questions relatives aux produits, veuillez contacter {{ business.companyDetails.urlWebsite }}.</p>
+<p>Nous espérons que vous apprécierez votre achat.</p>
+<p>Avec nos meilleures salutations,</p>

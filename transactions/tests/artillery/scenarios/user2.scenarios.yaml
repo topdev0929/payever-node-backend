@@ -1,0 +1,49 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "User"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/user/list"
+      - get: 
+          url: "/api/user/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/user/mongo"
+      - get: 
+          url: "/api/user/mongo"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/user/detail/{{ uuid }}"
+      - get: 
+          url: "/api/user/detail/{{ uuid }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/user/settings"
+      - get: 
+          url: "/api/user/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/user/{{ userId }}/export"
+      - get: 
+          url: "/api/user/{{ userId }}/export"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      
+      

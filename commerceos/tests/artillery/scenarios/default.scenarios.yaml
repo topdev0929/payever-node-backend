@@ -1,0 +1,43 @@
+config: 
+  target: "https://commerceos-backend.test.devpayever.com"
+  phases: 
+    - 
+      duration: 1
+      arrivalRate: 10 
+  http: 
+    timeout: 10
+  variables: 
+    authUrl: "https://auth.test.devpayever.com"
+    userUrl: "https://users.test.devpayever.com"
+    email: "artillery@payever.de"
+    plainPassword: "Payever123!"
+    userId: "bbc716fa-3301-4fea-8f86-dc4719bfe896"
+    clientId: "00b6d075-1b87-4077-bc57-11536fac35a4"
+    clientSecret: "d5653b0b4e3ade27641304b5d1e968e05ac7a627aa0123d5"
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+  processor: "../processors/default.js"
+scenarios:
+  - 
+    name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/stepper/steps/{{ sectionName }}"
+      - get:
+          url: "/api/stepper/steps/{{ sectionName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/stepper/steps/business/{{ businessId }}/{{ sectionName }}"
+      - get:
+          url: "/api/stepper/steps/business/{{ businessId }}/{{ sectionName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/stepper/steps/business/{{ businessId }}/{{ businessStepId }}"
+      - put:
+          url: "/api/stepper/steps/business/{{ businessId }}/{{ businessStepId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Auto Discovery"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/auto-discovery/integration/{{ integrationName }}"
+      - post:
+          url: "/api/auto-discovery/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            auto-discovery-token: "{{ autoDiscoveryToken }}"
+          json:
+            name: "test"
+            url: "http://google.com"
+            actions: []

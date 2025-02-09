@@ -1,0 +1,9 @@
+type ChannelSets {
+  id: String
+  type: String
+  name: String
+}
+
+type Product {
+  channelSets: [ChannelSets]
+}

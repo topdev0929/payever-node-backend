@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Stream Media"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/amin/media-streams/subscription/{{ subscriptionMediaId }}"
+      - get:
+          url: "/api/media-streams/subscription/{{ subscriptionMediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/media-streams/media/{{ userMediaId }}"
+      - get:
+          url: "/api/media-streams/media/{{ userMediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

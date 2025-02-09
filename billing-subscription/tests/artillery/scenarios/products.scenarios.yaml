@@ -1,0 +1,37 @@
+scenarios:
+  - name: "Products"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/products/{{businessId}}"
+      - post:
+          url: "/api/products/{{businessId}}"
+          json:
+            _id: "{{newProductId}}"
+            image: "http://some-image-url.com/testt.jpg"
+            price: 1
+            title: "Product__New"      
+      - log: "GET /api/products/{{businessId}}/{{newProductId}}"
+      - get:
+          url: "/api/products/{{businessId}}/{{newProductId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/products/{{businessId}}/{{newProductId}}"
+      - post:
+          url: "/api/products/{{businessId}}/{{newProductId}}"
+          json:
+            _id: "{{newProductId}}"
+            price: 100
+            title: "test product"
+            image: "http://some-image-url.com/test.jpg"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/products/{{businessId}}/disable/{{newProductId}}"
+      - post:
+          url: "/api/products/{{businessId}}/disable/{{newProductId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

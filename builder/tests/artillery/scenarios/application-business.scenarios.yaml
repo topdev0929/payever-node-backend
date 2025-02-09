@@ -1,0 +1,26 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "App Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/list"
+      - get:
+          url: "/api/business/{{ businessId }}/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/list/shop"
+      - get:
+          url: "/api/business/{{ businessId }}/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

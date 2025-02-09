@@ -1,0 +1,3 @@
+# error-notifications
+
+jiraKey: ENM

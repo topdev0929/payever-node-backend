@@ -1,0 +1,83 @@
+scenarios:
+  - name: "User Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/business"
+      - get:
+          url: "/api/business"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business"
+      - post:
+          url: "/api/business"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ businessName }}"
+            companyAddress:
+              country: "DE"
+              city: "Munich"
+              street: "center"
+              zipCode: "test"
+            companyDetails:
+              product: "test"
+          capture:
+            json: "$._id"
+            as: "id"
+      - log: "GET /api/business/{{ id }}"
+      - get:
+          url: "/api/business/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ id }}"
+      - patch:
+          url: "/api/business/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ businessName }}"
+            companyAddress:
+              country: "DE"
+              city: "Munich"
+              street: "center"
+              zipCode: "test"
+            companyDetails:
+              product: "test"
+      - log: "PATCH /api/business/{{ id }}/enable"
+      - patch:
+          url: "/api/business/{{ id }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ id }}/info"
+      - get:
+          url: "/api/business/{{ id }}/info"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ id }}/detail"
+      - get:
+          url: "/api/business/{{ id }}/detail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ id }}/documents"
+      - get:
+          url: "/api/business/{{ id }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ id }}/taxes"
+      - get:
+          url: "/api/business/{{ id }}/taxes"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ id }}/theme"
+      - get:
+          url: "/api/business/{{ id }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ id }}"
+      - delete:
+          url: "/api/business/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

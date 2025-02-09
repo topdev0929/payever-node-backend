@@ -1,0 +1,40 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Admin Businesses"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/businesses"
+      - get:
+          url: "/api/admin/businesses"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "GET /api/admin/businesses/{{ businessId }}"
+      - get:
+          url: "/api/admin/businesses/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Patch /api/admin/businesses/{{ businessId }}/excluded-integrations"
+      - patch:
+          url: "/api/admin/businesses/{{ businessId }}/excluded-integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            - "string"
+      
+      - log: "Delete /api/admin/businesses/{{ businessId }}/excluded-integrations"
+      - delete:
+          url: "/api/admin/businesses/{{ businessId }}/excluded-integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

@@ -1,0 +1,11 @@
+scenarios:
+  - name: "Values"
+    flow:
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/values"
+      - get:
+          url: "/api/values"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

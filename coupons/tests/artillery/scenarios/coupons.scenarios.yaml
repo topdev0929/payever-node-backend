@@ -1,0 +1,161 @@
+scenarios:
+  - name: "Coupon"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/coupons"
+      - post:
+          url: "/api/business/{{ businessId }}/coupons"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: "{{ code }}"
+            channelSets: "{{ channelsetIds }}"
+            description: "{{ description }}"
+            limits: "{{ limits }}"
+            name: "{{ name }}"
+            startDate: "{{ startDate }}"
+            status: "{{ status }}"
+            type: "{{ type }}"
+            customerEligibility: "{{ customerEligibility }}"
+          capture:
+            json: '$._id'
+            as: 'couponId'
+      - log: "GET /api/business/{{ businessId }}/coupons"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/coupons/apply-coupon"
+      - post:
+          url: "/api/business/{{ businessId }}/coupons/apply-coupon"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            cart: "{{ cart }}"
+            couponCode: "{{ couponCode }}"
+            customerEmail: "{{ customerEmail }}"
+      - log: "GET /api/business/{{ businessId }}/coupons/{{ couponId }}/type-extra-fields"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons/{{ couponId }}/type-extra-fields"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/coupons/{{ couponId }}/eligibility"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons/{{ couponId }}/eligibility"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/coupons/{{ couponId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/coupons/{{ couponId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: "{{ code }}"
+            channelSets: "{{ channelsetIds }}"
+            description: "{{ description }}"
+            limits: "{{ limits }}"
+            name: "{{ name }}"
+            startDate: "{{ startDate }}"
+            status: "{{ status }}"
+            type: "{{ type }}"
+            customerEligibility: "{{ customerEligibility }}"
+      - log: "GET /api/business/{{ businessId }}/coupons/by-code/{{ couponCode }}"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons/by-code/{{ couponCode }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/coupons/by-channelset/{{ channelsetId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/coupons/by-channelset/{{ channelsetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/coupons/{{ couponId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Coupon Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/admin/coupons"
+      - post:
+          url: "/api/admin/coupons"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: "{{ code }}"
+            channelSets: "{{ channelsetIds }}"
+            description: "{{ description }}"
+            limits: "{{ limits }}"
+            name: "{{ name }}"
+            startDate: "{{ startDate }}"
+            status: "{{ status }}"
+            type: "{{ type }}"
+            customerEligibility: "{{ customerEligibility }}"
+            businessId: "{{ businessId }}"
+          capture:
+            json: '$._id'
+            as: 'couponId'
+      - log: "GET /api/admin/coupons"
+      - get:
+          url: "/api/admin/coupons"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/coupons/{{ couponId }}/type-extra-fields"
+      - get:
+          url: "/api/admin/coupons/{{ couponId }}/type-extra-fields"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/coupons/{{ couponId }}/eligibility"
+      - get:
+          url: "/api/admin/coupons/{{ couponId }}/eligibility"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/coupons/{{ couponId }}"
+      - get:
+          url: "/api/admin/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/admin/coupons/{{ couponId }}"
+      - put:
+          url: "/api/admin/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: "{{ code }}"
+            channelSets: "{{ channelsetIds }}"
+            description: "{{ description }}"
+            limits: "{{ limits }}"
+            name: "{{ name }}"
+            startDate: "{{ startDate }}"
+            status: "{{ status }}"
+            type: "{{ type }}"
+            customerEligibility: "{{ customerEligibility }}"
+      - log: "GET /api/admin/coupons/by-code/{{ couponCode }}"
+      - get:
+          url: "/api/admin/coupons/by-code/{{ couponCode }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/coupons/by-channelset/{{ channelsetId }}"
+      - get:
+          url: "/api/admin/coupons/by-channelset/{{ channelsetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/coupons/{{ couponId }}"
+      - delete:
+          url: "/api/admin/coupons/{{ couponId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

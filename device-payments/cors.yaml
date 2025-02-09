@@ -1,0 +1,3 @@
+name: nodejs-backend-device-payments
+endpoints:
+  - device-payments-backend

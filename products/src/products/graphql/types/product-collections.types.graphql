@@ -1,0 +1,7 @@
+type Collection {
+    _id: String,
+    id: String,
+    name: String,
+    description: String,
+    slug: String,
+}

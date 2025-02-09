@@ -1,0 +1,25 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Values"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/values"
+      - get:
+          url: "/api/values"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

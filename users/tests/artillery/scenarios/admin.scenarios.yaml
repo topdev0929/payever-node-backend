@@ -1,0 +1,109 @@
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/admin/users"
+      - get:
+          url: "/api/admin/users"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            page: "{{ page }}"
+            limit: "{{ limit }}"
+      - log: "GET /api/admin/users/{{ userId }}"
+      - get:
+          url: "/api/admin/users/{{ userId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/users/{{ userId }}"
+      - patch:
+          url: "/api/admin/users/{{ userId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/business/list"
+      - get:
+          url: "/api/admin/business/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            page: "{{ page }}"
+            limit: "{{ limit }}"
+      - log: "GET /api/admin/business/{{ businessId }}"
+      - get:
+          url: "/api/admin/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/business/{{ businessId }}"
+      - patch:
+          url: "/api/admin/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/business/{{ userId }}"
+      - post:
+          url: "/api/admin/business/{{ userId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ businessName }}"
+            companyAddress:
+              country: "DE"
+              city: "Munich"
+              street: "center"
+              zipCode: "test"
+            companyDetails:
+              product: "test"
+          capture:
+            json: "$._id"
+            as: "createdBusinessId"
+      - log: "POST /api/admin/employees/{{ businessId }}"
+      - post:
+          url: "/api/admin/employees/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ email }}"
+            position: "{{ position }}"
+            status: "{{ status }}"
+          capture:
+              json: "$._id"
+              as: "id"
+      - log: "GET /api/admin/employees/{{ businessId }}"
+      - get:
+          url: "/api/admin/employees/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            limit: "{{ limit }}"
+            page: "{{ page }}"
+      - log: "GET /api/admin/employees/{{ businessId }}/{{ id }}"
+      - get:
+          url: "/api/admin/employees/{{ businessId }}/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/employees/{{ businessId }}/{{ id }}"
+      - patch:
+          url: "/api/admin/employees/{{ businessId }}/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json: 
+            email: "{{ email }}"
+            position: "{{ position }}"
+            status: "{{ status }}"
+      - log: "GET /api/admin/employees/{{ businessId }}/count"
+      - get:
+          url: "/api/admin/employees/{{ businessId }}/count"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/employees/{{ businessId }}/{{ id }}"
+      - delete:
+          url: "/api/admin/employees/{{ businessId }}/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/business/{{ createdBusinessId }}"
+      - delete:
+          url: "/api/admin/business/{{ createdBusinessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

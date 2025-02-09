@@ -1,0 +1,167 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Folders Business"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Post /api/folders/business/{{ businessId }}" 
+      - post: 
+          url: "/api/folders/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "string"
+            isHeadline: true
+            image: "string"
+            name: "string"
+            description: "string"
+            isProtected: true
+            position: 0
+      - log: "Get /api/folders/business/{{ businessId }}" 
+      - get:
+          url: "/api/folders/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/folders/business/{{ businessId }}/tree" 
+      - get:
+          url: "/api/folders/business/{{ businessId }}/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/folders/business/{{ businessId }}/root-folder" 
+      - get:
+          url: "/api/folders/business/{{ businessId }}/root-folder"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+      - patch:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "string"
+            isHeadline: true
+            image: "string"
+            name: "string"
+            description: "string"
+            isProtected: true
+            position: 0
+      
+      - log: "Delete /api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+      - delete:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/business/{{ businessId }}/update-positions"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/update-positions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            positions:
+              - json:
+                  _id: "string"
+                  position: 0
+
+      - log: "Get /api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+      - get: 
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/folders/business/{{ businessId }}/root-documents"
+      - get: 
+          url: "/api/folders/business/{{ businessId }}/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-root"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-root"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/folders/business/{{ businessId }}/search"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            all: 0
+            orderBy: "string"
+            direction: "string"
+            page: 0
+            limit: 0
+            query: "string"
+            queryFields:
+              - "string"
+            filters: null
+            sort:
+              - "string"
+            currency: "string"
+      
+      - log: "Get /api/folders/business/{{ businessId }}/search"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/business/{{ businessId }}/document/{{ documentId }}/first-location"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ documentId }}/first-location"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            documentId: "string"
+            contact: "string"
+            integrationName: "string"
+            title: "string"
+            type: "string"
+            applicationId: "string"
+            parentFolderId: "string"
+      
+      - log: "Post /api/folders/business/{{ businessId }}/document/{{ documentId }}/locations"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ documentId }}/locations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            _id: "string"
+            parentFolderId: "string"
+
+      - log: "Delete /api/folders/business/{{ businessId }}/document/{{ documentId }}/locations/{{ locationId }}"
+      - delete:
+          url: "/api/folders/business/{{ businessId }}/document/{{ documentId }}/locations/{{ locationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

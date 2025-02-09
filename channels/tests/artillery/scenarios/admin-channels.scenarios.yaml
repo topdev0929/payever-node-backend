@@ -1,0 +1,54 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: 'Admin Channels'
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "GET /admin/channels"
+      - get:
+          url: "/admin/channels"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /admin/channels"
+      - post:
+          url: "/admin/channels"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            legacyId: 8888
+            type: "{{ randomName }}"
+          capture:
+            - json: "$._id"
+              as: "channelId"
+      - log: "GET /admin/channels/{{ channelId }}"
+      - get:
+          url: "/admin/channels/{{ channelId }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /admin/channels/{{ channelId }}"
+      - patch:
+          url: "/admin/channels/{{ channelId }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            legacyId: 8888
+            type: "update_artillery_test_admin"
+            _id: "{{ channelId }}"
+      - log: "DELETE /admin/channels/{{ channelId }}"
+      - delete:
+          url: "/admin/channels/{{ channelId }}"
+          afterResponse: 'printStatus'
+          headers:
+            authorization: 'Bearer {{ accessToken }}'
+
+

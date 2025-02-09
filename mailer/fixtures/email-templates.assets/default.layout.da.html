@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="color-scheme" content="light only">
+  <title></title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+  <style type="text/css">
+    /*////// RESET STYLES //////*/
+    body,
+    #bodyTable,
+    #bodyCell {
+      font-family: 'Roboto', -apple-system, sans-serif;
+      font-size: 14px;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+	  background: #efefef;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    img,
+    a img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display emails at full width. */
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display line heights normally. */
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    td {
+      padding: 0;
+      /* padding-left: 40px; */
+    }
+
+    /* Remove spacing between tables in Outlook 2007 and up. */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Force Outlook 2007 and up to provide a "view in browser" message. */
+    img {
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    /* Force IE to smoothly render resized images. */
+    body,
+    table,
+    td,
+    p,
+    a,
+    li,
+    blockquote {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .table {
+      /*width: 900px;*/
+      width: 100%;
+    }
+
+
+	.pe-logo-table th {
+	  padding: 28px 0 6px;
+	}
+
+	.body-shadow {
+	  background: #eeeeee;
+	  background-position: bottom right;
+	  background-repeat: repeat;
+	}
+	.body-shadow-left,
+	.body-shadow-right {
+	  width: 32px;
+	}
+	.body-shadow-left {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVRYhe3OsQ0AIAgAQXD/da1xAIkmxvK+IRSQy4jI2MvDzG6vqtn8uTZejn4GAAAAAAAAAAAAAAAAAACwAC/FBDyow2AiAAAAAElFTkSuQmCC);
+	}
+	.body-shadow-right {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAQUlEQVRYhe3OIQ7AMAwEwXNp/v/eK6sKGhIVzkqWZeSZts1BM7OS9DXZ3F/76Tp5/mcAAAAAAAAAAAAAAAAAAAA3xjgNQaL0en8AAAAASUVORK5CYII=);
+	}
+	.body-shadow-top,
+	.body-shadow-bottom {
+	  height: 32px;
+	}
+	.body-shadow-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVRYhe3SgQ0AMAgCQTDdf2UcA5O+C3gBLMkq3jSfAzgBePp9hCRAAvUEALABJ0kTUK8AAAAAAAAAALAZrwRRxjHLzAAAAABJRU5ErkJggg==);
+	}
+	.body-shadow-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAS0lEQVRYhe3VwREAIAgDwaA+7b9dfFjE8bg04E5GoLq7A2aRjwsQIECAgBGASnJJwEmCXkMBAvAxxBsQgP+Bnb+OsdjAiAbQ4A0IeNQpDFRkb/z+AAAAAElFTkSuQmCC);
+	}
+	.body-shadow-left-top,
+	.body-shadow-right-top,
+	.body-shadow-left-bottom,
+	.body-shadow-right-bottom {
+	  width: 32px;
+	  height: 32px;
+	}
+	.body-shadow-left-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVRYhb2VLVPEMBCGu+kVhYoDPEhwJ0Cib+bc/V0cGlV+QUxdHGJ7hjJNSPYj3bud2Zk2m7zPm23aQnedAHXBEmK+yHB9k4Bl19RipnCNoDl40ZUIW8GLOpz4xQ8pNWELXNzZ2sRWuLqju0aQBkzWSkWrV1OknQ9YwFVjWx6BBMTetxrQgMi51ERrePFa24FNsBDCi/f+MAzDa9d1DwBwl4tR6bLsV7lb5fCbN0vGGE+I+D0XQgqnDFTh4zg+IeJnCaw1INl9Ap+m6X2e54mCtxqQwn84uNQA1/p/bZfsfAlYGagFd7phfY2IHwCwJ/SScEyd+84nhmKMRw18EWjdfW4CEPELAB41BrgOcKb+xkIIz1p4q4GiGe/9oUWAMlA7cMVa3/dv1ga4SEw45+6vbSAxkf9YLmmg9ke8tTRAPX/KhDrOOV7SV28rZRcAAAAASUVORK5CYII=);
+	}
+	.body-shadow-right-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABlElEQVRYhb1Wu04DMRCc9QUqqnTHB0AHJQ0SDTUSHd/JPyBBRxno0TWna9wRKUNBEjYXv20x0kq2s96dHa/jEwACPxj4rQkkQiCEJuRqCGgUk2lFQCOLjGmcHMgsyORuyCCRFFfgV6HVDQjGCRFIDlKzf3cEMblqm9W7VwB0jvVYxaWKHO3zNaEgXHWz6ysAFo51V4W+qnPVOPD39UDqGjxrIRz46yNwye4jUktij538OgADc878tZyCgubURzBXQgd2jVPmPuz9hKQlOQD4Wq/XL9M0Pfd9/66cmTl2zV349aEDm83mw1r7BOBU2cnWFso6ZWZmEjF4CSgir6vV6jKRRC4BiRLYYhzH8T5Aok6FBAIk+V1IohkBkhwjx1GiAoRk8t0l+WaMucNfl3M2RmR8FDLrk0xEbqy1j3D/N4QeLn/MHAUAgOSnMeYKx5VrNRAYHyD7o1RELoZhuEajN6Hoq3i5XD7UJK0m0HXdrSP5vBdCb0gdAWPMeWqCaKySTSLSt0heTADAmSf5/zRhQvLkPvgBmoIOefp1YTsAAAAASUVORK5CYII=);
+	}
+	.body-shadow-left-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABc0lEQVRYhb2Uu06FQBCG/1nAc84jaGg1lnYW1nY+gZWv4jP5AFYWdkpoDL2BRAm1kF0bckJgL7MXnWSys5f5+ZgdIACErZEmXo7rmKSU70R0rtGymvBNMJmU8jMkzwSgNLFu7Tgfx/ElJYDNNg8HgLZtn0IAlvep21vHrj54I6ILH4CYHlhfiRqG4dFXxFYBIKwKz0R0zQWI/Qo2Vajr+gHAt48IWVwsPFt4DqCY/WT2HYA9gH3XdbdKqR/FMBeEMEDkGojdAuIwQ3zFAriqkGNbhSNEVVWX0zS9pgRwVWEDAeDQ9/29lPJDB7DubJPpvoZlzBqbprkqy/KuKIobIcQZEZ2GAERBrOOMCWCD4MCYdCgzbPgAuCCs2qxDERDO2BfABeEN4hJLDbGZhwKYzvqAAQDFAHAhrGvcw74QbG2f5BAI514qAG4euwIxENxcYw+kgmDlh/z9Qk2rE/rjSWXGJjQmJCf4p5w/E4uGSfk2QVq/Uiy/Y4vZkfMAAAAASUVORK5CYII=);
+	}
+	.body-shadow-right-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABiUlEQVRYhcWXPU7EMBCFX0zYBe4RiQ6uQMElqLgKZ4IrbLEditIAbbQkEkQpqHDkoYgXmWA7HserHWkUS4nnm58XZzcjIgLTiOhNCHEFgAyHZW1ep2sAgODCAUAptYvZZ7OoBKSUG/yvxlapt/roBJqmeXQEZY8z42qAiF6FENdIMH8gogN93z9MYM7gIcbqABFthRA3SFQ9wOvAZ1VV90hY/bg7zL7btr0FcKZ9DWCl/VR7DuDEcGF45vQA+IeGnxvwtQWeO+C+BPwdGIZhW5blpQO+csDDq3cloJR66bruToN98CXVZ9Abv4joXSm1k1Ju6rp+KorieS8R5nVqswLNAFw4NsTAuScj5QHgOWgsHMA4At97HfWBCTQyEwgBh65ZiZkJpIKxujJNYC5gKvjvczYRxoKi9ODSABcULUbbCLgQLvzP864RhAIWwYHx7M4iAi/7DWBYbqxDgi4+eKbm6kBKsHd/7rqRABoUJ0SEB4MD4wiOAt5b1D+jVHDAr4GDQVMlkEQ3P8NfSS+qJafOAAAAAElFTkSuQmCC);
+	}
+
+	.body-box-table {
+	  max-width: 500px;
+	  border-radius: 14px;
+	  background: #ffffff;
+	}
+	.body-box-table td.body-box-table-content {
+	  padding: 16px 30px;
+	}
+  .body-box-table td.body-box-table-content .body-text-area h4,
+  .body-box-table td.body-box-table-content .body-text-area p {
+    margin-bottom: 18px;
+  }
+  .body-box-table td.body-box-table-content .body-text-area a {
+    word-break: break-word;
+  }
+
+	.body-box-table .body-buttons-table {
+	  margin-top: 30px;
+	}
+	.body-box-table .body-buttons-table td {
+	  padding: 0;
+	}
+	.body-box-table .body-buttons-table .space-between-buttons {
+	  width: 5%;
+	}
+	.body-box-table .body-buttons-table td.body-button {
+	  width: 30%;
+	}
+	.body-box-table .body-buttons-table td.body-button a {
+	  display: block;
+	  width: 100%;
+	  padding: 8px 0;
+	  border-radius: 6px;
+	  text-decoration: none;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-white {
+	  color: #000000;
+	  background: #e5e5e5;
+	  border: 1px solid #e0e0e0;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-bordered {
+	  color: #000000;
+	  background: #ffffff;
+	  border: 1px solid #000000;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-black {
+	  color: #ffffff;
+	  background: #000000;
+	}
+
+	.social-links-table td {
+	  padding: 12px 0 22px;
+	}
+
+	.terms-table td {
+	  padding: 0 0 22px;
+	}
+	.terms-table td a {
+	  color: #000000;
+	  text-decoration: none;
+	}
+
+	.cellar-table td {
+	  font-size: 10px;
+	  line-height: 1.6;
+	}
+  </style>
+</head>
+<body>
+<table cellpadding="4" style="width:100%;">
+  <tbody>
+  <tr>
+    <td align="center">
+      <table class="table pe-logo-table">
+        <thead>
+			<tr>
+			  <th align="center" class="border-none">
+				<a href="https://cdn.payever.org/email/?url=https://getpayever.com/" target="_blank" rel="noopener noreferrer">
+				  <img border="0"
+					   style="width: 107px; height: 24px" alt="payever logo"
+					   src="data:image/png;base64,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"/>
+				</a>
+			  </th>
+			</tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table body-box-table">
+        <tbody>
+			<tr>
+			  <td class="body-shadow body-shadow-left-top"></td>
+			  <td class="body-shadow body-shadow-top"></td>
+			  <td class="body-shadow body-shadow-right-top"></td>
+			</tr>
+			<tr>
+			  <td class="body-shadow body-shadow-left"></td>
+			  <td class="body-box-table-content">
+          <div class="body-text-area">
+            {% block body %}{% endblock body %}
+          </div>
+
+				<table class="body-buttons-table" border="0" cellpadding="0" cellspacing="0" valign="top" width="100%">
+				  <tbody>
+					  <tr align="right">
+						<td align="center" class="border-none body-button">
+						  <a class="body-button-white" target="_blank" rel="noopener noreferrer" href="https://cdn.payever.org/email/?url=https://commerceos.payever.org/login">Login</a>
+						</td>
+						<td class="border-none space-between-buttons">
+						</td>
+						<td align="center" class="border-none body-button">
+						  <a class="body-button-bordered" target="_blank" rel="noopener noreferrer" href="https://cdn.payever.org/email/?url=https://support.payever.org/hc/en-us">Help</a>
+						</td>
+						<td class="border-none space-between-buttons">
+						</td>
+						<td align="center" class="border-none body-button">
+						  <a class="body-button-black" target="_blank" rel="noopener noreferrer" href="mailto:support@payever.de">Contact</a>
+						</td>
+					  </tr>
+				  </tbody>
+				</table>
+
+			  </td>
+			  <td class="body-shadow body-shadow-right"></td>
+			</tr>
+			<tr>
+			  <td class="body-shadow body-shadow-left-bottom"></td>
+			  <td class="body-shadow body-shadow-bottom"></td>
+			  <td class="body-shadow body-shadow-right-bottom"></td>
+			</tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table social-links-table">
+        <thead>
+			<tr>
+			  <td align="center" class="border-none">
+				<a href="https://cdn.payever.org/email/?url=https://www.facebook.com/getpayever/" target="_blank" rel="noopener noreferrer">
+				  <img border="0"
+					   style="width: 24px; height: 24px" alt="payever facebook page"
+					   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA5dJREFUaAXVmbtrFEEcxxMfmPiKQQtFxSZgQLEQxXZSpBMUGy1EYpPGTlvBJqn9F+wtBC2EJBAEwUKwthDS+EhE8RURX+j3s3d77F52NvO6y+YL39ubmf19f9+Z2Z2dvRscSINhyUyKE+K4OCaOintE8E38JL4SX4qL4rz4Q9wwYHBKfCB+F/95khhip0S0+oadynRb/Cr6mradjxaaaPcMW6U8Lb4VbUZi69EmB7mS4rDUnouxBl3jyUXOJDgnlV6Ouq1T5CR3FK4qmpXClqTX9eTGQxAI7LVBV33vTjB1Gzny3R3DC57WYHBNTevm4SY6VNEWWvVLgc/aXNGRB9uQyIPuoHhUPCXyALThnRrOim9sJ1DP8pVytWHkZsT94nq4qBO6R767jLfaJZY1uDsotPxaWmdEV7h0AC94rARPwVTLJSN/ujKLvdK1A3jsPLG3FPRu6nuq635WWi8K2im/4hGvJbCZYj8SerkU49AZKam7FVxngFzkyDaA29raF3TMt77tquDDoiK/OETv1TlsvfPL4aRDTH4KXvF8L69gW1scxZjvt3JRy5FL4HGCfHjOwMtIyH7e1snLbV3bYU4NtlifejwPcxPzJpVPo75G42ONwhG1kS8F8DxJB3gNTIk/NWLHatpCmiboADdSv7A9caJxOlC3/0icL7ncGB3o6wt14i6M0oFU639ib05ymfdVneqzfOXnpr537gf4WGUG2J83ASEDskwHlhvgHh8hi8lKU2aA58NQwEBmHVgKCEwdcjxQcIkZWAgMThkWcv2Tf4Ht9BPxp7hD9AFL2L6KAFY123aCfLsrYny20nk4nvGeIdUOkSXWtCQrP2nLl+HYI54HuITAo9ZhU30+LLrdpcIHMXZU+jUDeMVzZwZ4ObhLxSYBXvFcwohKn8XYWTAl1XKBtlh9POI1Q34PUOBFfDarbfbHTNtrpUt+K+W5EDNKplK5VUlbjDbe8NhBcQaoRPyayE3SNOAJb3jsoLsDNPDT3XXxL4WGAC94wpszrujM36LvlJuaDLT56uEBL0G4pCh+2/dJamoy0eajRW48ROG8on2WV1OTjTbXDpCT3EnAPyjzoktyU5ORNhcNcpEzKVi+bojrvUObmqy01XUAbXKUlkqVk+KA1O6I78UqM0b1Nhg1VMWghSbafQOvgNPiU7F4oxuVbTBqyDtADLFohLxOKiwdsh9aJcdW5ESNLG2cMykSE43/bOwIxDfXpcUAAAAASUVORK5CYII="/></a>
+				  &nbsp;&nbsp;&nbsp;
+				<a href="https://cdn.payever.org/email/?url=https://www.instagram.com/payever" target="_blank" rel="noopener noreferrer">
+				  <img border="0"
+					   style="width: 24px; height: 24px" alt="payever instagram page"
+					   src="data:image/png;base64,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"/></a>
+				  &nbsp;&nbsp;&nbsp;
+				<a href="https://cdn.payever.org/email/?url=https://www.linkedin.com/company/payever/" target="_blank" rel="noopener noreferrer">
+				  <img border="0"
+					   style="width: 24px; height: 24px" alt="payever linkedin company page"
+					   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAu9JREFUaAXtmD2MDVEUx2exiI+CsIWCTiFoBJH3QkFDgogQDaKjUkhodJSilWyhIbGVgkqtRkRIEPGRSIQlUQjrY/n9n71yMzP3zIw37+5M8k7yf3Pu+bj3nPt9X5L8pQN87oEp8LvBmCa2p+AcmAt6dJDfJgcdiu3yTPzJg5Ym8Iu4l47w8wPMA22krXOIuq3Bq8NHlUCraZjAbA9fmRGYIMjNYDFYBY6AN6AxFNpnJb8UiHIM+Xtg+cbQdRRfqKFv6BbKIEA6DUO+seQdawrpyFYSIbofUsSUWwlovltUpLd8a9NZCayglT2BlnSCHw/ooout+fqOaHamIlpC+Qqw/GLpOupJNVZEjzB4DDQqm8Ay0ATqlk2gCcHmxdCdzYucrsM6EPUw0blibdmo86kogTO4vc53Tc4i3+LpLsA/9Mo+e5LCLvAVXAVaQ9qmfwKR4tgGToBj4N9rC76QrAW30fC+ic733W3YjqN7BdYZNk6lNfYW+HWHePMgcxWW/Vpb8kcq2QGelKhMb/Pt4HMJ28RqtIy/b2PVdRHD0FT063D8C5jTrmB9rUYtv6q6L1UdsL8OCpPuJ4GRVFDpckrdK+r6cQqcB1oz1mLVLnUNmKTV/7+khVWF9mJ8A+hd4egWzCHw3QlS37upcqbYzwhkKjME6vkJ4Acv833gsJgA6QZgUqwEjhLFokAkeuGF6FNI4eR1JmBNqdWuwZzvmhyZE03BWG+SWrdR12jedzRPOCPTBdGiaUsZawSsGMrsXkH/OhMINoLCml6WX6GuzgQGFqSVxTABq3c8XV/z3Ksnw8YagYFNr1gJZHquLkGsBFo/herq8Ew9sUYg03BdgqLr9AYaCv1bsDwVxFrKoWfgypStX9Q1w/9zwNeJNztZc3NgO0Q6kgGUu2Z2A2iw9iqHCdTepRUr1AhMVvRpkvmkErjTpIgqxPIS22eyHwN6PGs3ags+EKv+S03cET8ffj9YDxaAppKel8/BbdCb+n8AJLCKvZSgVGUAAAAASUVORK5CYII="/></a>
+			  </td>
+			</tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table terms-table">
+        <thead>
+			<tr>
+			  <td align="center" class="border-none">
+				<a href="https://getpayever.com/about/imprint" target="_blank" rel="noopener noreferrer">Imprint</a>
+				  &nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="https://getpayever.com/terms" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+				  &nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="https://getpayever.com/about/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
+			  </td>
+			</tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table cellar-table">
+        <thead>
+			<tr>
+			  <td align="center" class="border-none">
+				◉ payever GmbH • Rödingsmarkt 20, 20459 Hamburg • www.payever.org
+				<br>
+				Amtsgericht Hamburg HRB 134945 • Geschäftsführer: Viktor Butsch, Artur Schlaht
+			  </td>
+			</tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

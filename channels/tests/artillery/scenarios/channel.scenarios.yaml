@@ -1,0 +1,80 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Channel"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login not admin"
+      - function: "auth"
+      - log: "GET /channel/{{channelId}}"
+      - get:
+          url: "/channel/{{channelId}}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "Access token not admin >>>> {{accessToken}}"
+      - log: "GET /channel/3/legacy"
+      - get:
+          url: "/channel/3/legacy"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /channel"
+      - get:
+          url: "/channel"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /business/{{ businessId }}/channel/{{ channelType }}"
+      - get:
+          url: "/business/{{ businessId }}/channel/{{ channelType }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /business/{{ businessId }}/channel/{{ channelType }}/disable"
+      - patch:
+          url: "/business/{{ businessId }}/channel/{{ channelType }}/disable"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /business/{{ businessId }}/channel/{{ channelType }}/enable"
+      - patch:
+          url: "/business/{{ businessId }}/channel/{{ channelType }}/enable"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Login admin"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "POST /channel"
+      - post:
+          url: "/channel"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            legacyId: "{{ random }}"
+            type: "{{ randomName }}"
+          capture:
+            - json: "$._id"
+              as: "channelId"
+      - log: "PATCH /channel/{{ channelId }}"
+      - patch:
+          url: "/channel/{{ channelId }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            legacyId: "{{ random2 }}"
+            type: "{{ randomName2 }}"
+            _id: "{{ channelId }}"
+      - log: "DELETE /channel/{{ channelId }}"
+      - delete:
+          url: "/channel/{{ channelId }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

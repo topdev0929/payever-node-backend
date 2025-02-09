@@ -1,0 +1,22 @@
+input CreateOption {
+  name: String!
+  type: String
+  value: String!
+}
+
+input UpdateOption {
+  name: String!
+  type: String
+  value: String!
+}
+
+type Query {
+  getOptions: [Option]
+  getOption(id: String): Option
+}
+
+type Mutation {
+  createOption(data: CreateOption): Option
+  updateOption(id: String, data: UpdateOption): Option
+  deleteOption(id: String): Option
+}

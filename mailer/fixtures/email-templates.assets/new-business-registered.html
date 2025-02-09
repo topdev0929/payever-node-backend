@@ -1,0 +1,124 @@
+<table border="0" cellpadding="5">
+    <tr>
+        <th>Business Name:</th>
+        <td>{{ business.name }}</td>
+    </tr>
+    {% if business.businessDetail is defined %}
+        {% if business.businessDetail.companyDetails is defined %}
+            {% if business.businessDetail.companyDetails.businessStatus is defined %}
+                <tr>
+                    <th>Business Status:</th>
+                    <td>{{ business.businessDetail.companyDetails.businessStatus }}</td>
+                </tr>
+            {% endif %}
+            {% if business.businessDetail.companyDetails.product is defined %}
+                <tr>
+                    <th>Product:</th>
+                    <td>{{ business.businessDetail.companyDetails.product }}</td>
+                </tr>
+            {% endif %}
+            {% if business.businessDetail.companyDetails.industry is defined %}
+                <tr>
+                    <th>Industry:</th>
+                    <td>{{ business.businessDetail.companyDetails.industry }}</td>
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    <tr><td colspan="2"><hr></td></tr>
+    {% if user.userAccount is defined %}
+        {% if user.userAccount.firstName is defined %}
+            <tr>
+                <th>First Name:</th>
+                <td>{{ user.userAccount.firstName }}</td>
+            </tr>
+        {% endif %}
+        {% if user.userAccount.lastName is defined %}
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ user.userAccount.lastName }}</td>
+            </tr>
+        {% endif %}
+        {% if user.userAccount.email is defined %}
+            <tr>
+                <th>Email:</th>
+                <td>{{ user.userAccount.email }}</td>
+            </tr>
+        {% endif %}
+    {% endif %}
+    {% if business.businessDetail is defined %}
+        {% if business.businessDetail.companyDetails is defined %}
+            {% if business.businessDetail.companyDetails.phone is defined %}
+                <tr>
+                    <th>Phone Number:</th>
+                    <td>{{ business.businessDetail.companyDetails.phone }}</td>
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    <tr><td colspan="2"><hr></td></tr>
+    {% if business.businessDetail is defined %}
+        {% if business.businessDetail.companyDetails is defined %}
+            {% if business.businessDetail.companyDetails.status is defined %}
+                <tr>
+                    <th>Status:</th>
+                    <td>{{ business.businessDetail.companyDetails.status }}</td>
+                </tr>
+            {% endif %}
+            {% if business.businessDetail.companyDetails.salesRange is defined %}
+                <tr>
+                    <th>Annual Sales:</th>
+                    <td>
+                        {% if business.businessDetail.companyDetails.salesRange.min is defined %}
+                            {{ business.businessDetail.companyDetails.salesRange.min }}
+                        {% endif %}
+                        {% if business.businessDetail.companyDetails.salesRange.min is defined and business.businessDetail.companyDetails.salesRange.max is defined %}
+                            -
+                        {% endif %}
+                        {% if business.businessDetail.companyDetails.salesRange.max is defined %}
+                            {{ business.businessDetail.companyDetails.salesRange.max }}</td>
+                        {% endif %}
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% if user.userAccount is defined %}
+        {% if user.userAccount.registrationOrigin is defined %}
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Registration account:</th>
+                <td>{{ user.userAccount.registrationOrigin.account }}</td>
+            </tr>
+            <tr>
+                <th>Registration URL:</th>
+                <td><a href="{{ user.userAccount.registrationOrigin.url }}">{{ user.userAccount.registrationOrigin.url }}</a></td>
+            </tr>
+        {% endif %}
+    {% endif %}
+    {% if trafficSource is defined %}
+        {% if trafficSource.source is defined %}
+            <tr>
+                <th>Source:</th>
+                <td>{{ trafficSource.source }}</td>
+            </tr>
+        {% endif %}
+        {% if trafficSource.medium is defined %}
+            <tr>
+                <th>Medium:</th>
+                <td>{{ trafficSource.medium }}</td>
+            </tr>
+        {% endif %}
+        {% if trafficSource.campaign is defined %}
+            <tr>
+                <th>Campaign:</th>
+                <td>{{ trafficSource.campaign }}</td>
+            </tr>
+        {% endif %}
+        {% if trafficSource.content is defined %}
+            <tr>
+                <th>Content:</th>
+                <td>{{ trafficSource.content }}</td>
+            </tr>
+        {% endif %}
+    {% endif %}
+</table>

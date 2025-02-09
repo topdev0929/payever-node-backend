@@ -1,0 +1,180 @@
+scenarios:
+  - name: "Mail"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/mail"
+      - post:
+          url: "/api/business/{{ businessId }}/mail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.id"
+            as: "mailId"
+      - log: "GET /api/business/{{ businessId }}/mail"
+      - get:
+          url: "/api/business/{{ businessId }}/mail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/mail/access/{{ mailId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/mail/access/{{ mailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/mail/{{ mailId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/mail/{{ mailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/mail/isValidName"
+      - get:
+          url: "/api/business/{{ businessId }}/mail/isValidName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            name: "{{ mailName }}"
+      - log: "GET /api/mail/{{ applicationId }}/theme"
+      - get:
+          url: "/api/mail/{{ applicationId }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/mail/{{ applicationId }}/theme/page"
+      - get:
+          url: "/api/mail/{{ applicationId }}/theme/page"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/mail/{{ applicationId }}/theme/page/password/check"
+      - post:
+          url: "/api/mail/{{ applicationId }}/theme/page/password/check"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/mail/{{ applicationId }}/theme/page/{{ pageId }}"
+      - get:
+          url: "/api/mail/{{ applicationId }}/theme/page/{{ pageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/mail/{{ applicationId }}/theme/page/{{ pageId }}/stylesheet/{{ screen }}"
+      - get:
+          url: "/api/mail/{{ applicationId }}/theme/page/{{ pageId }}/stylesheet/{{ screen }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/mail/by-domain"
+      - get:
+          url: "/api/mail/by-domain"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            name: "{{ domain }}"
+      - log: "GET /api/campaign/{{ campaignId }}/theme"
+      - get:
+          url: "/api/campaign/{{ campaignId }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/campaign/{{ campaignId }}/theme/page"
+      - get:
+          url: "/api/campaign/{{ campaignId }}/theme/page"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/campaign/{{ campaignId }}/theme/page/{{ pageId }}"
+      - get:
+          url: "/api/campaign/{{ campaignId }}/theme/page/{{ pageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Mail Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/admin/mail"
+      - post:
+          url: "/api/admin/mail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.id"
+            as: "mailId"
+      - log: "GET /api/admin/mail/list"
+      - get:
+          url: "/api/admin/mail/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/mail/{{ mailId }}"
+      - get:
+          url: "/api/admin/mail/{{ mailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/mail/{{ mailId }}"
+      - patch:
+          url: "/api/admin/mail/{{ mailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/campaign/{{ businessId }}"
+      - post:
+          url: "/api/admin/campaign/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.id"
+            as: "adminCampaignId"
+      - log: "PATCH /api/admin/campaign/{{ adminCampaignId }}"
+      - patch:
+          url: "/api/admin/campaign/{{ adminCampaignId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/campaign/{{ adminCampaignId }}"
+      - get:
+          url: "/api/admin/campaign/{{ adminCampaignId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/campaign/list"
+      - get:
+          url: "/api/admin/campaign/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/schedule/{{ adminCampaignId }}"
+      - post:
+          url: "/api/admin/schedule/{{ adminCampaignId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.id"
+            as: "scheduleId"
+      - log: "PATCH /api/admin/schedule/{{ scheduleId }}"
+      - patch:
+          url: "/api/admin/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/schedule/{{ scheduleId }}"
+      - get:
+          url: "/api/admin/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/schedule/list"
+      - get:
+          url: "/api/admin/schedule/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/schedule/{{ scheduleId }}"
+      - delete:
+          url: "/api/admin/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/campaign/{{ adminCampaignId }}"
+      - delete:
+          url: "/api/admin/campaign/{{ adminCampaignId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/mail/{{ mailId }}"
+      - delete:
+          url: "/api/admin/mail/{{ mailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+
+    
+    

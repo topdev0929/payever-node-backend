@@ -1,0 +1,3 @@
+Business Id,Email,Position,Groups,Logo,Phone Number,Company Name,Acls
+88038e2a-90f9-11e9-a492-7200004fe4c0,test1@gmail.com
+88038e2a-90f9-11e9-a492-7200004fe4c0,test2@gmail.com,Admin,g1;g2;g3,logo,12345,Test Company,blog?read=true;shop?update=true&read=true

@@ -1,0 +1,39 @@
+scenarios:
+  - name: "Business Shipping Zones"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/business/{{ businessId }}/shipping-zone"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-zone"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ shippingZoneName }}"
+            countryCodes:
+              - "DE"
+            deliveryTime: 10
+          capture:
+            - json: "$._id"
+              as: "shippingZoneId"
+      - log: "GET /api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ shippingZoneName }}"
+            countryCodes:
+              - "DE"
+            deliveryTime: 10
+      - log: "DELETE /api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/shipping-zone/{{ shippingZoneId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

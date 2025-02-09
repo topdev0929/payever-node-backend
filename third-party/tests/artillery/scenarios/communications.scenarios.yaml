@@ -1,0 +1,36 @@
+scenarios:
+  - name: "Communications"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/communications/{{ integrationName }}/numbers"
+      - get:
+          url: "/api/business/{{ businessId }}/communications/{{ integrationName }}/numbers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/communications/{{ integrationName }}/send"
+      - post:
+          url: "/api/business/{{ businessId }}/communications/{{ integrationName }}/send"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            from: "+4932221099387"
+            to: "+4932221099387"
+            message: "10000"
+      - log: "POST /api/communications/inbound/message"
+      - post:
+          url: "/api/communications/inbound/message"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            from: "+4932221099387"
+            to: "+4932221099387"
+            message: "10000"
+      - log: "POST /api/business/{{ businessId }}/communications/{{ integrationName }}/inbound/configure"
+      - post:
+          url: "/api/business/{{ businessId }}/communications/{{ integrationName }}/inbound/configure"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            phone: "+4932221099387"

@@ -1,0 +1,17 @@
+export enum ElasticIndexEnum {
+  BillingSubscriptions = 'billing-subscriptions',
+  Blogs = 'blogs',
+  Contacts = 'contacts',
+  Checkouts = 'checkouts',
+  Dashboards = 'dashboards',
+  Integrations = 'integrations',
+  Invoices = 'invoices',
+  Messages = 'messages',
+  Products = 'products',
+  ShippingOrders = 'shipping-orders',
+  Shops = 'shops',
+  Sites = 'sites',
+  Terminals = 'terminals',
+  Transactions = 'transactions',
+  Users = 'users',
+}

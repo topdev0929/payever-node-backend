@@ -1,0 +1,40 @@
+scenarios:
+  - name: "Attribute Group"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/{{ businessId }}/attribute/group"
+      - post:
+          url: "/api/{{ businessId }}/attribute/group"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            name: "{{ groupName }}"
+          capture:
+            - json: "$._id"
+              as: "groupId"
+      - log: "GET /api/{{ businessId }}/attribute/group"
+      - get:
+          url: "/api/{{ businessId }}/attribute/group"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/attribute/group/{{ groupId }}"
+      - get:
+          url: "/api/{{ businessId }}/attribute/group/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/{{ businessId }}/attribute/group/{{ groupId }}"
+      - patch:
+          url: "/api/{{ businessId }}/attribute/group/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            name: "{{ groupName }}"
+      - log: "DELETE /api/{{ businessId }}/attribute/group/{{ groupId }}"
+      - delete:
+          url: "/api/{{ businessId }}/attribute/group/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

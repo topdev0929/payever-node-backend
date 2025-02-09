@@ -1,0 +1,13 @@
+<h3>Sehr geehrte(r) {{ payment.address.last_name }},</h3>
+<p>Am {{ payment.created_at|format_date }} haben Sie auf der Webseite {{ business.companyDetails.urlWebsite }} eine Bestellung mit der Bestellnummer {{ payment.reference }} aufgegeben. Wir möchten Sie freundlich an die anstehende Zahlung erinnern:</p>
+<ul>
+  <li>Kontoinhaber: {{ business.bankAccount.owner }}</li>
+  <li>Kontonummer: {{ business.bankAccount.iban }}</li>
+  <li>Gesamtbetrag: {{ payment.total }}</li>
+  <li>Fälligkeitsdatum: {{ dueAt|format_date }}</li>
+</ul>
+<p>Sollten Sie mehrere Bestellungen getätigt haben, bitten wir Sie, separate Zahlungen mit den jeweiligen Verweisen auf die individuellen Bestellungen zu tätigen.</p>
+<p>Haben Sie bereits bezahlt? Zum Zeitpunkt der Erfassung haben wir eingegangene Zahlungen, Retouren und Stornierungen bis einschließlich {{ dueAt|format_date }} registriert. Sollten Sie den ausstehenden Betrag bereits überwiesen haben, müssen Sie nichts weiter tun und können diese E-Mail ignorieren.</p>
+<p>Sollten Sie Fragen haben, zögern Sie nicht, uns unter der folgenden E-Mail zu kontaktieren: {{ business.user.email }}. Für Fragen zu Ihrer Bestellung oder den Produkten, kontaktieren Sie bitte den Händler {{ business.companyDetails.urlWebsite }}.</p>
+<p>Wir hoffen, dass Sie mit Ihrem Kauf zufrieden sind.</p>
+<p>Mit freundlichen Grüßen,</p>

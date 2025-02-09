@@ -1,0 +1,11 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query {
+  getOptions {
+    _id
+    name
+    value
+  }
+}

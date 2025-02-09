@@ -1,0 +1,55 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Channel Set"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "GET /business/{{ businessId }}/channel-set/{{ channelSetId }}"
+      - get:
+          url: "/business/{{ businessId }}/channel-set/{{ channelSetId }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /business/{{ businessId }}/channel-set/type/{{ channelType }}"
+      - get:
+          url: "/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /business/{{ businessId }}/channel-set/type/{{ channelType }}"
+      - post:
+          url: "/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$[0]._id"
+              as: 'createdChannelSetId1'
+            - json: "$[1]._id"
+              as: 'createdChannelSetId2'
+
+      - log: "CreatedChannelSetId1 >>>>> {{createdChannelSetId1}}"
+      - log: "CreatedChannelSetId2 >>>>> {{createdChannelSetId2}}"
+
+      - log: "DELETE /business/{{ businessId }}/channel-set/{{ createdChannelSetId1 }}"
+      - delete:
+          url: "/business/{{ businessId }}/channel-set/{{ createdChannelSetId1 }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /business/{{ businessId }}/channel-set/{{ createdChannelSetId2 }}"
+      - delete:
+          url: "/business/{{ businessId }}/channel-set/{{ createdChannelSetId2 }}"
+          afterResponse: "printStatus"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

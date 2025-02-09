@@ -1,0 +1,105 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariablesAdmin"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      - log: "POST /api/admin/widgets"
+      - post:
+          url: "/api/admin/widgets"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            type: "{{ widgetType }}"
+            title: "string"
+            icon: "string"
+            default: true
+            helpURL: "string"
+            tutorial:
+              json:
+                title": "string"
+                icon": "string"
+                url": "string"
+            order": 0
+          afterResponse: "setWidgetIdAdmin"
+      
+      - log: "PATCH /api/admin/widgets/{{ widgetId }}"
+      - patch:
+          url: "/api/admin/widgets/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "string8548"
+            icon: "string"
+            default: true
+            helpURL: "string"
+            tutorial:
+              json:
+                title": "string"
+                icon": "string"
+                url": "string"
+            order": 0
+
+      - log: "DELETE /api/admin/widgets/{{ widgetId }}"
+      - delete:
+          url: "/api/admin/widgets/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      
+      - log: "POST /api/admin/push-notification"
+      - post:
+          url: "/api/admin/push-notification"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            message: "Mammad ali"
+          afterResponse: "setPushNotificationId"
+      
+      - log: "GET /api/admin/push-notification/list"
+      - get:
+          url: "/api/admin/push-notification/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/admin/push-notification/{{ pushNotificationId }}"
+      - get:
+          url: "/api/admin/push-notification/{{ pushNotificationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "PATCH /api/admin/push-notification/{{ pushNotificationId }}"
+      - patch:
+          url: "/api/admin/push-notification/{{ pushNotificationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            message: "asghar ali"
+      
+      - log: "POST /api/admin/push-notification/push/{{ pushNotificationId }}"
+      - post:
+          url: "/api/admin/push-notification/push/{{ pushNotificationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "DELETE /api/admin/push-notification/{{ pushNotificationId }}"
+      - delete:
+          url: "/api/admin/push-notification/{{ pushNotificationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

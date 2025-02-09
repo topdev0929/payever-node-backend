@@ -1,0 +1,47 @@
+{
+  "name": "spotlight",
+  "version": "0.1.0",
+  "description": "messaging service",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "consumer:prod": "node dist/src/consumer.js",
+    "http": "tsc-watch -p tsconfig.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:pact": "rm -rf -f pacts/ && mocha -r ts-node/register --recursive ./tests/contract/consumer/**/*.pact.spec.ts --exit",
+    "test:pact:verify": "mocha -r ts-node/register ./tests/contract/provider.spec.ts --timeout 600000 --exit",
+    "test:pact:can-i-deploy": "./node_modules/.bin/pact-broker can-i-deploy --pacticipant nodejs-backend-media --latest",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register tests/contract/publish.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/spotlight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pe/business-kit": "^2.1.2",
+    "@pe/common-sdk": "^5.4.1",
+    "@pe/elastic-kit": "^5.1.0",
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.3.1"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^4.1.0",
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.3",
+    "@pe/pact-kit": "^4.0.0"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80
+  }
+}

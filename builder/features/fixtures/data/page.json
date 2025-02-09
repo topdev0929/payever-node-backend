@@ -1,0 +1,12 @@
+[{
+  "_id": "d23c2dd6-61ff-4c8f-a211-76bc39d53c95",
+  "name": "MEN",
+  "variant": "front",
+  "type": null,
+  "master": null,
+  "hash": "238e78b3",
+  "snapshot": "49ac27be-1a34-4c03-a50a-db3d6852f031",
+  "template": "94d1d741-b9ab-4506-a592-d4cb3684a17b",
+  "stylesheets": "5db81efb-c0a0-41bf-8fed-a5555e9578a4",
+  "context": "02a00b2d-783d-4af5-b32f-1d129acedd21"
+}]

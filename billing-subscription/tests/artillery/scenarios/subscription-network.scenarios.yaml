@@ -1,0 +1,59 @@
+scenarios:
+  - name: "Subscription network"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/business/{{businessId}}/subscription-network"
+      - post:
+          url: "/api/business/{{businessId}}/subscription-network"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "name"
+            logo: "logo"
+            favicon: "favicon"
+          capture:
+            - json: "$._id"
+              as: "subscriptionNetworkId"
+      - log: "GET /api/business/{{businessId}}/subscription-network"
+      - get:
+          url: "/api/business/{{businessId}}/subscription-network"
+          headers:
+            authorization: "Bearer {{ accessToken }}"      
+      - log: "PATCH /api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}/default"
+      - patch:
+          url: "/api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+      - get:
+          url: "/api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+      - patch:
+          url: "/api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+          json:
+            name: "name"
+            logo: "logo"
+            favicon: "favicon"          
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessId}}/subscription-network/default"
+      - get:
+          url: "/api/business/{{businessId}}/subscription-network/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"    
+      - log: "GET /api/business/{{businessId}}/subscription-network/isValidName?name=test"
+      - get:
+          url: "/api/business/{{businessId}}/subscription-network/isValidName?name=test"
+          headers:
+            authorization: "Bearer {{ accessToken }}"    
+      - log: "DELETE /api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

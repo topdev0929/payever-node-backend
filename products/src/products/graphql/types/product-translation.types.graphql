@@ -1,0 +1,21 @@
+type Translation {
+  attributes: [ProductAttribute]
+  categories: [Category]
+  category: CategoryReference
+  collections: [Collection]
+  description: String
+  images: [String]
+  imagesUrl: [String]
+  title: String
+  variants: [Variant]
+  variantAttributes: [VariationAttribute]
+  videos: [String]
+  videosUrl: [String]
+}
+
+type Query {
+  getProductTranslation(
+    productId: String!
+    language: String!
+  ): Translation
+}

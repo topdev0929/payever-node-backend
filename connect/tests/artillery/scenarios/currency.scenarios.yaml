@@ -1,0 +1,23 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Currency"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/currency"
+      - get:
+          url: "/api/currency"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/currency/{{ currencyCode }}/code"
+      - get:
+          url: "/api/currency/{{ currencyCode }}/code"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

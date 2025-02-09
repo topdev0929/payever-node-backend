@@ -1,0 +1,109 @@
+scenarios:
+  - name: "Default Product"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/product/{{ authorizationId }}"
+      - post:
+          url: "/api/product/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            price: 1000
+            title: "test"
+      - log: "PATCH /api/product/{{ authorizationId }}"
+      - patch:
+          url: "/api/product/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            price: 1000
+            title: "test"
+      - log: "PUT /api/product/{{ authorizationId }}"
+      - put:
+          url: "/api/product/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            price: 1000
+            title: "test"
+      - log: "DELETE /api/product/{{ authorizationId }}"
+      - delete:
+          url: "/api/product/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+  - name: "Default Inventory"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/inventory/{{ authorizationId }}"
+      - post:
+          url: "/api/inventory/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            stock: 1000
+      - log: "POST /api/inventory/{{ authorizationId }}/add"
+      - post:
+          url: "/api/inventory/{{ authorizationId }}/add"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            quantity: 1
+            stock: 1001
+      - log: "POST /api/inventory/{{ authorizationId }}/subtract"
+      - post:
+          url: "/api/inventory/{{ authorizationId }}/subtract"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+            quantity: 1
+            stock: 1000
+      - log: "POST /api/inventory/{{ authorizationId }}/synchronization/trigger"
+      - post:
+          url: "/api/inventory/{{ authorizationId }}/synchronization/trigger"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Default Transactions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/transactions/{{ authorizationId }}/action/{{ action }}"
+      - post:
+          url: "/api/transactions/{{ authorizationId }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            fields: {}
+            reference: "test"
+      - log: "POST /api/transactions/{{ businessId }}/{{ transactionId }}/action/{{ action }}"
+      - post:
+          url: "/api/transactions/{{ businessId }}/{{ transactionId }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions/{{ businessId }}/detail/{{ transactionId }}"
+      - get:
+          url: "/api/transactions/{{ businessId }}/detail/{{ transactionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions/{{ businessId }}/detail/original_id/{{ originalId }}"
+      - get:
+          url: "/api/transactions/{{ businessId }}/detail/original_id/{{ originalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions/{{ businessId }}/detail/reference/{{ reference }}"
+      - get:
+          url: "/api/transactions/{{ businessId }}/detail/reference/{{ reference }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

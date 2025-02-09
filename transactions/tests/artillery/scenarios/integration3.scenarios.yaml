@@ -1,0 +1,38 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Integration"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/integration"
+      - get: 
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/integration" 
+      - post: 
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            name: "{{ integrationName }}"
+            category: "payments"
+      
+      - log: "Get /api/integration/{{ integrationName }}"
+      - get: 
+          url: "/api/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+        
+
+

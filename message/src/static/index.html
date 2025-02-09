@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Payever Messaging</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js" integrity="sha512-uZgT8PW5iAQw3c9lhW1oRc0VNFiSM0146616kBVLBIJgH5lKZXJ0rGQ/UPbAXVxiUufF82u0INZi0toqS2bUTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <h1>Payever Messaging: Developer Merchant Chat</h1>
+    <inputgroup >
+      <select id='chats'></select>
+      <textarea id='chat' cols="128" rows="32"></textarea>
+      <br/>
+      <input id='input'/><button id="send">Send!</button>
+    </inputgroup>
+    <inputgroup>
+      <input id='idtodelete'/><button id="delete">Delete!</button>
+    </inputgroup>
+    <script src="main.js" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+# Dependency directory
+# https://docs.npmjs.com/cli/shrinkwrap#caveats
+node_modules
+
+# Debug log from npm
+npm-debug.log
+
+# VSCode
+.vscode
+
+# Private config
+private.json
+
+
+/.idea/
+.env
+dist/
+pacts
+images/
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json
+
+.npmrc

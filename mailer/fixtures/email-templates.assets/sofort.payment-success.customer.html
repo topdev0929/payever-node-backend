@@ -1,0 +1,11 @@
+<table class="table body-box-table">
+  <tbody>
+  <tr><td width="35%"><p><strong>Your Online Shop: </strong></p></td><td><p>{{ payment.business.name }}</p></td></tr>
+  <tr><td width="35%"><p><strong>Customer Name:</strong></p></td><td><p>{{ payment.customer_name }}</p>
+  {% if payment.customer_email %}<tr><td width="35%"><p><strong>Email Address:</strong></p></td><td><p>{{ payment.customer_email }}</p></td></tr>{% endif %}
+  <tr><td width="35%"><p><strong>Reference:</strong></p></td><td><p>{{ payment.reference }}</p></td></tr>
+  {% block customer_cart %}{% endblock customer_cart %}
+  <tr><td width="35%"><p><strong>Amount:</strong></p></td><td><p>{{ payment.amount | number_format_currency(payment.currency) }}</p></td></tr>
+  {% if payment.amount != payment.total %}<tr><td width="35%"><strong>Total:</strong></td><td>{{ payment.total | number_format_currency(payment.currency) }}</td></tr>{% endif %}
+  </tbody>
+</table>

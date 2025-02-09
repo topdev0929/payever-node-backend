@@ -1,0 +1,15 @@
+export enum PaymentOptionsEnum {
+  santanderDeInstallment = 'santander_installment',
+  santanderDeFactoring = 'santander_factoring_de',
+  santanderNoInstallment = 'santander_installment_no',
+  santanderDkInstallment = 'santander_installment_dk',
+  santanderSEInstallment = 'santander_installment_se',
+  santanderUkInstallment = 'santander_installment_uk',
+  santanderAtInstallment = 'santander_installment_at',
+  santanderNlInstallment = 'santander_installment_nl',
+  ivy = 'ivy',
+  applePay = 'apple_pay',
+  googlePay = 'google_pay',
+  ziniaInstallment = 'zinia_installment',
+  ziniaInstallmentDe = 'zinia_installment_de',
+}

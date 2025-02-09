@@ -1,0 +1,103 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+  timeout: 200
+scenarios:
+  - name: "Appointment Type Graphql Resolver"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: ">>> accessToken:  {{ accessToken }}"
+
+      - log: QUERY appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query appointmentType($id: String!) {
+                appointmentType(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+
+      - log: QUERY get deafult appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query getDefaultAppointmentType {
+                getDefaultAppointmentType(businessId: {{businessId}}) {
+                  id
+                }
+              }
+
+      - log: MUTATION create appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation createAppointmentType($data: CreateAppointmentTypeDto!) {
+                createAppointmentType(businessId: {{businessId}}, data: $data) {
+                  id
+                }
+              }
+            variables:
+              data:
+                dateRange: "{{ $randomInt() }}"
+
+      - log: MUTATION update appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation updateAppointmentType($id: String!, $data: UpdateAppointmentTypeDto!) {
+                updateAppointmentType(id: $id, businessId: {{businessId}}, data: $data) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+              data:
+                dateRange: "{{ $randomInt() }}"
+
+      - log: MUTATION set default appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation setDefaultAppointmentType($id: String!) {
+                setDefaultAppointmentType(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+
+      - log: MUTATION delete appointment type
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation deleteAppointmentType($id: String!) {
+                deleteAppointmentType(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"

@@ -1,0 +1,27 @@
+scenarios:
+  - name: "Dashboard"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/dashboard"
+      - get:
+          url: "/api/business/{{ businessId }}/dashboard"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+      - patch: 
+          url: "/api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+      - delete: 
+          url: "/api/business/{{ businessId }}/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

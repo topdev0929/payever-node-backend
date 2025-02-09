@@ -1,0 +1,29 @@
+<p>Hallo {{ owner.userAccount.firstName }} {{ owner.userAccount.lastName }},</p>
+<p>{{ employee.fullName }} möchte Ihrem Unternehmen {{ business.name }} beitreten. Wenn Sie {{ employee.fullName }} Zugriff auf das Business gewähren möchten, melden Sie sich bitte bei payever an, gehen Sie zu Einstellungen > Mitarbeiter, wählen Sie {{ employee.fullName }} aus und klicken Sie auf "bestätigen"</p>
+
+<p>Hier sind einige Informationen über sie:</p>
+
+<table class="table body-box-table">
+  <tbody>
+    <tr><td width="35%"><p><strong>Vorname: </strong></p></td><td><p>{{ employee.firstName }}</p></td></tr>
+    <tr><td width="35%"><p><strong>Nachname:</strong></p></td><td><p>{{ employee.lastName }}</p>
+    <tr><td width="35%"><p><strong>Email:</strong></p></td><td><p>{{ employee.email }}</p>
+  </tbody>
+</table>
+
+<br>
+
+<table class="body-buttons-table" style="margin-top: 0px; margin-bottom: 20px; margin: auto;" border="0" cellpadding="0" cellspacing="0" valign="top" width="40%">
+  <tbody>
+  <tr align="center">
+    <td align="center" class="border-none body-button">
+      <a class="body-button-black" target="_blank" rel="noopener noreferrer" href="{{redirectUrl}}">Freigabe prüfen</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p>Wenn Sie  {{ employee.fullName }} keinen Zugang zu {{ business.name }} geben möchten, können Sie diese E-Mail ignorieren.</p>
+

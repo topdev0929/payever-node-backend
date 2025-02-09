@@ -1,0 +1,4 @@
+{
+  "dev": {"ENV": "MONGODB_URL"},
+  "prod": {"ENV": "MONGODB_URL"}
+}

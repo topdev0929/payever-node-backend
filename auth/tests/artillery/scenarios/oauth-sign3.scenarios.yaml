@@ -1,0 +1,59 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Oauth Sign"
+    flow:    
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /oauth/sign/token"
+      - post:
+          url: "/oauth/sign/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            client_id: "{{ clientId }}"
+            hash_alg: "{{hashAlg}}"
+            message: "{{message}}"
+            signature: "{{signature}}"
+            grant_type: "{{grantType}}"
+            scope: "{{scope}}"
+      - log: "POST /oauth/sign" 
+      - post:
+          url: "/oauth/sign"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            client_id: "{{ clientId }}"
+            hash_alg: "{{hashAlg}}"
+            messages:
+              - "{{message}}"
+      - log: "POST /v3/oauth/sign/token" 
+      - post:
+          url: "/v3/oauth/sign/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            client_id: "{{ clientId }}"
+            hash_alg: "{{hashAlg}}"
+            message: "{{message}}"
+            signature: "{{signature}}"
+            grant_type: "{{grantType}}"
+            scope: "{{scope}}"
+      - log: "POST /v3/oauth/sign" 
+      - post:
+          url: "/v3/oauth/sign"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            client_id: "{{ clientId }}"
+            hash_alg: "{{hashAlg}}"
+            messages:
+              - "{{message}}"

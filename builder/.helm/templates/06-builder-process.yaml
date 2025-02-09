@@ -1,0 +1,60 @@
+{{ $values := .Values }}
+{{ $appName := printf "%s-job" $values.appName }}
+{{ $deployEnv := .Values.deploy.env }}
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: {{ $appName}}-process
+  namespace: {{ $values.namespace }}
+
+  labels:
+    app: {{ $appName }}-process
+    tier: nodejs
+    type: job
+
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-weight": "1"
+
+spec:
+  backoffLimit: 1
+
+  template:
+    metadata:
+      labels:
+        app: {{ $appName }}-process
+        tier: nodejs
+        type: job
+
+    spec:
+      priorityClassName: {{ $values.priorityClass }}
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: {{ $values.image.pullSecretName }}
+
+      terminationGracePeriodSeconds: 60
+
+      containers:
+        - name: node
+          image: {{ $values.image.nodejs }}
+          imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash", "-c", "/payever/deploy/builder-process.sh" ]
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+
+
+          envFrom:
+            - configMapRef:
+                name: {{ $values.configMapRef }}
+            - configMapRef:
+                name: micro-url-map
+            - secretRef:
+                name: {{ $values.configMapRef }}
+
+          env:
+            - name: KUBERNETES_DEPLOYED
+              value: "{{ now }}"

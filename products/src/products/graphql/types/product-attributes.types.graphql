@@ -1,0 +1,21 @@
+input ProductAttributeInput {
+  name: String!
+  value: String!
+  type: String
+}
+
+input VariationAttributeInput {
+  name: String!
+  type: String
+}
+
+type ProductAttribute {
+  name: String!
+  value: String!
+  type: String
+}
+
+type VariationAttribute {
+  name: String!
+  type: String
+}

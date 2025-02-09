@@ -1,0 +1,13 @@
+scenarios:
+  - name: "Dimension"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/dimension"
+      - get:
+          url: "/api/dimension"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      

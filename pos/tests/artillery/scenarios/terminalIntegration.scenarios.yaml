@@ -1,0 +1,21 @@
+scenarios:
+  - name: "Terminal Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/terminal/{{ terminalId }}/integration"
+      - get:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/terminal/{{ terminalId }}/integration/{{ integrationName }}/uninstall"
+      - patch:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}/integration/{{ integrationName }}/uninstall"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/terminal/{{ terminalId }}/integration/{{ integrationName }}/install"
+      - patch:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}/integration/{{ integrationName }}/install"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

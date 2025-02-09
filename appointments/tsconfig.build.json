@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2017",
+        "skipLibCheck": true,
+        "declaration": false,
+        "sourceMap": false
+    },
+    "include": [
+        "src/**/*",
+        "migrations/**/*"
+    ]
+}

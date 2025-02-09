@@ -1,0 +1,37 @@
+namespace: default
+priorityClass: app-10stars
+enableRmqFallbackRepub: false
+replicas:
+  http: 2
+  consumer: 2
+
+image:
+  nodejs: registry.devpayever.com/nodejs-backend/checkout
+  pullSecretName: regsecret
+
+service:
+  externalPort: 80
+  containerPort: 3000
+  statusPort: 8081
+
+test:
+  resources:
+    requests:
+      cpu: 30m
+      memory: 50Mi
+    limits:
+      memory: 350Mi
+stage:
+  resources:
+    requests:
+      cpu: 30m
+      memory: 50Mi
+    limits:
+      memory: 350Mi
+live:
+  resources:
+    requests:
+      cpu: 32m
+      memory: 128Mi
+    limits:
+      memory: 1Gi

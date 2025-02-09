@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.git
+.idea
+.helm
+features
+tests
+dappfile.yaml
+.gitlab-ci.yml
+Dockerfile
+
+*.lockfile

@@ -1,0 +1,43 @@
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+      - log: "POST /api/business/{{ businessId }}/payment-mail/{{ paymentMailId }}"
+      - post:
+          url: "/api/business/{{ businessId }}/payment-mail/{{ paymentMailId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/integration/mail"
+      - post:
+          url: "/api/business/integration/mail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            data: "{{ data }}"
+      - log: "POST /api/user/send"
+      - post:
+          url: "/api/user/send"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            to: "{{ to }}"
+            subject: "{{ subject }}"
+            html: "{{ html }}"
+
+  - name: "Business Shipping Orders"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/transaction-actions"
+      - post:
+          url: "/api/transaction-actions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            history: []
+            transaction:
+              uuid: "{{ transactionId }}"

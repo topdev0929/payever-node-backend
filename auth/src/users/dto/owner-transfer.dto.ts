@@ -1,0 +1,19 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString } from 'class-validator';
+
+export class OwnerTransferDto {
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  public businessId: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  public previousOwnerId: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  public newOwnerId: string;
+}

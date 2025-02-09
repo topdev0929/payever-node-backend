@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["features/*", "src/**/*.ts", "migrations/**/*", "tests/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist/**/*",
+    "trash",
+    "**/*.test.ts",
+    "**/*.d.ts",
+    "!**/index.d.ts",
+    "!**/fs.d.ts",
+    "!**/path.d.ts",
+    "!**/util.d.ts"
+  ]
+}

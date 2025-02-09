@@ -1,0 +1,34 @@
+<table border="0" cellpadding="5">
+    {% if user.firstName is defined %}
+        <tr>
+            <th>First Name:</th>
+            <td>{{ user.firstName }}</td>
+        </tr>
+    {% endif %}
+    {% if user.lastName is defined %}
+        <tr>
+            <th>Last Name:</th>
+            <td>{{ user.lastName }}</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <th>Email:</th>
+        <td>{{ user.email }}</td>
+    </tr>
+    {% if userInfo is defined %}
+        {% if userInfo.registrationOrigin is defined %}
+            {% if userInfo.registrationOrigin.account %}
+                <tr>
+                    <th>Registration account:</th>
+                    <td>{{ userInfo.registrationOrigin.account }}</td>
+                </tr>
+            {% endif %}
+            {% if userInfo.registrationOrigin.url %}
+                <tr>
+                    <th>Registration URL:</th>
+                    <td><a href="{{ userInfo.registrationOrigin.url }}">{{ userInfo.registrationOrigin.url }}</a></td>
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</table>

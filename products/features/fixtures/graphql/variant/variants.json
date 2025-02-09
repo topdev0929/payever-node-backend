@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "85f873e0-6f78-467c-bd88-1b27e2519843",
+    "businessId": "85d75e8b-3d02-4743-8083-5bdeaa7c8d0f",
+    "description": "variant 1",
+    "images": ["img1", "img2"],
+    "options": [{ "name": "option 1", "value": "value 1" }, { "name": "option 2", "value": "value 1" }],
+    "price": 3.8,
+    "product": "e8d3486e-43f6-4a4d-a65e-2c991051786f"
+  },
+  {
+    "_id": "9d02053b-eb71-4b74-9ede-0d7525632649",
+    "businessId": "85d75e8b-3d02-4743-8083-5bdeaa7c8d0f",
+    "description": "variant 2",
+    "images": ["img3", "img4"],
+    "options": [{ "name": "option 1", "value": "value 2" }, { "name": "option 2", "value": "value 2" }],
+    "price": 3.73,
+    "product": "e8d3486e-43f6-4a4d-a65e-2c991051786f"
+  }
+]

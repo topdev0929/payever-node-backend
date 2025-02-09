@@ -1,0 +1,42 @@
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}"
+      - get:
+          url: "/api/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/{{ businessId }}"
+      - patch:
+          url: "/api/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/terminal/by-domain?domain={{ domain }}"
+      - get:
+          url: "/api/terminal/by-domain?domain={{ domain }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/terminal/access/{{ terminalId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/terminal/access/{{ terminalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme/page?variant={{ variant }}"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme/page?variant={{ variant }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme/page/{{ pageId }}"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme/page/{{ pageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

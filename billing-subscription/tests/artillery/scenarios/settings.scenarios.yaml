@@ -1,0 +1,28 @@
+scenarios:
+  - name: "Settings"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/settings/{{businessId}}/form"
+      - post:
+          url: "/api/settings/{{businessId}}/form"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/settings/{{businessId}}/enable/{{connectionId}}"
+      - post:
+          url: "/api/settings/{{businessId}}/enable/{{connectionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/settings/{{businessId}}/disable/{{connectionId}}"
+      - post:
+          url: "/api/settings/{{businessId}}/disable/{{connectionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/settings/{{businessId}}/disable/confirmation/{{connectionId}}"
+      - post:
+          url: "/api/settings/{{businessId}}/disable/confirmation/{{connectionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

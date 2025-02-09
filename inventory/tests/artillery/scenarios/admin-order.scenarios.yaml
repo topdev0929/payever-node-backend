@@ -1,0 +1,42 @@
+scenarios:
+  - name: "Admin Order"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/orders"
+      - get:
+          url: "/api/admin/orders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/admin/orders"
+      - post:
+          url: "/api/admin/orders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/admin/orders/{{ orderId }}"
+      - get:
+          url: "/api/admin/orders/{{ orderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/orders/{{ orderId }}"
+      - patch:
+          url: "/api/admin/orders/{{ orderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/orders/{{ orderId }}/release"
+      - patch:
+          url: "/api/admin/orders/{{ orderId }}/release"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/admin/orders/{{ orderId }}"
+      - delete:
+          url: "/api/admin/orders/{{ orderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

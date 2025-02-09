@@ -1,0 +1,32 @@
+scenarios:
+  - name: "Channel"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/plugin/registry/register"
+      - post:
+          url: "/api/plugin/registry/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            cmsVersion: "test"
+            pluginVersion: "test"
+            channel: "test"
+            host: "test"
+      - log: "POST /api/plugin/registry/unregister"
+      - post:
+          url: "/api/plugin/registry/unregister"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            channel: "test"
+            host: "test"
+      - log: "POST /api/plugin/registry/ack/{{ commandId }}"
+      - post:
+          url: "/api/plugin/registry/ack/{{ commandId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            channel: "test"
+            host: "test"

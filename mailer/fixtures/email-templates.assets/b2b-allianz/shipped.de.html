@@ -1,0 +1,19 @@
+<h3>Sehr geehrte(r) {{ payment.address.last_name }},</h3>
+<p>Am {{ payment.created_at|format_date }} haben Sie auf der Webseite {{ business.companyDetails.urlWebsite }} eine
+  Bestellung aufgegeben. Für Ihre Bestellung gelten die AGB der Allianz Trade, die Sie akzeptiert haben.</p>
+<p>Hier finden Sie die Kontodaten für Ihre ausstehende Zahlung:</p>
+<ul>
+  <li>Kontoinhaber: {{ business.bankAccount.owner }}</li>
+  <li>Kontonummer: {{ business.bankAccount.iban }}</li>
+  <li>Gesamtbetrag: {{ payment.total }}</li>
+  <li>Fälligkeitsdatum: {{ dueAt|format_date }}</li>
+</ul>
+<p>Bitte bearbeiten Sie die Überweisung nicht später als am {{ dueAt|format_date }} und verweisen Sie in Ihrer
+  Transaktion auf die Bestellnummer {{ payment.reference }}.</p>
+<p>Sollten Sie mehrere Bestellungen getätigt haben, bitten wir Sie separate Zahlungen mit den jeweiligen Verweisen auf
+  die individuellen Bestellungen zu tätigen.</p>
+<p>Sollten Sie Fragen haben, zögern Sie nicht uns unter der folgenden E-Mail zu kontaktieren: {{ business.user.email }}.
+  Für Fragen zu Ihrer Bestellung oder den Produkten, kontaktieren Sie bitte den Händler {{
+  business.companyDetails.urlWebsite }}.</p>
+<p>Wir hoffen Sie sind mit der bestellten Ware zufrieden.</p>
+<p>Mit freundlichen Grüßen</p>

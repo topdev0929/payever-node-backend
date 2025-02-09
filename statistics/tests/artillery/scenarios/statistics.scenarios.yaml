@@ -1,0 +1,12 @@
+scenarios:
+  - name: "Statistics"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/{{ widgetId }}/statistics"
+      - get:
+          url: "/api/{{ widgetId }}/statistics"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

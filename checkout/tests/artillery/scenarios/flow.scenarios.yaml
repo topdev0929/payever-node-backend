@@ -1,0 +1,98 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Flow"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/channelSet"
+      - get:
+          url: "/api/business/{{ businessId }}/channelSet"
+          afterResponse: "defineChannelSetId"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/flow/channel-set/{{ channelSetId }}"
+      - get:
+          url: "/api/flow/channel-set/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/flow/channel-set/{{ channelSetId }}/checkout"
+      - get:
+          url: "/api/flow/channel-set/{{ channelSetId }}/checkout"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/flow/channel-set/{{ channelSetId }}/checkout/sections/available"
+      - get:
+          url: "/api/flow/channel-set/{{ channelSetId }}/checkout/sections/available"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/flow/channel-set/{{ channelSetId }}/currency"
+      - get:
+          url: "/api/flow/channel-set/{{ channelSetId }}/currency"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/checkout"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout"
+          afterResponse: "defineCheckoutId"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "PUT /api/checkout/v1/flow/{{ flowId }}/checkout"
+      - put:
+          url: "/api/checkout/v1/flow/{{ flowId }}/checkout"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            checkoutUuid: "{{ checkoutId }}"
+
+      - log: "GET /api/checkout/v1/flow/{{ flowId }}/checkout"
+      - get:
+          url: "/api/checkout/v1/flow/{{ flowId }}/checkout"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/checkout/v1/flow/{{ flowId }}/channel-set/{{ channelSetId }}"
+      - post:
+          url: "/api/checkout/v1/flow/{{ flowId }}/channel-set/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/checkout/v1/flow/{{ flowId }}/send-to-device"
+      - post:
+          url: "/api/checkout/v1/flow/{{ flowId }}/send-to-device"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            email: "test@test.com"
+            subject: "test"
+            phoneFrom: "+4932221099387"
+            phoneTo: "+4932221099387"
+            message: "test"

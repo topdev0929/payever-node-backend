@@ -1,0 +1,36 @@
+scenarios:
+  - name: "Business Shipping Boxes"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/shipping-box"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-box"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/shipping-box"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-box"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ shippingBoxName }}"
+          capture:
+            - json: "$._id"
+              as: "shippingBoxId"
+      - log: "GET /api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/shipping-box/{{ shippingBoxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

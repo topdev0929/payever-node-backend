@@ -1,0 +1,40 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: "Admin Appointment"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "POST /api/admin/appointments"
+      - post:
+          url: /api/admin/appointments
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/admin/appointments"
+      - get:
+          url: /api/admin/appointments
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/admin/appointments/{{appointment_id}}"
+      - get:
+          url: /api/admin/appointments/{{ appointment_id }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PUT /api/admin/appointments/{{appointment_id}}"
+      - put:
+          url: /api/admin/appointments/{{ appointment_id }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/admin/appointments/{{appointment_id}}"
+      - delete:
+          url: /api/admin/appointments/{{ appointment_id }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,68 @@
+scenarios:
+  - name: "Subscriptions Features"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/subscriptions/features"
+      - get:
+          url: "/api/subscriptions/features"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Subscriptions Products"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/subscriptions/products"
+      - get:
+          url: "/api/subscriptions/products"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/subscriptions/products"
+      - post:
+          url: "/api/subscriptions/products"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            _id: "{{ productId }}"
+            appName: "{{ appName }}"
+            features: {}
+      - log: "PATCH /api/subscriptions/products/{{ productId }}"
+      - patch:
+          url: "/api/subscriptions/products/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            features: {}
+      - log: "DELETE /api/subscriptions/products/{{ appName }}/{{ productId }}"
+      - delete:
+          url: "/api/subscriptions/products/{{ appName }}/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Subscriptions Trials"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/subscriptions/trials/{{ businessId }}"
+      - post:
+          url: "/api/subscriptions/trials/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            _id: "{{ trialId }}"
+            appName: "{{ appName }}"
+            features: {}
+  - name: "Subscriptions Orders"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/subscriptions/orders"
+      - post:
+          url: "/api/subscriptions/orders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"

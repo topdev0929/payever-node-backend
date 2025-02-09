@@ -1,0 +1,24 @@
+{
+  "_id": "5db81efb-c0a0-41bf-8fed-a5555e9578a4",
+  "body": {
+    "desktop": {
+      "_id": "c0055161-374d-4fbf-a5fb-1fb5b19d9901",
+      "body": {
+        "height": 200
+      }
+    },
+    "tablet": {
+      "_id": "c0055161-374d-4fbf-a5fb-1fb5b19d9901",
+      "body": {
+        "height": 200
+      }
+    },
+    "mobile": {
+      "_id": "c0055161-374d-4fbf-a5fb-1fb5b19d9901",
+      "body": {
+        "height": 200
+      }
+    }
+  },
+  "page": "d23c2dd6-61ff-4c8f-a211-76bc39d53c95"
+}

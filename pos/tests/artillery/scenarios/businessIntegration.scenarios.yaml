@@ -1,0 +1,21 @@
+scenarios:
+  - name: "Business Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/integration"
+      - get:
+          url: "/api/business/{{ businessId }}/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/integration/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/integration/category/{{ category }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

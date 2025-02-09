@@ -1,0 +1,93 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/theme/{{themeId}}/version/active"
+      - get:
+          url: "/api/theme/{{themeId}}/version/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/theme/{{themeId}}/version/{{versionId}}"
+      - patch:
+          url: "/api/theme/{{themeId}}/version/{{versionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            tags:
+              - tag1
+              - tag4
+
+      - log: "GET /api/theme/{{themeId}}/version/{{versionId}}"
+      - get:
+          url: "/api/theme/{{themeId}}/version/{{versionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/version/{{versionId}}/snapshot"
+      - get:
+          url: "/api/theme/{{themeId}}/version/{{versionId}}/snapshot"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/theme/{{themeId}}/version/active"
+      - post:
+          url: "/api/theme/{{themeId}}/version/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/version"
+      - get:
+          url: "/api/theme/{{themeId}}/version"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/version/2"
+      - get:
+          url: "/api/theme/{{themeId}}/version/2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}/version"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/version"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}/version/2"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/version/2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/pages/version"
+      - get:
+          url: "/api/theme/{{themeId}}/pages/version"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/pages/version/2"
+      - get:
+          url: "/api/theme/{{themeId}}/pages/version/2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}/element/version"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/element/version"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}/element/version/2"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/element/version/2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

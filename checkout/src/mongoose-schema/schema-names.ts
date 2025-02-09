@@ -1,0 +1,23 @@
+export const ActionApiCallSchemaName: string = 'ActionApiCall';
+export const ApiCallSchemaName: string = 'ApiCall';
+export const ApplicationSchemaName: string = 'Application';
+export const ApplicationSubscriptionSchemaName: string = 'ApplicationSubscription';
+export const BusinessIntegrationSubSchemaName: string = 'BusinessIntegrationSubscription';
+export const BusinessSchemaName: string = 'Business';
+export const BusinessDetailSchemaName: string = 'BusinessDetails';
+export const ChannelSetSchemaName: string = 'ChannelSet';
+export const ChannelSetSlugSchemaName: string = 'ChannelSetSlug';
+export const CheckoutIntegrationSubSchemaName: string = 'CheckoutIntegrationSubscription';
+export const CheckoutSchemaName: string = 'Checkout';
+export const ConnectionSchemaName: string = 'Connection';
+export const IntegrationSchemaName: string = 'Integration';
+export const PaymentSchemaName: string = 'Payment';
+export const PaymentCodeSchemaName: string = 'PaymentCode';
+export const Payment2faPinSchemaName: string = 'Payment2faPin';
+export const SectionSchemaName: string = 'CheckoutSection';
+export const PaymentMethodMigrationMappingSchemaName: string = 'PaymentMethodMigrationMapping';
+export const OrderSchemaName: string = 'Order';
+export const PaymentLinkSchemaName: string = 'PaymentLink';
+export const PendingInstallationName: string = 'PendingInstallation';
+export const ScheduleSchemaName: string = 'Schedule';
+

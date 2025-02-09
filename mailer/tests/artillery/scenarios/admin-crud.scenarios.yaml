@@ -1,0 +1,36 @@
+scenarios:
+  - name: "Admin Site Templates"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "POST /api/admin/templates"
+      - post:
+          url: "/api/admin/templates"
+          json:
+            body: 'body'
+            description: 'description'
+            layout: 'layout'
+            locale: 'en'
+            section: 'Email Template'
+            subject: 'new subject'
+            template_name: 'artillery_test_layout_{{randomName}}'
+            template_type: 'artillery_test'
+            use_layout: true
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$._id"
+            as: "templateId"
+      - log: "PATCH /api/admin/templates/{{ templateId }}"
+      - patch:
+          url: "/api/admin/templates/{{ templateId }}"
+          json:
+            description: 'update'
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/templates/{{ templateId }}"
+      - delete:
+          url: "/api/admin/templates/{{ templateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

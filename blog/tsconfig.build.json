@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2017",
+    "sourceMap": false,
+    "experimentalDecorators": true
+  },
+  "include": ["src/**/*", "migrations/**/*"]
+}

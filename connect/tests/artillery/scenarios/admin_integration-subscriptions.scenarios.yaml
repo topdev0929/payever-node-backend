@@ -1,0 +1,51 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Admin Integration Subscriptions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/integration-subscriptions"
+      - get:
+          url: "/api/admin/integration-subscriptions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/admin/integration-subscriptions"
+      - post:
+          url: "/api/admin/integration-subscriptions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json: null
+
+      - log: "GET /api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+      - get:
+          url: "/api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+      - patch:
+          url: "/api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json: null
+
+      - log: "Delete /api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+      - delete:
+          url: "/api/admin/integration-subscriptions/{{ integrationSubscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      
+      
+      

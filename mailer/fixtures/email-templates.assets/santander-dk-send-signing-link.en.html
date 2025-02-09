@@ -1,0 +1,13 @@
+<p>Dear {{ payment.address.first_name }} {{ payment.address.last_name }},</p>
+<p>Your loan application {{ applicationNumber }} has been approved and the loan contract is now ready to be signed!</p>
+<p>Please click the link below to digitally sign your contract:</p>
+<table class="body-buttons-table" style="margin-top: 0px; margin-bottom: 20px" border="0" cellpadding="0" cellspacing="0" valign="top" width="30%">
+  <tbody>
+  <tr align="left">
+    <td align="center" class="border-none body-button">
+      <a class="body-button-bordered" target="_blank" rel="noopener noreferrer" href="{{signingLink}}">Link</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p>In case you have already signed the contract, please ignore this message.</p>

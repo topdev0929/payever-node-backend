@@ -1,0 +1,55 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+scenarios:
+  - name: "Bus Test"
+    flow:
+      - function: "defineVariablesBusTest"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      - log: "GET /api/bus-test/business/{{ businessId }}/create/{{ currency }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/create/{{ currency }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/increase/{{ date }}/{{ amount }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/increase/{{ date }}/{{ amount }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/channel-set/{{ channelSetId }}/{{ type }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/increase/{{ date }}/{{ amount }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/campaign/{{ campaignId }}/{{ name }}/{{ contacts }}/channel-set/{{ channelSetId }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/campaign/{{ campaignId }}/{{ name }}/{{ contacts }}/channel-set/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/payment/{{ paymentId }}/paid/{{ amount }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/payment/{{ paymentId }}/paid/{{ amount }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/payment/{{ paymentId }}/refund/{{ amount }}"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/payment/{{ paymentId }}/refund/{{ amount }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/bus-test/business/{{ businessId }}/mailer-report-request"
+      - get:
+          url: "/api/bus-test/business/{{ businessId }}/mailer-report-request"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

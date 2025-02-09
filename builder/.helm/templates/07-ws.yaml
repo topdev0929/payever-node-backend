@@ -1,0 +1,105 @@
+{{ $values := .Values }}
+{{ $appName := printf "%s-ws" $values.appName }}
+{{ $deployEnv := .Values.deploy.env }}
+{{- if $values.wsEnabled -}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $appName }}
+  namespace: {{ $values.namespace }}
+  labels:
+    app: {{ $appName }}
+    tier: nodejs
+    type: ws
+  annotations:
+    "werf.io/set-replicas-only-on-creation": "true"
+spec:
+  replicas: {{ $values.replicas.ws.min }}
+  strategy:
+    type: RollingUpdate
+
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: {{ $appName }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ $appName }}
+        tier: nodejs
+        type: ws
+
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: 'runtime/default'
+
+    spec:
+      priorityClassName: {{ $values.priorityClass }}
+      imagePullSecrets:
+        - name: {{ $values.image.pullSecretName }}
+
+      terminationGracePeriodSeconds: 60
+
+      containers:
+        - name: node
+          image: {{ $values.image.nodejs }}
+          imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash", "-c", "/payever/deploy/websocket.sh" ]
+
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+            preStop:
+              exec:
+                command: ["sleep", "15"]
+
+
+          ports:
+            - containerPort: {{ $values.service.wsPort }}
+              protocol: TCP
+              name: http
+
+          livenessProbe:
+            httpGet:
+              path: /api/status
+              port: {{ $values.service.statusPort }}
+            initialDelaySeconds: 150
+            periodSeconds: 30
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: {{ $values.service.statusPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 15
+
+          resources:
+{{ if eq  $deployEnv "test" }}
+{{ toYaml $values.resourcestest.app | indent 12 }}
+{{ else if eq  $deployEnv "stage" }}
+{{ toYaml $values.resourcesstage.app | indent 12 }}
+{{ else }}
+{{ toYaml $values.resourceslive.app | indent 12 }}
+{{ end }}
+          envFrom:
+            - configMapRef:
+                name: {{ $values.configMapRef }}
+            - configMapRef:
+                name: micro-url-map
+            - secretRef:
+                name: {{ $values.configMapRef }}
+
+          env:
+            - name: KUBERNETES_DEPLOYED
+              value: "{{ now }}"
+
+---
+{{- end -}}

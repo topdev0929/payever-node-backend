@@ -1,0 +1,38 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 43.020027,
+    "hits": [
+      {
+        "_index": "product-category",
+        "_type": "product-category",
+        "_id": "0000660c-f2c8-4fe6-abef-e9ff16c146a4",
+        "_score": 43.020027,
+        "_source": {
+          "ancestors": [],
+          "attributes": [],
+          "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "createdAt": "2020-12-29T08:43:37.338Z",
+          "name": "Arts & Crafts",
+          "slug": "arts_and_crafts",
+          "updatedAt": "2020-12-29T08:43:37.338Z",
+          "id": "0000660c-f2c8-4fe6-abef-e9ff16c146a4",
+          "title": "Arts & Crafts",
+          "businessUuid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "mongoId": "0000660c-f2c8-4fe6-abef-e9ff16c146a4"
+        }
+      }
+    ]
+  }
+}

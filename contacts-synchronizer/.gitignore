@@ -1,0 +1,12 @@
+.DS_Store
+
+node_modules/
+npm-debug.log
+dist/
+.idea/
+.vscode/
+.env
+.nyc_output
+pacts
+.npmrc
+trash

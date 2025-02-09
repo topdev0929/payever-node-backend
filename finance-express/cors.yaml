@@ -1,0 +1,3 @@
+name: nodejs-backend-finance-express
+endpoints:
+  - finance-express-backend

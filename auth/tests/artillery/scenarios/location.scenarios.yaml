@@ -1,0 +1,38 @@
+config:
+  phases:
+    - duration: 100
+      arrivalRate: 1
+scenarios:
+  - name: "Location"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/locations"
+      - get:
+          url: "/api/locations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$[0]._id"
+              as: "locationId"
+
+      - log: "PATCH /api/locations/{{locationId}}"
+      - patch:
+          url: "/api/locations/{{locationId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "test"
+
+      - log: "DELETE /api/locations/{{locationId}}"
+      - delete:
+          url: "/api/locations/{{locationId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  

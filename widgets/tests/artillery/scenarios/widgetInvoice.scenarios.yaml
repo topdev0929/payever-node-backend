@@ -1,0 +1,33 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+scenarios:
+  - name: "Widget Invoice"
+    flow:
+      - function: "defineVariablesWidgetInvoice"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      
+      - log: "GET /api/invoice-app/business/{businessId}/last-daily?numDays=2"
+      - get:
+          url: "/api/invoice-app/business/{businessId}/last-daily?numDays=2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/invoice-app/business/{businessId}/last-monthly?months=2"
+      - get:
+          url: "/api/invoice-app/business/{businessId}/last-monthly?months=2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<import xsi:noNamespaceSchemaLocation="product.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <products>
+        <product>
+            <sku>678</sku>
+            <type>service</type>
+            <title>Some service product</title>
+            <description>Some description</description>
+            <hidden>true</hidden>
+            <price>100.0</price>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>123123</bar-code>
+            <enabled>true</enabled>
+            <variants>
+                <variant>
+                    <sku>Variant1_SKU</sku>
+                    <title>Variant 1</title>
+                    <description>Variant 1</description>
+                    <images>
+                        <image url="replace_me_1.png"/>
+                        <image url="https://test.com/dont_replace_me.png"/>
+                        <image url="replace_me_2.jpg"/>
+                    </images>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>50.0</sale-price>
+                        <sale-percent>50.0</sale-percent>
+                        <sale-start-date>2023-01-01</sale-start-date>
+                        <sale-end-date>2023-01-31</sale-end-date>
+                    </sale>
+                    <bar-code>123125</bar-code>
+                    <inventory>
+                        <stock>100</stock>
+                        <reserved>50</reserved>
+                    </inventory>
+                </variant>
+                <variant>
+                    <sku>Variant2_SKU</sku>
+                    <title>Variant 2</title>
+                    <description>Variant 2</description>
+                    <images>
+                        <image url="replace_me_1.png"/>
+                    </images>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>50.0</sale-price>
+                        <sale-percent>50.0</sale-percent>
+                        <sale-start-date>2023-01-01</sale-start-date>
+                        <sale-end-date>2023-01-31</sale-end-date>
+                    </sale>
+                    <bar-code>123126</bar-code>
+                    <inventory>
+                        <stock>50</stock>
+                        <reserved>40</reserved>
+                    </inventory>
+                </variant>
+            </variants>
+        </product>
+    </products>
+</import>

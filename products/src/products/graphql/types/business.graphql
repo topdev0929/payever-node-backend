@@ -1,0 +1,19 @@
+type CompanyAddress {
+    country: String
+    city: String
+    street: String
+    zipCode: String
+}
+
+type Business {
+    id: String
+    companyAddress: CompanyAddress
+    currency: String
+    name: String
+}
+
+type Query {
+    getBusiness(
+        businessId: String!,
+    ): Business
+}

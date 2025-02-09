@@ -1,0 +1,5 @@
+name: nodejs-backend-checkout
+endpoints:
+  - "/hashmap.json$"
+  - checkout.{{ $env }}/micro.config.json
+  - checkout-backend

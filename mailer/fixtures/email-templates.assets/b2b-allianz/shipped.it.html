@@ -1,0 +1,14 @@
+<h3>Gentile {{ payment.address.last_name }},</h3>
+<p>in data {{ payment.created_at|format_date }} ha effettuato un ordine sul sito web {{ business.companyDetails.urlWebsite }}. Il Suo ordine è soggetto alle Condizioni Generali di Allianz Trade, che Lei ha accettato.</p>
+<p>Qui troverà i dettagli del conto per il pagamento in sospeso:</p>
+<ul>
+  <li>Titolare del conto: {{ business.bankAccount.owner }}</li>
+  <li>Numero di conto: {{ business.bankAccount.iban }}</li>
+  <li>Importo totale: {{ payment.total }}</li>
+  <li>Data di scadenza: {{ dueAt|format_date }}</li>
+</ul>
+<p>Si prega di effettuare il bonifico entro il {{ dueAt|format_date }} e di fare riferimento al numero d'ordine {{ payment.reference }} nella transazione.</p>
+<p>Se avete effettuato più ordini, vi preghiamo di effettuare pagamenti separati con i rispettivi riferimenti ai singoli ordini.</p>
+<p>Per qualsiasi domanda, non esitate a contattarci al seguente indirizzo e-mail: {{ business.user.email }}. Per domande sul vostro ordine o sui prodotti, vi preghiamo di contattare il rivenditore {{ business.companyDetails.urlWebsite }}.</p>
+<p>Ci auguriamo che siate soddisfatti del vostro ordine.</p>
+<p>Cordiali saluti</p>

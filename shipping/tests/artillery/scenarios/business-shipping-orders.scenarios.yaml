@@ -1,0 +1,81 @@
+scenarios:
+  - name: "Business Shipping Orders"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/shipping-orders"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-orders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shipping-orders/list"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-orders/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shipping-orders/slips"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-orders/slips"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessName: "test"
+            transactionId: "test"
+            processedAt: "01.01.2020"
+            legalText: "test"
+            billingAddress:
+              name: "test"
+              streetName: "test"
+              streetNumber: "test"
+              city: "test"
+              zipCode: "test"
+              countryCode: "test"
+      - log: "PUT /api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessName: "test"
+            transactionId: "test"
+            processedAt: "01.01.2020"
+            legalText: "test"
+            billingAddress:
+              name: "test"
+              streetName: "test"
+              streetNumber: "test"
+              city: "test"
+              zipCode: "test"
+              countryCode: "test"
+      - log: "POST /api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}/label"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}/label"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            labelResponseType: "B64"
+      - log: "GET /api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}/slip"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-orders/{{ shippingOrderId }}/slip"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/transaction-actions"
+      - post:
+          url: "/api/transaction-actions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            transaction:
+              uuid: "test"
+              created_at: "01.01.2020"
+            shipping: {}
+            payment_option:
+              type: "sofort"
+            status:
+              general: "test"

@@ -1,0 +1,6 @@
+# log-collector
+
+jiraKey: ALCM
+
+
+

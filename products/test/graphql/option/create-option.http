@@ -1,0 +1,9 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  createOption(data: { name: "opt1", value: "val1" }) {
+    _id
+  }
+}

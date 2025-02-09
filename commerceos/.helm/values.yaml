@@ -1,0 +1,68 @@
+namespace: default
+priorityClass: app-10stars
+enableRmqFallbackRepub: false
+image:
+  nodejs: registry.devpayever.com/nodejs-backend/commerceos
+  pullSecretName: regsecret
+  
+service:
+  externalPort: 80
+  containerPort: 3000
+  statusPort: 8081
+
+test:
+  resources:
+    requests:
+      cpu: 30m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+  resourcesjob:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+    limits:
+      memory: 550Mi
+stage:
+  resources:
+    requests:
+      cpu: 30m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+  resourcesjob:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+    limits:
+      memory: 550Mi
+live:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 400Mi
+    limits:
+      memory: 1000Mi
+  resourcesjob:
+    requests:
+      cpu: 100m
+      memory: 400Mi
+    limits:
+      memory: 1000Mi
+#critical
+replicas:
+  http:
+    min: 6
+    max: 30
+  consumer:
+    min: 1
+    max: 1
+  cron: 1
+  
+hpa:
+  cpu:
+    tarUti: 75
+  mem:
+    tarUti: 85
+
+rmqQueue: async_events_commerceos_micro

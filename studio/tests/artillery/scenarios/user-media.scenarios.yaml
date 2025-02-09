@@ -1,0 +1,59 @@
+scenarios:
+  - name: "User Media"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}/media"
+      - get:
+          url: "/api/{{ businessId }}/media"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/media"
+      - post:
+          url: "/api/{{ businessId }}/media"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ mediaName }}"
+            url: "{{ mediaUrl }}"
+            mediaType: "image"
+            businessId: "{{ businessId }}"
+            albumId: "{{ albumId }}"
+          capture:
+            - json: "$._id"
+              as: "mediaId"
+      - log: "GET /api/{{ businessId }}/media/{{ mediaId }}"
+      - get:
+          url: "/api/{{ businessId }}/media/{{ mediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/media/search?name={{ mediaName }}"
+      - get:
+          url: "/api/{{ businessId }}/media/search?name={{ mediaName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/media/album/{{ albumId }}"
+      - get:
+          url: "/api/{{ businessId }}/media/album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/{{ businessId }}/media/{{ mediaId }}"
+      - delete:
+          url: "/api/{{ businessId }}/media/{{ mediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/media/by-user-attribute"
+      - post:
+          url: "/api/{{ businessId }}/media/by-user-attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            attributes:
+              - attribute: "{{ attributeId }}"
+                value: "{{ attributeValue }}"
+      - log: "GET /api/{{ businessId }}/media/by-user-attribute/{{ attributeId }}/{{ attributeValue }}"
+      - get:
+          url: "/api/{{ businessId }}/media/by-user-attribute/{{ attributeId }}/{{ attributeValue }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

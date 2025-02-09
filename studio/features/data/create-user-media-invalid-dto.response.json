@@ -1,0 +1,43 @@
+
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": [
+    {
+      "target": {},
+      "property": "url",
+      "children": [],
+      "constraints": {
+        "isNotEmpty": "url should not be empty",
+        "isUrl": "url must be an URL address"
+      }
+    },
+    {
+      "target": {},
+      "property": "mediaType",
+      "children": [],
+      "constraints": {
+        "isNotEmpty": "mediaType should not be empty",
+        "isEnum": "mediaType must be a valid enum value"
+      }
+    },
+    {
+      "target": {},
+      "property": "name",
+      "children": [],
+      "constraints": {
+        "isNotEmpty": "name should not be empty",
+        "isString": "name must be a string"
+      }
+    },
+    {
+      "target": {},
+      "property": "businessId",
+      "children": [],
+      "constraints": {
+        "isNotEmpty": "businessId should not be empty",
+        "isString": "businessId must be a string"
+      }
+    }
+  ]
+}

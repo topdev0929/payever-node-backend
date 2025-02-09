@@ -1,0 +1,138 @@
+scenarios:
+  - name: "Folder Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/admin/folders"
+      - post:
+          url: "/api/admin/folders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/folders"
+      - get:
+          url: "/api/admin/folders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/folders/tree"
+      - get:
+          url: "/api/admin/folders/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/folders/folder/{{ folderId }}"
+      - patch:
+          url: "/api/admin/folders/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/folders/folder/{{ folderId }}"
+      - delete:
+          url: "/api/admin/folders/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/folders/update-positions"
+      - post:
+          url: "/api/admin/folders/update-positions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/folders/folder/{{ folderId }}/documents"
+      - get:
+          url: "/api/admin/folders/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/folders/root-documents"
+      - get:
+          url: "/api/admin/folders/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Folder Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}"
+      - post:
+          url: "/api/folders/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}"
+      - get:
+          url: "/api/folders/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/tree"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/tree"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/root-folder"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/root-folder"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+      - patch:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+      - delete:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}/update-positions"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/update-positions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/root-documents"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ locationId }}/move-to-root"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}/search"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/folders/business/{{ businessId }}/search"
+      - get:
+          url: "/api/folders/business/{{ businessId }}/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/folders/business/{{ businessId }}/document/{{ id }}/locations"
+      - post:
+          url: "/api/folders/business/{{ businessId }}/document/{{ id }}/locations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/folders/business/{{ businessId }}/document/{{ id }}/locations/{{ locationId }}"
+      - delete:
+          url: "/api/folders/business/{{ businessId }}/document/{{ id }}/locations/{{ locationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

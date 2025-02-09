@@ -1,0 +1,27 @@
+scenarios:
+  - name: "Trusted Domain"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/trusted-domain/{{ businessId }}"
+      - post:
+          url: "/api/trusted-domain/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            domain: "{{ domain }}"
+      - log: "GET /api/trusted-domain/{{ businessId }}"
+      - get:
+          url: "/api/trusted-domain/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/trusted-domain/{{ businessId }}"
+      - delete:
+          url: "/api/trusted-domain/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            domain: "{{ domain }}"
+        

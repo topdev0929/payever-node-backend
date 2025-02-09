@@ -1,0 +1,6 @@
+name: nodejs-backend-products
+endpoints:
+  - products-backend.{{ $env }}/products
+  - products-backend.{{ $env }}/categories
+  - products-backend.{{ $env }}/channelset
+  - products-backend.{{ $env }}/[a-z0-9-]{36}/filter-options

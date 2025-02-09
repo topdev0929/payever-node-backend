@@ -1,0 +1,32 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "App Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/page/album/{{pageAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/page/album/{{pageAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/application/{{applicationId}}/page/{{pageId}}/album"
+      - delete:
+          url: "/api/application/{{applicationId}}/page/{{pageId}}/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/application/{{applicationId}}/page/{{pageId}}/album/{{pageAlbumId}}"
+      - post:
+          url: "/api/application/{{applicationId}}/page/{{pageId}}/album/{{pageAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

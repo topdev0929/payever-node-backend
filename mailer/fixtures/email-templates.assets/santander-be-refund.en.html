@@ -1,0 +1,7 @@
+<p>Retailer number: {{ retailerNumber }}</p>
+{% if applicationNumber is defined %}<p>Application number: {{ applicationNumber }}</p>{% endif %}
+{% if cardNumber is defined %}<p>Card number of customer: {{ cardNumber }}</p>{% endif %}
+{% if cardValid is defined %}<p>Validity of the card: {{ cardValid }}</p>{% endif %}
+<p>Name of the customer: {{ customerName }}</p>
+{% if cartDescription is defined %}<p>Description of the goods: {{ cartDescription }}</p>{% endif %}
+<p>Amount to be refunded: {{ actionAmount }}</p>

@@ -1,0 +1,540 @@
+scalar Mixed
+
+input ProductInput {
+  businessUuid: String!
+  images: [String]
+  imagesUrl: [String]
+  videos: [String]
+  videosUrl: [String]
+  title: String!
+  brand: String
+  condition: String
+  description: String
+  options: [OptionInput]
+  price: Float!
+  priceTable: [ProductPriceInput]
+
+  sale: ProductSaleInput
+
+  sku: String
+  barcode: String
+  categories: [CategoryInput]
+  category: String
+  channelSetCategories: [ChannelSetCategoryInput]
+  collections: [String]
+  company: String
+  channelSets: [ChannelSetInput]
+  type: String!
+  active: Boolean!
+  variants: [VariantInput]
+  recommendations: RecommendationInput
+  deliveries: [DeliveryInput]
+  shipping: ShippingInput
+  vatRate: Float
+  country: String
+  language: String
+  importedId: String
+  seo: ProductSeoInput
+  marketplaces: [ProductMarketplaceInput]
+  attributes: [ProductAttributeInput]
+  variantAttributes: [VariationAttributeInput]
+  ean: String
+  inventory: InventoryInput
+}
+
+input InventoryInput{
+  sku: String
+  quantity: Int
+  stock: Int
+}
+
+input ProductUpdateInput {
+  businessUuid: String
+  id: String
+  _id: String
+  images: [String]
+  imagesUrl: [String]
+  videos: [String]
+  videosUrl: [String]
+  title: String
+  brand: String
+  condition: String
+  description: String
+  price: Float
+  priceTable: [ProductPriceInput]
+
+  sale: ProductSaleInput
+  sku: String
+  barcode: String
+  categories: [CategoryInput]
+  category: String
+  channelSetCategories: [ChannelSetCategoryInput]
+  channelSets: [ChannelSetInput]
+  company: String
+  type: String
+  active: Boolean
+  variants: [VariantInput]
+  recommendations: RecommendationInput
+  deliveries: [DeliveryInput]
+  shipping: ShippingInput
+  vatRate: Float
+  country: String
+  language: String
+  seo: ProductSeoInput
+  marketplaces: [ProductMarketplaceInput]
+  collections: [String]
+  attributes: [ProductAttributeInput]
+  variantAttributes: [VariationAttributeInput]
+  ean: String
+}
+
+input ProductSaleInput {
+  onSales: Boolean
+  salePrice: Float
+  salePercent: Float
+  saleEndDate: String
+  saleStartDate: String
+}
+
+
+input ChannelSetCategoryInput {
+  channelSetId: String!
+  categories: [CategoryInput!]!
+  channelSetType: String!
+}
+
+input ChannelSetInput {
+  id: String
+  type: String
+  name: String
+}
+
+input ChannelSetInput {
+  id: String
+  type: String
+  name: String
+}
+
+input CategoryInput {
+  id: String
+  title: String
+  slug: String
+}
+
+input OptionInput {
+  id: String
+  name: String
+  type: String
+  value: String
+  extra: Mixed
+}
+
+input VariantInput {
+  id: String
+  barcode: String
+  description: String
+  images: [String]
+  options: [OptionInput]
+  attributes: [ProductAttributeInput]
+  price: Float
+
+  sale: ProductSaleInput
+  sku: String
+  priceTable: [ProductPriceInput]
+}
+
+input DeliveryInput {
+  name: String!
+  duration: Float
+  measure_duration: String
+}
+
+input ShippingInput {
+  free: Boolean
+  general: Boolean
+  weight: Float!
+  width: Float!
+  length: Float!
+  height: Float!
+}
+
+input ProductSeoInput {
+  title: String
+  description: String
+}
+
+scalar VariableConditionValueType
+
+input ProductPriceConditionInput {
+  field: String!
+  fieldType: String!
+  fieldCondition: String!
+  value: VariableConditionValueType!
+}
+
+input ProductPriceInput {
+  condition: ProductPriceConditionInput!
+  currency: String!
+  price: Float!
+  sale: ProductSaleInput
+  vatRate: Float
+}
+
+input ProductMarketplaceInput {
+  id: String!
+  activated: Boolean
+  name: String
+  type: String
+  connected: Boolean
+}
+
+input RecommendationItemInput {
+  id: String
+  images: [String]
+  name: String
+}
+
+input RecommendationInput {
+  recommendations: [RecommendationItemInput]
+  tag: String
+}
+
+type Category {
+  id: String
+  title: String
+  slug: String
+}
+type ChannelSetCategory {
+  channelSetId: String
+  channelSetType: String
+}
+
+type ChannelSets {
+  id: String
+  type: String
+  name: String
+}
+
+type Delivery {
+  name: String!
+  duration: Float
+  measure_duration: String
+}
+
+type Shipping {
+  free: Boolean
+  general: Boolean
+  weight: Float!
+  width: Float!
+  length: Float!
+  height: Float!
+  measure_mass: String
+  measure_size: String
+}
+
+type ProductPriceCondition {
+  field: String!
+  fieldType: String!
+  fieldCondition: String!
+  value: VariableConditionValueType!
+}
+
+type ProductSale {
+  onSales: Boolean
+  salePrice: Float
+  salePercent: Float
+  saleEndDate: String
+  saleStartDate: String
+}
+
+type ProductPrice {
+  condition: ProductPriceCondition
+  currency: String!
+  price: Float
+  sale: ProductSale
+  vatRate: Float
+}
+
+type ProductMarketplace {
+  id: String!
+  name: String!
+  type: String!
+  connected: Boolean
+  activated: Boolean!
+}
+
+type Variant {
+  id: String
+  images: [String]
+  imagesUrl: [String]
+  title: String
+  description: String
+  price: Float
+
+  sale: ProductSale
+  sku: String
+  attributes: [ProductAttribute]
+  barcode: String
+  priceTable: [ProductPrice]
+}
+
+type RecommendationItem {
+  id: String
+  images: [String]
+  name: String
+  sku: String
+}
+
+type CompanyAddress {
+  country: String
+  city: String
+  street: String
+  zipCode: String
+}
+
+type BusinessDetail {
+  _id: String
+  companyAddress: CompanyAddress
+}
+
+type Product {
+  _id: String
+  album: String
+  businessUuid: String
+  business: BusinessDetail
+  currency: String
+  channelSetCategories: [ChannelSetCategory]
+  company: String
+  dropshipping: Boolean
+  images: [String]
+  imagesUrl: [String]
+  videos: [String]
+  videosUrl: [String]
+  slug: String
+  title: String
+  brand: String
+  condition: String
+  description: String
+  price: Float
+  priceTable: [ProductPrice]
+  priceAndCurrency: String
+
+  sale: ProductSale
+  salePriceAndCurrency: String
+  sku: String
+  barcode: String
+  categories: [Category]
+  category: CategoryReference,
+  country: String
+  language: String
+  importedId: String
+  type: String
+  channelSets: [ChannelSets]
+  active: Boolean
+  variants: [Variant]
+  deliveries: [Delivery]
+  shipping: Shipping
+  seo: ProductSeo
+  marketplaces: [ProductMarketplace]
+  apps: [String]
+  attributes: [ProductAttribute]
+  variantAttributes: [VariationAttribute]
+  collections: [Collection]
+  recommendations: [RecommendationItem]
+  stock: Int
+  variantCount: Int
+}
+
+type ProductSeo {
+  title: String
+  description: String
+}
+
+type Pagination {
+  page: Int
+  page_count: Int
+  per_page: Int
+  item_count: Int
+}
+
+type Info {
+  pagination: Pagination
+  isChannelWithExisting: Boolean
+  isMarketplaceWithExisting: Boolean
+}
+
+type Products {
+  products: [Product]
+  info: Info
+}
+
+type GetProductsResult {
+  result: [Product],
+  totalCount: Int,
+}
+
+type GetProductResult {
+  result: Product,
+}
+
+type LastProductBusinessUpdatedAtResult {
+  result: String,
+}
+
+type ListProductIdsByBusinessResult {
+  result: [String],
+}
+
+input ProductFilter {
+  field: String!
+  fieldType: String!
+  fieldCondition: String
+  value: String
+  filters: [ProductFilter]
+  valueIn: [String]
+}
+
+type FilterOption {
+  label: String,
+  value: String,
+  field: String,
+}
+
+type FilterResult {
+    result: [Filter],
+    totalCount: Int,
+}
+
+type Filter {
+  field: String,
+  title: String,
+  type: String,
+  options: [FilterOption],
+}
+
+type FilterByBusiness {
+  categories: ResultFilterData,
+  attributes: ResultFilterData,
+  price: ResultFilterData,
+  type: ResultFilterData,
+  variants: ResultFilterData,
+  brands: ResultFilterData,
+  condition: ResultFilterData,
+}
+
+type ResultFilterData {
+  defaultValue: FilterForBusiness,
+  type: String!,
+  options: [FilterForBusiness]
+}
+
+type ResultFilterPriceData {
+  defaultValue: String!,
+  type: String!,
+  value: FilterValueForBusiness,
+}
+
+
+type FilterValueForBusiness {
+  field: String!
+  fieldType: String!
+  fieldCondition: String!
+  value: String!
+}
+type FilterForBusiness {
+  title: String,
+  value: FilterValueForBusiness,
+}
+
+type Query {
+  getProducts(
+    paginationLimit: Int!
+    businessUuid: String
+    pageNumber: Int
+    orderBy: String
+    withMarketplaces: Boolean
+    orderDirection: String
+    includeIds: [String]
+    filterById: [String]
+    search: String
+    filters: [ProductFilter]
+    useNewFiltration: Boolean
+  ): Products
+  lastProductBusinessUpdatedAt(
+    business: String!,
+  ): LastProductBusinessUpdatedAtResult
+  listProductIdsByBusiness(
+    business: String!,
+  ): ListProductIdsByBusinessResult
+  getProductsByChannelSet(
+    businessId: String!
+    paginationLimit: Int!
+    existInChannelSet: Boolean
+    channelSetId: String
+    pageNumber: Int
+    orderBy: String
+    orderDirection: String
+    filterById: [String]
+    unfilterById: [String]
+    search: String
+    channelSetType: String
+    allBusinesses: Boolean
+    filters: [ProductFilter]
+    channelSetType: String
+    allBusinesses: Boolean
+  ): Products
+  getProductsByMarketplace(
+    businessUuid: String!
+    paginationLimit: Int!
+    existInChannelSet: Boolean
+    channelSetId: String
+    existInMarketplace: Boolean
+    marketplaceId: String
+    pageNumber: Int
+    orderBy: String
+    orderDirection: String
+    filterById: [String]
+    unfilterById: [String]
+    search: String
+    filters: [ProductFilter]
+  ): Products
+  getProductsByCategories(
+    businessUuid: String!
+    categories: [String]
+    paginationLimit: Int
+    pageNumber: Int
+    orderBy: String
+    orderDirection: String
+  ): Products
+  isSkuUsed(sku: String!, businessUuid: String!, productId: String): Boolean
+  getFilter(
+    filter: String!
+  ): FilterResult
+  getFilterByBusiness(
+     businessId: String!
+  ): FilterByBusiness
+}
+
+type Mutation {
+  createProduct(product: ProductInput): Product
+  copyProducts(
+    businessId: String!
+    productIds: [String]!
+    targetCollectionId: String
+    targetFolderId: String
+    prefix: String
+  ): Products
+  updateProduct(product: ProductUpdateInput): Product
+  deleteProduct(ids: [String]): Int
+  updateProductChannelSets(
+    business: String
+    channelSets: [ChannelSetInput]
+    addToProductIds: [String]
+    deleteFromProductIds: [String]
+  ): Product
+  updateProductsToMarketplaces(
+    marketplaces: [ProductMarketplaceInput]
+    addToProductIds: [String]
+    deleteFromProductIds: [String]
+  ): Product
+}

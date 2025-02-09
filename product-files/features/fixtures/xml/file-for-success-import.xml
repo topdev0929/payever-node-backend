@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<import xsi:noNamespaceSchemaLocation="product.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <products>
+        <product>
+            <sku>1234</sku>
+            <type>physical</type>
+            <title>Some product</title>
+            <description>Some product description</description>
+            <images>
+                <image url="https://test.com/some.png"/>
+                <image url="https://test.com/someother.png"/>
+            </images>
+            <hidden>false</hidden>
+            <price>100</price>
+            <currency>eur</currency>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>bar-code</bar-code>
+            <enabled>true</enabled>
+            <inventory>
+                <stock>100</stock>
+                <reserved>50</reserved>
+            </inventory>
+            <product-categories>
+                <product-category>
+                    <title>Some category</title>
+                </product-category>
+            </product-categories>
+            <channel-sets>
+                <channel-set>
+                    <id>a918abc5-dbd7-405e-8cec-c4ad57f570bf</id>
+                </channel-set>
+            </channel-sets>
+            <shipping>
+                <weight>4</weight>
+                <width>2</width>
+                <length>1</length>
+                <height>3</height>
+            </shipping>
+        </product>
+        <product>
+            <sku>456</sku>
+            <type>digital</type>
+            <title>Some digital product</title>
+            <description>Some description</description>
+            <hidden>true</hidden>
+            <price>100.0</price>
+
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>123123</bar-code>
+            <enabled>true</enabled>
+            <inventory>
+                <stock>100</stock>
+                <reserved>50</reserved>
+            </inventory>
+        </product>
+        <product>
+            <sku>678</sku>
+            <type>service</type>
+            <title>Some service product</title>
+            <description>Some description</description>
+            <images>
+                <image url="https://test.com/some.png"/>
+                <image url="https://test.com/someother.png"/>
+            </images>
+            <hidden>true</hidden>
+            <price>100.0</price>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>123123</bar-code>
+            <enabled>true</enabled>
+            <variants>
+                <variant>
+                    <sku>Variant1_SKU</sku>
+                    <title>Variant 1</title>
+                    <description>Variant 1</description>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>50.0</sale-price>
+                        <sale-percent>50.0</sale-percent>
+                        <sale-start-date>2023-01-01</sale-start-date>
+                        <sale-end-date>2023-01-31</sale-end-date>
+                    </sale>
+                    <bar-code>123125</bar-code>
+                    <inventory>
+                        <stock>100</stock>
+                        <reserved>50</reserved>
+                    </inventory>
+                </variant>
+                <variant>
+                    <sku>Variant2_SKU</sku>
+                    <title>Variant 2</title>
+                    <description>Variant 2</description>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>50.0</sale-price>
+                        <sale-percent>50.0</sale-percent>
+                        <sale-start-date>2023-01-01</sale-start-date>
+                        <sale-end-date>2023-01-31</sale-end-date>
+                    </sale>
+                    <bar-code>123126</bar-code>
+                    <inventory>
+                        <stock>50</stock>
+                        <reserved>40</reserved>
+                    </inventory>
+                </variant>
+            </variants>
+        </product>
+    </products>
+</import>

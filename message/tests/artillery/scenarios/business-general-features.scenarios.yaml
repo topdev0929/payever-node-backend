@@ -1,0 +1,114 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:  
+  - name: "Business Folder Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /folders/business/{{businessId}}"
+      - get:
+          url: "{{ httpTarget }}/folders/business/{{businessId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$[0]._id"
+               as: "folderId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+  - name: "Business Themes Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "GET /business/{{businessId}}/themes"
+      - get:
+          url: "{{ httpTarget }}/folders/business/{{businessId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+  - name: "Business Bubbles Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "GET /business/{{businessId}}/bubble"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/bubble"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/bubble"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/bubble"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            text: "{{newUuid}}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+  - name: "Subscription Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "GET /business/{{businessId}}/subscriptions"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/subscriptions"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/subscriptions/all"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/subscriptions"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+  - name: "Contacts Feature"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "GET /business/{{businessId}}/contacts"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/contacts"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /business/{{businessId}}/contacts/search"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/contacts/search"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200

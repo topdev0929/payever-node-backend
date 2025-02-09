@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2017",
+    "sourceMap": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules/**/*", "migrations/**/*","**/*.spec.ts", "dist/**/*","pact.publish.ts"]
+}

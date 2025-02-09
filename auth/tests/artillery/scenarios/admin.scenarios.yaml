@@ -1,0 +1,110 @@
+config:
+  phases:
+    - duration: 100
+      arrivalRate: 1
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Get /api/admin/users/{{userId}}"
+      - get:
+          url: "/api/admin/users/{{userId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Get /api/admin/users/{{userId}}/user"
+      - get:
+          url: "/api/admin/users/{{userId}}/user"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "Get /api/admin/users/block/{{userIp}}"
+      - get:
+          url: "/api/admin/users/block/{{userIp}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Get /api/admin/block-email"
+      - get:
+          url: "/api/admin/block-email"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+
+      - log: "Post /api/admin/users/block"
+      - post:
+          url: "/api/admin/users/block"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            userIp: "0.0.0.0"
+      
+      - log: "Post /api/admin/block-email"
+      - post:
+          url: "/api/admin/block-email"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            type: "test"
+            value: "test"
+
+
+      - log: "Patch /api/admin/users/{{userId}}"
+      - patch:
+          url: "/api/admin/users/{{userId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            secondFactorRequired: "true"
+            roles:
+              json:
+                name: "admin"
+      
+      - log: "Patch /api/admin/users/{{userId}}/permissions"
+      - patch:
+          url: "/api/admin/users/{{userId}}/permissions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            permissions:
+              - "permissions"
+
+
+      
+      - log: "DELETE /api/admin/users/{{userId}}"
+      - delete:
+          url: "/api/admin/users/{{userId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+
+      - log: "DELETE /api/admin/users"
+      - delete:
+          url: "/api/admin/users"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/admin/users/block"
+      - delete:
+          url: "/api/admin/users/block"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/admin/users/block/clear"
+      - delete:
+          url: "/api/admin/users/block/clear"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+
+            
+      
+     

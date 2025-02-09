@@ -1,0 +1,7 @@
+<p>Dear Merchant,</p>
+<p>we have noticed an unusual trend in transactions for the following payment option: <b>{{integration | payment_option}}</b> </p>
+<p>
+  {% if business.name is defined %}Business: {{business.name}}{% endif %}
+</p>
+<p>We are concerned about potential issues with your checkout as your last transaction for this payment option was at {{errorDateFormatted}}.</p>
+<p>Please login to your payever account and confirm your payment credentials and that the payment is enabled inside your checkout correctly. Furthermore, please analyze your shopsystem integration or other conditions you might have implemented.</p>

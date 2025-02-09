@@ -1,0 +1,276 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios: 
+  - name: "Messaging Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /business/{{businessId}}/messaging?allBusiness=true&limitMessage=true"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging?allBusiness=true&limitMessage=true"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$[1]._id"
+               as: "retrievedChatId"
+             - json: "$[1].business"
+               as: "businessChatId"
+             - json: "$[1].type"
+               as: "chatTypeId"
+             - json: "$[1].members[0].user"
+               as: "retrievedUseId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+ 
+      - log: "GET /business/{{businessChatId}}/messaging/mutual/{{retrievedUseId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/mutual/{{userId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+   
+      - log: "GET /business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members/user/{{retrievedUseId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members/user/{{retrievedUseId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$.contactId"
+               as: "retrievedcontactId"
+          expect:
+            - statusCode: 200
+      - think: 1
+ 
+      - log: "GET /business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members/contact/{{retrievedcontactId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/members/contact/{{retrievedcontactId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/messaging/channel"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/channel"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "delete-title"
+            photo: "delete-photo"
+            contacts: ["delete"]
+            description: "delete-description"
+            usedInWidget: true
+            slug: "{{ newUuid }}"
+            subType: "private"
+            parentFolderId: "delete-parentFolderId"
+          capture:
+            - json: "$._id"
+              as: "retrievedChannelId"
+          expect:
+            - statusCode: 201
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/messaging/channel/{{retrievedChannelId}}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/channel/{{retrievedChannelId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            usedInWidget: true
+          capture:
+            - json: "$._id"
+              as: "retrievedIntegrationChannelId"
+          expect:
+            - statusCode: 201
+      - think: 1
+
+
+      - log: "POST /business/{{businessId}}/messaging/integration-channel"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/integration-channel"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "delete-title"
+            description: "delete-description"
+            usedInWidget: true
+            photo: "delete-photo"
+            parentFolderId: "delete-parentFolderId"
+          capture:
+            - json: "$._id"
+              as: "retrievedIntegrationChannelId"
+          expect:
+            - statusCode: 201
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/messaging/integration-channel/{{retrievedIntegrationChannelId}}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/integration-channel/{{retrievedIntegrationChannelId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            usedInWidget: false
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/messaging/group"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/group"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "delete-title"
+            description: "delete-description"
+            photo: "delete-photo"
+            members:
+              - role: "admin"
+                permissions:
+                  sendMessages: true
+                  sendMedia: true
+                user: "delete-user"
+            parentFolderId: "delete-folder"
+          capture:
+            - json: "$._id"
+              as: "groupId"
+          expect:
+            - statusCode: 201
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/messaging/group/{{groupId}}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/group/{{groupId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "deletee-title"
+            description: "deletee-description"
+            photo: "deletee-photo"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/messaging/integration-channel"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/integration-channel"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$._id"
+               as: "channelId"
+          json:
+            title: 'delete-channel'
+            description: 'delete-channel-description'
+            usedInWidget: true
+            photo: 'https://delete.com'
+            parentFolderId: 'delete-parent-folder'
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/messaging/integration-channel/{{channelId}}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/messaging/integration-channel/{{channelId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            usedInWidget: true
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/integration-channels/{{channelId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/integration-channels/{{channelId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /message-folders/tree-all"
+      - get:
+          url: "{{ httpTarget }}/message-folders/tree-all"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/permissions"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessChatId}}/messaging/{{chatTypeId}}/{{retrievedChatId}}/permissions"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            publicView: true
+            change: true
+            showSender: true
+            live: true
+            sendMessages: true
+            sendMedia: true
+            addMembers: true
+            pinMessages: true
+          expect:
+            - statusCode: 204
+      - think: 1
+

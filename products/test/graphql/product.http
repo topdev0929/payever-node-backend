@@ -1,0 +1,53 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query getProducts {
+  product(id: "c58a2a08-03b4-4f03-bc6a-2fec597945bd") {
+    businessUuid
+    images
+    currency
+    _id
+    title
+    description
+    onSales
+    price
+    salePrice
+    sku
+    barcode
+    type
+    active
+    categories {
+      _id
+      slug
+      title
+    }
+    channelSets {
+      id
+      type
+      name
+    }
+    variants {
+      id
+      images
+      options {
+        name
+        value
+      }
+      description
+      onSales
+      price
+      salePrice
+      sku
+      barcode
+    }
+    shipping {
+      free
+      general
+      weight
+      width
+      length
+      height
+    }
+  }
+}

@@ -1,0 +1,35 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+scenarios:
+  - name: "User"
+    flow:
+      - function: "defineVariablesUser"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      - log: "GET /api/personal/widget"
+      - get:
+          url: "/api/personal/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/personal/last-daily"
+      - get:
+          url: "/api/transactions-app/personal/last-daily"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/personal/last-monthly"
+      - get:
+          url: "/api/transactions-app/personal/last-monthly"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

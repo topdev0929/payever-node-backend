@@ -1,0 +1,36 @@
+type Product {
+  #deprecated
+  _id: String
+
+  # deprecated
+  uuid: String
+
+  # deprecated
+  hidden: Boolean
+
+  # deprecated
+  enabled: Boolean
+
+  id: String
+
+  active: Boolean
+  barcode: String
+  country: String
+  currency: String
+  description: String
+  images: [String]
+  imageUrls: [String]
+  onSales: Boolean
+  price: Float
+  salePrice: Float
+  sku: String
+  title: String
+  type: String
+  vatRate: Float
+}
+
+type Query {
+  product(id: String, uuid: String): Product
+  getProductsByIdsOrVariantIds(ids: [String]): [Product]
+  getProductsByBusiness(businessUuid: String): [Product]
+}

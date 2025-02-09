@@ -1,0 +1,12 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  getCategories(businessUuid: "2382ffce-5620-4f13-885d-3c069f9dd9b4", title: "", pageNumber: 1, paginationLimit: 100) {
+    id
+    slug
+    title
+    businessUuid
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "*",
+    "url": "https://video.com/free-5.flv",
+    "mediaType": "video",
+    "name": "video 1",
+    "businessId": "*",
+    "createdAt": "2020-01-05T00:00:05.000Z",
+    "updatedAt": "2020-01-05T00:00:05.000Z"
+  },
+  {
+    "_id": "7d2a9404-e07a-477f-839d-71f591cf1317",
+    "url": "https://example.com/free-1.png",
+    "mediaType": "image",
+    "name": "image 1",
+    "businessId": "*",
+    "createdAt": "2020-01-01T00:00:01.000Z",
+    "updatedAt": "2020-01-01T00:00:01.000Z"
+  }
+]

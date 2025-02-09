@@ -1,0 +1,36 @@
+scenarios:
+  - name: "Apps"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/apps"
+      - get:
+          url: "/api/apps"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/apps"
+      - post:
+          url: "/api/apps"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: "test"
+            dashboardInfo: {}
+            access: {}
+          capture:
+            - json: "$._id"
+              as: "appId"
+      - log: "PATCH /api/apps/{{ appId }}"
+      - patch:
+          url: "/api/apps/{{ appId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/apps/app/order"
+      - post:
+          url: "/api/apps/app/order"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            microUuid: "{{ microId }}"
+            order: 0

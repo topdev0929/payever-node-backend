@@ -1,0 +1,73 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Checkout"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "GET /api/business/{{ businessId }}/checkout"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/business/{{ businessId }}/checkout"
+      - post:
+          url: "/api/business/{{ businessId }}/checkout"
+          afterResponse: "defineCheckoutId"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            default: False
+            name: "{{ checkoutName }}"
+
+      - log: "GET /api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            default: True
+
+      - log: "GET /api/business/{{ businessId }}/checkout/{{ checkoutId }}/sections/available"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}/sections/available"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/checkout/{{ checkoutId }}/default"
+      - patch:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "DELETE /api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

@@ -1,0 +1,35 @@
+scenarios:
+  - name: "User Subscription"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}/subscription"
+      - get:
+          url: "/api/{{ businessId }}/subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/subscription/search?name={{ subscriptionName }}"
+      - get:
+          url: "/api/{{ businessId }}/subscription/search?name={{ subscriptionName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/subscription/{{ subscriptionId }}"
+      - get:
+          url: "/api/{{ businessId }}/subscription/{{ subscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/subscription/by-attribute"
+      - post:
+          url: "/api/{{ businessId }}/subscription/by-attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            attributes:
+              - attribute: "{{ attributeId }}"
+                value: "{{ attributeValue }}"
+      - log: "GET /api/{{ businessId }}/subscription/by-attribute/{{ attributeId }}/{{ attributeValue }}"
+      - get:
+          url: "/api/{{ businessId }}/subscription/by-attribute/{{ attributeId }}/{{ attributeValue }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

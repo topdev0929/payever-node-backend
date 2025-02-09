@@ -1,0 +1,40 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Business Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          
+      - log: "GET /api/business/{{ businessId }}/integration"
+      - get:
+          url: "/api/business/{{ businessId }}/integration"
+          afterResponse: "defineIntegrationName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/integration/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/integration/category/{{ category }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

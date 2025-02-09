@@ -1,0 +1,17 @@
+{
+  "_id": "94d1d741-b9ab-4506-a592-d4cb3684a17b",
+  "body": {
+    "children": [
+      {
+        "id": "fb96cba4-6cd9-4758-b320-4f375c085ecd",
+        "type": "section",
+        "meta": {
+          "deletable": true
+        }
+      }
+    ],
+    "id": "2ced04ab-2442-4681-9158-c99e623d0260",
+    "type": "document"
+  },
+  "page": "d23c2dd6-61ff-4c8f-a211-76bc39d53c95"
+}

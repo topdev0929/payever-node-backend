@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "7d2a9404-e07a-477f-839d-71f591cf1317",
+    "url": "https://example.com/free-1.png",
+    "mediaType": "image",
+    "name": "image 1",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "album": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "attributes": [
+      {
+        "attribute": {
+          "_id": "64a19c1b-4ea0-4675-aafb-f50c2e3ab12d",
+          "icon": "http://test.com/car.jpg",
+          "name": "car",
+          "type": "vehicle"
+        },
+        "value": "ford2"
+      }
+    ],
+    "userAttributes": [
+      {
+        "attribute": {
+          "_id": "17526ce8-94d3-4dab-99cd-667997bfa356",
+          "icon": "http://test.com/car.jpg",
+          "name": "car",
+          "type": "vehicle"
+        },
+        "value": "ford"
+      },
+      {
+        "attribute": {
+          "_id": "541e9ae1-3119-4e0a-a34b-b37d662996b1",
+          "icon": "http://test.com/motorcycle.jpg",
+          "name": "motorcycle",
+          "type": "vehicle"
+        },
+        "value": "honda"
+      }
+    ],
+    "createdAt": "2020-01-01T00:00:01.000Z",
+    "updatedAt": "2020-01-01T00:00:01.000Z",
+    "__v": 0
+  }
+]

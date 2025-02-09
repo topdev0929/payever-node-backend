@@ -1,0 +1,31 @@
+scenarios:
+  - name: "Video Generator"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/video/generate/frames"
+      - post:
+          url: "/api/video/generate/frames"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            videoPath: "{{ videoPath }}"
+      - log: "POST /api/{{ businessId }}/video/generate/random"
+      - post:
+          url: "/api/{{ businessId }}/video/generate/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            errorMargin: 1
+            videoCutOptions: []
+            audio: "{{ audio }}"
+      - log: "POST /api/{{ businessId }}/video/generate/tag"
+      - post:
+          url: "/api/{{ businessId }}/video/generate/tag"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            duration: 100
+            tags: []
+            audio: "{{ audio }}"

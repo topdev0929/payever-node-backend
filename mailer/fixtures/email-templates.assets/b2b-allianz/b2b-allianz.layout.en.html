@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="color-scheme" content="light only">
+  <title></title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+  <style type="text/css">
+    /*////// RESET STYLES //////*/
+    body,
+    #bodyTable,
+    #bodyCell {
+      font-family: 'Roboto', -apple-system, sans-serif;
+      font-size: 14px;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    img,
+    a img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display emails at full width. */
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display line heights normally. */
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    td {
+      padding: 0;
+      /* padding-left: 40px; */
+    }
+
+    /* Remove spacing between tables in Outlook 2007 and up. */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Force Outlook 2007 and up to provide a "view in browser" message. */
+    img {
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    /* Force IE to smoothly render resized images. */
+    body,
+    table,
+    td,
+    p,
+    a,
+    li,
+    blockquote {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .table {
+      /*width: 900px;*/
+      width: 100%;
+    }
+
+
+	.pe-logo-table th {
+	  padding: 28px 0 6px;
+	}
+
+	.body-shadow {
+	  background: #eeeeee;
+	  background-position: bottom right;
+	  background-repeat: repeat;
+	}
+	.body-shadow-left,
+	.body-shadow-right {
+	  width: 32px;
+	}
+	.body-shadow-left {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVRYhe3OsQ0AIAgAQXD/da1xAIkmxvK+IRSQy4jI2MvDzG6vqtn8uTZejn4GAAAAAAAAAAAAAAAAAACwAC/FBDyow2AiAAAAAElFTkSuQmCC);
+	}
+	.body-shadow-right {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAQUlEQVRYhe3OIQ7AMAwEwXNp/v/eK6sKGhIVzkqWZeSZts1BM7OS9DXZ3F/76Tp5/mcAAAAAAAAAAAAAAAAAAAA3xjgNQaL0en8AAAAASUVORK5CYII=);
+	}
+	.body-shadow-top,
+	.body-shadow-bottom {
+	  height: 32px;
+	}
+	.body-shadow-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVRYhe3SgQ0AMAgCQTDdf2UcA5O+C3gBLMkq3jSfAzgBePp9hCRAAvUEALABJ0kTUK8AAAAAAAAAALAZrwRRxjHLzAAAAABJRU5ErkJggg==);
+	}
+	.body-shadow-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAS0lEQVRYhe3VwREAIAgDwaA+7b9dfFjE8bg04E5GoLq7A2aRjwsQIECAgBGASnJJwEmCXkMBAvAxxBsQgP+Bnb+OsdjAiAbQ4A0IeNQpDFRkb/z+AAAAAElFTkSuQmCC);
+	}
+	.body-shadow-left-top,
+	.body-shadow-right-top,
+	.body-shadow-left-bottom,
+	.body-shadow-right-bottom {
+	  width: 32px;
+	  height: 32px;
+	}
+	.body-shadow-left-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVRYhb2VLVPEMBCGu+kVhYoDPEhwJ0Cib+bc/V0cGlV+QUxdHGJ7hjJNSPYj3bud2Zk2m7zPm23aQnedAHXBEmK+yHB9k4Bl19RipnCNoDl40ZUIW8GLOpz4xQ8pNWELXNzZ2sRWuLqju0aQBkzWSkWrV1OknQ9YwFVjWx6BBMTetxrQgMi51ERrePFa24FNsBDCi/f+MAzDa9d1DwBwl4tR6bLsV7lb5fCbN0vGGE+I+D0XQgqnDFTh4zg+IeJnCaw1INl9Ap+m6X2e54mCtxqQwn84uNQA1/p/bZfsfAlYGagFd7phfY2IHwCwJ/SScEyd+84nhmKMRw18EWjdfW4CEPELAB41BrgOcKb+xkIIz1p4q4GiGe/9oUWAMlA7cMVa3/dv1ga4SEw45+6vbSAxkf9YLmmg9ke8tTRAPX/KhDrOOV7SV28rZRcAAAAASUVORK5CYII=);
+	}
+	.body-shadow-right-top {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABlElEQVRYhb1Wu04DMRCc9QUqqnTHB0AHJQ0SDTUSHd/JPyBBRxno0TWna9wRKUNBEjYXv20x0kq2s96dHa/jEwACPxj4rQkkQiCEJuRqCGgUk2lFQCOLjGmcHMgsyORuyCCRFFfgV6HVDQjGCRFIDlKzf3cEMblqm9W7VwB0jvVYxaWKHO3zNaEgXHWz6ysAFo51V4W+qnPVOPD39UDqGjxrIRz46yNwye4jUktij538OgADc878tZyCgubURzBXQgd2jVPmPuz9hKQlOQD4Wq/XL9M0Pfd9/66cmTl2zV349aEDm83mw1r7BOBU2cnWFso6ZWZmEjF4CSgir6vV6jKRRC4BiRLYYhzH8T5Aok6FBAIk+V1IohkBkhwjx1GiAoRk8t0l+WaMucNfl3M2RmR8FDLrk0xEbqy1j3D/N4QeLn/MHAUAgOSnMeYKx5VrNRAYHyD7o1RELoZhuEajN6Hoq3i5XD7UJK0m0HXdrSP5vBdCb0gdAWPMeWqCaKySTSLSt0heTADAmSf5/zRhQvLkPvgBmoIOefp1YTsAAAAASUVORK5CYII=);
+	}
+	.body-shadow-left-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABc0lEQVRYhb2Uu06FQBCG/1nAc84jaGg1lnYW1nY+gZWv4jP5AFYWdkpoDL2BRAm1kF0bckJgL7MXnWSys5f5+ZgdIACErZEmXo7rmKSU70R0rtGymvBNMJmU8jMkzwSgNLFu7Tgfx/ElJYDNNg8HgLZtn0IAlvep21vHrj54I6ILH4CYHlhfiRqG4dFXxFYBIKwKz0R0zQWI/Qo2Vajr+gHAt48IWVwsPFt4DqCY/WT2HYA9gH3XdbdKqR/FMBeEMEDkGojdAuIwQ3zFAriqkGNbhSNEVVWX0zS9pgRwVWEDAeDQ9/29lPJDB7DubJPpvoZlzBqbprkqy/KuKIobIcQZEZ2GAERBrOOMCWCD4MCYdCgzbPgAuCCs2qxDERDO2BfABeEN4hJLDbGZhwKYzvqAAQDFAHAhrGvcw74QbG2f5BAI514qAG4euwIxENxcYw+kgmDlh/z9Qk2rE/rjSWXGJjQmJCf4p5w/E4uGSfk2QVq/Uiy/Y4vZkfMAAAAASUVORK5CYII=);
+	}
+	.body-shadow-right-bottom {
+	  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABiUlEQVRYhcWXPU7EMBCFX0zYBe4RiQ6uQMElqLgKZ4IrbLEditIAbbQkEkQpqHDkoYgXmWA7HserHWkUS4nnm58XZzcjIgLTiOhNCHEFgAyHZW1ep2sAgODCAUAptYvZZ7OoBKSUG/yvxlapt/roBJqmeXQEZY8z42qAiF6FENdIMH8gogN93z9MYM7gIcbqABFthRA3SFQ9wOvAZ1VV90hY/bg7zL7btr0FcKZ9DWCl/VR7DuDEcGF45vQA+IeGnxvwtQWeO+C+BPwdGIZhW5blpQO+csDDq3cloJR66bruToN98CXVZ9Abv4joXSm1k1Ju6rp+KorieS8R5nVqswLNAFw4NsTAuScj5QHgOWgsHMA4At97HfWBCTQyEwgBh65ZiZkJpIKxujJNYC5gKvjvczYRxoKi9ODSABcULUbbCLgQLvzP864RhAIWwYHx7M4iAi/7DWBYbqxDgi4+eKbm6kBKsHd/7rqRABoUJ0SEB4MD4wiOAt5b1D+jVHDAr4GDQVMlkEQ3P8NfSS+qJafOAAAAAElFTkSuQmCC);
+	}
+
+	.body-box-table {
+	  max-width: 500px;
+	  border-radius: 14px;
+	  background: #ffffff;
+	}
+	.body-box-table td.body-box-table-content {
+	  padding: 16px 30px;
+	}
+  .body-box-table td.body-box-table-content .body-text-area h4,
+  .body-box-table td.body-box-table-content .body-text-area p {
+    margin-bottom: 18px;
+  }
+  .body-box-table td.body-box-table-content .body-text-area a {
+    word-break: break-word;
+  }
+
+	.body-box-table .body-buttons-table {
+	  margin-top: 30px;
+	}
+	.body-box-table .body-buttons-table td {
+	  padding: 0;
+	}
+	.body-box-table .body-buttons-table .space-between-buttons {
+	  width: 5%;
+	}
+	.body-box-table .body-buttons-table td.body-button {
+	  width: 30%;
+	}
+	.body-box-table .body-buttons-table td.body-button a {
+	  display: block;
+	  width: 100%;
+	  padding: 8px 0;
+	  border-radius: 6px;
+	  text-decoration: none;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-white {
+	  color: #000000;
+	  background: #e5e5e5;
+	  border: 1px solid #e0e0e0;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-bordered {
+	  color: #000000;
+	  background: #ffffff;
+	  border: 1px solid #000000;
+	}
+	.body-box-table .body-buttons-table td.body-button a.body-button-black {
+	  color: #ffffff;
+	  background: #000000;
+	}
+
+	.social-links-table td {
+	  padding: 12px 0 22px;
+	}
+
+	.terms-table td {
+	  padding: 0 0 22px;
+	}
+	.terms-table td a {
+	  color: #000000;
+	  text-decoration: none;
+	}
+
+	.cellar-table td {
+	  font-size: 10px;
+	  line-height: 1.6;
+	}
+  </style>
+</head>
+<body style="width: 1200px">
+<div style="-ms-transform: rotate(-90deg);transform: rotate(-90deg);text-align: justify; float: left;margin-left: -50px;font-size: 10px;margin-top: 250px;">
+</div>
+<div style="margin-left: 320px;">
+  <p align="left"><img width="300" src="{{ business.logo|media_url('images') }}" alt="" /></p>
+  {% block body %}{% endblock body %}
+  <br>
+  <br>
+  <p style="font-size: 12px;">This mailbox is not receiving emails.  Please do not reply.</p>
+</div>
+</body>
+</html>

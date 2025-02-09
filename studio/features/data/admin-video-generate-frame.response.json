@@ -1,0 +1,10 @@
+{
+  "status": "waiting",
+  "task": {
+    "type": "generate-frames",
+    "data": {
+      "videoPath": "http://localhost:2020/video/input1.mp4"     
+    }
+  },
+  "tries": 0
+}

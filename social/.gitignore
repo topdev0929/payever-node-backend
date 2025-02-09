@@ -1,0 +1,25 @@
+# Mac OS X
+.DS_Store
+
+# cucumber coverage
+/.nyc_output
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# dotenv
+.env
+*.env
+
+/.idea/
+/.vscode/
+dist
+pacts
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json
+
+.npmrc
+data/

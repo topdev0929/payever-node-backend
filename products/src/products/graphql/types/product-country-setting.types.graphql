@@ -1,0 +1,18 @@
+type CountrySetting {
+  active: Boolean
+  channelSets: [ChannelSets]
+  currency: String
+  onSales: Boolean
+  recommendations: Recommendation
+  price: Float
+  salePrice: Float
+  shipping: Shipping
+  vatRate: Float
+}
+
+type Query {
+  getProductCountrySetting(
+    productId: String!
+    country: String!
+  ): CountrySetting
+}

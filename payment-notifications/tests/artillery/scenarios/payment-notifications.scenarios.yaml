@@ -1,0 +1,11 @@
+scenarios:
+  - name: "Payment Notifications"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/callback/{{ apiCallId }}/list"
+      - get:
+          url: "/api/callback/{{ apiCallId }}/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

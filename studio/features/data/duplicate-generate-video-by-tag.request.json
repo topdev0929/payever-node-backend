@@ -1,0 +1,5 @@
+{
+  "tags":["car", "people"],
+  "audio": "http://localhost:2020/video/audio.mp3",
+  "duration": 48
+}

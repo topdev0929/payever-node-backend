@@ -1,0 +1,97 @@
+[
+  {
+    "compressed": false,
+    "compressionTries": 0,
+    "subscriptionType": 0,
+    "name": "woman_wearing_VR_headset_and_touching_headset_and_hair_in_colorful_room_by_Omri_Ohana_Artgrid-HD_H264-HD.mp4",
+    "__v": 0,
+    "attributes": [
+      {
+        "name": "area",
+        "value": "hero"
+      },
+      {
+        "name": "styles",
+        "value": "luxury"
+      },
+      {
+        "name": "tags",
+        "value": "digital goods"
+      },
+      {
+        "name": "age",
+        "value": "26-30"
+      },
+      {
+        "name": "background",
+        "value": "non transparrent"
+      },
+      {
+        "name": "body",
+        "value": "normal"
+      },
+      {
+        "name": "color",
+        "value": "colored"
+      },
+      {
+        "name": "decade",
+        "value": "2020s"
+      },
+      {
+        "name": "format",
+        "value": "horizontal"
+      },
+      {
+        "name": "haspeople",
+        "value": "true"
+      },
+      {
+        "name": "isdeleted",
+        "value": "false"
+      },
+      {
+        "name": "kind",
+        "value": "video"
+      },
+      {
+        "name": "medianumber",
+        "value": "21202020-01"
+      },
+      {
+        "name": "people",
+        "value": "woman"
+      },
+      {
+        "name": "quality",
+        "value": "hd"
+      },
+      {
+        "name": "size",
+        "value": 56800
+      },
+      {
+        "name": "source",
+        "value": "artgrid"
+      },
+      {
+        "name": "themecategory",
+        "value": "branche_electronics"
+      },
+      {
+        "name": "type",
+        "value": "video"
+      },
+      {
+        "name": "version",
+        "value": 1
+      }
+    ],
+    "createdAt": "2021-03-10T13:58:59.952Z",
+    "mediaType": "video",
+    "updatedAt": "2021-07-27T10:46:35.720Z",
+    "url": "https://payevertesting.blob.core.windows.net/miscellaneous/7583743e-d8f0-416c-be93-eeef4a936908-woman_wearing_VR_headset_and_touching_headset_and_hair_in_colorful_room_by_Omri_Ohana_Artgrid-HD_H264-HD.mp4",
+    "mongoId": "011f5bbc-7c97-4248-80ab-41ca5a39abdf",
+    "id": "011f5bbc-7c97-4248-80ab-41ca5a39abdf"
+  }
+]

@@ -1,0 +1,11 @@
+scenarios:
+  - name: "Spotlight"
+    flow:
+      - log: "POST /api/Login"
+      - function: "auth"
+      - function: "enableBusiness"
+      - log: "GET /api/business/{{ businessId }}/spotlight/search?query={{ query }}"
+      - get:
+          url: "/api/business/{{ businessId }}/spotlight/search?query={{ query }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

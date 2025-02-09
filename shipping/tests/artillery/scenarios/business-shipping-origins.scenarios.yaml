@@ -1,0 +1,43 @@
+scenarios:
+  - name: "Business Shipping Origins"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/business/{{ businessId }}/shipping-origin"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-origin"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ shippingOriginName }}"
+            streetName: "test"
+            streetNumber: "test"
+            city: "test"
+            zipCode: "test"
+            countryCode:  "test"
+          capture:
+            - json: "$._id"
+              as: "shippingOriginId"
+      - log: "GET /api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ shippingOriginName }}"
+            streetName: "test"
+            streetNumber: "test"
+            city: "test"
+            zipCode: "test"
+            countryCode:  "test"
+      - log: "DELETE /api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/shipping-origin/{{ shippingOriginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

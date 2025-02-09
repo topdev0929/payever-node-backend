@@ -1,0 +1,83 @@
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/admin/cube"
+      - get:
+          url: "/api/admin/cube"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/businesses"
+      - get:
+          url: "/api/admin/businesses"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/cube/{{ id }}"
+      - post:
+          url: "/api/admin/cube/{{ id }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/dashboard"
+      - get:
+          url: "/api/admin/dashboard"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/dashboard/{{ dashboardId }}"
+      - get:
+          url: "/api/admin/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/dashboard"
+      - post:
+          url: "/api/admin/dashboard"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/admin/dashboard/{{ dashboardId }}"
+      - put:
+          url: "/api/admin/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/dashboard/{{ dashboardId }}"
+      - delete:
+          url: "/api/admin/dashboard/{{ dashboardId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/dashboard/{{ dashboardId }}/widget"
+      - get:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId}}"
+      - get:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/dashboard/{{ dashboardId }}/widget"
+      - post:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}"
+      - put:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            widgetSettings: 
+              type: "{{ widgetSettingsType }}"
+      - log: "DELETE /api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}"
+      - delete:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}/settings"
+      - put:
+          url: "/api/admin/dashboard/{{ dashboardId }}/widget/{{ widgetId }}/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            widgetSettings: 
+              type: "{{ widgetSettingsType }}"

@@ -1,0 +1,65 @@
+namespace: default
+priorityClass: app-7stars
+enableRmqFallbackRepub: false
+image:
+  nodejs: registry.devpayever.com/nodejs-backend/connect
+  pullSecretName: regsecret
+
+service:
+  externalPort: 80
+  containerPort: 3000
+  statusPort: 8081
+
+test:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 100Mi
+    limits:
+      memory: 450Mi
+stage:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 180Mi
+    limits:
+      memory: 550Mi
+jobResources:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      memory: 450Mi
+live:
+  resources:
+    requests:
+      cpu: 64m
+      memory: 180Mi
+    limits:
+      memory: 550Mi
+liveJob:
+  resources:
+    requests:
+      cpu: 500m
+      memory: 450Mi
+    limits:
+      memory: 1000Mi
+
+#medium
+replicas:
+  http:
+    min: 4
+    max: 20
+  consumer:
+    min: 4
+    max: 20
+  consumer_folder_export:
+    min: 1
+    max: 1
+  cron: 1
+hpa:
+  cpu:
+    tarUti: 75
+  mem:
+    tarUti: 85

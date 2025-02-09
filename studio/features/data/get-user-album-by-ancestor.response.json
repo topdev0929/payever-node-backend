@@ -1,0 +1,27 @@
+[
+  {
+    "ancestors": [
+      "0ebb5ea6-61de-46f7-833f-599018b7861f"
+    ],
+    "_id": "256fa624-6f5d-40a1-94a6-d50fe913f653",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:00.000Z",
+    "name": "album 1 level 1",
+    "parent": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "updatedAt": "2020-01-01T00:00:00.000Z",
+    "__v": 0
+  },
+  {
+    "ancestors": [
+      "0ebb5ea6-61de-46f7-833f-599018b7861f",
+      "256fa624-6f5d-40a1-94a6-d50fe913f653"
+    ],
+    "_id": "a03687bb-e7b0-434d-b871-0a7bdecd5c6e",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:00.000Z",
+    "name": "album 1 level 2",
+    "parent": "256fa624-6f5d-40a1-94a6-d50fe913f653",
+    "updatedAt": "2020-01-01T00:00:00.000Z",
+    "__v": 0
+  }
+]

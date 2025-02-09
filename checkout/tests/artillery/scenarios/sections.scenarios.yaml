@@ -1,0 +1,37 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Sections"
+    flow:
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/sections"
+      - post:
+          url: "/api/sections"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            code: "user"
+            fixed: True
+            defaultEnabled: True
+            excluded_channels: []
+            subsections: []
+
+      - log: "GET /api/sections"
+      - get:
+          url: "/api/sections"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

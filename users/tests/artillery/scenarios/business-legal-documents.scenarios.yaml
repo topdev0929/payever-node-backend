@@ -1,0 +1,18 @@
+scenarios:
+  - name: "Business Legal Documents"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "GET /api/business/{{ businessId }}/legal-document/{{ type }}"
+      - get:
+          url: "/api/business/{{ businessId }}/legal-document/{{ type }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/legal-document/{{ type }}"
+      - put:
+          url: "/api/business/{{ businessId }}/legal-document/{{ type }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            content: "{{ content }}"

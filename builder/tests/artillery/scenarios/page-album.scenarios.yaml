@@ -1,0 +1,58 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "POST /api/application/{{applicationId}}/theme/{{themeId}}/page-album"
+      - post:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ albumName }}"
+            description: "{{ albumDescription }}"
+
+      - log: "PATCH /api/application/{{applicationId}}/theme/{{themeId}}/page-album/{{pageAlbumId}}"
+      - patch:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album/{{pageAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ albumNameUpdated }}"
+
+      - log: "POST /api/application/{{applicationId}}/page/{{pageId}}/album/{{pageAlbumId}}"
+      - post:
+          url: "/api/application/{{applicationId}}/page/{{pageId}}/album/{{pageAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/theme/{{themeId}}/page-album"
+      - get:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/theme/{{themeId}}/page-album/tree"
+      - get:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/theme/{{themeId}}/page-album/flattree"
+      - get:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album/flattree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/theme/{{themeId}}/page-album/{{pageAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/theme/{{themeId}}/page-album/{{pageAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

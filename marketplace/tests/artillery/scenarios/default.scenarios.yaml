@@ -1,0 +1,48 @@
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/products?page=1&perPage=5"
+      - get:
+          url: "/api/business/{{ businessId }}/products?page=1&perPage=5"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/products"
+      - post:
+          url: "/api/business/{{ businessId }}/products"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ productId }}"
+            price: 100
+            title: "Test product"
+            type: "physical"
+      - log: "PATCH /api/business/{{ businessId }}/products/{{ productId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/products/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            price: 100
+            title: "Test product"
+            type: "physical"
+      - log: "POST /api/business/{{ businessId }}/products/{{ productId }}/subscription"
+      - post:
+          url: "/api/business/{{ businessId }}/products/{{ productId }}/subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            product:
+              id: "{{ subscriptionProductId }}"
+      - log: "DELETE /api/business/{{ businessId }}/products/{{ productId }}/subscription"
+      - delete:
+          url: "/api/business/{{ businessId }}/products/{{ productId }}/subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/products/{{ productId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/products/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

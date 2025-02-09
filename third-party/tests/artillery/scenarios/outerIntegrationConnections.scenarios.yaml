@@ -1,0 +1,28 @@
+scenarios:
+  - name: "Outer Integration Connection"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}"
+      - get:
+          url: "/api/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/integration/{{ integrationName }}"
+      - post:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            externalId: "{{ externalId }}"
+      - log: "POST /api/integration/{{ integrationName }}/action/{{ action }}"
+      - post:
+          url: "/api/integration/{{ integrationName }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/connection/authorization/{{ authorizationId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/connection/authorization/{{ authorizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

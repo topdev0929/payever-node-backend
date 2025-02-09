@@ -1,0 +1,43 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/snippet"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/snippet"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: some code
+            type: google
+
+      - log: "PATCH /api/business/{{businessId}}/application/{{applicationId}}/snippet/{{snippetId}}"
+      - patch:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/snippet/{{snippetId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            code: some code upd
+            type: google
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/snippet"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/snippet"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/snippet/{{snippetId}}"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/snippet/{{snippetId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

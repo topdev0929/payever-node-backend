@@ -1,0 +1,29 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+  http:
+    timeout: 150
+
+scenarios:
+  - name: "Comment"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/business/{{ businessId }}/blog/{{ blogId }}/comments"
+      - get:
+          url: "/api/business/{{ businessId }}/blog/{{ blogId }}/comments"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{ businessId }}/blog/{{ blogId }}/comments"
+      - post:
+          url: "/api/business/{{ businessId }}/blog/{{ blogId }}/comments"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            content: "test"

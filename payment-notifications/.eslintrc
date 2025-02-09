@@ -1,0 +1,4 @@
+{
+  "extends": "./node_modules/@pe/dev-kit/.eslintrc.js",
+  "ignorePatterns": ["module", "*.js", "index.ts"]
+}

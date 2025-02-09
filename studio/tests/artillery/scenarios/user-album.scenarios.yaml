@@ -1,0 +1,89 @@
+scenarios:
+  - name: "User Album"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}/album"
+      - get:
+          url: "/api/{{ businessId }}/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/album"
+      - post:
+          url: "/api/{{ businessId }}/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            name: "{{ albumName }}"
+          capture:
+            - json: "$._id"
+              as: "albumId"
+      - log: "GET /api/{{ businessId }}/album/{{ albumId }}"
+      - get:
+          url: "/api/{{ businessId }}/album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/{{ businessId }}/album/{{ albumId }}"
+      - patch:
+          url: "/api/{{ businessId }}/album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            name: "{{ albumName }}"
+            albumId: "{{ albumId }}"
+      - log: "GET /api/{{ businessId }}/album/parent/{{ albumId }}"
+      - get:
+          url: "/api/{{ businessId }}/album/parent/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/album/ancestor/{{ albumId }}"
+      - get:
+          url: "/api/{{ businessId }}/album/ancestor/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/medias/add/album/{{ albumId }}"
+      - post:
+          url: "/api/{{ businessId }}/medias/add/album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            ids:
+              - "{{ albumId }}"
+      - log: "POST /api/{{ businessId }}/medias/remove/album"
+      - post:
+          url: "/api/{{ businessId }}/medias/remove/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            ids:
+              - "{{ albumId }}"
+      - log: "POST /api/{{ businessId }}/medias/delete"
+      - post:
+          url: "/api/{{ businessId }}/medias/delete"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            ids:
+              - "{{ albumId }}"
+      - log: "DELETE /api/{{ businessId }}/album/{{ albumId }}"
+      - delete:
+          url: "/api/{{ businessId }}/album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/album/by-user-attribute"
+      - post:
+          url: "/api/{{ businessId }}/album/by-user-attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            attributes:
+              - attribute: "{{ attributeId }}"
+                value: "{{ attributeValue }}"
+      - log: "GET /api/{{ businessId }}/album/by-user-attribute/{{ attributeId }}/{{ attributeValue }}"
+      - get:
+          url: "/api/{{ businessId }}/album/by-user-attribute/{{ attributeId }}/{{ attributeValue }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

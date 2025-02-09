@@ -1,0 +1,3 @@
+# web-widgets
+
+jiraKey: WWM

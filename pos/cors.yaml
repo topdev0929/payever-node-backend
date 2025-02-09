@@ -1,0 +1,4 @@
+name: nodejs-backend-pos
+endpoints:
+  - pos-backend
+  - cart-frontend.{{ $env }}/hashmap.json

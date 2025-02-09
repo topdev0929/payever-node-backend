@@ -1,0 +1,30 @@
+input GetCategoriesListInput {
+    businessId: String!
+    name: String
+}
+
+input CategoryAttributeInput {
+    name: String!
+    isDefault: Boolean
+    type: String!
+}
+
+input CreateCategoryInput {
+    name: String!
+    businessId: String!
+    parent: String
+    description: String
+    slug: String
+    image: String
+    attributes: [CategoryAttributeInput]
+}
+
+input UpdateCategoryInput {
+    name: String!
+    businessId: String!
+    parent: String
+    description: String
+    slug: String
+    image: String
+    attributes: [CategoryAttributeInput]
+}

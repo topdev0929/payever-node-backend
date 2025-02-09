@@ -1,0 +1,160 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "POST /api/application/{{applicationId}}/shape-album"
+      - post:
+          url: "/api/application/{{applicationId}}/shape-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: '{{randomName}}'
+            type: test
+            parent: '{{shapeAlbumId}}'
+
+      - log: "PATCH /api/application/{{applicationId}}/shape-album/{{shapeAlbumId}}"
+      - patch:
+          url: "/api/application/{{applicationId}}/shape-album/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: testupdated
+
+      - log: "GET /api/application/{{applicationId}}/shape-album"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/template"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/template/type/test"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/template/type/test"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/template/{{shapeTemplateAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/template/{{shapeTemplateAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/template/parent/{{shapeTemplateParentAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/template/parent/{{shapeTemplateParentAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/type/test"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/type/test"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/{{shapeAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/parent/{{shapeAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/parent/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape-album/ancestor/{{shapeAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape-album/ancestor/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/application/{{applicationId}}/shape"
+      - post:
+          url: "/api/application/{{applicationId}}/shape"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: Untitled_1
+            description: No tag
+            image: 'http://image.url'
+
+          capture:
+            - json: "$._id"
+              as: "shapeId"
+      - log: "{{ shapeId }}"
+
+      - log: "PATCH /api/application/{{applicationId}}/shape/{{shapeId}}"
+      - patch:
+          url: "/api/application/{{applicationId}}/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: Untitled_2
+
+      - log: "GET /api/application/{{applicationId}}/shape"
+      - get:
+          url: "/api/application/{{applicationId}}/shape"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/{{shapeId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/template"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/template/album"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/template/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/template/album/{{shapeTemplateAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/template/album/{{shapeTemplateAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PUT /api/application/{{applicationId}}/shape/install/template/{{templateShapeId}}"
+      - put:
+          url: "/api/application/{{applicationId}}/shape/install/template/{{templateShapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/album"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/application/{{applicationId}}/shape/album/{{shapeTemplateAlbumId}}"
+      - get:
+          url: "/api/application/{{applicationId}}/shape/album/{{shapeTemplateAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE shapeId /api/application/{{applicationId}}/shape/{{shapeId}}"
+      - delete:
+          url: "/api/application/{{applicationId}}/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

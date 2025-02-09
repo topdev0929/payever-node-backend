@@ -1,0 +1,31 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Widgets"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "accessToken: {{accessToken}}"
+      - function: "enableBusiness"
+
+      - log: "GET /api/business/{{businessId}}/widgets"
+      - get:
+          url: "/api/business/{{businessId}}/widgets"
+          headers:
+            authorization: "Bearer {{accessToken}}"
+
+      - log: "GET /api/business/{{businessId}}/widgets/{{widgetId}}"
+      - get:
+          url: "/api/business/{{businessId}}/widgets/{{widgetId}}"
+          headers:
+            authorization: "Bearer {{accessToken}}"
+
+      - log: "GET /api/business/{{businessId}}/widgets/type/{{widgetType}}"
+      - get:
+          url: "/api/business/{{businessId}}/widgets/type/{{widgetType}}"
+          headers:
+            authorization: "Bearer {{accessToken}}"

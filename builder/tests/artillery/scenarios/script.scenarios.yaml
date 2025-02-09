@@ -1,0 +1,96 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/script/theme/{{themeId}}/all"
+      - get:
+          url: "/api/script/theme/{{themeId}}/all"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+      - log: "GET /api/script/theme/{{themeId}}/global"
+      - get:
+          url: "/api/script/theme/{{themeId}}/global"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+      - log: "GET /api/script/theme/{{themeId}}/page/{{pageId}}"
+      - get:
+          url: "/api/script/theme/{{themeId}}/page/{{pageId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+      - log: "GET /api/script/{{scriptId2}}"
+      - get:
+          url: "/api/script/{{scriptId2}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+
+      - log: "GET /api/script/theme/{{themeId}}/all/version/1"
+      - get:
+          url: "/api/script/theme/{{themeId}}/all/version/1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+      - log: "GET /api/script/theme/{{themeId}}/global/version/1"
+      - get:
+          url: "/api/script/theme/{{themeId}}/global/version/1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1
+
+      - log: "GET /api/script/theme/{{themeId}}/page/{{pageId}}/version/1"
+      - get:
+          url: "/api/script/theme/{{themeId}}/page/{{pageId}}/version/1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+      - think: 1

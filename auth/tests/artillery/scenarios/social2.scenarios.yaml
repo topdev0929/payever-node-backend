@@ -1,0 +1,86 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Social"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/social/facebook/login"
+      - get:
+          url: "/api/social/facebook/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/facebook/register"
+      - get:
+          url: "/api/social/facebook/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/facebook/redirect/login"
+      - get:
+          url: "/api/social/facebook/redirect/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/facebook/redirect/register"
+      - get:
+          url: "/api/social/facebook/redirect/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/google/login"
+      - get:
+          url: "/api/social/google/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/google/register"
+      - get:
+          url: "/api/social/google/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/google/redirect/login"
+      - get:
+          url: "/api/social/google/redirect/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/google/redirect/register"
+      - get:
+          url: "/api/social/google/redirect/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/social/accounts"
+      - get:
+          url: "/api/social/accounts"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/social/accounts/{{socialId}}" #403
+      - delete:
+          url: "/api/social/accounts/{{socialId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/social/accounts/{{socialId}}/block"  #403
+      - patch:
+          url: "/api/social/accounts/{{socialId}}/block"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/social/accounts/{{socialId}}/unblock"  #403
+      - patch:
+          url: "/api/social/accounts/{{socialId}}/unblock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

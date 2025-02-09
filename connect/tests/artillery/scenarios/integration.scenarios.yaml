@@ -1,0 +1,74 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/integration"
+      - get:
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "POST /api/integration"
+      - post:
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            default: false
+            name: "{{ integrationName }}"
+            category: "{{ category }}"
+      
+      - log: "GET /api/integration/{{ integrationName }}"
+      - get:
+          url: "/api/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/integration/category/{{ category }}"
+      - get:
+          url: "/api/integration/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "PATCH /api/integration/{{ integrationName }}/rate"
+      - patch:
+          url: "/api/integration/{{ integrationName }}/rate"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            rating: 5
+      - log: "PATCH /api/integration/{{ integrationName }}/add-review"
+      - patch:
+          url: "/api/integration/{{ integrationName }}/add-review"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            title: "test"
+            text: "test"
+            rating: 0
+      - log: "PATCH /api/integration/{{ integrationName }}/add-version"
+      - patch:
+          url: "/api/integration/{{ integrationName }}/add-version"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            version: "test"
+            description: "test"
+            versionDate: "01.01.2020"
+      - log: "GET /api/integration/{{ integrationName }}/versions"
+      - get:
+          url: "/api/integration/{{ integrationName }}/versions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

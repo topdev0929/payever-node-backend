@@ -1,0 +1,34 @@
+{
+  "license": "UNLICENSED",
+  "repository": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/log-collector.git",
+  "description": "Log collector microservice",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node --max_old_space_size=8096 --expose-gc dist/src/cli.js",
+    "consume:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js --queue=async_events_log_collector\"",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint",
+    "migrations": "./node_modules/.bin/db-migrate",
+    "migrations:prod": "db-migrate --migrations-dir=dist/migrations",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/**/*.spec.ts"
+  },
+  "dependencies": {
+    "@pe/common-sdk": "^5.0.0",
+    "@pe/nest-kit": "^10.0.5",
+    "date-fns": "^2.28.0",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "@pe/cucumber-sdk": "^6.0.0",
+    "@pe/dev-kit": "3.0.5"
+  },
+  "nyc": {
+    "functions": 100
+  }
+}

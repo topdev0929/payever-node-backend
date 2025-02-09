@@ -1,0 +1,29 @@
+scenarios:
+  - name: "Scene Info"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/scene/{{ sceneInfoId }}"
+      - post:
+          url: "/api/scene/{{ sceneInfoId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            tags: []
+            name: "{{ sceneName }}"
+      - log: "GET /api/scene/{{ sceneInfoId }}"
+      - get:
+          url: "/api/scene/{{ sceneInfoId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/scene/video?video="
+      - get:
+          url: "/api/scene/video?video="
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/scene/{{ sceneInfoId }}"
+      - delete:
+          url: "/api/scene/{{ sceneInfoId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

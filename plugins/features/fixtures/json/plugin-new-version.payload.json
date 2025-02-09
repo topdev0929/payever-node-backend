@@ -1,0 +1,6 @@
+{
+  "filename": "https://payeverproduction.blob.core.windows.net/magento2-payments-3.0.0.zip",
+  "version": "3.0.0",
+  "minCmsVersion": "2.1.0",
+  "maxCmsVersion": "2.4.0"
+}

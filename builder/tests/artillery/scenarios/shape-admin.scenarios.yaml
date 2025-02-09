@@ -1,0 +1,104 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+
+      - log: "POST /api/template/shape"
+      - post:
+          url: "/api/template/shape"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: '{{randomName}}'
+
+          capture:
+            - json: "$._id"
+              as: "shapeId"
+
+      - log: "shapeId {{ shapeId }}"
+
+      - log: "GET /api/template/shape"
+      - get:
+          url: "/api/template/shape"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/template/shape/{{shapeId}}"
+      - get:
+          url: "/api/template/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/template/shape/{{shapeId}}"
+      - patch:
+          url: "/api/template/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: '{{randomName}} update'
+
+      - log: "DELETE /api/template/shape/{{shapeId}}"
+      - delete:
+          url: "/api/template/shape/{{shapeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/template/shape-album"
+      - post:
+          url: "/api/template/shape-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: '{{randomName}}'
+            type: test
+            parent: '{{shapeAlbumId}}'
+
+          capture:
+            - json: "$._id"
+              as: "shapeAlbumId"
+      - log: "shapeAlbumId {{ shapeAlbumId }}"
+
+      - log: "GET /api/template/shape-album/{{shapeAlbumId}}"
+      - get:
+          url: "/api/template/shape-album/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/template/shape-album/parent/{{shapeAlbumId}}"
+      - get:
+          url: "/api/template/shape-album/parent/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/template/shape-album/ancestor/{{shapeAlbumId}}"
+      - get:
+          url: "/api/template/shape-album/ancestor/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/template/shape-album/type/test"
+      - get:
+          url: "/api/template/shape-album/type/test"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/template/shape-album/{{shapeAlbumId}}"
+      - patch:
+          url: "/api/template/shape-album/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: '{{randomName2}}'
+
+      - log: "DELETE /api/template/shape-album/{{shapeAlbumId}}"
+      - delete:
+          url: "/api/template/shape-album/{{shapeAlbumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

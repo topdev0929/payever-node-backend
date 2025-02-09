@@ -1,0 +1,18 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Value"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/values"
+      - get: 
+          url: "/api/values"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

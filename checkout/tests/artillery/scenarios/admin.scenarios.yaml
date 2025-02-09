@@ -1,0 +1,136 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "GET /api/business/{{ businessId }}/checkout"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout"
+          afterResponse: "defineCheckoutId"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/checkout/{{ checkoutId }}/integration"
+      - get:
+          url: "/api/business/{{ businessId }}/checkout/{{ checkoutId }}/integration"
+          afterResponse: "defineIntegrationName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/admin/channel-sets"
+      - get:
+          url: "/api/admin/channel-sets"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "POST /api/admin/channel-sets"
+      - post:
+          url: "/api/admin/channel-sets"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            id: "string"
+            business: "string"
+            active: true
+            customPolicy: true
+            enabledByDefault: true
+            name: "string"
+            originalId: "string"
+            policyEnabled: true
+            type: "string"
+
+      - log: "PATCH /api/admin/channel-sets/{{ channelSetId }}"
+      - patch:
+          url: "/api/admin/channel-sets/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            id: "string"
+            business: "string"
+            active: true
+            customPolicy: true
+            enabledByDefault: true
+            name: "string"
+            originalId: "string"
+            policyEnabled: true
+            type: "string"
+      
+      - log: "DELETE /api/admin/channel-sets/{{ channelSetId }}"
+      - delete:
+          url: "/api/admin/channel-sets/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+        
+      - log: "GET /api/admin/integrations"
+      - get:
+          url: "/api/admin/integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "POST /api/admin/integrations"
+      - post:
+          url: "/api/admin/integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json: 
+            name: "string"
+            category: "string"
+            displayOptions:
+              json:
+                title: "string"
+                icon: "string"
+                order: 0
+      
+      - log: "GET /api/admin/integrations/{{ integrationName }}"
+      - get: 
+          url: "/api/admin/integrations/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "PATCH /api/admin/integrations/{{ integrationId }}"
+      - patch:
+          url: "/api/admin/integrations/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            name: "string"
+            category: "string"
+            displayOptions:
+              json:
+                title: "string"
+                icon: "string"
+                order: 0
+      
+      - log: "DELETE /api/admin/integrations/{{ integrationId }}"
+      - delete:
+          url: "/api/admin/integrations/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+             
+
+

@@ -1,0 +1,14 @@
+<p><b>Dear {{ firstName }} {{ lastName }}, </b></p>
+<p>The company <b>{{ businessName }}</b> is asking you to take ownership of their business account. </p>
+<p>If you want to accept their request, please click on the link below and follow the instructions. </p>
+<p>After doing so, you will be the owner of the <b>{{ businessName }}</b> business account and will have full rights and
+  access to all services.</p>
+<p>
+  <a 
+    class="button-black-rounded"
+    style="text-decoration: none;display: inline-block;padding: 8px 8px;border-radius: 6px;color: #0084ffff;border: 1px solid #0084ffff;"
+    href="{{ invitationLink }}" target="_blank"
+  >
+    Join {{ businessName }}
+  </a>
+</p>

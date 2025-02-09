@@ -1,0 +1,15 @@
+<p>Dear Mr / Mrs {{ payment.address.last_name }}</p>
+<p>On day {{ payment.created_at|format_date }} you have decided to purchase on {{business.companyDetails.urlWebsite}}. In relation to the purchased order number {{payment.reference}}, please note that T&C for BNPL which you have accepted will apply.</p>
+<p>Please find below the account details for your payment:</p>
+<ul>
+  <li>Account holder: {{accountHolder}}</li>
+  <li>Account number: {{accountNumber}}</li>
+  <li>Amount: {{payment.total}}</li>
+  <li>Due Date: {{dueAt|format_date}}</li>
+</ul>
+<p>Please process the payment no later than the {{dueAt|format_date}} including the order number as the concept of the transfer.</p>
+<p>In case you have made several purchase orders, please make separate payments including the relevant order number in each of them.</p>
+<p>If you have any questions, do not hesitate to contact us at the following email: {{business.user.email}}. For questions related to the products, please contact {{business.companyDetails.urlWebsite}}.</p>
+<p>We hope you enjoy your purchase.</p>
+<p>Kind regards,<br>
+Santander S.A.</p>

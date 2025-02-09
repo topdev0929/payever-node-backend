@@ -1,0 +1,22 @@
+node_modules
+dist
+coverage
+.vscode
+data
+log.*
+
+/.idea/
+.env
+.nyc_output
+pacts
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json
+
+/data
+
+.npmrc
+
+__pycache__
+*.pyc

@@ -1,0 +1,61 @@
+import { integrationsFixture } from '../fixtures/integrations.fixture';
+import { Db, MongoClient } from 'mongodb';
+import * as dotenv from 'dotenv';
+
+const integrationsCollection: string = 'integrations';
+
+async function up(db: any): Promise<void> {
+  const client: MongoClient = new MongoClient(db.connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+  await client.connect();
+  const connectDB: Db = await client.db();
+
+  const fixtures = integrationsFixture.filter((integration: any) => {
+    return [
+      'zinia_bnpl_de',
+      'zinia_pos_de',
+      'zinia_installment_de',
+      'zinia_slice_three_de',
+      'zinia_bnpl',
+      'zinia_pos',
+      'zinia_installment',
+      'zinia_slice_three',
+    ].includes(integration.name);
+  });
+
+  for (const fixture of fixtures) {
+    if (fixture.connect?.url) {
+      fixture.connect.url = getServiceUrl(fixture.connect.url);
+    }
+    await connectDB.collection(integrationsCollection).findOneAndUpdate(
+      {
+        _id: fixture._id,
+      },
+      {
+        $set: fixture,
+      },
+    );
+  }
+
+  return null;
+}
+
+function down(): Promise<void> {
+  return null;
+}
+
+function getServiceUrl(identifier: string): string {
+  dotenv.config();
+  const regex: RegExp = /\${(\w+)}/g;
+  let url: string = identifier;
+  let matches: string[] = regex.exec(url);
+
+  while (matches) {
+    url = url.replace(`\${${matches[1]}}`, process.env[matches[1]]);
+    matches = regex.exec(url);
+  }
+
+  return url;
+}
+
+module.exports.up = up;
+module.exports.down = down;

@@ -1,0 +1,72 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Schedule"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/schedule-settlement/{{ businessId }}?skip=0&limit=1" 
+      - get: 
+          url: "/api/schedule-settlement/{{ businessId }}?skip=0&limit=1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/schedule-settlement/{{ businessId }}" 
+      - post:
+          url: "/api/schedule-settlement/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            email: "{{ email }}"
+            duration: "DAILY"
+            paymentMethod: "test"
+            enabled: true
+            format: "xlsx"
+
+      - log: "Put /api/schedule-settlement/{{ businessId }}/{{ scheduleId }}" 
+      - put:
+          url: "/api/schedule-settlement/{{ businessId }}/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            email: "{{ email }}"
+            duration: "DAILY"
+            paymentMethod: "test"
+            enabled: true
+            format: "xlsx"
+      
+      - log: "Get /api/schedule-settlement/{{ businessId }}/{{ scheduleId }}" 
+      - get:
+          url: "/api/schedule-settlement/{{ businessId }}/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Delete /api/schedule-settlement/{{ businessId }}/{{ scheduleId }}" 
+      - delete:
+          url: "/api/schedule-settlement/{{ businessId }}/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/schedule-settlement/{{ businessId }}/{{ scheduleId }}/enable" 
+      - patch:
+          url: "/api/schedule-settlement/{{ businessId }}/{{ scheduleId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Patch /api/schedule-settlement/{{ businessId }}/{{ scheduleId }}/disable" 
+      - patch:
+          url: "/api/schedule-settlement/{{ businessId }}/{{ scheduleId }}/disable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

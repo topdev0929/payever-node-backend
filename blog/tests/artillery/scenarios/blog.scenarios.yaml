@@ -1,0 +1,27 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+  http:
+    timeout: 150
+
+scenarios:
+  - name: "Blog"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/business/{{ businessId }}/blog"
+      - get:
+          url: "/api/business/{{ businessId }}/blog"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/blog/{{ defaultBlogId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/blog/{{ defaultBlogId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

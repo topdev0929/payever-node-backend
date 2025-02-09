@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title></title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+  <style type="text/css">
+    /*////// RESET STYLES //////*/
+    body,
+    #bodyTable,
+    #bodyCell {
+      font-family: 'Roboto', -apple-system, sans-serif;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      padding: 4px;
+    }
+
+    img,
+    a img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display emails at full width. */
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display line heights normally. */
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    td {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    /* Remove spacing between tables in Outlook 2007 and up. */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Force Outlook 2007 and up to provide a "view in browser" message. */
+    img {
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    /* Force IE to smoothly render resized images. */
+    body,
+    table,
+    td,
+    p,
+    a,
+    li,
+    blockquote {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .table {
+      width: 1000px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a9a9a9;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .value-right {
+      font-size: 16px;
+      font-weight: 400;
+      color: #000000;
+      text-align: right;
+    }
+
+    .link {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5587ca;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #a9a9a9;
+    }
+
+    .total-table-wrapper {
+      margin-top: 25px;
+      border-top: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+    }
+
+    .total-table-title {
+      font-size: 14px;
+      color: #a9a9a9;
+      text-transform: uppercase;
+    }
+
+    .product-table td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .total-table {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .total-table .value {
+      padding-right: 40px;
+    }
+
+    .total-table td {
+      padding-right: 0px;
+    }
+
+    .bottom-description {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      font-size: 12px;
+      text-align: center;
+      color: #a9a9a9;
+      line-height: 1.63;
+    }
+
+    .logo {
+      max-height: 45px;
+      max-width: 300px;
+    }
+
+    .mail-title {
+      font-size: 38px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    .data-table {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .data-table td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border:1px solid #ffffff;
+    }
+
+    .product-table-left-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .product-table-right-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .product-table-middle-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .detail-table {
+      padding: 10px 0px 0px 0px;
+      border: 0px;
+    }
+    .detail-table td {
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+    }
+
+  </style>
+</head>
+<body>
+
+<table cellpadding="4" style="width:100%;">
+  <tbody>
+  <tr>
+    <td align="center">
+
+
+      <table class="table" style="width:1000px">
+        <thead>
+        <tr>
+          <th align="left" class="mail-title">RECHNUNG</th>
+          <th align="right">
+            {% if business.logo is defined %}
+            <img
+              src="{{ business.logo|media_url('images') }}"
+              class="logo"
+            />
+            {% endif %}
+          </th>
+        </tr>
+        </thead>
+      </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+
+      <table class="table data-table" style="width:1000px">
+        <tbody>
+        <tr style="height:20px" >
+          <td style="width:50%">
+            <p class="title">Bestellnummer</p>
+            <p class="value">{{ invoice.transactionId }}</p>
+          </td>
+          <td style="width:50%">
+            {% if invoice.invoiceId %}
+            <p class="title">Rechnungsnumber</p>
+            <p class="value">{{ invoice.invoiceId }}</p>
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr style="height:20px" >
+          <td style="width:50%">
+            <p class="title">Bestelldatum</p>
+            <p class="value">{{ invoice.issueDate|format_date }}</p>
+            <p class="title">Rechnungsdatum</p>
+            <p class="value">{{ invoice.dueDate|format_date }}</p>
+          </td>
+          <td style="width:50%">
+            <p class="title">Rechnungsadresse</p>
+            {% if invoice.customer.shippingAddress %}
+              <p class="value">{{invoice.customer.shippingAddress.firstName}} {{invoice.customer.shippingAddress.lastName}}
+                {% if invoice.customer.shippingAddress.company is defined %}, {{invoice.customer.shippingAddress.company}}{% endif %}
+              </p>
+              <p class="value">{{ invoice.customer.shippingAddress.streetName }} {{ invoice.customer.shippingAddress.streetNumber }}</p>
+              <p class="value">{{ invoice.customer.shippingAddress.zipCode }} {{ invoice.customer.shippingAddress.city }}</p>
+              <p class="value">{{ invoice.customer.shippingAddress.countryCode }}</p>
+            {% else %}
+              <p class="value">{{invoice.customer.billingAddress.firstName}} {{invoice.customer.billingAddress.lastName}}
+                {% if invoice.customer.billingAddress.company is defined %}, {{invoice.customer.billingAddress.company}}{% endif %}
+              </p>
+              <p class="value">{{ invoice.customer.billingAddress.streetName }} {{ invoice.customer.billingAddress.streetNumber }}</p>
+              <p class="value">{{ invoice.customer.billingAddress.zipCode }} {{ invoice.customer.billingAddress.city }}</p>
+              <p class="value">{{ invoice.customer.billingAddress.countryCode }}</p>
+            {% endif %}
+          </td>
+        </tr>
+
+
+        <tr style="height:20px" >
+          <td style="width:50%">
+            <p class="title">Zahlung</p>
+            <p class="value">
+              {{invoice.total|number_format_currency(invoice.currency)}} {{ invoice.paymentMethod|payment_option }}
+            </p>
+            <table class="detail-table" style="width:435px">
+              <tbody>
+              {% for value in invoice.paymentInfo.values %}
+              <tr>
+                <td>{{value.title}}:</td>
+                <td>{% if value.value is defined %} {{value.value}} {% endif %}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <p class="value">{{invoice.paymentInfo.description}}</p>
+
+          </td>
+          <td style="width:50%">
+            <p class="title">Lieferadresse</p>
+            {% if invoice.customer.billingAddress %}
+              <p class="value">{{invoice.customer.billingAddress.firstName}} {{invoice.customer.billingAddress.lastName}}
+                {% if invoice.customer.billingAddress.company is defined %}, {{invoice.customer.billingAddress.company}}{% endif %}
+              </p>
+              <p class="value">{{ invoice.customer.billingAddress.streetName }} {{ invoice.customer.billingAddress.streetNumber }}</p>
+              <p class="value">{{ invoice.customer.billingAddress.zipCode }} {{ invoice.customer.billingAddress.city }}</p>
+              <p class="value">{{ invoice.customer.billingAddress.countryCode }}</p>
+            {% endif %}
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+
+      <table class="table product-table" style="margin-top:30px">
+        <tbody>
+        <tr>
+          <td colspan="2" class="product-table-left-title">Artikel</td>
+          <td class="product-table-middle-title">Mwst</td>
+          <td class="product-table-middle-title">Einzelpreis</td>
+          <td class="product-table-middle-title">Anzahl</td>
+          <td class="product-table-right-title">Gesamrtpreis</td>
+        </tr>
+        {% for item in invoice.invoiceItems %}
+        <!-- ITEM START -->
+        <tr>
+          <td style="text-align: center">
+            {% if item.thumbnail is defined %}
+            <img
+              border="0"
+              src="{{ item.thumbnail }}"
+              width="100"
+              style="max-width:100px"
+            />
+            {% endif %}
+          </td>
+          <td style="padding-left:0;">
+            <p class="value">{{ item.title }}</p>
+          </td>
+          <td>
+            <p class="value-right">{{ item.vatRate }}%</p>
+          </td>
+          <td>
+            <p class="value-right">{{ item.price|number_format_currency(invoice.currency) }}</p>
+          </td>
+          <td>
+            <p class="value-right">{{ item.quantity }}</p>
+          </td>
+          <td>
+            <p class="value-right">{{ item.amount|number_format_currency(invoice.currency) }}</p>
+          </td>
+        </tr>
+        <!-- ITEM END -->
+        {% endfor %}
+        </tbody>
+      </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+
+      <table class="table total-table-wrapper">
+        <tbody>
+        <tr align="right">
+          <td>
+            <table class="total-table">
+              <tbody>
+              <tr>
+                <td>
+                  <p class="total-table-title">Zwischensumme</p>
+                </td>
+                <td>
+                  <p class="value-right">{{ (invoice.subtotal)|number_format_currency(invoice.currency) }}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="total-table-title">Versandkosten</p>
+                </td>
+                <td>
+                  <p class="value-right">{{ invoice.deliveryFee|number_format_currency(invoice.currency) }}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="total-table-title">Mehrwertsteuer</p>
+                </td>
+                <td>
+                  <p class="value-right">{{ invoice.vatAmount|number_format_currency(invoice.currency) }}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="total-table-title">Gesamtbetrag</p>
+                </td>
+                <td>
+                  <p class="value-right" style="font-weight:500;">{{ invoice.total|number_format_currency(invoice.currency) }}</p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+
+      <table cellpadding="4" style="width:800px;margin-bottom:50px">
+        <tbody>
+        <tr>
+          <td align="center">
+            <table class="table">
+              <tbody>
+              <tr align="center">Sofern nicht gesondert angegeben, entspricht das Leistungs- bzw. Lieferdatum dem Rechnungsdatum.  Sollten  Sie  noch  nicht  bezahlt  haben,  finden  Sie  oben  im  Abschnitt  Zahlung  die  Überweisungsdaten  und  einen Verwendungszweck, den Sie bitte bei Ihrer Überweisung immer mit angeben. Sollten sich in diesem Abschnitt keine Überweisungsdaten bzw. Anweisungen zur Zahlung befinden, wurde der Betrag bereits in Gänze bezahlt.</tr>
+              <tr align="center">
+                <td>
+                  <p class="bottom-description">
+                    {{ business.name }}
+                    {% if business.companyDetails.legalForm is defined and business.companyDetails.legalForm is not empty %}
+                    * {{ business.companyDetails.legalForm }}
+                    {% endif %}
+                    {% if business.companyAddress is defined %}
+                      {% if business.companyAddress.street is defined and business.companyAddress.street is not empty %}
+                       * {{ business.companyAddress.street }}
+                      {% endif %}
+                      {% if business.companyAddress.zipCode is defined and business.companyAddress.zipCode is not empty %}
+                       * {{ business.companyAddress.zipCode }}
+                      {% endif %}
+                      {% if business.companyAddress.city is defined and business.companyAddress.city is not empty %}
+                       * {{ business.companyAddress.city }}
+                      {% endif %}
+                      {% if business.companyAddress.country is defined and business.companyAddress.country is not empty %}
+                       * {{ business.companyAddress.country|country_name }}
+                      {% endif %}
+                      {% if business.contactDetails.phone is defined and business.contactDetails.phone is not empty %}
+                       * {{ business.contactDetails.phone }}
+                      {% endif %}
+                    {% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr align="center">
+                <td align="center" class="border-none">
+                  <a href="https://getpayever.com/" target="_blank" rel="noopener noreferrer">
+                    <img border="0"
+                         style="width: 107px; height: 24px"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAAAwCAYAAABt/oSxAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAA1qADAAQAAAABAAAAMAAAAAC1akfiAAAQP0lEQVR4Ae2bB9BWxRWGSUDALqCAdAUJWGM0NkzARBGcRGyxUAyKEjOWsY0NE4yMMaDGWDGWYEXsJSqWqFiCoDiKQCyI4iCCKCIWEEWT55V7mMO69373Kz9EuGfmZXdP291z9+zuvd9PvXoFFREoIlBEoIhAEYEiAkUEiggUESgiUESgiECtIvCDWjlyfhpQ3zDBV5RzwFJQUBGBNSYCtUgsJdG+YC+wPegK6gOjb6jMBbPAU+AeMBH8FxRURKCIQBCB7WjfBr4ASpJyMBv94aAJKKiIQBEBItAa3AV8IunK9wg4EfQBPwbNEnSi7A5OAneAz4HZfkT9FNAQFFREYI2NwOHM/GNgifEG9SNBU5CX1kGxP5gKzM9r1H8ECioisEZFQO9iI4AlwnzqOp3WApWSfPYDHwD5XQD2BAUVEVgjIqAEuAlYUk2g3qKGM2+Or4cS/7pSDqih78JVEYH/2wj4k2oMo2xcByPVV8SrgJJ3CegGCioi8L2NgE6jLNK7kE4r0WigthZ/GumDxT5An9xbAX2U0O9YM8FY8CbIIn1lPBjMAzsCfaKvlDbC8NdgEng1xYnG2BHoBNZPAnpnVN+1oE1x0hm0BPI9A7wLYrQlzG3BvUBfWT3tTUM/WTzmmWXU9YwPAOr/5Rx2jdDZA+ijk+bwGdBX3H8D+ShFej3oDTTn50spp8jt2U1ErmdSitqi0B20BhsC9f0WeAIsAnlpAxQPBLJ9KsVoPfh6rpsDxbPUmkZlRdKi03uPEulFsDZIIyXBw2ApkH4apiA7FKQltAb9WmKvB1kN6aFqHFqoCoJRYypHg1dAOM6v4T0JFNxK6RAMnwZKhtC/5j8YaAxGWsAao3QnGDMp9SXVfBwfyPI2r018aG67ZRi1QXYd+ARYn2H5ErLDQBZZf7LVxlYu/RCDyUD22uS0DtOoDwIlXzhOa+sL9C1Am2ceugsls90/MNiV9oNOLr3FoD0oi+5EW8b6JN4uxVLJNgrEFpFs06BgdAAx2gqmfZKvdIFr4fq+bTFop4kllNe1+sPo6v0vL+nU06li9lmlxqCxiPoCr6sTw0i3BZPNpe5lppNVbu3s5efYFGUlrcXc+ssqn0Vfp0OMJsE0W9XLpQMwMHuVe0UcNIP3aKDnbcL6EnSHRPyErP84nyMSYX3KkY4f+t4l0ctV6FpiyXJaikVL+C+AsKO8bX0N7Jbi+6jE72uUDVJ0stjrJPY2ln601ZffjeX7MnAmUBCfBNrVzUbl6yBtU0G0nNpTmw68reI3DlwIzgJXgDeA6Wgsu4EBjieZP80OCmSDaJdD/0DZ+vuKetuI8aVOx3QVh+eATh/FSFfUhcDkKmcBJW5IiqfX6x4qlGjrpmL2OrF8PGSq20cYa+nrdnUP0HivA9q8bQ2bvxvhKVHSKEyshijeD8xe5VTwABgD0jYqRHGSkZzMBjqVQhLP70y+43LqH+OnS+ictiZvi3BgRF6KFSbWGRjMBRqbHkpPEKOOMB8Cfg66ljSOKSc8yaYAbzOWtnzFqDfMGUD6GlO4EH1fioPpSl8PNe0ajWgF0gn6BbBxjV5BuqxxupOb3qPwNovo6rT8E1CCmu5M6s2Ap6Y0PgOmc58Xlqjv7OxkPzTQX4/2tEBnMW1t/rENuAv88YH+cNppFCbWeShqHNpoRoIOoGLSC5w9kLR7/fXoWOCqLZVAseQdlPQxlrJcChNrCQ40zgmgSQlnWrgXAz8vtdPoEgRe92+05SOLtPieB7KzsZkPn1jycUKiZ/JeYuagYeiYjcodAptdaS91OtrdBwc6seZPYM4B5juWOJc7ufx2BnnodpTMrxJmk8DoeieXnhJhC5BFemfThmB+VabF0CfWOPQUH20SafqI8tMAVNW5AtIqYrZzIvcDrbauXTukDWEowbXw1g+FJdphYml874GNS9h5sRaMzUtjaOOFSb0t5ZfA9HRtyEvNUZwLzNbKxoED7dILnN5jgTzW1Eb1obMZF1ESz/pU+ZeIThqrJwJ/zdo9UOxEW7u8+dduX4o6oOAT/erAYGva3qcWfNdAJ6t5N0Ibj77mxTY/n1imu1+W03JkNyQD0I4aIz1Y67RWpa6EOilDegCG+jgoFJRoxxLrkBI2obgFjEXA5nhBqED7IieXbsuITharr7O3fsLEkr0WvclVbitmBv0emdffN9DdJZCPpx27SgVmKzR1Mlsfek4h+YWs2IRXxlDf3xKUtGHS3ATP+lM5EJRD6t+ftPtEjMPEGh3RqZg1FUsN/JyIh+bw/K7hJ1pt/dBIf2fBk9+/RmRZrDCxZqCsK0G5pJ3W5vV6xPgNJ8+zK4cu6sN42/lQX7HEag3/S6enzS+NtBNrrH7c4dzPd3Lp9Qblkq5g1oduFusGDro5ufTODuS+qdvJJ8D8PeiF1BWnj5z8TeqxEwd2Jvnk/XtEM0ysbSI6FbHWwsqO4/4RD0fCs8nXuoztDr2S/sZExpLFChNLu2sltDdGfp5tnZN2gUy6ldClGPk+Yoklv37H1tW0lZgR0unk/R0T0ZnkdBZSDxMvYhJlver8xOY/0cnnUm8U9VKv3qlOT2P/RaC3UyAfHsjzNuXXYqPNNiSfWDF5qJ/aDo//JmhqdxC9t6xY4d+tVmjVthHz/W7SxaZVdjWhQvvQbjP8zEp8qe4p1PWyrLrs0j4SeTtdO22za0j9OKATPaRTHGM+9Rtc26raFIx0UgyxRpnlIqfvfRpbY74taehq3ReMStpWaA2eYA3Kl8ETrq1q6LsTvD8EOnmaOjiMtEnq1FOixUibT82oM54so7tGvN7q5KZXq/KDSH9tkv6mR2RZrPDE6pGlXEKma47N0b/rHez4i0v4yBL7XVT9NM5QfhyZjUVXo/D6taOTS28YCEmn0zfA/NSqPDvsiLY26ZnA+phCPSQlm8lVDggVaB8b6Hj9aupNg778iaWbRMWkIHtSwLNIC7auaO0Mx0szZHlEdgrn0Q11tKsZ+fh8bUxKr+PYuarhM8gy0glgpNvFEdZIypNdW9dF/SgdkubgT5pQXklbi3tixFAxusTx9WUvvDL6Mc9GPsbpW/Uzq9Sw1DVW1+A00oZaMYVXQX3WNdIdXp17muMbNa7HfG+U9BGTldN9pVfJjelE1y6j961COc/VG1HXQvfxc+LMajljG4snPRO7TZxI/UqgZGkLfgOMRlOZa42gFL9jwtPJ50/iQDVX8y203knRvBb+UKAPFCIl0iPf1pb94ewOSV3FZeAr17ZqOI9RCG4yYQWlEv554DfHCtzkN9HOrp1OO1D/iJnu9JLVBR6P9Ncr6evmiCyLFV4FR2YpZ8j6IPNzbeF0lRBe9isnK6eqsXk/jUsYHx3oH5DoXxjwdTqk0e0IfJ8/TVOsEf+CoL9tEr/3O75OJdtIE/Hyojk1bR425heWS2pb8VfBEbV1vewv2TWBoRHHO8KzydW6PCPS35lJf8MjsixWmFi6YviTJ8vWy7Qr2jwne0FSn+rkoyLyUiy9TL/rfKivUokl+Txn8yz19YGuNTbWh6ln0eEITVflxVnKNZDpNNVJZH2Ooq73eZ8sl9LOIl01zV7lFlnKFcrqNLGuTiagiYSkd4lZwE+wVvUuYWe0/5n0tU9ElsUKE0tjHJxlEJFtDs8vhnMiOsPg2fx10reL6GSxBjl781MqseRvaGA3Jmj3lFIGbYBsPrA+F1P3V7IM04pFo11/itXdrq0rmeKdRb9DaONVqRtO/SyDCmR1mlj7MyANXLuJ3rNCOgGGn2At6roShKSHrxfIT4HeYcqhWGJ9jIP2OZ3ogT0DbG66pjSL2OqKssjp6WHn/RihXfwjZ2t95UmsTbBTMpiNL1+Bn4d0Q/B2M2nH5pjmS68KuknYu1OanvGVuL4/X7/TlDJKne4zAh/l3GT0rKR/CEijOk0sPdhPgCZ+XGQEDeGFE/RBKreuL35bRvo5Ep585Ql6aB4mls3ndRS1oLNID/A24OdxdobBuYHu9bRL7aTasKYldto4fF95EguTenaz8LaqD5QwB2mz0ruKt3+T9p4lbFsg9yfksBL6XvwUDd+f1XfzShn1PZBpvZidyhvBxiCLNCe7cuvAaJ2iXKeJpT6vAhr0LBB70HrX8ju1n2i5dZ2AIWnXVxLI136hMEc7TKzjsdGikb8PwSCgDSKkn8N4Cfg5aDHUDxVduwH18cDbPEdbO3RI8tMXzAHSfxuclNTNPhZvVL5DXeFokZidSvmNzQt2lNrBtbF4P3fA182lM2gDtgcDwc1Atwiv2592XtoXRW+rumJVDulLaOhDz/SPQAmqjbMT6AHOAi8Cr/8e7XVBjOo8sTrQq71fnBYbAbyDnY4feDn1y1N8/xa+/ExMkZdih4nVDwOdirOBjU/XsHvBleBWMB2YzEo99CagFGnHDB+gfEwG14ELwWgwF5hv1bcBWpjGU5k3sVD99j/cedshYpZJ7dG309P7KlVXgg0ssy+9o9uGaf4PKtOH1I8Ctj7NT55Sm2Z7OUihOk8s9Wun1gLqrVMGoqN5PsgzKa/zNTanpvjUVcN89kjRKcWOJZZsmoN/AT+WWF0nwTUgbWdD9B3aAI529Ji/kKdTcNPEgxaWybVYGiT8PIU2BrP9nHo570je/3o0zgdp723Wh0o9O12VtwaV0ECMzJ8SOus2kOVfN4JnnC/zGSu1iZ0O1gZZNAWh2Z+XpViNTC+ls5KOdBdPG1QrZNeCpYmuDSytHIfeTiBGCvJYIFstmkopLbHkT7tmL/Ag+BL4cepdTHf2XUCl1ANDXaXCRaoFqaTuA3TVNVKcbae8xJg5yi3QkU8b/xU5bEqp6Fnqav44eAcoPgvBdHAfOB5sDqqlfjg4F7St1hH2PwOK28tAV0JtTkqkl4Bisj/IewsYhq7iuQBsD+qMeuLZHp6uMlnUEeEZYDzQNcse+OfUp4GLQDeQRSMRyk7XhY2yFEvIshLLmyqRO4CdQXtQzmmBeiZpI+oCeiRlI8o0UqLpOlkOXYmyxVjPSIlWUPURaI0LrZ86p+PowR7gjdSzFogfjBaWduM8pAWu3UX9LARakNVQ3sSqpo9VaduUzrVh2XOp5nRflfNY4/vWsW0PUS/0LWsYEe3UDyT+dRX7ZQ18r+6JNSSJlz0TXYcK+p5G4BjGbe9R86gfC9aqYi561zkUvA+0QN4CW4Fa0OqcWA0J0BxgSaX334K+5xHozvhnAHuo06kfDvRFLC/pingYmAzMj17qy33HwCSVVufEOoJZW9xUanMqaDWIwLrMYQTwd/wltB8B+mrUG2wHNgH6ALEZ2B3oa9MY8CmwhaGPFPuBWtPqnFiTCJbF7x3qtfzgUuvnUPirIAL6TejPYBawB52n1BesZ8BgUFeLQldU9WPjOZD66kKzmYjN6+TVZVLFPL4bAb0r6TP6UHAf0LuSvuzpR1adZGo/DUYDJVMLsDLoGjrRAtR1tcnK6HAl9dGTfqaBW0DeL7QraWhFNysjAko4YVVSGzqv5gPLqhx70XcRgSICRQSKCBQRKCJQRKCIQBGBIgJFBIoIFBEoIkAE/geuHAvtNBro8gAAAABJRU5ErkJggg=="/>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

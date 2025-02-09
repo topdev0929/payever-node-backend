@@ -1,0 +1,5 @@
+name: nodejs-backend-message
+endpoints:
+  - message-backend
+iframes:
+  - message-backend

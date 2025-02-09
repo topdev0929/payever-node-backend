@@ -1,0 +1,28 @@
+[
+  {
+    "showOn": [],
+    "_id": "9e50b050-b769-4ad7-869a-929c4d1ddc2b",
+    "icon": "http://test.com/mouse.jpg",
+    "name": "mouse",
+    "type": "animal",
+    "defaultValue": "default",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "userAttributeGroup": "71b50c01-129d-406b-b8b4-f82c3b95b4f4",
+    "createdAt": "2020-01-01T00:00:04.000Z",
+    "updatedAt": "2020-01-01T00:00:04.000Z",
+    "__v": 0
+  },
+  {
+    "showOn": [],
+    "_id": "c0c6d1c3-c6a3-4951-8cb4-7405b21c159d",
+    "icon": "http://test.com/cat.jpg",
+    "name": "cat",
+    "type": "animal",
+    "defaultValue": "default",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "userAttributeGroup": "71b50c01-129d-406b-b8b4-f82c3b95b4f4",
+    "createdAt": "2020-01-01T00:00:03.000Z",
+    "updatedAt": "2020-01-01T00:00:03.000Z",
+    "__v": 0
+  }
+]

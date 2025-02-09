@@ -1,0 +1,43 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "customers"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "Post /api/customers/application-access"
+      - post:
+          url: "/api/customers/application-access"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{businessId}}"
+            applicationId: "null"
+            type: "null"
+      
+      - log: "Post /api/customers/application-access/business/{{businessId}}"
+      - post:
+          url: "/api/customers/application-access/business/{{businessId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            applicationId: "null"
+            type: "null"
+            userId: "{{userId}}"
+            status: "true"
+
+      - log: "Get /api/customers/application-access/business/{{businessId}}"
+      - get:
+          url: "/api/customers/application-access/business/{{businessId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      

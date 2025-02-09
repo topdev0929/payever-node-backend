@@ -1,0 +1,39 @@
+scenarios:
+  - name: "Channel Set"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/channel-set/{{ channelSetId }}/shipping/methods"
+      - post:
+          url: "/api/channel-set/{{ channelSetId }}/shipping/methods"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            shippingAddress:
+              name: "test"
+              streetName: "test"
+              streetNumber: "test"
+              city: "test"
+              zipCode: "test"
+              countryCode: "test"
+            shippingItems:
+              - uuid: "{{ methodId }}"
+                dimensionUnit: "cm"
+                height: 1
+                length: 1
+                name: "Shipped item name"
+                price: 999
+                quantity: 100
+                weight: 1
+                weightUnit: "kg"
+                width: 1
+                currency: "EUR"
+      - log: "POST /api/channel-set/{{ channelSetId }}/shipping/select-method"
+      - post:
+          url: "/api/channel-set/{{ channelSetId }}/shipping/select-method"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            shippingOrderId: "{{ shippingOrderId }}"
+            integrationSubscriptionId: "{{ integrationSubscriptionId }}"

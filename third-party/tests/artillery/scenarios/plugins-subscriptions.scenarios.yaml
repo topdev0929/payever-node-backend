@@ -1,0 +1,24 @@
+scenarios:
+  - name: "Plugins Subscriptions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/plugins"
+      - get:
+          url: "/api/business/{{ businessId }}/plugins"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/plugins/subscription/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/plugins/subscription/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/plugins/subscription/{{ integrationName }}"
+      - post:
+          url: "/api/business/{{ businessId }}/plugins/subscription/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            externalId: "test"
+            actions: []

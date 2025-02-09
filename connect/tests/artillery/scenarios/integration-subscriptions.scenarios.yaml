@@ -1,0 +1,59 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Integrations Subscriptions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      
+      - log: "GET /api/business/{{ businessId }}/integration"
+      - get:
+          url: "/api/business/{{ businessId }}/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/business/{{ businessId }}/integration/active"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/business/{{ businessId }}/integration/category/{{ category }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/business/{{ businessId }}/integration/not-installed/random"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/not-installed/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/business/{{ businessId }}/integration/not-installed/random/filtered-by-country"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/not-installed/random/filtered-by-country"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "GET /api/business/{{ businessId }}/integration/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "PATCH /api/business/{{ businessId }}/integration/{{ integrationName }}/uninstall"
+      - patch:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}/uninstall"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      - log: "PATCH /api/business/{{ businessId }}/integration/{{ integrationName }}/install"
+      - patch:
+          url: "/api/business/{{ businessId }}/integration/{{ integrationName }}/install"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

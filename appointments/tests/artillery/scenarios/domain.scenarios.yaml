@@ -1,0 +1,58 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: Appointment
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: POST /api/business/{{businessId}}/domain/{{appointmentNetworkId}}
+      - post:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.appointmentNetwork.id"
+            as: "appointmentNetworkId"
+            strict: false
+
+      - log: "{{ appointmentNetworkId }}"
+
+      - log: GET /api/business/{{businessId}}/domain/{{appointmentNetworkId}}
+      - get:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$.id"
+            as: "domainId"
+            strict: false
+
+      - log: "{{ appointmentNetworkId }}"
+
+      - log: PATCH /api/business/{{businessId}}/domain/{{appointmentNetworkId}}
+      - patch:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}/{{domainId}}"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+
+      - log: DELETE /api/business/{{businessId}}/domain/{{appointmentNetworkId}}/{{domainId}}
+      - delete:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}/{{domainId}}"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+
+      - log: GET /api/business/{{businessId}}/domain/{{appointmentNetworkId}}/{{domainId}}/check
+      - get:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}/{{domainId}}/check"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+
+      - log: GET /api/business/{{businessId}}/domain/{{appointmentNetworkId}}/isValidName
+      - get:
+          url: "/api/business/{{businessId}}/domain/{{appointmentNetworkId}}/isValidName"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"

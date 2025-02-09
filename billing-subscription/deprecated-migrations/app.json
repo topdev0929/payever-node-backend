@@ -1,0 +1,3180 @@
+{
+  "_id": "d6023a7f-1658-4d3d-9678-adf31501c65e",
+  "__v": 0,
+  "application": "063aca46-00b7-4d7f-9054-27f5e11a6294",
+  "compiledTheme": "18fc2463-8f85-45b5-8ba2-b1ecddacebac",
+  "context": {
+    "_id": "33f1f717-60b0-4020-b5f0-f7da18fa9dfc",
+    "ffedebe4-96c4-4bdc-9b50-fad9e66cb505": {
+      "service": "integrations",
+      "method": "fetchActionWithAdditional",
+      "params": [
+        {
+          "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "__v": 0,
+          "createdAt": "2020-12-15T15:23:03.200Z",
+          "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+          "tag": "products",
+          "title": "Products",
+          "updatedAt": "2020-12-30T09:15:16.685Z",
+          "url": "https://products-backend.test.devpayever.com",
+          "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "actions": [
+            {
+              "tags": [
+                "list",
+                "getCategories"
+              ],
+              "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:05:38.575Z",
+              "description": "Get categories",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "slug": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.description": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getCategoriesForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Categories",
+              "updatedAt": "2020-12-30T13:18:16.504Z",
+              "url": "/categories",
+              "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+            },
+            {
+              "tags": [
+                "list",
+                "getFilters"
+              ],
+              "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:04:54.508Z",
+              "description": "get filter",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "field": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "type": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.label": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.value": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.field": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getFilter",
+              "params": [
+                "filter"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Get filters",
+              "updatedAt": "2021-01-15T14:17:42.104Z",
+              "url": "/products",
+              "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+            },
+            {
+              "tags": [
+                "list",
+                "getList"
+              ],
+              "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:31:35.773Z",
+              "description": "Get products",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "priceAndCurrency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "images": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "imagesUrl": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "salePriceAndCurrency": {
+                  "type": "number",
+                  "subtype": "value"
+                },
+                "currency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories": {
+                  "type": "object",
+                  "subtype": "array"
+                },
+                "categories.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.slug": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getProductsForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Products",
+              "updatedAt": "2021-01-15T14:40:31.890Z",
+              "url": "/products",
+              "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+            }
+          ],
+          "links": [],
+          "interactions": []
+        },
+        {
+          "tags": [
+            "list",
+            "getList"
+          ],
+          "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+          "__v": 0,
+          "createdAt": "2020-12-29T16:31:35.773Z",
+          "description": "Get products",
+          "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "meta": {
+            "id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "title": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "priceAndCurrency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "images": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "imagesUrl": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "description": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "salePriceAndCurrency": {
+              "type": "number",
+              "subtype": "value"
+            },
+            "currency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories": {
+              "type": "object",
+              "subtype": "array"
+            },
+            "categories.id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.name": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.slug": {
+              "type": "string",
+              "subtype": "value"
+            }
+          },
+          "method": "getProductsForBuilder",
+          "params": [
+            "business",
+            "filter",
+            "order",
+            "offset",
+            "limit"
+          ],
+          "queryType": "query",
+          "responseType": "list",
+          "title": "Products",
+          "updatedAt": "2021-01-15T14:40:31.890Z",
+          "url": "/products",
+          "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+        },
+        [],
+        [],
+        {
+          "offset": 0,
+          "limit": 7
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-filters.data"
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-sort.data"
+        }
+      ]
+    },
+    "ef7425f5-da87-4da9-b16c-e574effc6f19": {
+      "service": "integrations",
+      "method": "fetchActionWithAdditional",
+      "params": [
+        {
+          "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "__v": 0,
+          "createdAt": "2020-12-15T15:23:03.200Z",
+          "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+          "tag": "products",
+          "title": "Products",
+          "updatedAt": "2020-12-30T09:15:16.685Z",
+          "url": "https://products-backend.test.devpayever.com",
+          "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "actions": [
+            {
+              "tags": [
+                "list",
+                "getCategories"
+              ],
+              "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:05:38.575Z",
+              "description": "Get categories",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "slug": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.description": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getCategoriesForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Categories",
+              "updatedAt": "2020-12-30T13:18:16.504Z",
+              "url": "/categories",
+              "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+            },
+            {
+              "tags": [
+                "list",
+                "getFilters"
+              ],
+              "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:04:54.508Z",
+              "description": "get filter",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "field": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "type": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.label": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.value": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.field": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getFilter",
+              "params": [
+                "filter"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Get filters",
+              "updatedAt": "2021-01-15T14:17:42.104Z",
+              "url": "/products",
+              "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+            },
+            {
+              "tags": [
+                "list",
+                "getList"
+              ],
+              "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:31:35.773Z",
+              "description": "Get products",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "priceAndCurrency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "images": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "imagesUrl": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "salePriceAndCurrency": {
+                  "type": "number",
+                  "subtype": "value"
+                },
+                "currency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories": {
+                  "type": "object",
+                  "subtype": "array"
+                },
+                "categories.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.slug": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getProductsForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Products",
+              "updatedAt": "2021-01-15T14:40:31.890Z",
+              "url": "/products",
+              "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+            }
+          ],
+          "links": [],
+          "interactions": []
+        },
+        {
+          "tags": [
+            "list",
+            "getList"
+          ],
+          "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+          "__v": 0,
+          "createdAt": "2020-12-29T16:31:35.773Z",
+          "description": "Get products",
+          "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "meta": {
+            "id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "title": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "priceAndCurrency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "images": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "imagesUrl": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "description": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "salePriceAndCurrency": {
+              "type": "number",
+              "subtype": "value"
+            },
+            "currency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories": {
+              "type": "object",
+              "subtype": "array"
+            },
+            "categories.id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.name": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.slug": {
+              "type": "string",
+              "subtype": "value"
+            }
+          },
+          "method": "getProductsForBuilder",
+          "params": [
+            "business",
+            "filter",
+            "order",
+            "offset",
+            "limit"
+          ],
+          "queryType": "query",
+          "responseType": "list",
+          "title": "Products",
+          "updatedAt": "2021-01-15T14:40:31.890Z",
+          "url": "/products",
+          "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+        },
+        [],
+        [],
+        {
+          "offset": 0,
+          "limit": 15
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-filters.data"
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-sort.data"
+        }
+      ]
+    },
+    "315e4178-de45-4d34-a868-99a6f9417b1a": {
+      "service": "integrations",
+      "method": "fetchActionWithAdditional",
+      "params": [
+        {
+          "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "__v": 0,
+          "createdAt": "2020-12-15T15:23:03.200Z",
+          "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+          "tag": "products",
+          "title": "Products",
+          "updatedAt": "2020-12-30T09:15:16.685Z",
+          "url": "https://products-backend.test.devpayever.com",
+          "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "actions": [
+            {
+              "tags": [
+                "list",
+                "getCategories"
+              ],
+              "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:05:38.575Z",
+              "description": "Get categories",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "slug": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "parent.description": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getCategoriesForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Categories",
+              "updatedAt": "2020-12-30T13:18:16.504Z",
+              "url": "/categories",
+              "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+            },
+            {
+              "tags": [
+                "list",
+                "getFilters"
+              ],
+              "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:04:54.508Z",
+              "description": "get filter",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "field": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "type": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.label": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.value": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "options.field": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getFilter",
+              "params": [
+                "filter"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Get filters",
+              "updatedAt": "2021-01-15T14:17:42.104Z",
+              "url": "/products",
+              "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+            },
+            {
+              "tags": [
+                "list",
+                "getList"
+              ],
+              "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+              "__v": 0,
+              "createdAt": "2020-12-29T16:31:35.773Z",
+              "description": "Get products",
+              "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+              "meta": {
+                "id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "title": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "priceAndCurrency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "images": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "imagesUrl": {
+                  "type": "string",
+                  "subtype": "array"
+                },
+                "description": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "salePriceAndCurrency": {
+                  "type": "number",
+                  "subtype": "value"
+                },
+                "currency": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories": {
+                  "type": "object",
+                  "subtype": "array"
+                },
+                "categories.id": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.name": {
+                  "type": "string",
+                  "subtype": "value"
+                },
+                "categories.slug": {
+                  "type": "string",
+                  "subtype": "value"
+                }
+              },
+              "method": "getProductsForBuilder",
+              "params": [
+                "business",
+                "filter",
+                "order",
+                "offset",
+                "limit"
+              ],
+              "queryType": "query",
+              "responseType": "list",
+              "title": "Products",
+              "updatedAt": "2021-01-15T14:40:31.890Z",
+              "url": "/products",
+              "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+            }
+          ],
+          "links": [],
+          "interactions": []
+        },
+        {
+          "tags": [
+            "list",
+            "getList"
+          ],
+          "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+          "__v": 0,
+          "createdAt": "2020-12-29T16:31:35.773Z",
+          "description": "Get products",
+          "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+          "meta": {
+            "id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "title": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "priceAndCurrency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "images": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "imagesUrl": {
+              "type": "string",
+              "subtype": "array"
+            },
+            "description": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "salePriceAndCurrency": {
+              "type": "number",
+              "subtype": "value"
+            },
+            "currency": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories": {
+              "type": "object",
+              "subtype": "array"
+            },
+            "categories.id": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.name": {
+              "type": "string",
+              "subtype": "value"
+            },
+            "categories.slug": {
+              "type": "string",
+              "subtype": "value"
+            }
+          },
+          "method": "getProductsForBuilder",
+          "params": [
+            "business",
+            "filter",
+            "order",
+            "offset",
+            "limit"
+          ],
+          "queryType": "query",
+          "responseType": "list",
+          "title": "Products",
+          "updatedAt": "2021-01-15T14:40:31.890Z",
+          "url": "/products",
+          "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+        },
+        [],
+        [],
+        {
+          "offset": 0,
+          "limit": 24
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-filters.data"
+        },
+        {
+          "contextParameterType": "dynamic",
+          "value": "@product-sort.data"
+        }
+      ]
+    },
+    "e033231f-9dc7-4e41-a6e5-3ebb0a5a309e": null,
+    "70dfa300-2d4c-4748-a481-9d41c73e8b32": null,
+    "b1449b70-46c7-450c-9aca-edc1ae016757": null,
+    "1e236b64-8aa5-4031-a5cf-ed3ddcee1d12": null,
+    "c1856941-6bdb-43c2-9cef-ca7cecccf795": null,
+    "9e337afe-4b1f-4f50-930a-1ad130413c99": null,
+    "50321d5a-dddb-4477-8d97-f355f83a9e02": null
+  },
+  "createdAt": {
+    "$date": "2021-06-17T13:30:44.185Z"
+  },
+  "data": {
+    "preview": {
+      "desktop": "https://payeverproduction.blob.core.windows.net/images/ab8a24a2-38bd-4c80-83ef-111387010da5-builder-page-preview-a6ab90b8-28f9-4bb1-a239-012c1c9d1385",
+      "mobile": "https://payeverproduction.blob.core.windows.net/images/18d54c5b-9efb-4f4d-b1bf-28c0a58b614d-builder-page-preview-aef99ccc-0c63-478d-bc41-d58b27fa24cc",
+      "tablet": "https://payeverproduction.blob.core.windows.net/images/7409177a-625f-4f67-8545-d567b005e4a5-builder-page-preview-da9d4413-cb50-48fe-8623-47ce48bde43c"
+    }
+  },
+  "name": "Home",
+  "stylesheets": {
+    "desktop": {
+      "a9f15f1c-d94c-428b-a295-18ef567cd35a": {
+        "display": "none"
+      },
+      "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8": {
+        "position": "relative",
+        "height": 44,
+        "transform": "translate(0px, 0px)",
+        "display": "grid",
+        "gridTemplateRows": "44",
+        "gridTemplateColumns": "87 198.5 458 280.5",
+        "zIndex": null,
+        "backgroundColor": "rgba(0,0,0,1)",
+        "backgroundImage": ""
+      },
+      "785ef701-bb0b-43ad-9e9b-43ad3dd597e7": {
+        "width": 89,
+        "height": 22,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "",
+        "margin": "11 0 0 147",
+        "content": "",
+        "opacity": 1,
+        "marginLeft": 147,
+        "marginTop": 11,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "22",
+        "gridTemplateColumns": "89",
+        "backgroundSize": "contain",
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/9d868a78-c0a3-4a32-a507-f1404a34331f",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "gridRow": "1 / span 1",
+        "gridColumn": "3 / span 1",
+        "top": 0,
+        "left": 0,
+        "color": "#000000"
+      },
+      "84a7f86c-9c76-4f3d-aa8a-71b21c5d02f2": {
+        "width": 22,
+        "height": 22,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "",
+        "margin": "11 0 0 257.5",
+        "content": "",
+        "marginLeft": 257.5,
+        "marginTop": 11,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "4 / span 1",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "22",
+        "gridTemplateColumns": "22",
+        "color": "#000000",
+        "constrainProportions": true,
+        "proportionRatio": 1,
+        "opacity": 1,
+        "backgroundSize": "contain",
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/216f8f66-e1b9-46c1-be77-292e783adfc7",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "gridArea": null,
+        "top": 0,
+        "left": 0
+      },
+      "c2655d93-a959-4ec4-b790-70caaaf0ef29": {
+        "width": 82,
+        "height": 29,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": "8 0 0 0",
+        "content": "",
+        "marginLeft": 0,
+        "marginTop": 8,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "1 / span 1",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "29",
+        "gridTemplateColumns": "82",
+        "backgroundImage": "",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid"
+      },
+      "fb4f310b-90e6-4398-901b-29a06741c7d3": {
+        "width": 82,
+        "height": 29,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": "8 0 0 5",
+        "content": "",
+        "marginLeft": 5,
+        "marginTop": 8,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "2 / span 1",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "29",
+        "gridTemplateColumns": "82",
+        "backgroundImage": "",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid",
+        "top": 0,
+        "left": 0
+      },
+      "248a0d69-516e-4d14-8daf-871fc18668ac": {
+        "width": 82,
+        "height": 29,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": null,
+        "content": "",
+        "marginLeft": null,
+        "marginTop": null,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "29",
+        "gridTemplateColumns": "82",
+        "backgroundImage": "",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid",
+        "top": 0,
+        "left": 0
+      },
+      "785e90e6-42f9-4bd1-bd5b-e1884e353d0b": {
+        "display": "none"
+      },
+      "ffedebe4-96c4-4bdc-9b50-fad9e66cb505": {
+        "display": "none"
+      },
+      "24e6da0e-7e5e-4c66-8152-fab1b4b5f13c": {
+        "display": "none"
+      },
+      "ef7425f5-da87-4da9-b16c-e574effc6f19": {
+        "display": "none"
+      },
+      "5f2bcb49-2808-4997-9495-5e52fd424fc3": {
+        "position": "relative",
+        "height": 813,
+        "transform": "translate(0px, 0px)",
+        "display": "flex",
+        "gridTemplateRows": null,
+        "gridTemplateColumns": null
+      },
+      "315e4178-de45-4d34-a868-99a6f9417b1a": {
+        "transform": "translate(0px, 0px)",
+        "backgroundColor": "#d4d4d4",
+        "margin": "25 0 0 0",
+        "content": "",
+        "width": 1024,
+        "height": 662,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginTop": 25,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "gridTemplateColumns": "256px 256px 256px 256px",
+        "gridTemplateRows": "331px 331px",
+        "position": "relative",
+        "gridArea": null
+      },
+      "d5f7057c-f2c1-44e4-950f-dd250bc2d2ae": {
+        "display": "none"
+      },
+      "8dea7f43-529d-4e79-9dcd-b9a575211c1b": {
+        "display": "none"
+      },
+      "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce": {
+        "display": "none"
+      },
+      "150549c1-328c-48b2-83d8-1c00eb67807f": {
+        "display": "none"
+      },
+      "602ca414-d51d-4269-b425-d0773996a795": {
+        "display": "none"
+      },
+      "ebdd69be-755a-454a-bcfc-c8c7f2d6a6f7": {
+        "display": "none"
+      },
+      "ca7fc3f2-26b5-4900-a77b-bb9f71bb77f2": {
+        "display": "none"
+      },
+      "98f217a1-7de7-44fc-84a3-69f7cedfbdaf": {
+        "display": "none"
+      },
+      "b17373fa-6693-4f88-9263-3972276c6964": {
+        "display": "none"
+      },
+      "43dbe54b-6802-4e70-b746-eafdb8551f42": {
+        "display": "none"
+      },
+      "0244017d-01df-4390-9e2b-6211e3717174": {
+        "display": "none"
+      },
+      "76bd4b3a-139c-46cc-9647-89bd069bbd7b": {
+        "display": "none"
+      },
+      "ebfc78a8-b6e4-4348-8acd-1d6947654896": {
+        "display": "none"
+      },
+      "10c0a0c0-4222-4e93-aebc-3f8f023561e3": {
+        "display": "none"
+      }
+    },
+    "tablet": {
+      "a9f15f1c-d94c-428b-a295-18ef567cd35a": {
+        "display": "none"
+      },
+      "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8": {
+        "display": "none"
+      },
+      "785ef701-bb0b-43ad-9e9b-43ad3dd597e7": {
+        "display": "none"
+      },
+      "84a7f86c-9c76-4f3d-aa8a-71b21c5d02f2": {
+        "display": "none"
+      },
+      "c2655d93-a959-4ec4-b790-70caaaf0ef29": {
+        "display": "none"
+      },
+      "fb4f310b-90e6-4398-901b-29a06741c7d3": {
+        "display": "none"
+      },
+      "248a0d69-516e-4d14-8daf-871fc18668ac": {
+        "display": "none"
+      },
+      "785e90e6-42f9-4bd1-bd5b-e1884e353d0b": {
+        "display": "none"
+      },
+      "ffedebe4-96c4-4bdc-9b50-fad9e66cb505": {
+        "display": "none"
+      },
+      "24e6da0e-7e5e-4c66-8152-fab1b4b5f13c": {
+        "display": "flex",
+        "position": "relative",
+        "zIndex": null,
+        "height": 740,
+        "gridTemplateRows": null,
+        "gridTemplateColumns": null
+      },
+      "ef7425f5-da87-4da9-b16c-e574effc6f19": {
+        "transform": "translate(0px, 0px)",
+        "backgroundColor": "#d4d4d4",
+        "margin": "19 0 0 20",
+        "content": "",
+        "width": 728,
+        "height": 512,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginTop": 19,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 20,
+        "gridTemplateColumns": "182px 182px 182px 182px",
+        "gridTemplateRows": "256px 256px",
+        "position": "relative",
+        "gridArea": null
+      },
+      "5f2bcb49-2808-4997-9495-5e52fd424fc3": {
+        "display": "none"
+      },
+      "315e4178-de45-4d34-a868-99a6f9417b1a": {
+        "display": "none"
+      },
+      "d5f7057c-f2c1-44e4-950f-dd250bc2d2ae": {
+        "width": 89,
+        "height": 52,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "",
+        "margin": "0 0 0 78",
+        "content": "",
+        "gridRow": "1 / span 2",
+        "gridColumn": "3 / span 1",
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 78,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "52",
+        "gridTemplateColumns": "89",
+        "gridArea": null,
+        "color": "#000000",
+        "backgroundSize": "contain",
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/ff8c95cf-6b1b-4f17-9964-5b882cf495ae",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "opacity": 1,
+        "top": 0,
+        "left": 0
+      },
+      "8dea7f43-529d-4e79-9dcd-b9a575211c1b": {
+        "width": "24",
+        "height": 24,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "",
+        "margin": "11 0 0 36",
+        "content": "",
+        "gridRow": "1 / span 1",
+        "gridColumn": "5 / span 1",
+        "marginTop": 11,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 36,
+        "opacity": 1,
+        "color": "#000000",
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "25",
+        "gridTemplateColumns": "25",
+        "constrainProportions": true,
+        "proportionRatio": 1,
+        "backgroundSize": "contain",
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/a871ae31-4014-45c1-a312-67bf458365bd",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "gridArea": null,
+        "top": 0,
+        "left": 0
+      },
+      "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce": {
+        "position": "relative",
+        "height": 52,
+        "transform": "translate(0px, 0px)",
+        "backgroundSize": "auto",
+        "backgroundColor": "#000000ff",
+        "backgroundImage": "",
+        "zIndex": null,
+        "display": "grid",
+        "gridTemplateRows": "50 2",
+        "gridTemplateColumns": "102.5 159.5 241 185 80"
+      },
+      "150549c1-328c-48b2-83d8-1c00eb67807f": {
+        "width": 75,
+        "height": 0,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#d4d4d4",
+        "margin": "50 0 0 74",
+        "content": "",
+        "marginLeft": 74,
+        "marginTop": 50,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "4 / span 1",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "0",
+        "gridTemplateColumns": "75"
+      },
+      "602ca414-d51d-4269-b425-d0773996a795": {
+        "width": 75,
+        "height": 30,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": "11 0 0 21",
+        "content": "",
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "1 / span 1",
+        "marginTop": 11,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 21,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "30",
+        "gridTemplateColumns": "75",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid",
+        "backgroundImage": ""
+      },
+      "ebdd69be-755a-454a-bcfc-c8c7f2d6a6f7": {
+        "width": 75,
+        "height": 30,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": "11 0 0 6.5",
+        "content": "",
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "2 / span 1",
+        "marginTop": 11,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 6.5,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "30",
+        "gridTemplateColumns": "75",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid",
+        "backgroundImage": "",
+        "top": 0,
+        "left": 0
+      },
+      "ca7fc3f2-26b5-4900-a77b-bb9f71bb77f2": {
+        "width": 75,
+        "height": 30,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 6,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#000000",
+        "margin": null,
+        "content": "",
+        "gridArea": null,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginTop": null,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": null,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "30",
+        "gridTemplateColumns": "75",
+        "borderWidth": 1,
+        "borderColor": "rgba(175,175,175,1)",
+        "borderStyle": "solid",
+        "backgroundImage": "",
+        "top": 0,
+        "left": 0
+      },
+      "98f217a1-7de7-44fc-84a3-69f7cedfbdaf": {
+        "display": "none"
+      },
+      "b17373fa-6693-4f88-9263-3972276c6964": {
+        "display": "none"
+      },
+      "43dbe54b-6802-4e70-b746-eafdb8551f42": {
+        "display": "none"
+      },
+      "0244017d-01df-4390-9e2b-6211e3717174": {
+        "display": "none"
+      },
+      "76bd4b3a-139c-46cc-9647-89bd069bbd7b": {
+        "display": "none"
+      },
+      "ebfc78a8-b6e4-4348-8acd-1d6947654896": {
+        "display": "none"
+      },
+      "10c0a0c0-4222-4e93-aebc-3f8f023561e3": {
+        "display": "none"
+      }
+    },
+    "mobile": {
+      "a9f15f1c-d94c-428b-a295-18ef567cd35a": {
+        "height": 93,
+        "backgroundColor": "rgba(25,25,27,1)",
+        "backgroundImage": "",
+        "display": "grid",
+        "gridTemplateRows": "92 1",
+        "gridTemplateColumns": "180 180",
+        "position": "relative"
+      },
+      "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8": {
+        "display": "none"
+      },
+      "785ef701-bb0b-43ad-9e9b-43ad3dd597e7": {
+        "display": "none"
+      },
+      "84a7f86c-9c76-4f3d-aa8a-71b21c5d02f2": {
+        "display": "none"
+      },
+      "c2655d93-a959-4ec4-b790-70caaaf0ef29": {
+        "display": "none"
+      },
+      "fb4f310b-90e6-4398-901b-29a06741c7d3": {
+        "display": "none"
+      },
+      "248a0d69-516e-4d14-8daf-871fc18668ac": {
+        "display": "none"
+      },
+      "785e90e6-42f9-4bd1-bd5b-e1884e353d0b": {
+        "display": "flex",
+        "position": "relative",
+        "zIndex": null,
+        "height": 579,
+        "gridTemplateRows": null,
+        "gridTemplateColumns": null
+      },
+      "ffedebe4-96c4-4bdc-9b50-fad9e66cb505": {
+        "transform": "translate(0px, 0px)",
+        "backgroundColor": "#d4d4d4",
+        "margin": "0 0 0 0",
+        "content": "",
+        "width": 360,
+        "height": 488,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "gridTemplateRows": "244px 244px",
+        "gridTemplateColumns": "180px 180px",
+        "position": "relative",
+        "gridArea": null,
+        "top": 0,
+        "left": 0
+      },
+      "24e6da0e-7e5e-4c66-8152-fab1b4b5f13c": {
+        "display": "none"
+      },
+      "ef7425f5-da87-4da9-b16c-e574effc6f19": {
+        "display": "none"
+      },
+      "5f2bcb49-2808-4997-9495-5e52fd424fc3": {
+        "display": "none"
+      },
+      "315e4178-de45-4d34-a868-99a6f9417b1a": {
+        "display": "none"
+      },
+      "d5f7057c-f2c1-44e4-950f-dd250bc2d2ae": {
+        "display": "none"
+      },
+      "8dea7f43-529d-4e79-9dcd-b9a575211c1b": {
+        "display": "none"
+      },
+      "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce": {
+        "display": "none"
+      },
+      "150549c1-328c-48b2-83d8-1c00eb67807f": {
+        "display": "none"
+      },
+      "602ca414-d51d-4269-b425-d0773996a795": {
+        "display": "none"
+      },
+      "ebdd69be-755a-454a-bcfc-c8c7f2d6a6f7": {
+        "display": "none"
+      },
+      "ca7fc3f2-26b5-4900-a77b-bb9f71bb77f2": {
+        "display": "none"
+      },
+      "98f217a1-7de7-44fc-84a3-69f7cedfbdaf": {
+        "position": "relative",
+        "height": 54,
+        "transform": "translate(0px, 0px)",
+        "backgroundColor": "rgba(0,0,0,1)",
+        "backgroundImage": "",
+        "display": "grid",
+        "gridTemplateRows": "54",
+        "gridTemplateColumns": "214 146",
+        "top": null,
+        "zIndex": null
+      },
+      "b17373fa-6693-4f88-9263-3972276c6964": {
+        "width": 92,
+        "height": 35,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "",
+        "margin": "10 0 0 14",
+        "content": "",
+        "marginLeft": 14,
+        "marginTop": 10,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "1 / span 1",
+        "marginRight": 0,
+        "marginBottom": 0,
+        "display": "grid",
+        "gridTemplateRows": "35",
+        "gridTemplateColumns": "92",
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/4f0cfa42-f142-4731-8b65-e7bab9b21ae7",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "contain"
+      },
+      "43dbe54b-6802-4e70-b746-eafdb8551f42": {
+        "width": 28,
+        "height": 54,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 0,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#d4d4d4",
+        "margin": "0 0 0 108",
+        "content": "",
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "2 / span 1",
+        "marginTop": 0,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 108,
+        "mediaType": "image",
+        "backgroundImage": "https://payeverproduction.blob.core.windows.net/builder/2383c413-d6a8-4d1b-be31-d9a63b69a628",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "contain",
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "54",
+        "gridTemplateColumns": "34",
+        "constrainProportions": null,
+        "proportionRatio": 0.5185185185185185
+      },
+      "0244017d-01df-4390-9e2b-6211e3717174": {
+        "width": 152,
+        "height": 44,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 8,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "rgba(47,47,51,1)",
+        "margin": "21 0 0 21",
+        "content": "",
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "1 / span 1",
+        "marginTop": 21,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 21,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "44",
+        "gridTemplateColumns": "152",
+        "constrainProportions": null,
+        "proportionRatio": 2.8863636363636362,
+        "backgroundImage": ""
+      },
+      "76bd4b3a-139c-46cc-9647-89bd069bbd7b": {
+        "width": 152,
+        "height": 44,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 8,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "rgba(47,47,51,1)",
+        "margin": "21 0 0 7",
+        "content": "",
+        "gridArea": null,
+        "gridRow": "1 / span 1",
+        "gridColumn": "2 / span 1",
+        "marginTop": 21,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": 7,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "44",
+        "gridTemplateColumns": "152",
+        "constrainProportions": null,
+        "proportionRatio": 2.8863636363636362,
+        "top": 0,
+        "left": 0,
+        "backgroundImage": ""
+      },
+      "ebfc78a8-b6e4-4348-8acd-1d6947654896": {
+        "width": 127,
+        "height": 44,
+        "transform": "translate(0px, 0px)",
+        "borderRadius": 8,
+        "fontFamily": "Roboto",
+        "fontSize": 13,
+        "backgroundColor": "#d4d4d4",
+        "margin": null,
+        "content": "",
+        "gridArea": null,
+        "gridRow": null,
+        "gridColumn": null,
+        "marginTop": null,
+        "marginRight": 0,
+        "marginBottom": 0,
+        "marginLeft": null,
+        "position": "relative",
+        "minWidth": null,
+        "minHeight": null,
+        "maxWidth": null,
+        "maxHeight": null,
+        "display": "grid",
+        "gridTemplateRows": "47",
+        "gridTemplateColumns": "127",
+        "constrainProportions": null,
+        "proportionRatio": 2.8863636363636362,
+        "top": 0,
+        "left": 0
+      },
+      "10c0a0c0-4222-4e93-aebc-3f8f023561e3": {
+        "position": "relative",
+        "height": 54,
+        "transform": "translate(0px, 0px)",
+        "backgroundColor": "rgba(0,0,0,1)",
+        "backgroundImage": "",
+        "display": "grid",
+        "gridTemplateRows": "54",
+        "gridTemplateColumns": "214 146"
+      }
+    }
+  },
+  "template": {
+    "id": "0540dae3-149c-4556-8f84-480a32c69de1",
+    "type": "document",
+    "children": [
+      {
+        "id": "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "parent": {
+          "id": "0540dae3-149c-4556-8f84-480a32c69de1",
+          "slot": "host",
+          "type": "document"
+        },
+        "index": 0,
+        "children": [
+          {
+            "id": "785ef701-bb0b-43ad-9e9b-43ad3dd597e7",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "desktop": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "linkInteraction": {
+                "type": "navigate.internal-page",
+                "payload": "4a269b3e-b217-41fc-b774-3d74848a7252"
+              },
+              "source": null
+            },
+            "meta": null,
+            "parent": {
+              "id": "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 0,
+            "children": []
+          },
+          {
+            "index": 3,
+            "id": "84a7f86c-9c76-4f3d-aa8a-71b21c5d02f2",
+            "type": "shape",
+            "meta": null,
+            "parent": {
+              "id": "72bc07d3-3a71-4d88-9eb9-eb4d0412a388",
+              "slot": "host",
+              "type": "block"
+            },
+            "data": {
+              "variant": "square",
+              "text": "",
+              "constrainProportions": true,
+              "proportionRatio": 1,
+              "linkTo": {
+                "integration": {
+                  "_id": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "__v": 0,
+                  "createdAt": "2020-12-15T12:08:15.397Z",
+                  "swaggerUrl": "http://nodejs-backend-checkout.production:80/api/doc.json",
+                  "tag": "checkout",
+                  "title": "Checkout",
+                  "updatedAt": "2020-12-30T09:14:21.905Z",
+                  "url": "https://checkout-php.payever.com",
+                  "id": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "actions": [],
+                  "links": [],
+                  "interactions": [
+                    {
+                      "isActive": true,
+                      "_id": "c4736742-76bd-4275-ae3b-9ffdfb4ae5ab",
+                      "__v": 0,
+                      "createdAt": "2021-01-27T17:49:22.488Z",
+                      "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                      "interactionPayload": "rendererContext.@products-detail.data",
+                      "interactionType": "product.add-to-cart",
+                      "title": "Add to cart",
+                      "updatedAt": "2021-01-27T17:49:25.959Z",
+                      "id": "c4736742-76bd-4275-ae3b-9ffdfb4ae5ab"
+                    },
+                    {
+                      "isActive": true,
+                      "_id": "0831e165-46d8-48d3-a31c-8812c53924c6",
+                      "__v": 0,
+                      "createdAt": "2021-01-27T18:00:05.947Z",
+                      "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                      "interactionPayload": null,
+                      "interactionType": "cart.click",
+                      "title": "Open cart",
+                      "updatedAt": "2021-01-27T18:00:05.947Z",
+                      "id": "0831e165-46d8-48d3-a31c-8812c53924c6"
+                    }
+                  ]
+                },
+                "link": null,
+                "interaction": {
+                  "isActive": true,
+                  "_id": "0831e165-46d8-48d3-a31c-8812c53924c6",
+                  "__v": 0,
+                  "createdAt": "2021-01-27T18:00:05.947Z",
+                  "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "interactionPayload": null,
+                  "interactionType": "cart.click",
+                  "title": "Open cart",
+                  "updatedAt": "2021-01-27T18:00:05.947Z",
+                  "id": "0831e165-46d8-48d3-a31c-8812c53924c6"
+                }
+              },
+              "source": null
+            },
+            "children": []
+          },
+          {
+            "id": "c2655d93-a959-4ec4-b790-70caaaf0ef29",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "desktop": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "Amount",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "parent": {
+              "id": "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 2,
+            "children": []
+          },
+          {
+            "id": "fb4f310b-90e6-4398-901b-29a06741c7d3",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "desktop": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "QR",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "meta": null,
+            "motion": null,
+            "parent": {
+              "id": "c55e220e-10ed-44ab-8a6b-8c0d3b4bd5e8",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 3,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "98f217a1-7de7-44fc-84a3-69f7cedfbdaf",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "parent": {
+          "id": "0540dae3-149c-4556-8f84-480a32c69de1",
+          "slot": "host",
+          "type": "document"
+        },
+        "index": 0,
+        "children": [
+          {
+            "index": 0,
+            "id": "b17373fa-6693-4f88-9263-3972276c6964",
+            "type": "shape",
+            "parent": {
+              "id": "98f217a1-7de7-44fc-84a3-69f7cedfbdaf",
+              "slot": "host",
+              "type": "section"
+            },
+            "data": {
+              "variant": "square",
+              "text": "",
+              "source": null
+            },
+            "children": []
+          },
+          {
+            "id": "43dbe54b-6802-4e70-b746-eafdb8551f42",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": "",
+              "source": null,
+              "constrainProportions": null,
+              "proportionRatio": 0.5185185185185185
+            },
+            "parent": {
+              "id": "98f217a1-7de7-44fc-84a3-69f7cedfbdaf",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 1,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "785e90e6-42f9-4bd1-bd5b-e1884e353d0b",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "children": [
+          {
+            "id": "ffedebe4-96c4-4bdc-9b50-fad9e66cb505",
+            "type": "grid",
+            "data": {
+              "context": {
+                "productsIds": [],
+                "categoriesIds": []
+              },
+              "rowCount": 2,
+              "colCount": 2,
+              "borderOptions": {
+                "right": false,
+                "top": false,
+                "left": false,
+                "bottom": false,
+                "inner-horizontal": false,
+                "inner-vertical": false
+              },
+              "text": "",
+              "linkTo": {
+                "integration": {
+                  "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "__v": 0,
+                  "createdAt": "2020-12-15T15:23:03.200Z",
+                  "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+                  "tag": "products",
+                  "title": "Products",
+                  "updatedAt": "2020-12-30T09:15:16.685Z",
+                  "url": "https://products-backend.test.devpayever.com",
+                  "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "actions": [
+                    {
+                      "tags": [
+                        "list",
+                        "getCategories"
+                      ],
+                      "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:05:38.575Z",
+                      "description": "Get categories",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.description": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getCategoriesForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Categories",
+                      "updatedAt": "2020-12-30T13:18:16.504Z",
+                      "url": "/categories",
+                      "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getFilters"
+                      ],
+                      "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:04:54.508Z",
+                      "description": "get filter",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "field": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "type": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.label": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.value": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.field": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getFilter",
+                      "params": [
+                        "filter"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Get filters",
+                      "updatedAt": "2021-01-15T14:17:42.104Z",
+                      "url": "/products",
+                      "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getList"
+                      ],
+                      "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:31:35.773Z",
+                      "description": "Get products",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "priceAndCurrency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "images": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "imagesUrl": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "salePriceAndCurrency": {
+                          "type": "number",
+                          "subtype": "value"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories": {
+                          "type": "object",
+                          "subtype": "array"
+                        },
+                        "categories.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getProductsForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Products",
+                      "updatedAt": "2021-01-15T14:40:31.890Z",
+                      "url": "/products",
+                      "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                    }
+                  ],
+                  "links": [],
+                  "interactions": []
+                },
+                "action": {
+                  "tags": [
+                    "list",
+                    "getList"
+                  ],
+                  "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                  "__v": 0,
+                  "createdAt": "2020-12-29T16:31:35.773Z",
+                  "description": "Get products",
+                  "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "meta": {
+                    "id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "title": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "priceAndCurrency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "images": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "imagesUrl": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "description": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "salePriceAndCurrency": {
+                      "type": "number",
+                      "subtype": "value"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories": {
+                      "type": "object",
+                      "subtype": "array"
+                    },
+                    "categories.id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.name": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.slug": {
+                      "type": "string",
+                      "subtype": "value"
+                    }
+                  },
+                  "method": "getProductsForBuilder",
+                  "params": [
+                    "business",
+                    "filter",
+                    "order",
+                    "offset",
+                    "limit"
+                  ],
+                  "queryType": "query",
+                  "responseType": "list",
+                  "title": "Products",
+                  "updatedAt": "2021-01-15T14:40:31.890Z",
+                  "url": "/products",
+                  "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                }
+              },
+              "spacing": 12,
+              "fullHeight": true
+            },
+            "meta": null,
+            "motion": null,
+            "parent": {
+              "id": "785e90e6-42f9-4bd1-bd5b-e1884e353d0b",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "children": [
+          {
+            "index": 0,
+            "id": "d5f7057c-f2c1-44e4-950f-dd250bc2d2ae",
+            "type": "shape",
+            "meta": null,
+            "parent": {
+              "id": "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce",
+              "slot": "host",
+              "type": "section"
+            },
+            "data": {
+              "variant": "square",
+              "text": "",
+              "source": null
+            },
+            "children": []
+          },
+          {
+            "id": "8dea7f43-529d-4e79-9dcd-b9a575211c1b",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": "",
+              "constrainProportions": true,
+              "proportionRatio": 1,
+              "source": null,
+              "linkTo": {
+                "integration": {
+                  "_id": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "__v": 0,
+                  "createdAt": "2020-12-15T12:08:15.397Z",
+                  "swaggerUrl": "http://nodejs-backend-checkout.production:80/api/doc.json",
+                  "tag": "checkout",
+                  "title": "checkout",
+                  "updatedAt": "2020-12-30T09:14:21.905Z",
+                  "url": "https://checkout-php.payever.org",
+                  "id": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "actions": [],
+                  "links": [],
+                  "interactions": [
+                    {
+                      "isActive": true,
+                      "_id": "c4736742-76bd-4275-ae3b-9ffdfb4ae5ab",
+                      "__v": 0,
+                      "createdAt": "2021-01-27T17:49:22.488Z",
+                      "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                      "interactionPayload": "rendererContext.@products-detail.data",
+                      "interactionType": "product.add-to-cart",
+                      "title": "Add to cart",
+                      "updatedAt": "2021-01-27T17:49:25.959Z",
+                      "id": "c4736742-76bd-4275-ae3b-9ffdfb4ae5ab"
+                    },
+                    {
+                      "isActive": true,
+                      "_id": "0831e165-46d8-48d3-a31c-8812c53924c6",
+                      "__v": 0,
+                      "createdAt": "2021-01-27T18:00:05.947Z",
+                      "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                      "interactionPayload": null,
+                      "interactionType": "cart.click",
+                      "title": "Open cart",
+                      "updatedAt": "2021-01-27T18:00:05.947Z",
+                      "id": "0831e165-46d8-48d3-a31c-8812c53924c6"
+                    }
+                  ]
+                },
+                "link": null,
+                "interaction": {
+                  "isActive": true,
+                  "_id": "0831e165-46d8-48d3-a31c-8812c53924c6",
+                  "__v": 0,
+                  "createdAt": "2021-01-27T18:00:05.947Z",
+                  "integration": "9d371e89-671c-4291-aea0-ea1f54a47446",
+                  "interactionPayload": null,
+                  "interactionType": "cart.click",
+                  "title": "Open cart",
+                  "updatedAt": "2021-01-27T18:00:05.947Z",
+                  "id": "0831e165-46d8-48d3-a31c-8812c53924c6"
+                }
+              }
+            },
+            "meta": null,
+            "parent": {
+              "id": "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 1,
+            "children": []
+          },
+          {
+            "type": "shape",
+            "id": "150549c1-328c-48b2-83d8-1c00eb67807f",
+            "data": {
+              "variant": "square",
+              "text": ""
+            },
+            "children": []
+          },
+          {
+            "id": "602ca414-d51d-4269-b425-d0773996a795",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "tablet": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "Amount",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "parent": {
+              "id": "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 3,
+            "children": []
+          },
+          {
+            "id": "ebdd69be-755a-454a-bcfc-c8c7f2d6a6f7",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "tablet": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "QR",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "meta": null,
+            "motion": null,
+            "parent": {
+              "id": "178bec4e-c1ef-40a8-a9b4-c0ac1d97a3ce",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 4,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "24e6da0e-7e5e-4c66-8152-fab1b4b5f13c",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "children": [
+          {
+            "id": "ef7425f5-da87-4da9-b16c-e574effc6f19",
+            "type": "grid",
+            "data": {
+              "context": {
+                "productsIds": [],
+                "categoriesIds": []
+              },
+              "rowCount": 2,
+              "colCount": 4,
+              "borderOptions": {
+                "right": false,
+                "top": false,
+                "left": false,
+                "bottom": false,
+                "inner-horizontal": false,
+                "inner-vertical": false
+              },
+              "text": "",
+              "linkTo": {
+                "integration": {
+                  "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "__v": 0,
+                  "createdAt": "2020-12-15T15:23:03.200Z",
+                  "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+                  "tag": "products",
+                  "title": "Products",
+                  "updatedAt": "2020-12-30T09:15:16.685Z",
+                  "url": "https://products-backend.test.devpayever.com",
+                  "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "actions": [
+                    {
+                      "tags": [
+                        "list",
+                        "getCategories"
+                      ],
+                      "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:05:38.575Z",
+                      "description": "Get categories",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.description": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getCategoriesForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Categories",
+                      "updatedAt": "2020-12-30T13:18:16.504Z",
+                      "url": "/categories",
+                      "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getFilters"
+                      ],
+                      "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:04:54.508Z",
+                      "description": "get filter",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "field": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "type": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.label": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.value": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.field": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getFilter",
+                      "params": [
+                        "filter"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Get filters",
+                      "updatedAt": "2021-01-15T14:17:42.104Z",
+                      "url": "/products",
+                      "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getList"
+                      ],
+                      "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:31:35.773Z",
+                      "description": "Get products",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "priceAndCurrency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "images": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "imagesUrl": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "salePriceAndCurrency": {
+                          "type": "number",
+                          "subtype": "value"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories": {
+                          "type": "object",
+                          "subtype": "array"
+                        },
+                        "categories.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getProductsForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Products",
+                      "updatedAt": "2021-01-15T14:40:31.890Z",
+                      "url": "/products",
+                      "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                    }
+                  ],
+                  "links": [],
+                  "interactions": []
+                },
+                "action": {
+                  "tags": [
+                    "list",
+                    "getList"
+                  ],
+                  "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                  "__v": 0,
+                  "createdAt": "2020-12-29T16:31:35.773Z",
+                  "description": "Get products",
+                  "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "meta": {
+                    "id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "title": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "priceAndCurrency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "images": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "imagesUrl": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "description": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "salePriceAndCurrency": {
+                      "type": "number",
+                      "subtype": "value"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories": {
+                      "type": "object",
+                      "subtype": "array"
+                    },
+                    "categories.id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.name": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.slug": {
+                      "type": "string",
+                      "subtype": "value"
+                    }
+                  },
+                  "method": "getProductsForBuilder",
+                  "params": [
+                    "business",
+                    "filter",
+                    "order",
+                    "offset",
+                    "limit"
+                  ],
+                  "queryType": "query",
+                  "responseType": "list",
+                  "title": "Products",
+                  "updatedAt": "2021-01-15T14:40:31.890Z",
+                  "url": "/products",
+                  "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                }
+              },
+              "spacing": 6,
+              "fullHeight": true
+            },
+            "parent": {
+              "id": "24e6da0e-7e5e-4c66-8152-fab1b4b5f13c",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "5f2bcb49-2808-4997-9495-5e52fd424fc3",
+        "type": "section",
+        "data": {
+          "name": "Section"
+        },
+        "meta": {
+          "deletable": true
+        },
+        "children": [
+          {
+            "id": "315e4178-de45-4d34-a868-99a6f9417b1a",
+            "type": "grid",
+            "data": {
+              "context": {
+                "productsIds": [
+                  "9bad4cf5-7a65-430f-a687-28e1409a8177",
+                  "54e72a9a-80b5-48cc-9cb4-b1e11c8e8527",
+                  "6b1119f4-84a8-4d23-9c7d-add5e944a3f2",
+                  "edc0e2f2-40f6-408a-878d-0b51b67f8ac1",
+                  "5e72e1a2-ab06-488c-b7fc-08a4cfac844e",
+                  "f68f5d13-638a-4140-9ecf-4b5f7fca7e5c",
+                  "aec9d991-4a60-408c-9fe2-9a23f86818cc",
+                  "45921c36-b3ac-4f01-8699-eeb1c6663bab"
+                ],
+                "categoriesIds": []
+              },
+              "rowCount": 2,
+              "colCount": 4,
+              "borderOptions": {
+                "right": false,
+                "top": false,
+                "left": false,
+                "bottom": false,
+                "inner-horizontal": false,
+                "inner-vertical": false
+              },
+              "text": "",
+              "linkTo": {
+                "integration": {
+                  "_id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "__v": 0,
+                  "createdAt": "2020-12-15T15:23:03.200Z",
+                  "swaggerUrl": "http://nodejs-backend-products.production:80/api-docs/json",
+                  "tag": "products",
+                  "title": "Products",
+                  "updatedAt": "2020-12-30T09:15:16.685Z",
+                  "url": "https://products-backend.test.devpayever.com",
+                  "id": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "actions": [
+                    {
+                      "tags": [
+                        "list",
+                        "getCategories"
+                      ],
+                      "_id": "7fb7ad89-f35c-40c5-85db-af74458df8ac",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:05:38.575Z",
+                      "description": "Get categories",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "parent.description": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getCategoriesForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Categories",
+                      "updatedAt": "2020-12-30T13:18:16.504Z",
+                      "url": "/categories",
+                      "id": "7fb7ad89-f35c-40c5-85db-af74458df8ac"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getFilters"
+                      ],
+                      "_id": "a1b153d8-d617-417a-85c7-163c84d8f52a",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:04:54.508Z",
+                      "description": "get filter",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "field": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "type": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.label": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.value": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "options.field": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getFilter",
+                      "params": [
+                        "filter"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Get filters",
+                      "updatedAt": "2021-01-15T14:17:42.104Z",
+                      "url": "/products",
+                      "id": "a1b153d8-d617-417a-85c7-163c84d8f52a"
+                    },
+                    {
+                      "tags": [
+                        "list",
+                        "getList"
+                      ],
+                      "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                      "__v": 0,
+                      "createdAt": "2020-12-29T16:31:35.773Z",
+                      "description": "Get products",
+                      "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                      "meta": {
+                        "id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "title": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "priceAndCurrency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "images": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "imagesUrl": {
+                          "type": "string",
+                          "subtype": "array"
+                        },
+                        "description": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "salePriceAndCurrency": {
+                          "type": "number",
+                          "subtype": "value"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories": {
+                          "type": "object",
+                          "subtype": "array"
+                        },
+                        "categories.id": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.name": {
+                          "type": "string",
+                          "subtype": "value"
+                        },
+                        "categories.slug": {
+                          "type": "string",
+                          "subtype": "value"
+                        }
+                      },
+                      "method": "getProductsForBuilder",
+                      "params": [
+                        "business",
+                        "filter",
+                        "order",
+                        "offset",
+                        "limit"
+                      ],
+                      "queryType": "query",
+                      "responseType": "list",
+                      "title": "Products",
+                      "updatedAt": "2021-01-15T14:40:31.890Z",
+                      "url": "/products",
+                      "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                    }
+                  ],
+                  "links": [],
+                  "interactions": []
+                },
+                "action": {
+                  "tags": [
+                    "list",
+                    "getList"
+                  ],
+                  "_id": "8576949a-1f9f-4228-a7e8-b4812dcabb00",
+                  "__v": 0,
+                  "createdAt": "2020-12-29T16:31:35.773Z",
+                  "description": "Get products",
+                  "integration": "f81d0a0e-0352-4973-b5af-76beff677882",
+                  "meta": {
+                    "id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "title": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "priceAndCurrency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "images": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "imagesUrl": {
+                      "type": "string",
+                      "subtype": "array"
+                    },
+                    "description": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "salePriceAndCurrency": {
+                      "type": "number",
+                      "subtype": "value"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories": {
+                      "type": "object",
+                      "subtype": "array"
+                    },
+                    "categories.id": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.name": {
+                      "type": "string",
+                      "subtype": "value"
+                    },
+                    "categories.slug": {
+                      "type": "string",
+                      "subtype": "value"
+                    }
+                  },
+                  "method": "getProductsForBuilder",
+                  "params": [
+                    "business",
+                    "filter",
+                    "order",
+                    "offset",
+                    "limit"
+                  ],
+                  "queryType": "query",
+                  "responseType": "list",
+                  "title": "Products",
+                  "updatedAt": "2021-01-15T14:40:31.890Z",
+                  "url": "/products",
+                  "id": "8576949a-1f9f-4228-a7e8-b4812dcabb00"
+                }
+              },
+              "spacing": 4,
+              "fullHeight": true
+            },
+            "meta": null,
+            "motion": null,
+            "parent": {
+              "id": "5f2bcb49-2808-4997-9495-5e52fd424fc3",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 0,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "id": "a9f15f1c-d94c-428b-a295-18ef567cd35a",
+        "type": "section",
+        "meta": {
+          "deletable": false
+        },
+        "parent": {
+          "id": "0540dae3-149c-4556-8f84-480a32c69de1",
+          "slot": "host",
+          "type": "document"
+        },
+        "data": {
+          "name": "footer"
+        },
+        "children": [
+          {
+            "index": 0,
+            "id": "0244017d-01df-4390-9e2b-6211e3717174",
+            "type": "shape",
+            "parent": {
+              "id": "a9f15f1c-d94c-428b-a295-18ef567cd35a",
+              "slot": "host",
+              "type": "section"
+            },
+            "data": {
+              "variant": "square",
+              "text": {
+                "mobile": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "Amount",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "constrainProportions": null,
+              "proportionRatio": 2.8863636363636362
+            },
+            "children": []
+          },
+          {
+            "id": "76bd4b3a-139c-46cc-9647-89bd069bbd7b",
+            "type": "shape",
+            "data": {
+              "variant": "square",
+              "text": {
+                "mobile": {
+                  "english": {
+                    "ops": [
+                      {
+                        "insert": "QR",
+                        "attributes": {
+                          "color": "#ffffff"
+                        }
+                      },
+                      {
+                        "insert": "\n",
+                        "attributes": {
+                          "align": "center"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "constrainProportions": null,
+              "proportionRatio": 2.8863636363636362
+            },
+            "meta": null,
+            "motion": null,
+            "parent": {
+              "id": "a9f15f1c-d94c-428b-a295-18ef567cd35a",
+              "slot": "host",
+              "type": "section"
+            },
+            "index": 1,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T13:30:44.185Z"
+  },
+  "variant": "front"
+}

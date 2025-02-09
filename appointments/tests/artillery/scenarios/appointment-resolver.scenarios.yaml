@@ -1,0 +1,92 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+  timeout: 200
+scenarios:
+  - name: "Appointment Graphql Resolver"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: ">>> accessToken:  {{ accessToken }}"
+
+      - log: QUERY create appointment
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query appointment(id: String!) {
+                appointment(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+
+      - log: QUERY create appointments
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query appointments {
+                appointments(businessId: {{businessId}}) {
+                  id
+                }
+              }
+
+      - log: MUTATION appointments
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation createAppointment($data: CreateAppointmentDto!) {
+                createAppointment(businessId: {{businessId}}, data: $data) {
+                  id
+                }
+              }
+            variables:
+              data:
+                fields: "{{$randomList()}}"
+                allDay: "{{$randomBoolean()}}"
+                repeat: "{{$randomBoolean()}}"
+
+      - log: MUTATION updateAppointment
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation updateAppointment($id: String!, $data: UpdateAppointmentDto!) {
+                updateAppointment(id: $id, businessId: {{businessId}}, data: $data) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+              data:
+                fields: "{{$randomList()}}"
+                allDay: "{{$randomBoolean()}}"
+                repeat: "{{$randomBoolean()}}"
+
+      - log: MUTATION deleteAppointment
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation deleteAppointment($id: String!) {
+                deleteAppointment(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"

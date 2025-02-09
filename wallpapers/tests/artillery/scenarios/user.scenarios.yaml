@@ -1,0 +1,37 @@
+scenarios:
+  - name: "User"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/personal/wallpapers"
+      - get:
+          url: "/api/personal/wallpapers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/personal/wallpapers"
+      - post:
+          url: "/api/personal/wallpapers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: "{{ wallpaper }}"
+            theme: "default"
+      - log: "POST /api/personal/wallpapers/active"
+      - post:
+          url: "/api/personal/wallpapers/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: "{{ wallpaperActive }}"
+            theme: "default"
+      - log: "DELETE /api/personal/wallpapers/{{ wallpaper }}"
+      - delete:
+          url: "/api/personal/wallpapers/{{ wallpaper }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/personal/wallpapers/active"
+      - delete:
+          url: "/api/personal/wallpapers/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

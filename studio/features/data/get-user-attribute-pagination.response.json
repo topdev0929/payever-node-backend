@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "9e50b050-b769-4ad7-869a-929c4d1ddc2b",
+    "icon": "http://test.com/mouse.jpg",
+    "name": "mouse",
+    "type": "animal",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:04.000Z",
+    "updatedAt": "2020-01-01T00:00:04.000Z",
+    "__v": 0
+  },
+  {
+    "_id": "c0c6d1c3-c6a3-4951-8cb4-7405b21c159d",
+    "icon": "http://test.com/cat.jpg",
+    "name": "cat",
+    "type": "animal",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:03.000Z",
+    "updatedAt": "2020-01-01T00:00:03.000Z",
+    "__v": 0
+  },
+  {
+    "_id": "541e9ae1-3119-4e0a-a34b-b37d662996b1",
+    "icon": "http://test.com/motorcycle.jpg",
+    "name": "motorcycle",
+    "type": "vehicle",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:02.000Z",
+    "updatedAt": "2020-01-01T00:00:02.000Z",
+    "__v": 0
+  }
+]

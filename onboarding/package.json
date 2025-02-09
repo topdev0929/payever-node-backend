@@ -1,0 +1,42 @@
+{
+  "repository": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/onboarding.git",
+  "description": "onboarding service",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/consumer.js --queue=async_events_onboarding_created_micro\"",
+    "consumer:prod": "node dist/consumer.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/http.js\"",
+    "http:prod": "node dist/http.js",
+    "lint": "pe-lint",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:pact": "rm -rf pacts && mocha -r ts-node/register ./tests/contract/**/*.spec.ts --timeout 60000 --exit",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register ./tests/contract/publish.ts",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "pe-artillery ./tests/artillery/run.ts",
+    "ws": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/ws.js --queue=async_events_onboarding_processed_micro\"",
+    "ws:prod": "node dist/ws.js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js"
+  },
+  "dependencies": {
+    "@nestjs/platform-socket.io": "7.6.18",
+    "@nestjs/platform-ws": "7.6.18",
+    "@nestjs/websockets": "7.6.18",
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.3.1",
+    "csv-parser": "^3.0.0",
+    "fastify-multipart": "^4.0.7",
+    "form-data": "^4.0.0",
+    "qs": "^6.11.2"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^3.3.0",
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.5",
+    "@pe/pact-kit": "^3.0.3",
+    "@types/jsonpack": "^1.1.0",
+    "@types/node": "^12.20.7"
+  }
+}

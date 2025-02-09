@@ -1,0 +1,17 @@
+export enum FormFieldTypeEnum {
+  Autocomplete = 'autocomplete_industry',
+  Text = 'text',
+  Textarea = 'textarea',
+  Hidden = 'hidden',
+  Date = 'date',
+  Number = 'number',
+  Boolean = 'boolean',
+  Password = 'password',
+  Phone = 'phone',
+  Select = 'select',
+  SelectStatus = 'select_status',
+  SelectBusinessStatus = 'select_business_status',
+  SelectSales = 'select_sales',
+  SelectPhoneCode = 'select_phone_code',
+  Toggle = 'toggle',
+}

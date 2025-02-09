@@ -1,0 +1,17 @@
+<p>Dear Mr / Mrs {{ payment.address.last_name }}</p>
+<p>On day {{ payment.created_at|format_date }} you have decided to purchase on {{business.companyDetails.urlWebsite}}. As of today, you have failed to pay the following purchased orders even though they were already due: {{dueAt|format_date}}</p>
+<p><b>Please remember to make the payment to the following account as soon as possible:</b></p>
+<ul>
+  <li>Account holder: {{accountHolder}}</li>
+  <li>Account number: {{accountNumber}}</li>
+  <li>Amount: {{payment.total}}</li>
+  <li>Due Date: {{dueAt|format_date}}</li>
+  <li>Late payment fees: {{lateFees}}</li>
+  <li>Late payment fee amount: {{lateFeeAmount}}</li>
+  <li>Total due: {{totalWithLateFee}}</li>
+</ul>
+<p>In case you have made several purchase orders, please make separate payments including the relevant order number in each of them.</p>
+<p>Have you already paid? We have taken into account payments received, returns and cancellations until {{dueAt|format_date}}. If you have already transferred the outstanding amount, you do not need to do anything else, and you can consider this email irrelevant.</p>
+<p>If you have any questions, do not hesitate to contact us at the following email: {{business.user.email}}. For questions related to the products, please contact {{business.companyDetails.urlWebsite}}.</p>
+<p>Kind regards,<br>
+Santander S.A.</p>

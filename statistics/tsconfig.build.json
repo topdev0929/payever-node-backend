@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2017",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": false
+  },
+  "include": ["src/**/*", "migrations/**/*", "schemas/**/*"]
+}

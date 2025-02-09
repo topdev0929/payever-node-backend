@@ -1,0 +1,11 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  isSkuUsed(
+    sku: "JEA12-JB-ZS-38"
+    businessUuid: "66551814-ee11-478f-bc55-5b6f75b26ed0"
+    productId: "3cca3ca3-24bc-4d7e-8484-6af97d6693b5"
+  )
+}

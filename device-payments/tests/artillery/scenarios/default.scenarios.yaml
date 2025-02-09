@@ -1,0 +1,70 @@
+scenarios:
+  - name: "Default: Templates"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "Oauth"
+      - function: "oauth"
+      - log: "POST /api/v1/external/{{ businessId }}"
+      - post:
+          url: "/api/v1/external/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            phone_number: "+79528224321"
+            amount: 1000
+            terminalId: "{{ terminalId }}"
+      - log: "GET /api/v1/external/code/check?merchant_id={{ merchantId }}&amount=400&code=123456&token={{ oauthAccessToken }}"
+      - get:
+          url: "/api/v1/external/code/check?merchant_id={{ merchantId }}&amount=400&code=123456&token={{ oauthAccessToken }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/v1/generate-qr/{{ businessId }}"
+      - post:
+          url: "/api/v1/generate-qr/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            amount: 1000
+      - log: "POST /api/v1/inbound/message"
+      - post:
+          url: "/api/v1/inbound/message"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            to: "+79528224321"
+            from: "+79528224321"
+            message: "1000"
+      - log: "POST /api/v1/code/{{ channelSetId }}"
+      - post:
+          url: "/api/v1/code/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/v1/code/assign-payment-flow/{{ paymentCode }}"
+      - post:
+          url: "/api/v1/code/assign-payment-flow/{{ paymentCode }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            paymentFlowId: "test"
+      - log: "GET /api/v1/code"
+      - get:
+          url: "/api/v1/code"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/v1/{{ businessId }}/settings"
+      - put:
+          url: "/api/v1/{{ businessId }}/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/v1/{{ businessId }}/settings"
+      - get:
+          url: "/api/v1/code"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/v1/{{ channelSetId }}/channelset-settings"
+      - get:
+          url: "/api/v1/{{ channelSetId }}/channelset-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

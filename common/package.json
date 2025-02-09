@@ -1,0 +1,48 @@
+{
+  "name": "common-microservice",
+  "version": "0.0.1",
+  "homepage": "https://gitlab.devpayever.com/nodejs-backend/common",
+  "description": "Master data for common collections",
+  "author": "payever",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/common.git"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "consume:prod": "node dist/src/cli.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint",
+    "probe-mongo": "pe-probe-mongo",
+    "test:cov": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register/transpile-only ./tests/unit/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts"
+  },
+  "dependencies": {
+    "@pe/common-sdk": "^4.9.0",
+    "@pe/migration-kit": "^3.0.0",
+    "@pe/nest-kit": "^11.3.1",
+    "countries-list": "^2.4.3",
+    "currency-codes": "^1.5.0",
+    "currency-symbol-map": "^4.0.4",
+    "iso-countries-languages": "^0.3.0",
+    "node-cron": "^2.0.3",
+    "vatrates": "^2.0.2",
+    "xml2json": "^0.11.2"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^4.1.0",
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.5"
+  },
+  "nyc": {
+    "functiions": 100
+  }
+}

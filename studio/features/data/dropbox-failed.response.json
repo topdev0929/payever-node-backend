@@ -1,0 +1,21 @@
+{
+  "data": [
+		{
+			"_id": "57248822-6d67-4a83-97b6-ef5c9d97b6d0",
+			"createdAt": "2021-03-03T09:00:18.057Z",
+			"lastError": true,
+			"lastModified": "2020-04-15T09:04:19.000Z",
+			"name": "vid2.mp4",
+			"path": "/storage server/payever media/vid2.mp4",
+			"sourceId": "id:KBjBsL4dyDoAAAAAAAAiSn",
+			"tries": 2,
+			"type": "video",
+			"updatedAt": "2021-03-03T09:00:18.057Z"
+		}
+  ],
+  "info": {
+    "page": "1",
+    "perPage": 2,
+    "total": 1
+  }
+}

@@ -1,0 +1,7 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation deleteProduct {
+  deleteProduct(ids: ["2ed117c6-0766-44e7-bf0c-6e6af31aae2e"])
+}

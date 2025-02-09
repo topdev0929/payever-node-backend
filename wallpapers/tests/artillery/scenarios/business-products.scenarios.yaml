@@ -1,0 +1,38 @@
+scenarios:
+  - name: "Business Products"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/products/wallpapers"
+      - get:
+          url: "/api/products/wallpapers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products/wallpapers/all"
+      - get:
+          url: "/api/products/wallpapers/all"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products/wallpapers/tree"
+      - get:
+          url: "/api/products/wallpapers/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products/wallpapers/all"
+      - get:
+          url: "/api/products/wallpapers/all"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products/wallpapers/byId/{{ businessProductsId }}"
+      - get:
+          url: "/api/products/wallpapers/byId/{{ businessProductsId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/products/wallpapers/search"
+      - post:
+          url: "/api/products/wallpapers/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            conditions: "{{ conditions }}"

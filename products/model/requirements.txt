@@ -1,0 +1,11 @@
+tensorflow==2.11
+tensorflowjs
+scikit-learn
+matplotlib
+pandas
+numpy
+pymongo
+azure-storage-blob
+python-dotenv
+flask
+pyuwsgi

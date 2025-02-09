@@ -1,0 +1,47 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/custom-access"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/custom-access"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/custom-access"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/custom-access"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          json:
+            access: "Editor"
+
+          capture:
+            - json: "$.id"
+              as: "createId"
+      - log: "createId {{ createId }}"
+
+      - log: "PATCH /api/business/{{businessId}}/application/{{applicationId}}/custom-access/{{createId}}"
+      - patch:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/custom-access/{{createId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          json:
+            access: "Editor"
+
+      - log: "DELETE /api/business/{{businessId}}/application/{{applicationId}}/custom-access/{{createId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/custom-access/{{createId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

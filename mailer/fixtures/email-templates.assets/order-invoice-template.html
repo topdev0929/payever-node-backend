@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title></title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+  <style type="text/css">
+    /*////// RESET STYLES //////*/
+    body,
+    #bodyTable,
+    #bodyCell {
+      font-family: 'Roboto', -apple-system, sans-serif;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    img,
+    a img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display emails at full width. */
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display line heights normally. */
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    td {
+      padding-left: 40px;
+    }
+
+    /* Remove spacing between tables in Outlook 2007 and up. */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Force Outlook 2007 and up to provide a "view in browser" message. */
+    img {
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    /* Force IE to smoothly render resized images. */
+    body,
+    table,
+    td,
+    p,
+    a,
+    li,
+    blockquote {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .table {
+      width: 800px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a9a9a9;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .link {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5587ca;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #a9a9a9;
+    }
+
+    .total-table-wrapper {
+      margin-top: 25px;
+      border-top: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+    }
+
+    .total-table-title {
+      font-size: 18px;
+      color: #a9a9a9;
+      text-transform: uppercase;
+    }
+
+    .product-table td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .total-table {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .total-table .value {
+      padding-right: 40px;
+    }
+
+    .total-table td {
+      padding-right: 20px;
+    }
+
+    .bottom-description {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      font-size: 12px;
+      text-align: center;
+      color: #a9a9a9;
+      line-height: 1.63;
+    }
+
+    .logo {
+      max-width: 34px;
+    }
+
+    .mail-title {
+      font-size: 38px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    .data-table {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .data-table td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .product-table-left-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .product-table-right-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .product-table-middle-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+<table cellpadding="4" style="width:100%;">
+  <tbody>
+  <tr>
+    <td align="center">
+      <table class="table">
+        <thead>
+        <tr>
+          <th colspan="2" align="left">
+            {% if business.logo is defined %}
+            <img
+              border="0"
+              src="{{ business.logo|media_url('images') }}"
+              width="34"
+              class="logo"
+            />
+            {% endif %}
+          </th>
+          <th colspan="2" align="right" class="mail-title">Bestellbestätigung</th>
+        </tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <table class="table data-table">
+        <tbody>
+        <tr style="height:45px">
+          <td colspan="2" rowspan="2" style="border-bottom:1px solid #ffffff;border-right:1px solid #ffffff">
+            <p class="title">Referenznummer</p>
+            <p class="value">{{ payment.reference }}</p>
+          </td>
+          <td rowspan="3" style="border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;">
+            <p class="title">Rechnungsadresse</p>
+            <p class="value">{{ payment.customer_name }}</p>
+            <p style="font-weight: lighter">
+              {% if payment.address %}
+              {{ payment.address.street }}, {{ payment.address.zip_code }}, {{ payment.address.city }}, {{ payment.address.country_name }},
+              {% endif %}
+            </p>
+          </td>
+        </tr>
+        <tr style="height:45px">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr style="height:45px">
+          <td colspan="2" rowspan="2" style="border-bottom:1px solid #ffffff;border-right:1px solid #ffffff">
+            <p class="title">Datum</p>
+            <p class="value">{{ payment.created_at|format_date }}</p>
+          </td>
+          <td rowspan="2" >
+            <p class="title">Gesamtbetrag</p>
+            <p class="value">{{ payment.total|number_format_currency(payment.currency) }}</p>
+          </td>
+        </tr>
+        <tr style="height:45px">
+          <td rowspan="3" style="border-right:1px solid #ffffff;">
+            <p class="title">Zahlungsart</p>
+            <p class="value">
+              {% if payment.payment_option is defined %}
+              {{ payment.payment_option|payment_option }}
+              {% if payment.payment_option|payment_option == 'Vorkasse' and payment.payment_option.payment_details is defined %}
+            <p>Kontoinhaber: {{ payment.payment_option.payment_details.merchant_bank_account_holder }}</p>
+            <p>BIC: {{ payment.payment_option.payment_details.merchant_bank_code }}</p>
+            <p>IBAN: {{ payment.payment_option.payment_details.merchant_bank_account }}</p>
+            {% endif %}
+            {% endif %}
+            </p>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr style="height:45px">
+          <td colspan="2" rowspan="2" style="border-right:1px solid #ffffff">
+            <p class="title">Bestellnummer</p>
+            <a href="#" class="link" style="font-size: 12px">{{ payment.id }}</a>
+          </td>
+          <td style="border-right:1px solid #ffffff;"></td>
+          <td></td>
+        </tr>
+        <tr style="height:45px">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" style="padding-top:55px">
+      <table class="table product-table">
+        <tbody>
+        <tr>
+          <td colspan="2" class="product-table-left-title">
+            Produkt
+          </td>
+          <td class="product-table-middle-title">
+            Anzahl
+          </td>
+          <td align="left" class="product-table-right-title">
+            Preis
+          </td>
+        </tr>
+        {% for item in payment_items %}
+        <!-- ITEM START -->
+        <tr>
+          <td>
+            {% if item.thumbnail is defined %}
+            <img
+              border="0"
+              src="{{ item.thumbnail }}"
+              width="100"
+              style="max-width:100px"
+            />
+            {% endif %}
+          </td>
+          <td style="padding-left:0;">
+            <p class="value">{{ item.name }}</p>
+            {% if item.options is defined and item.options.length > 0 %}
+            <p class="value">
+              {% for option in item.options %}
+              {{ option.name }}: {{ option.value }}
+              {% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+            {% endif %}
+          </td>
+          <td>
+            <p class="value">{{ item.quantity }} Artikel</p>
+          </td>
+          <td align="left">
+            <p class="value">{{ item.price|number_format_currency(payment.currency)  }}</p>
+          </td>
+        </tr>
+        <!-- ITEM END -->
+        {% endfor %}
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <table class="table total-table-wrapper">
+        <tbody>
+        <tr align="right">
+          <td>
+            <table class="total-table">
+              <tbody>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">Zwischensumme</p>
+                </td>
+                <td>
+                  <p class="value">{{ (payment.total - payment.vat_rate)|number_format_currency(payment.currency) }}</p>
+                </td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">Mehrwertsteuer</p>
+                </td>
+                <td>
+                  <p class="value">
+                    {% if payment.vat_rate is defined %}
+                    {{ payment.vat_rate|number_format_currency(payment.currency) }}
+                    {% endif %}
+                  </p>
+                </td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">Versandkosten</p>
+                </td>
+                <td>
+                  <p class="value">{{ payment.delivery_fee|number_format_currency(payment.currency)  }}</p>
+                </td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">Gesamtbetrag</p>
+                </td>
+                <td>
+                  <p class="value" style="font-weight:500;">{{ payment.total|number_format_currency(payment.currency) }}</p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <table class="table">
+        <tbody>
+        <tr align="center">
+          <td>
+            <p class="bottom-description">
+              {{ business.name }},
+              {% if business.companyDetails.legalForm is defined %}
+              {{ business.companyDetails.legalForm }},
+              {% endif %}
+              {% if business.companyAddress is defined and business.companyAddress.street is defined %}
+              {{ business.companyAddress.street }},
+              {% endif %}
+              {% if business.companyAddress is defined and business.companyAddress.zipCode is defined %}
+              {{ business.companyAddress.zipCode }},
+              {% endif %}
+              {% if business.companyAddress is defined and business.companyAddress.city is defined %}
+              {{ business.companyAddress.city }},
+              {% endif %}
+              {% if business.companyAddress is defined and business.companyAddress.country is defined %}
+              {{ business.companyAddress.country|country_name }},
+              {% endif %}
+              {% if business.contactDetails is defined and business.contactDetails.phone is defined %}
+              {{ business.contactDetails.phone }}
+              {% endif %}
+            </p>
+          </td>
+        </tr>
+        <tr align="center">
+          <td>
+            <p class="bottom-description">
+              <a href="https://getpayever.com/" target="_blank" rel="noopener noreferrer">
+                <img border="0"
+                     src="cid:powered_by_logo.png"/>
+              </a>
+            </p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

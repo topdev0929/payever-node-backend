@@ -1,0 +1,13 @@
+
+scenarios:
+  - name: "Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/business"
+      - get:
+          url: "/api/business"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

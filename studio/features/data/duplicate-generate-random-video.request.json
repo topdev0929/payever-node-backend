@@ -1,0 +1,16 @@
+{
+  "audio": "http://localhost:2020/video/audio.mp3",
+  "errorMargin": 20,
+  "videoCutOptions": [
+    {
+      "video": "http://localhost:2020/video/input3.mp4",
+      "duration": 3,
+      "noClips": 2
+    },
+    {
+      "video": "http://localhost:2020/video/input4.mp4",
+      "duration": 3,
+      "noClips": 2
+    }
+  ]
+}

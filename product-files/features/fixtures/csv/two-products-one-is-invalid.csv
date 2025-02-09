@@ -1,0 +1,4 @@
+"Handle";"Title";"Description";"Type";"Hidden";"Enabled";"SKU";"Bar Code";"Inventory Stock";"Inventory Reserved";"Price";"Sales Price";"Currency";"Images";"VAT";"Weight(Kg)";"Width(Cm)";"Length(Cm)";"Height(Cm)"
+"Test_1";"Valid product";"Valid product";"digital";"false";"true";"1234";"bar-code";"";"";"100";"50";"eur";"";"";"";"";"";""
+"Test_2";"Invalid product";;"digital";"false";"true";5678;"bar-code";"";"";"";"50";"eur";"";"";"";"";"";""
+"Test_2";"";"";"";"";"";"wrong_variant_sku";"";"";"";"";"";"";"";"";"";"";"";""

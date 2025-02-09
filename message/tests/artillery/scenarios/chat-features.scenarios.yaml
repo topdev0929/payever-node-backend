@@ -1,0 +1,184 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:  
+  - name: "Chat Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/info"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/info"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/search"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/search"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/messages"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/pinned-messages"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/pinned-messages"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/chats/{{chatId}}/messages"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            attachments: []
+            content: "test message {{newUuid}}"
+            contentPayload: null
+            contentType: null
+            sentAt: "2022-12-22T13:51:11.436Z"
+            type: "text"
+          capture:
+             - json: "$._id"
+               as: "messageId"
+          expect:
+              - statusCode: 201
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/chats/{{chatId}}/messages"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            attachments: []
+            content: "test message {{newUuid}}"
+            contentPayload: null
+            contentType: null
+            sentAt: "2022-12-22T13:51:11.436Z"
+            type: "text"
+          capture:
+             - json: "$._id"
+               as: "messageId"
+          expect:
+              - statusCode: 201
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            content: "test message {{newUuid}}"
+          expect:
+              - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}/pin"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}/pin"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            messageId: "{{messageId}}"
+            forAllUsers: true
+            notifyAllMembers: true
+          expect:
+              - statusCode: 200
+      - think: 1
+
+      - log: "DELETE /business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}"
+      - delete:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/messages/{{messageId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/chats/{{chatId}}/invites"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/invites"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            expiresAt: "{{now}}"
+          expect:
+              - statusCode: 201
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/invites"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/invites"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$[0]._id"
+              as: "chatInviteId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/invites/{{chatInviteId}}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/invites/{{chatInviteId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/chats/{{chatId}}/invites/invited-members"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/chats/{{chatId}}/invites/invited-members"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1

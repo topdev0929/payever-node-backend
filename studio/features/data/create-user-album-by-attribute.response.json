@@ -1,0 +1,48 @@
+{
+  "ancestors": [],
+  "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+  "name": "new album",
+  "description": "some description here",
+  "userAttributes": [
+    {
+      "attribute": {
+        "_id": "17526ce8-94d3-4dab-99cd-667997bfa356",
+        "icon": "http://test.com/car.jpg",
+        "name": "car",
+        "type": "vehicle"
+      },
+      "value": "test1"
+    },
+    {
+      "attribute": {
+        "_id": "c0c6d1c3-c6a3-4951-8cb4-7405b21c159d",
+        "icon": "http://test.com/cat.jpg",
+        "name": "cat",
+        "type": "animal"
+      },
+      "value": "default"
+    },
+    {
+      "attribute": {
+        "_id": "541e9ae1-3119-4e0a-a34b-b37d662996b1",
+        "icon": "http://test.com/motorcycle.jpg",
+        "name": "motorcycle",
+        "type": "vehicle"
+      },
+      "value": "default"
+    },
+    {
+      "attribute": {
+        "_id": "9e50b050-b769-4ad7-869a-929c4d1ddc2b",
+        "icon": "http://test.com/mouse.jpg",
+        "name": "mouse",
+        "type": "animal"
+      },
+      "value": "default"
+    }
+  ],
+  "_id": "*",
+  "createdAt": "*",
+  "updatedAt": "*",
+  "__v": 0
+}

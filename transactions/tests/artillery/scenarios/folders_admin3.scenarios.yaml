@@ -1,0 +1,91 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Folders Admin"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Post /api/admin/folders" 
+      - post: 
+          url: "/api/admin/folders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "string"
+            isHeadline: true
+            image: "string"
+            name: "string"
+            description: "string"
+            isProtected: true
+            position: 0
+      - log: "Get /api/admin/folders" 
+      - get:
+          url: "/api/admin/folders"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/admin/folders/tree" 
+      - get:
+          url: "/api/admin/folders/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/admin/folders/folder/{{ folderId }}"
+      - patch:
+          url: "/api/admin/folders/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "string"
+            isHeadline: true
+            image: "string"
+            name: "string"
+            description: "string"
+            isProtected: true
+            position: 0
+      
+      - log: "Delete /api/admin/folders/folder/{{ folderId }}"
+      - delete:
+          url: "/api/admin/folders/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/admin/folders/update-positions"
+      - post:
+          url: "/api/admin/folders/update-positions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            positions:
+              - json:
+                  _id: "string"
+                  position: 0
+
+      - log: "Get /api/admin/folders/folder/{{ folderId }}/documents"
+      - get: 
+          url: "/api/admin/folders/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/admin/folders/root-documents"
+      - get: 
+          url: "/api/admin/folders/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+
+          
+      

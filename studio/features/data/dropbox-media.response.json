@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "downloaded": false,
+      "_id": "53453f49-9372-4116-be38-2dd19f41744a",
+      "sourceId": "id:KBjBsL4dyDoAAAAAAAAiSg",
+      "createdAt": "2021-03-03T09:00:18.054Z",
+      "lastModified": "2020-04-15T09:01:16.000Z",
+      "name": "vid1.mov",
+      "path": "/storage server/payever media/vid1.mov",
+      "type": "video",
+      "updatedAt": "2021-03-03T09:00:18.054Z",
+      "__v": 0
+    },
+    {
+      "downloaded": false,
+      "_id": "57248822-6d67-4a83-97b6-ef5c9d97b6dd",
+      "sourceId": "id:KBjBsL4dyDoAAAAAAAAiSw",
+      "createdAt": "2021-03-03T09:00:18.057Z",
+      "lastModified": "2020-04-15T09:04:19.000Z",
+      "name": "vid2.mp4",
+      "path": "/storage server/payever media/vid2.mp4",
+      "type": "video",
+      "updatedAt": "2021-03-03T09:00:18.057Z",
+      "__v": 0
+    }
+  ],
+  "info": {
+    "page": "1",
+    "perPage": 2,
+    "total": 5
+  }
+}

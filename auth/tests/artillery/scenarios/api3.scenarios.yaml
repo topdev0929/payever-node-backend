@@ -1,0 +1,97 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+
+scenarios:
+  - name: "Api"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/user"
+      - patch:
+          url: "/api/user"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/user-logo/{{ email }}"
+      - get:
+          url: "/api/user-logo/{{ email }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/email/{{ email }}/validate"
+      - get:
+          url: "/api/email/{{ email }}/validate"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/register"
+      - post:
+          url: "/api/register"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ emailNew }}"
+            firstName: "{{ firstNameNew }}"
+            lastName: "{{ lastNameNew }}"
+          capture:
+            - json: "$.accessToken"
+              as: "accessTokenNew"
+            - json: "$.refreshToken"
+              as: "refreshTokenNew"
+      - log: "POST /api/confirm/{{ accessTokenNew }}"
+      - post:
+          url: "/api/confirm/{{ accessTokenNew }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/update-logo"
+      - post:
+          url: "/api/update-logo"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ emailNew }}"
+            logo_uuid: "{{ logoId }}"
+      - log: "POST /api/update"
+      - post:
+          url: "/api/update"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            oldPassword: "{{ plainPassword }}"
+            newPassword: "{{ plainPassword }}"
+      - log: "POST /api/forgot"
+      - post:
+          url: "/api/forgot"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ emailNew }}"
+      - log: "GET /api/user"
+      - get:
+          url: "/api/user"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.resetPasswordToken"
+              as: "resetPasswordToken"
+      - log: "POST /api/reset/{{ resetPasswordToken }}"
+      - post:
+          url: "/api/reset/{{ resetPasswordToken }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            plainPassword: "{{ plainPassword }}"
+  - name: "Api"
+    flow:
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/users?limit=10"
+      - get:
+          url: "/api/users?limit=10"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

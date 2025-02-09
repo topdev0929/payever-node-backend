@@ -1,0 +1,63 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "App Themes Album"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+
+      - log: "POST /api/business/{{ businessId }}/application/{{ applicationId }}/theme-album"
+      - post:
+          url: "/api/business/{{ businessId }}/application/{{ applicationId }}/theme-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ albumName }}"
+            description: "{{ albumDescription }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/theme-album/duplicate"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme-album/duplicate"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            albumIds: "[{{ albumId }}]"
+
+      - log: "PATCH /api/business/{{businessId}}/application/{{applicationId}}/theme-album/{{albumId}}"
+      - patch:
+          url: "/api/business/{{ businessId }}/application/{{ applicationId }}/theme-album/{{ albumId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ albumNameUpdated }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme-album"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme-album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme-album/{{albumId}}"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme-album/{{albumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme-album/parent/{{albumId}}"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme-album/parent/{{albumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme-album/ancestor/{{albumId}}"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme-album/ancestor/{{albumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

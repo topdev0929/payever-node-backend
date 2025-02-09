@@ -1,0 +1,61 @@
+import {
+  Db,
+  MongoClient,
+} from 'mongodb';
+
+async function up(db: any): Promise<void> {
+  const client: MongoClient = new MongoClient(db.connectionString);
+  await client.connect();
+  const connectDB: Db = client.db();
+
+  const employees: any[] = await connectDB.collection('employees').find({
+    $and: [
+      {
+        $or: [
+          { acls: { $exists: false }},
+          { acls: { $size: 0} },
+        ],
+      },
+      {
+        $or: [
+          { permissions: { $exists: false }},
+          { permissions: { $size: 0} },
+        ],
+      },
+    ],
+    $nor: [
+      { positions: { $exists: false }},
+      { positions: { $size: 0} },
+    ],
+  }).toArray();
+
+  for (const employee of employees) {
+    await connectDB.collection('employees').findOneAndUpdate(
+      { _id: employee._id },
+      {
+        $set: {
+          permissions: employee.positions.map(
+            (a: any) => ({
+              acls: [{
+                microservice : 'commerceos',
+                read : true,
+              }],
+              businessId: a.businessId,
+            }),
+          ),
+        },
+      },
+    );
+  }
+
+  await client.close();
+
+  return null;
+}
+
+function down(): Promise<void> {
+  return null;
+}
+
+module.exports.up = up;
+module.exports.down = down;

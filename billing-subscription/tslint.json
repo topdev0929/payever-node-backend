@@ -1,0 +1,7 @@
+{
+    "extends": ["@pe/dev-kit"],
+    "rules": {
+      "align": [true, "parameters"],
+      "indent": [true, "spaces", 2]
+    }
+}

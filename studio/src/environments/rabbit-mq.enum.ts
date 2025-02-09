@@ -1,0 +1,15 @@
+export enum RabbitMqEnum {
+  BusinessCreated = 'users.event.business.created',
+  BusinessRemoved = 'users.event.business.removed',
+  BusinessUpdated = 'users.event.business.updated',
+  BusinessExported = 'users.event.business.export',
+  GenerateFrames = 'studio.event.generate.frames',
+  GenerateRandomVideo = 'studio.event.generate.random.video',
+  GenerateVideoFinished = 'studio.event.generate.video.finished',
+  StudioMediasUploaded = 'media.event.studio.medias.uploaded',
+  StudioMediasUploadedError = 'media.event.studio.medias.uploaded.error',
+  UserMediasUploaded = 'studio.event.user.medias.uploaded',
+  UserMediasUploadedError = 'studio.event.user.medias.uploaded.error',
+  SubscriptionMediasUploaded = 'studio.event.subscription.medias.uploaded',
+  SubscriptionMediasUploadedError = 'studio.event.subscription.medias.uploaded.error',
+}

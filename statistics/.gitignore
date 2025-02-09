@@ -1,0 +1,15 @@
+node_modules/
+npm-debug.log
+dist/
+.idea/
+.vscode/
+.env
+.nyc_output
+trash
+# artillery tests
+/tests/artillery/_tests
+tests/artillery/report*.json
+
+.DS_Store
+
+.npmrc

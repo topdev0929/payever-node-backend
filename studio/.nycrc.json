@@ -1,0 +1,47 @@
+{
+  "reporter": [
+    "html",
+    "text"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.*",
+    "src/**/*.constraint.*",
+    "src/**/*.cron.*",
+    "src/**/*.dto.*",
+    "src/**/*.enum.*",
+    "src/**/color.helper.*",
+    "src/**/frame.helper.*",
+    "src/**/indicator.helper.*",
+    "src/**/video.helper.*",
+    "src/**/*.interface.*",
+    "src/**/*.model.*",
+    "src/**/*schema.*",
+    "src/**/image-assessment-task.service.*",
+    "src/**/image-assessment.service.*",
+    "src/**/media-info-task.service.*",
+    "src/**/media-info.service.*",
+    "src/**/media-stream.service.*",
+    "src/**/media-upload.service.*",
+    "src/**/object-detection.service.*",
+    "src/**/video-generator-task-processor.service.*",
+    "src/**/video-generator-task.service.*",
+    "src/**/video-generator.service.*",
+    "src/**/video-info.service.*",
+    "src/**/index.*",
+    "src/environments/*"
+  ],
+  "require": [
+    "ts-node"
+  ],
+  "sourceMap": true,
+  "instrument": true,
+  "check-coverage": false,
+  "cache": false
+}

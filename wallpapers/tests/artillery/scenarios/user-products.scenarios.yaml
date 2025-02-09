@@ -1,0 +1,24 @@
+scenarios:
+  - name: "User Products"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/user-products/wallpapers/all"
+      - get:
+          url: "/api/user-products/wallpapers/all"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/user-products/wallpapers/tree"
+      - get:
+          url: "/api/user-products/wallpapers/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/user-products/wallpapers/search"
+      - post:
+          url: "/api/user-products/wallpapers/search"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: "{{ wallpaper }}"
+            theme: "default"

@@ -1,0 +1,21 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+  processor: "../processors/config.js"
+scenarios:
+  - name: "Values"
+    flow:
+      - log: "Login"
+      - function: "auth"    
+
+      - log: "Get /api/values"
+      - get: 
+          url: "/api/values"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

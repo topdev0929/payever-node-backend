@@ -1,0 +1,173 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios: 
+  - name: "Rules Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /rules/business/{{businessId}}"
+      - get:
+          url: "{{ httpTarget }}/rules/business/{{businessId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$[0]._id"
+               as: "rulesId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "POST /rules/business/{{businessId}}"
+      - post:
+          url: "{{ httpTarget }}/profile/blacklist/{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            action: "move"
+            condition: "equals"
+            description: "{{newUuid}}"
+            field: "{{newUuid}}"
+            folderId: "{{newUuid}}"
+            name: "{{newUuid}}"
+            values: {}
+            channel: "{{newUuid}}"
+            start: "{{newUuid}}"
+            startTime: "2023-04-12T18:39:00.937Z"
+          capture:
+             - json: "$._id"
+               as: "ruleId"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /rules/business/{{businessId}}/rule/{{ruleId}}"
+      - get:
+          url: "{{ httpTarget }}/rules/business/{{businessId}}/rule/{{ruleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$[0]._id"
+               as: "rulesId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "PATCH /rules/business/{{businessId}}/rule/{{ruleId}}"
+      - patch:
+          url: "{{ httpTarget }}/rules/business/{{businessId}}/rule/{{ruleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            description: "{{newUuid}}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "DELETE /rules/business/{{businessId}}/rule/{{ruleId}}"
+      - delete:
+          url: "{{ httpTarget }}/rules/business/{{businessId}}/rule/{{ruleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /rules/values"
+      - get:
+          url: "{{ httpTarget }}/rules/values"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+             - json: "$[0]._id"
+               as: "rulesId"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "GET /rules/user{{userId}}"
+      - get:
+          url: "{{ httpTarget }}/rules/user{{userId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+ 
+      - log: "POST /rules/user/{{userId}}"
+      - post:
+          url: "{{ httpTarget }}/rules/user/{{userId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            action: "move"
+            condition: "equals"
+            description: "{{newUuid}}"
+            field: "{{newUuid}}"
+            folderId: "{{newUuid}}"
+            name: "{{newUuid}}"
+            values: {}
+            channel: "{{newUuid}}"
+            start: "{{newUuid}}"
+            startTime: "2023-04-12T18:39:00.937Z"
+          capture:
+             - json: "$._id"
+               as: "userRuleId"
+          expect:
+            - statusCode: 200
+ 
+      - log: "GET /rules/user{{userId}}/rule/{{userRuleId}}"
+      - get:
+          url: "{{ httpTarget }}/rules/user{{userRuleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+ 
+      - log: "PATCH /rules/user{{userId}}/rule/{{userRuleId}}"
+      - patch:
+          url: "{{ httpTarget }}/rules/user{{userRuleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            description: "{{newUuid}}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "DELETE /rules/user{{userId}}/rule/{{userRuleId}}"
+      - delete:
+          url: "{{ httpTarget }}/rules/user{{userRuleId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            description: "{{newUuid}}"
+          expect:
+            - statusCode: 200
+      - think: 1
+  

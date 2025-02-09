@@ -1,0 +1,69 @@
+config:
+  phases:
+    - duration: 100
+      arrivalRate: 1
+scenarios:
+  - name: "organization"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "Get /api/admin/organizations"
+      - get:
+          url: "/api/admin/organizations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "Post /api/admin/organizations"
+      - post:
+          url: "/api/admin/organizations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "test"
+            businesses:
+              - "{{ businessId }}"
+      
+      - log: "Get /api/admin/organizations/{{ organizationId }}"
+      - get:
+          url: "/api/admin/organizations/{{ organizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Patch /api/admin/organizations/{{ organizationId }}"
+      - patch:
+          url: "/api/admin/organizations/{{ organizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "test"
+            businesses:
+              - "{{ businessId }}"
+      
+      - log: "DELETE /api/admin/organizations/{{ organizationId }}"
+      - delete:
+          url: "/api/admin/organizations/{{ organizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            
+      - log: "Post /api/admin/organizations/{{ organizationId }}/new-secret"
+      - post:
+          url: "/api/admin/organizations/{{ organizationId }}/new-secret"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Post /api/admin/organizations"
+      - post:
+          url: "/api/admin/organizations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            clientId: "{{ clientId }}"
+            clientSecret: "{{ clientSecret }}"
+            scopes:
+              - "test"

@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<import xsi:noNamespaceSchemaLocation="product.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <products>
+        <product>
+            <sku>sku1234</sku>
+            <type>service</type>
+            <title>Some service product</title>
+            <description>Some description</description>
+            <images>
+                <image url="https://test.com/some.png"/>
+                <image url="https://test.com/someother.png"/>
+            </images>
+            <hidden>true</hidden>
+            <price>100.0</price>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>test123123</bar-code>
+            <enabled>true</enabled>
+            <variants>
+                <variant>
+                    <sku>sku12345</sku>
+                    <title>Variant 1</title>
+                    <description>Variant 1</description>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>10.0</sale-price>
+                        <sale-percent>80.0</sale-percent>
+                        <sale-start-date>2023-01-01</sale-start-date>
+                        <sale-end-date>2023-01-11</sale-end-date>
+                    </sale>
+                    <bar-code>test123125</bar-code>
+                    <inventory>
+                        <stock>100</stock>
+                        <reserved>50</reserved>
+                    </inventory>
+                    <attributes>
+                        <attribute>
+                            <name>Test attribute1</name>
+                            <value>Test value1</value>
+                            <type>text</type>
+                        </attribute>
+                        <attribute>
+                            <name>Test attribute2</name>
+                            <value>Test value2</value>
+                            <type>text</type>
+                        </attribute>
+                    </attributes>
+                    <options>
+                        <option>
+                            <name>text</name>
+                            <value>red</value>
+                            <type>DEFAULT</type>
+                        </option>
+                        <option>
+                            <name>Color</name>
+                            <value>Yellow</value>
+                            <type>COLOR</type>
+                        </option>
+                    </options>
+                </variant>
+                <variant>
+                    <sku>sku123456</sku>
+                    <title>Variant 2</title>
+                    <description>Variant 2</description>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>20.0</sale-price>
+                        <sale-percent>60.0</sale-percent>
+                        <sale-start-date>2023-01-11</sale-start-date>
+                        <sale-end-date>2023-01-21</sale-end-date>
+                    </sale>
+                    <bar-code>test</bar-code>
+                    <inventory>
+                        <stock>50</stock>
+                        <reserved>40</reserved>
+                    </inventory>
+                    <attributes>
+                        <attribute>
+                            <name>Test attribute1</name>
+                            <value>Test value1</value>
+                            <type>text</type>
+                        </attribute>
+                    </attributes>
+                    <options>
+                        <option>
+                            <name>text</name>
+                            <value>blue</value>
+                            <type>DEFAULT</type>
+                        </option>
+                        <option>
+                            <name>Color</name>
+                            <value>Black</value>
+                            <type>COLOR</type>
+                        </option>
+                    </options>
+                </variant>
+                <variant>
+                    <sku>sku1234567</sku>
+                    <title>Variant 3</title>
+                    <description>Variant 3</description>
+                    <hidden>false</hidden>
+                    <price>50</price>
+                    <sale>
+                        <on-sales>true</on-sales>
+                        <sale-price>20.0</sale-price>
+                        <sale-percent>60.0</sale-percent>
+                        <sale-start-date>2023-01-11</sale-start-date>
+                        <sale-end-date>2023-01-21</sale-end-date>
+                    </sale>
+                    <bar-code>test</bar-code>
+                    <inventory>
+                        <stock>50</stock>
+                        <reserved>40</reserved>
+                    </inventory>
+                    <options>
+                        <option>
+                            <name>text</name>
+                            <value>white</value>
+                            <type>DEFAULT</type>
+                        </option>
+                        <option>
+                            <name>Color</name>
+                            <value>Dark</value>
+                            <type>COLOR</type>
+                        </option>
+                    </options>
+                </variant>
+            </variants>
+        </product>
+    </products>
+</import>

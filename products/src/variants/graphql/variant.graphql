@@ -1,0 +1,4 @@
+type Variant {
+  #deprecated
+  hidden: Boolean
+}

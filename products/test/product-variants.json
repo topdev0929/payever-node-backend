@@ -1,0 +1,35 @@
+[
+  {
+    "barcode": "bar-1",
+    "description": "description 1",
+    "onSales": false,
+    "images": [],
+    "imagesUrl": [],
+    "price": 12.3,
+    "salePrice": 12.5,
+    "sku": "sku-v1",
+    "title": "variant 1"
+  },
+  {
+    "barcode": "bar-2",
+    "description": "description 2",
+    "onSales": false,
+    "images": [],
+    "imagesUrl": [],
+    "price": 12.3,
+    "salePrice": 12.5,
+    "sku": "sku-v2",
+    "title": "variant 2"
+  },
+  {
+    "barcode": "bar-3",
+    "description": "description 3",
+    "onSales": false,
+    "images": [],
+    "imagesUrl": [],
+    "price": 12.3,
+    "salePrice": 12.5,
+    "sku": "sku-v3",
+    "title": "variant 3"
+  }
+]

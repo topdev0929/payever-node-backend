@@ -1,0 +1,8 @@
+{
+  "_id": "85479434-5971-4be1-b64f-466ad14739ad",
+  "name": "Test theme",
+  "isDefault": true,
+  "snapshot": "49ac27be-1a34-4c03-a50a-db3d6852f031",
+  "type": "template",
+  "picture": "http://someurl.com/someimage.jpg"
+}

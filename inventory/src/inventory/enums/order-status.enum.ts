@@ -1,0 +1,7 @@
+export enum OrderStatusEnum {
+  TEMPORARY = 'TEMPORARY',
+  PERMANENT = 'PERMANENT',
+  RELEASED = 'RELEASED',
+  AUTO_RELEASED = 'AUTO_RELEASED',
+  CLOSED = 'CLOSED',
+}

@@ -1,0 +1,39 @@
+input CategoryInput {
+    businessUuid: String,
+    title: String,
+}
+
+type Category {
+    _id: String,
+    businessUuid: String,
+    title: String,
+    slug: String,
+}
+
+type CategoryReference {
+    id: String,
+    title: String,
+    slug: String,
+}
+
+type ChannelSetCategory {
+  channelSetId: String!
+  categories: [CategoryReference!]!
+  channelSetType: String!
+}
+
+type Query {
+    getCategories(
+        businessUuid: String!,
+        title: String,
+        pageNumber: Int,
+        paginationLimit: Int,
+    ): [Category]
+    getUsedCategories(
+        businessUuid: String!,
+    ): [Category]
+}
+
+type Mutation {
+    createCategory(category: CategoryInput!): Category
+}

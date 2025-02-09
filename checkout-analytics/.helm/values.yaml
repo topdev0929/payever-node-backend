@@ -1,0 +1,65 @@
+namespace: default
+priorityClass: app-10stars
+enableRmqFallbackRepub: false
+image:
+  nodejs: registry.devpayever.com/nodejs-backend/checkout-analytics
+  pullSecretName: regsecret
+
+service:
+  externalPort: 80
+  containerPort: 3000
+  statusPort: 8081
+
+resourcestest:
+  app:
+    requests:
+      cpu: 64m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+  consumer:
+    requests:
+      cpu: 64m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+resourcesstage:
+  app:
+    requests:
+      cpu: 64m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+  consumer:
+    requests:
+      cpu: 64m
+      memory: 50Mi
+    limits:
+      memory: 450Mi
+resourceslive:
+  app:
+    requests:
+      cpu: 64m
+      memory: 228Mi
+    limits:
+      memory: 500Mi
+  consumer:
+    requests:
+      cpu: 132m
+      memory: 228Mi
+    limits:
+      memory: 750Mi
+#critical
+replicas:
+  http:
+    min: 6
+    max: 30
+  consumer:
+    min: 6
+    max: 30
+  cron: 1
+hpa:
+  cpu:
+    tarUti: 75
+  mem:
+    tarUti: 85

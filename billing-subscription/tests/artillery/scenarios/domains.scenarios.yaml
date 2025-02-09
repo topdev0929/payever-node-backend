@@ -1,0 +1,63 @@
+scenarios:
+  - name: "Domains"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/business/{{businessId}}/subscription-network"
+      - post:
+          url: "/api/business/{{businessId}}/subscription-network"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            favicon: "icon.png"
+            logo: "logo.png"
+            isDefault: true
+            name: "subscription network name"
+          capture:
+            - json: "$._id"
+              as: "subscriptionNetworkId"
+      - log: "GET /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}"
+      - get:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/isValidName?name=test"
+      - get:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/isValidName?name=test"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}"
+      - post:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{domainName}}.com"
+          capture:
+            - json: "$._id"
+              as: "domainId"
+      - log: "PATCH /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}"
+      - patch:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}"
+          json:
+            name: "{{domainName}}2.com"         
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}/check"
+      - post:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}/check"
+          headers:
+            authorization: "Bearer {{ accessToken }}"    
+      - log: "DELETE /api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/domain/{{subscriptionNetworkId}}/{{domainId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/subscription-network/{{subscriptionNetworkId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

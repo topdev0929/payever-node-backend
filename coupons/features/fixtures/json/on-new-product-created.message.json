@@ -1,0 +1,15 @@
+{
+    "name": "products.event.product.created",
+    "payload": {
+        "_id": "376f8103-0e09-449a-8548-a384f2f1b013",
+        "businessUuid": "376f8103-0e09-449a-8538-9384f2f1b912",
+        "images": ["one", "two", "tree"],
+        "imagesUrl": [
+            "http://1/img.png",
+            "http://2/img.png",
+            "http://3/img.png"
+        ],
+        "title": "newProductTitle",
+        "price": 150
+    }
+}

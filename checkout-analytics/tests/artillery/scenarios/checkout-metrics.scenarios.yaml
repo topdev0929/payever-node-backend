@@ -1,0 +1,23 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+  processor: "../processors/config.js"
+scenarios:
+  - name: "Checkout Metrics"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/flow/{{ flowId }}/payment-method/{{ paymentMethod }}/track"
+      - post:
+          url: "/api/flow/{{ flowId }}/payment-method/{{ paymentMethod }}/track"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            type: "{{ type }}"
+

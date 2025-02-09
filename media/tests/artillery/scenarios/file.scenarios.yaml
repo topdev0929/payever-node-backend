@@ -1,0 +1,30 @@
+scenarios:
+  - name: "File Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/file/business/{{ businessId }}/{{ container }}/application/{{ applicationId }}"
+      - post:
+          url: "/api/file/business/{{ businessId }}/{{ container }}/application/{{ applicationId }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/file/business/{{ businessId }}/{{ container }}/{{ applicationId }}"
+      - get:
+          url: "/api/file/business/{{ businessId }}/{{ container }}/{{ applicationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/file/business/{{ businessId }}/{{ container }}/application/{{ applicationId }}"
+      - delete:
+          url: "/api/file/business/{{ businessId }}/{{ container }}/application/{{ applicationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/file/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+      - delete:
+          url: "/api/file/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

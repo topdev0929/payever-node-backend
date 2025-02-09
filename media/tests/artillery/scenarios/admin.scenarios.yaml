@@ -1,0 +1,130 @@
+scenarios:
+  - name: "Admin Containers"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/admin/containers"
+      - get:
+          url: "/api/admin/containers"
+          qs:
+            continuationToken: "*"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/containers"
+      - post:
+          url: "/api/admin/containers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.id"
+              as: "container"
+      - log: "GET /api/admin/containers/{{ containerName }}"
+      - get:
+          url: "/api/admin/containers/{{ containerName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/containers/{{ containerName }}"
+      - delete:
+          url: "/api/admin/containers/{{ containerName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Admin Files"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/admin/containers"
+      - post:
+          url: "/api/admin/containers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.id"
+              as: "container"
+      - log: "GET /api/admin/files"
+      - get:
+          url: "/api/admin/files"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/files"
+      - delete:
+          url: "/api/admin/files"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/files/{{ fileId }}"
+      - get:
+          url: "/api/admin/files/{{ fileId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/files/container/{{ container }}/name/{{ containerName }}"
+      - get:
+          url: "/api/admin/files/container/{{ container }}/name/{{ containerName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/files/business/{{ businessId }}/container/{{ container }}/application/{{ applicationId }}"
+      - post:
+          url: "/api/admin/files/business/{{ businessId }}/container/{{ container }}/application/{{ applicationId }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/files/business/{{ businessId }}/container/{{ container }}/application/{{ applicationId }}"
+      - delete:
+          url: "/api/admin/files/business/{{ businessId }}/container/{{ container }}/application/{{ applicationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/files/{{ container }}/{{ blobName }}"
+      - delete:
+          url: "/api/admin/files/{{ container }}/{{ blobName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Admin Mime-types"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/admin/mime-types"
+      - get:
+          url: "/api/admin/mime-types"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/mime-types"
+      - post:
+          url: "/api/admin/mime-types"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.id"
+              as: "mimeTypeId"
+            - json: "key"
+              as: "key"
+      - log: "GET /api/admin/mime-types/{{ mimeTypeId }}"
+      - get:
+          url: "/api/admin/mime-types/{{ mimeTypeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/mime-types/{{ mimeTypeId }}"
+      - patch:
+          url: "/api/admin/mime-types/{{ mimeTypeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/mime-types/{{ mimeTypeId }}"
+      - delete:
+          url: "/api/admin/mime-types/{{ mimeTypeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/mime-types/key/{{ key }}"
+      - get:
+          url: "/api/admin/mime-types/key/{{ key }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

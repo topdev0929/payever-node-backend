@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consume:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:pact": "rm -rf pacts && mocha -r ts-node/register --recursive ./tests/contract/**/*.pact.spec.ts --exit",
+    "test:pact:can-i-deploy": "./node_modules/.bin/pact-broker can-i-deploy --pacticipant $APP_NAME --latest --broker-base-url $PACT_BROKER_URL --broker-username $PACT_BROKER_USERNAME --broker-password $PACT_BROKER_PASSWORD",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register tests/contract/pact.publish.ts",
+    "test:pact:verify": "mocha -r ts-node/register ./tests/contract/verify.ts --timeout 60000 --exit",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts"
+  },
+  "dependencies": {
+    "@pe/artillery-kit": "^4.1.0",
+    "@pe/business-kit": "^2.1.2",
+    "@pe/channels-sdk": "^11.0.0",
+    "@pe/migration-kit": "^3.0.0",
+    "@pe/nest-kit": "^11.3.1"
+  },
+  "devDependencies": {
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.5",
+    "@pe/pact-kit": "^4.0.0"
+  },
+  "nyc": {
+    "functiions": 100
+  }
+}

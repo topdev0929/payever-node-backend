@@ -1,0 +1,6 @@
+Handle,Title,Description,Type,Hidden,Enabled,SKU,Bar Code,Inventory Stock,Inventory Reserved,Price,Sales Price,Currency,Images,VAT,Weight(Kg),Width(Cm),Length(Cm),Height(Cm)
+Test_1,Some product,Some product description,Physical,false,true,1234,bar-code,100,50,100,50,eur,https://test.com/some.png;https://test.com/someother.png,,1,2,3,4
+Test_2,Some digital product,Some description,digital,true,true,456,123123,100,50,100,50,,,,1,2,3,4
+Test_3,Some service product,Some description,service,true,true,678,123123,,,100,50,,https://test.com/some.png;https://test.com/someother.png,,1,2,3,4
+Test_3,Variant 1,Variant 1,,false,true,Variant1_SKU,123125,100,50,50,10,,,,1,2,3,4
+Test_3,Variant 2,Variant 2,,false,true,Variant2_SKU,123126,50,40,50,10,,,1,2,3,4

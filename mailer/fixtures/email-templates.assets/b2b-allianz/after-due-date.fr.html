@@ -1,0 +1,15 @@
+<h3>Cher {{ payment.address.last_name }},</h3>
+<p>Le {{ payment.created_at|format_date }}, vous avez passé une commande sur le site web {{business.companyDetails.urlWebsite}}. À ce jour, vous n'avez pas encore transféré le paiement en retard pour la commande suivante : {{ payment.reference }}.</p>
+<p>Veuillez effectuer la transaction suivante le plus rapidement possible :</p>
+<ul>
+  <li>Titulaire du compte : {{business.bankAccount.owner}}</li>
+  <li>Numéro de compte : {{business.bankAccount.iban}}</li>
+  <li>Date d'échéance : {{dueAt|format_date}}</li>
+  <li>Valeur de la commande : {{payment.total}}</li>
+  <li>Frais de rappel : {{lateFees}}</li>
+  <li>Montant total : {{totalWithLateFee}}</li>
+</ul>
+<p>Si vous avez effectué plusieurs commandes, nous vous prions d'effectuer des paiements séparés avec les références respectives des commandes individuelles.</p>
+<p>Vous avez déjà payé ? Au moment de la saisie, nous avons enregistré les paiements reçus, les retours et les annulations jusqu'au {{dueAt|format_date}} inclus. Si vous avez déjà versé le montant dû, vous n'avez rien à faire et pouvez ignorer cet e-mail.</p>
+<p>Si vous avez des questions, n'hésitez pas à nous contacter à l'adresse e-mail suivante : {{business.user.email}}. Pour toute question concernant votre commande ou les produits, veuillez contacter le distributeur {{business.companyDetails.urlWebsite}}.</p>
+<p>Avec nos meilleures salutations</p>

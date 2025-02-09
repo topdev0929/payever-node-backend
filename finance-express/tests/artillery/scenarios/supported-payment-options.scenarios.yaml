@@ -1,0 +1,12 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "SupportedPaymentOptions"
+    flow:
+      - function: "defineVariables"
+      - log: "GET /api/supported-payment-options"
+      - get:
+          url: "/api/supported-payment-options"

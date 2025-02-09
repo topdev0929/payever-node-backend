@@ -1,0 +1,57 @@
+scenarios:
+  - name: "Admin Subscription"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/subscription"
+      - get:
+          url: "/api/subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/subscription"
+      - post:
+          url: "/api/subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ subscriptionName }}"
+            url: "{{ subscriptionUrl }}"
+            mediaType: "image"
+          capture:
+            - json: "$._id"
+              as: "subscriptionId"
+      - log: "GET /api/subscription/search?name={{ subscriptionName }}"
+      - get:
+          url: "/api/subscription/search?name={{ subscriptionName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/subscription/{{ subscriptionId }}"
+      - get:
+          url: "/api/subscription/{{ subscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/subscription/{{ subscriptionId }}"
+      - delete:
+          url: "/api/subscription/{{ subscriptionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/subscription/type/people"
+      - get:
+          url: "/api/subscription/type/people"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/subscription/by-attribute"
+      - post:
+          url: "/api/subscription/by-attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            attributes:
+              - attribute: "{{ attributeId }}"
+                value: "{{ attributeValue }}"
+      - log: "GET /api/subscription/by-attribute/{{ attributeId }}/{{ attributeValue }}"
+      - get:
+          url: "/api/subscription/by-attribute/{{ attributeId }}/{{ attributeValue }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

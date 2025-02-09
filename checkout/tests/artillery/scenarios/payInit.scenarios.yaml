@@ -1,0 +1,33 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Pay/Init"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/business/{{ businessId }}/channelSet/{{ channelSetId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/channelSet/{{ channelSetId }}"
+          afterResponse: "defineCheckoutId"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/pay/init/{{ channelSetId }}/shipping"
+      - get:
+          url: "/api/pay/init/{{ channelSetId }}/shipping"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

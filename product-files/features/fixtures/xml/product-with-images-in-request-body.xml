@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<import xsi:noNamespaceSchemaLocation="product.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <products>
+        <product>
+            <sku>1234</sku>
+            <type>physical</type>
+            <title>Some product</title>
+            <description>
+                Some product description
+            </description>
+            <images>
+                <image url="replace_me_1.png"/>
+                <image url="https://test.com/dont_replace_me.png"/>
+                <image url="replace_me_2.jpg"/>
+            </images>
+            <hidden>false</hidden>
+            <price>100</price>
+            <currency>eur</currency>
+
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>bar-code</bar-code>
+            <enabled>true</enabled>
+            <inventory>
+                <stock>100</stock>
+                <reserved>50</reserved>
+            </inventory>
+            <product-categories>
+                <product-category>
+                    <title>Some category</title>
+                </product-category>
+            </product-categories>
+            <channel-sets>
+                <channel-set>
+                    <id>a918abc5-dbd7-405e-8cec-c4ad57f570bf</id>
+                </channel-set>
+            </channel-sets>
+            <shipping>
+                <weight>4</weight>
+                <width>2</width>
+                <length>1</length>
+                <height>3</height>
+            </shipping>
+        </product>
+    </products>
+</import>

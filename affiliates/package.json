@@ -1,0 +1,56 @@
+{
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/affiliates.git"
+  },
+  "main": "dist/src/http.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_affiliates_micro\"",
+    "consumer:folder": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_affiliates_folders_micro\"",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "probe-mongo": "pe-probe-mongo",
+    "test:cov": "nyc mocha -r ts-node/register --recursive ./tests/**/*.spec.ts",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:pact": " rm -rf -f pacts/ && mocha -r ts-node/register --recursive ./tests/**/*.pact.spec.ts --exit",
+    "test:pact:can-i-deploy": "./node_modules/.bin/pact-broker can-i-deploy --pacticipant nodejs-backend-third-party --latest",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register ./tests/contract/pact.publish.ts",
+    "test:pact:verify": "mocha -r ts-node/register ./tests/contract/verify.ts --timeout 60000 --exit",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts",
+    "ws": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/ws.js\"",
+    "ws:prod": "node dist/src/ws.js"
+  },
+  "dependencies": {
+    "@pe/builder-theme-kit": "^4.0.0",
+    "@pe/business-kit": "^2.0.0",
+    "@pe/channels-sdk": "^10.0.0",
+    "@pe/common-sdk": "^5.0.0",
+    "@pe/elastic-kit": "^5.0.0",
+    "@pe/folders-plugin": "^19.0.8",
+    "@pe/migration-kit": "^3.0.0",
+    "@pe/nest-kit": "^10.7.0",
+    "@pe/rules-sdk": "^3.0.0",
+    "qs": "^6.7.0",
+    "remove-accents": "^0.4.2",
+    "slugify": "^1.5.0",
+    "websocket": "^1.0.34",
+    "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^3.3.0",
+    "@pe/cucumber-sdk": "^6.11.1",
+    "@pe/dev-kit": "^3.0.3",
+    "@pe/pact-kit": "^3.0.3"
+  },
+  "nyc": {
+    "functions": 100
+  }
+}

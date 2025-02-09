@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2017",
+    "sourceMap": false
+  },
+  "include": [
+    "src/**/*",
+    "migrations/**/*"
+  ],
+  "exclude": [
+    "features/**/*",
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

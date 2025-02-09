@@ -1,0 +1,75 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Schedule"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "POST /api/schedule"
+      - post:
+          url: "/api/schedule"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            duration: 0
+            integration: "string"
+            payload: 
+              json: null
+            action: "string"
+            enabled: true
+
+      - log: "PUT /api/schedule/{{ scheduleId }}"
+      - put:
+          url: "/api/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            duration: 0
+            businessId: "{{ businessId }}"
+            integration: "string"
+            payload: 
+              json: null
+            action: "string"
+            enabled: true
+
+      - log: "GET /api/schedule/{{ scheduleId }}"
+      - get:
+          url: "/api/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+      
+      - log: "DELETE /api/schedule/{{ scheduleId }}"
+      - delete:
+          url: "/api/schedule/{{ scheduleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "PATCH /api/schedule/{{ scheduleId }}/enable"
+      - patch:
+          url: "/api/schedule/{{ scheduleId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "PATCH /api/schedule/{{ scheduleId }}/disable"
+      - patch:
+          url: "/api/schedule/{{ scheduleId }}/disable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

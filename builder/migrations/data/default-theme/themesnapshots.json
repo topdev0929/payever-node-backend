@@ -1,0 +1,33 @@
+[{
+  "_id": "4477cb5d-e31c-4abb-a2e1-0489d5458a1e",
+  "pages": [
+    "36ff7ee3-6ccb-4eaa-9206-97bdb0664521"
+  ],
+  "application": {
+    "builderVersion": "2",
+    "data": {
+      "productPages": "/products/:productId",
+      "categoryPages": "/categories/:categoryId",
+      "languages": [
+        {
+          "language": "english",
+          "active": true
+        }
+      ],
+      "defaultLanguage": "english"
+    },
+    "routing": [],
+    "context": null
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412233182"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412233727"
+    }
+  },
+  "__v": 0
+}]

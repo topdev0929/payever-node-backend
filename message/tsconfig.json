@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "target": "es2017",
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "types": ["node", "mocha"]
+  },
+  "include": [
+    "features/**/*",
+    "migrations/**/*",
+    "src/**/*",
+    "deprecated-migrations/**/*"
+  ],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

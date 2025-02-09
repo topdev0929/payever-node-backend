@@ -1,0 +1,13 @@
+node_modules
+dist
+.vscode
+.nyc_output
+
+/.idea/
+.env
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json
+
+.npmrc

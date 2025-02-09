@@ -1,0 +1,107 @@
+type BusinessReference {
+    id: String
+}
+
+type CategoryAttribute {
+    name: String
+    type: String
+}
+
+type ParentCategory {
+    id: String
+    business: BusinessReference
+    description: String
+    name: String
+    slug: String
+    image: String
+}
+
+type Category {
+    id: String
+    business: BusinessReference
+    description: String
+    parent: ParentCategory
+    ancestors: [ParentCategory]
+    name: String
+    slug: String
+    image: String
+    attributes: [CategoryAttribute]
+    inheritedAttributes: [CategoryAttribute]
+}
+
+type GetCategoryResult {
+    result: [Category],
+    totalCount: Int,
+}
+
+type FilterOption {
+  label: String,
+  value: String,
+  field: String,
+}
+
+type FilterResult {
+    result: [Filter],
+    totalCount: Int,
+}
+
+type Filter {
+  field: String,
+  title: String,
+  type: String,
+  options: [FilterOption],
+}
+
+type Collection {
+    ancestors: [String]
+    id: String
+    name: String
+    parent: String
+    image: String
+    productCount: Int
+}
+
+type GetCollectionResult {
+    result: [Collection],
+    totalCount: Int,
+}
+
+type Query {
+    getCategory(categoryId: String!): Category
+    listCategories(dto: GetCategoriesListInput): [Category]
+    getCategoriesForBuilder(
+        filter: String!,
+        business: String,
+        order: String,
+        offset: Int,
+        limit: Int,
+    ): GetCategoryResult
+    getCollectionForBuilder(
+        filter: String!,
+        business: String,
+        order: String,
+        offset: Int,
+        limit: Int,
+    ): GetCollectionResult
+    getFilter(
+        filter: String!
+    ): FilterResult
+    searchCategoriesForBuilder(
+        business: String!,
+        search: String!,
+        offset: Int,
+        limit: Int,
+    ): GetCategoryResult
+    searchCollectionForBuilder(
+        business: String!,
+        search: String!,
+        offset: Int,
+        limit: Int,
+    ): GetCollectionResult
+}
+
+type Mutation {
+    createCategory(dto: CreateCategoryInput!): Category
+    updateCategory(dto: UpdateCategoryInput!, categoryId: String!): Category
+    deleteCategory(categoryId: String!): Boolean
+}

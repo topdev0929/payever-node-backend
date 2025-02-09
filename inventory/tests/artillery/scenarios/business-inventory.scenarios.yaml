@@ -1,0 +1,69 @@
+scenarios:
+  - name: "Inventory"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/business/{{ businessId }}/inventory"
+      - get:
+          url: "/api/business/{{ businessId }}/inventory"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/inventory"
+      - post:
+          url: "/api/business/{{ businessId }}/inventory"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            sku: "{{ sku }}"
+
+      - log: "GET /api/business/{{ businessId }}/inventory/sku/{{ sku }}"
+      - get:
+          url: "/api/business/{{ businessId }}/inventory/sku/{{ sku }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/sku/{{ sku }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/sku/{{ sku }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/sku/{{ sku }}/add"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/sku/{{ sku }}/add"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/sku/{{ sku }}/subtract"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/sku/{{ sku }}/subtract"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/inventory/product/{{ productId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/inventory/product/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/product/{{ productId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/product/{{ productId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            barcode: "test"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/product/{{ productId }}/add"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/product/{{ productId }}/add"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/inventory/product/{{ productId }}/subtract"
+      - patch:
+          url: "/api/business/{{ businessId }}/inventory/product/{{ productId }}/subtract"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

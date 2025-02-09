@@ -1,0 +1,5 @@
+tests/*
+migrations/*
+fixtures/*
+features/*
+deprecated-migrations/*

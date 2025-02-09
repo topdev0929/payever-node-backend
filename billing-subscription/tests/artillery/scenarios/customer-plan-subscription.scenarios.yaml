@@ -1,0 +1,155 @@
+scenarios:
+  - name: "Customer plan subscription"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/business/{{businessId}}/subscription-plans"
+      - post:
+          url: "/api/business/{{businessId}}/subscription-plans"
+          json:
+            name: "a plan"
+            interval: "month"
+            billingPeriod: 1
+            products:
+              - _id: "{{productId}}"
+                billingPeriod : 1
+                business : "{{businessId}}"
+                image : "http://some-image-url.com/testt.jpg"
+                interval : "month"
+                price : 1
+                title : "Product__1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$._id"
+              as: "planId"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{businessId}}/customer-plan-subscription"
+      - post:
+          url: "/api/business/{{businessId}}/customer-plan-subscription"
+          json:
+            plan: "{{planId}}"
+            customer: "customer"
+            reference: "ref"
+            plansGroup:
+              - "dddddddd-1111-1111-1111-111111111111"
+            subscribersGroups:
+              - "subscribersGroups"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$._id"
+              as: "subscriptionPlanId"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+      - put:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+          json:
+            plan: "{{planId}}"
+            customer: "customer"
+            reference: "ref"
+            plansGroup:
+              - "dddddddd-1111-1111-1111-111111111111"
+            subscribersGroups:
+              - "subscribersGroups"          
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "POST /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group"
+      - post:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group"
+          json:
+            name: 'test'
+            subscribers:
+              - "test1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$._id"
+              as: "groupId"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+      - put:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+          json:
+            name: 'test'
+            subscribers:
+              - "test1"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group"
+      - post:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group"
+          json:
+            name: 'test'
+            plans:
+              - "{{planId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$._id"
+              as: "planGroupId"
+      - log: "GET /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+      - get:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+      - put:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+          json:
+            name: 'test'
+            plans:
+              - "{{planId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/plans-group/{{planGroupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}/subscribers-group/{{groupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/customer-plan-subscription/{{subscriptionPlanId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{businessId}}/subscription-plans/{{planId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/subscription-plans/{{planId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/products/{{businessId}}/disable/{{productId}}"
+      - post:
+          url: "/api/products/{{businessId}}/disable/{{productId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

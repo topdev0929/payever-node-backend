@@ -1,0 +1,29 @@
+<p>Dear {{ owner.userAccount.firstName }} {{ owner.userAccount.lastName }},</p>
+<p>{{ employee.fullName }} wants to join your business {{ business.name }}. If you want to grant {{ employee.fullName }} access to the business, please log into payever, go to Settings > Employees, select {{ employee.fullName }} and click on “approve".</p>
+
+<p>Here's some information about them:</p>
+
+<table class="table body-box-table">
+  <tbody>
+    <tr><td width="35%"><p><strong>First Name: </strong></p></td><td><p>{{ employee.firstName }}</p></td></tr>
+    <tr><td width="35%"><p><strong>Last Name:</strong></p></td><td><p>{{ employee.lastName }}</p>
+    <tr><td width="35%"><p><strong>Email:</strong></p></td><td><p>{{ employee.email }}</p>
+  </tbody>
+</table>
+
+<br>
+
+<table class="body-buttons-table" style="margin-top: 0px; margin-bottom: 20px; margin: auto;" border="0" cellpadding="0" cellspacing="0" valign="top" width="30%">
+  <tbody>
+  <tr align="center">
+    <td align="center" class="border-none body-button">
+      <a class="body-button-black" target="_blank" rel="noopener noreferrer" href="{{redirectUrl}}">Review Request</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p>If you don't want {{ employee.fullName }} to access the business {{ business.name }}, you can ignore this email.</p>
+

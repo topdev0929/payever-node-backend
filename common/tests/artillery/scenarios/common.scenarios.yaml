@@ -1,0 +1,291 @@
+scenarios:
+  - name: "Common"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/continent/list"
+      - get:
+          url: "/api/continent/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/country/list"
+      - get:
+          url: "/api/country/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/currency/list"
+      - get:
+          url: "/api/currency/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/language/list"
+      - get:
+          url: "/api/language/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/legal-document/list"
+      - get:
+          url: "/api/legal-document/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/legal-form/list/{{ countryCode }}"
+      - get:
+          url: "/api/legal-form/list/{{ countryCode }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/tax/list/{{ countryCode }}"
+      - get:
+          url: "/api/tax/list/{{ countryCode }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Common Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/admin/tax"
+      - post:
+          url: "/api/admin/tax"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ taxId }}"
+            rate: "{{ rate }}"
+            country: "{{ countryCode }}"
+            description: "{{ description }}}"
+      - log: "GET /api/admin/tax/list"
+      - get:
+          url: "/api/admin/tax/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/tax/{{ taxId }}"
+      - get:
+          url: "/api/admin/tax/{{ taxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/tax/{{ taxId }}"
+      - patch:
+          url: "/api/admin/tax/{{ taxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/tax/{{ taxId }}"
+      - delete:
+          url: "/api/admin/tax/{{ taxId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/legal-form"
+      - post:
+          url: "/api/admin/legal-form"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ legalFormId }}"
+            description: "{{ description }}"
+            country: "{{ countryCode }}"
+            abbreviation: "{{ description }}}"
+      - log: "GET /api/admin/legal-form/list"
+      - get:
+          url: "/api/admin/legal-form/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/legal-form/{{ legalFormId }}"
+      - get:
+          url: "/api/admin/legal-form/{{ legalFormId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/legal-form/{{ legalFormId }}"
+      - patch:
+          url: "/api/admin/legal-form/{{ legalFormId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/legal-form/{{ legalFormId }}"
+      - delete:
+          url: "/api/admin/legal-form/{{ legalFormId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/legal-document"
+      - post:
+          url: "/api/admin/legal-document"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ legalDocumentId }}"
+            content: "{{ description }}"
+            type: "{{ disclaimer }}"
+      - log: "GET /api/admin/legal-document/list"
+      - get:
+          url: "/api/admin/legal-document/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/legal-document/{{ legalDocumentId }}"
+      - get:
+          url: "/api/admin/legal-document/{{ legalDocumentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/legal-document/{{ legalDocumentId }}"
+      - patch:
+          url: "/api/admin/legal-document/{{ legalDocumentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/legal-document/{{ legalDocumentId }}"
+      - delete:
+          url: "/api/admin/legal-document/{{ legalDocumentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/country"
+      - post:
+          url: "/api/admin/country"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ countryId }}"
+            capital: "{{ capital }}"
+            continent: "{{ continent }}"
+            currencies: "{{ currencies }}"
+            flagEmoji: "{{ flagEmoji }}"
+            flagUnicode: "{{ flagUnicode }}"
+            languages: "{{ languages }}"
+            name: "{{ countryName }}"
+            nativeName: "{{ nativeName }}"
+            phoneCode: "{{ phoneCode }}"
+      - log: "GET /api/admin/country/list"
+      - get:
+          url: "/api/admin/country/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/country/{{ countryId }}"
+      - get:
+          url: "/api/admin/country/{{ countryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/country/{{ countryId }}"
+      - patch:
+          url: "/api/admin/country/{{ countryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/country/{{ countryId }}"
+      - delete:
+          url: "/api/admin/country/{{ countryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/continent"
+      - post:
+          url: "/api/admin/continent"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ continentId }}"
+            name: "{{ continent }}"
+      - log: "GET /api/admin/continent/list"
+      - get:
+          url: "/api/admin/continent/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/continent/{{ continentId }}"
+      - get:
+          url: "/api/admin/continent/{{ continentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/continent/{{ continentId }}"
+      - patch:
+          url: "/api/admin/continent/{{ continentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/continent/{{ continentId }}"
+      - delete:
+          url: "/api/admin/continent/{{ continentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/language"
+      - post:
+          url: "/api/admin/language"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ languageId }}"
+            name: "{{ languageName }}"
+            englishName: "{{ languageEnglishName }}"
+      - log: "GET /api/admin/language/list"
+      - get:
+          url: "/api/admin/language/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/language/{{ languageId }}"
+      - get:
+          url: "/api/admin/language/{{ languageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/language/{{ languageId }}"
+      - patch:
+          url: "/api/admin/language/{{ languageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/language/{{ languageId }}"
+      - delete:
+          url: "/api/admin/language/{{ languageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/currency"
+      - post:
+          url: "/api/admin/currency"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ currencyId }}"
+            code: "{{ code }}"
+            symbol: "{{ symbol }}"
+            name: "{{ currencyName }}"
+            rate: "{{ rate }}"
+      - log: "GET /api/admin/currency/list"
+      - get:
+          url: "/api/admin/currency/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/currency/{{ currencyId }}"
+      - get:
+          url: "/api/admin/currency/{{ currencyId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/currency/{{ currencyId }}"
+      - patch:
+          url: "/api/admin/currency/{{ currencyId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/currency/{{ currencyId }}"
+      - delete:
+          url: "/api/admin/currency/{{ currencyId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/common-storage"
+      - post:
+          url: "/api/admin/common-storage"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ commonStorageId }}"
+            type: "{{ commonStorageType }}"
+            value: "{{ commonStorageValue }}"
+      - log: "GET /api/admin/common-storage/list"
+      - get:
+          url: "/api/admin/common-storage/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/common-storage/{{ commonStorageId }}"
+      - get:
+          url: "/api/admin/common-storage/{{ commonStorageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/common-storage/{{ commonStorageId }}"
+      - patch:
+          url: "/api/admin/common-storage/{{ commonStorageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/common-storage/{{ commonStorageId }}"
+      - delete:
+          url: "/api/admin/common-storage/{{ commonStorageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+

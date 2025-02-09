@@ -1,0 +1,44 @@
+scenarios:
+  - name: "Synchronization Admin"
+    flow:
+      - function: "defineVariables"
+      - get:
+          url: "/api/admin/synchronization-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - post:
+          url: "/api/admin/synchronization-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - get:
+          url: "/api/admin/synchronization-settings/{{ synchronizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - patch:
+          url: "/api/admin/synchronization-settings/{{ synchronizationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - get:
+          url: "/api/admin/synchronization-tasks"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - post:
+          url: "/api/admin/synchronization-tasks"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - get:
+          url: "/api/admin/synchronization-tasks/ {{ taskId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - patch:
+          url: "/api/admin/synchronization-tasks/ {{ taskId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - get:
+          url: "/api/admin/synchronization-tasks/ {{ taskId }}/events"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - patch:
+          url: "/api/admin/synchronization-tasks/ {{ taskId }}/status/success"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

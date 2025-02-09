@@ -1,0 +1,21 @@
+[{
+  "_id": "36ff7ee3-6ccb-4eaa-9206-97bdb0664521",
+  "builderVersion": "2",
+  "versionNumber": 1,
+  "name": "Front",
+  "variant": "front",
+  "next": null,
+  "prev": null,
+  "snapshot": "4477cb5d-e31c-4abb-a2e1-0489d5458a1e",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412233713"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412233713"
+    }
+  },
+  "__v": 0
+}]

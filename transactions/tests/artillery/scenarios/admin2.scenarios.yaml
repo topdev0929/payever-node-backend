@@ -1,0 +1,79 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Admin"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/admin/list" 
+      - get: 
+          url: "/api/admin/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/admin/mongo" 
+      - get: 
+          url: "/api/admin/mongo"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/admin/detail/reference/{{ reference }}" 
+      - get: 
+          url: "/api/admin/detail/reference/{{ reference }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/admin/detail/{{ uuid }}" 
+      - get: 
+          url: "/api/admin/detail/{{ uuid }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/admin/{{ uuid }}/action/edit" 
+      - post: 
+          url: "/api/admin/{{ uuid }}/action/edit"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            fields:  
+              json:
+                payment_update:
+                  json: 
+                    reason: "test"
+                    updateData: 
+                      json:
+                        productLine: "test"
+                        deliveryFee:
+                          - "test"
+            category: "payments"
+      
+      - log: "Get /api/admin/{{ uuid }}/update-status" 
+      - get: 
+          url: "/api/admin/{{ uuid }}/update-status"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/admin/settings" 
+      - get: 
+          url: "/api/admin/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/admin/export" 
+      - get: 
+          url: "/api/admin/export"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

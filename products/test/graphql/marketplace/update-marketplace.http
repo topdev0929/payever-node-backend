@@ -1,0 +1,90 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation updateProduct($product: ProductUpdateInput!) {
+  updateProduct(product: $product) {
+    title
+    _id
+  }
+}
+
+{
+  "product": {
+    "businessUuid": "2382ffce-5620-4f13-885d-3c069f9dd9b4",
+    "images": [],
+    "_id": "c58a2a08-03b4-4f03-bc6a-2fec597945bd",
+    "title": "Prod1",
+    "description": "Product 1",
+    "onSales": false,
+    "price": 1,
+    "salePrice": 2,
+    "sku": "P1",
+    "barcode": "",
+    "type": "physical",
+    "active": true,
+    "marketplaces": [
+      {
+        "id": "a5530c28-7ad0-49e4-b9da-e3069e05a184",
+        "type": "shop",
+        "name": "DENIS'S_TEST_SHOP"
+      },
+      {
+        "id": "2ba91540-8d36-46ff-8a7d-0d540b468fb2",
+        "type": "pos",
+        "name": "Terminal 1234"
+      }
+    ],
+    "categories": [],
+    "variants": [
+      {
+        "id": "380362df-7503-436e-8707-dd1602e187cc",
+        "images": [],
+        "options": [
+          {
+            "name": "o1",
+            "value": "1"
+          },
+          {
+            "name": "o2",
+            "value": "2"
+          }
+        ],
+        "description": "Var1",
+        "onSales": false,
+        "price": 2.02,
+        "salePrice": 3,
+        "sku": "p1v1",
+        "barcode": ""
+      },
+      {
+        "id": "5f9bed47-fc9d-4210-9372-57c570884d7b",
+        "images": [],
+        "options": [
+          {
+            "name": "o2",
+            "value": "2"
+          },
+          {
+            "name": "o3",
+            "value": "3"
+          }
+        ],
+        "description": "v3",
+        "onSales": false,
+        "price": 5,
+        "salePrice": null,
+        "sku": "p1v3",
+        "barcode": ""
+      }
+    ],
+    "shipping": {
+      "free": false,
+      "general": false,
+      "weight": 1,
+      "width": 2,
+      "length": 3,
+      "height": 4
+    }
+  }
+}

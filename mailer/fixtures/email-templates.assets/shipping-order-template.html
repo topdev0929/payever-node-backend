@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title></title>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+  <style type="text/css">
+    /*////// RESET STYLES //////*/
+    body,
+    #bodyTable,
+    #bodyCell {
+      font-family: 'Roboto', -apple-system, sans-serif;
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    img,
+    a img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display emails at full width. */
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    /* Force Hotmail/Outlook.com to display line heights normally. */
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    td {
+      padding-left: 40px;
+    }
+
+    /* Remove spacing between tables in Outlook 2007 and up. */
+    #outlook a {
+      padding: 0;
+    }
+
+    /* Force Outlook 2007 and up to provide a "view in browser" message. */
+    img {
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    /* Force IE to smoothly render resized images. */
+    body,
+    table,
+    td,
+    p,
+    a,
+    li,
+    blockquote {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .table {
+      width: 900px;
+    }
+
+    .shipment-details td {
+      width: 33.3%;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a9a9a9;
+    }
+
+    .value {
+      font-size: 13px;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .link {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5587ca;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #a9a9a9;
+    }
+
+    .total-table-wrapper {
+      margin-top: 25px;
+      border-top: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+    }
+
+    .total-table-title {
+      font-size: 18px;
+      color: #a9a9a9;
+    }
+
+    .product-table td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .total-table {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .total-table .value {
+      padding-right: 40px;
+    }
+
+    .total-table td {
+      padding-right: 20px;
+    }
+
+    .bottom-description {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      font-size: 12px;
+      text-align: center;
+      color: #a9a9a9;
+      line-height: 1.63;
+    }
+
+    .logo {
+      max-width: 34px;
+    }
+
+    .mail-title {
+      font-size: 38px;
+      font-weight: 300;
+      text-align: right;
+    }
+
+    .data-table {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .data-table td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .product-table-left-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .product-table-right-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .product-table-middle-title {
+      background-color: #f5f5f5;
+      color: #a9a9a9;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    .tracking-button {
+      border: none;
+      padding: 8px 12px;
+      background-color: #5587ca;
+      color: #ffffff;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<table cellpadding="4" style="width:100%;">
+  <tbody>
+  <tr>
+    <td align="center">
+      <table class="table">
+        <thead>
+        <tr>
+          <th colspan="2" align="left" class="border-none">
+            <a href="https://getpayever.com/" target="_blank" rel="noopener noreferrer">
+              <img border="0"
+                   src="{{business.logo}}"/>
+            </a>
+          </th>
+          <th colspan="2" align="right" class="mail-title border-none">Shipment Confirmation</th>
+        </tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table">
+        <thead>
+        <tr>
+          <th style="text-align: left">
+            <h3>Hello {{payment.customer_name}}</h3>
+            <p class="value">Your Shipment is on the way. Here are your shipment details and tracking information</p>
+          </th>
+        </tr>
+        </thead>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="table data-table shipment-details">
+        <tbody>
+        <tr style="height:90px">
+          <td style="border-bottom:1px solid #ffffff;border-right:1px solid #ffffff">
+            <p class="title">REFERENCE ID</p>
+            <h4>{{ payment.reference }}</h4>
+          </td>
+          <td></td>
+          <td style="border-left:1px solid #ffffff;">
+            <h4>Your Shipment is on the way.</h4>
+          </td>
+        </tr>
+        <tr style="height:90px">
+          <td style="border-bottom:1px solid #ffffff; border-right:1px solid #ffffff;">
+            <p class="title">DATE</p>
+            <h4>{{ payment.created_at }}</h4>
+          </td>
+          <td>
+            <p class="title">SHIPPED TO</p>
+            <h4>{{payment.customer_name}}</h4>
+            <p>
+              {{ payment.address.street }}, {{ payment.address.zip_code }}, {{ payment.address.city }}, {{ payment.address.country_name }}
+            </p>
+          </td>
+          <td style="border-left:1px solid #ffffff;">
+            <h4 style="display: inline-block; padding-right: 5px">Shipped:</h4>
+            {% if (deliveryDate is defined and deliveryDate is not null) %}
+            <span class="value">Delivers {{ deliveryDate }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr style="height:90px">
+          <td style="border-right:1px solid #ffffff">
+            <p class="title">ORDER ID</p>
+            <p class="value">
+              <a href="#" class="link">{{ payment.id }}</a>
+            </p>
+          </td>
+          <td></td>
+          <td style="border-left:1px solid #ffffff">
+            {% if trackingUrl is defined and trackingUrl is not null %}
+            <a href="{{trackingUrl}}" class="tracking-button" style="display: inline-block">Track Shipment</a>
+            {% endif %}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" style="padding-top:55px">
+      <table class="table product-table">
+        <tbody>
+        <tr>
+          <td colspan="2" class="product-table-left-title">
+            PRODUCT
+          </td>
+          <td class="product-table-middle-title">
+            QUANTITY
+          </td>
+          <td align="left" class="product-table-right-title">
+            PRICE
+          </td>
+        </tr>
+        <!--{% for item in payment_items %}-->
+        <!-- ITEM START -->
+        <tr>
+          <td style="width: 150px">
+            <img
+              border="0"
+              src="{{ item.thumbnail }}"
+              width="100"
+              style="max-width:100px"
+            />
+          </td>
+          <td style="padding-left:0;">
+            <h4>{{ item.name }}</h4>
+            <!--<p class="title">date</p>!-->
+          </td>
+          <td>
+            <p class="value">{{ item.quantity }} {{ item.quantity == 1 ? 'item' : 'items' }}</p>
+          </td>
+          <td align="left">
+            <p class="value">{{ item.price|number_format_currency(payment.currency) }} </p>
+          </td>
+        </tr>
+        <!-- ITEM END -->
+        <!--{% endfor %}-->
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <table class="table total-table-wrapper">
+        <tbody>
+        <tr align="right">
+          <td>
+            <table class="total-table">
+              <tbody>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">SUBTOTAL</p>
+                </td>
+                <td>
+                  <p class="value">{{ (payment.total - payment.vat_rate)|number_format_currency(payment.currency) }}</p>
+                </td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">TAX</p>
+                </td>
+                <td>
+                  <p class="value">{{ payment.vat_rate|number_format_currency(payment.currency) }}</p>
+                </td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <p class="total-table-title">TOTAL</p>
+                </td>
+                <td>
+                  <p class="value" style="font-weight:500;">{{ payment.total|number_format_currency(payment.currency) }}</p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <table class="table">
+        <tbody>
+        <tr align="center">
+          <td>
+            <p class="bottom-description">
+              {{ business.name }},
+              {% if business.companyDetails.legalForm is defined %}
+              {{ business.companyDetails.legalForm }},
+              {% endif %}
+              {{ business.companyAddress.street }},
+              {{ business.companyAddress.zipCode }},
+              {{ business.companyAddress.city }},
+              {{ business.companyAddress.country }},
+              {{ business.contactDetails.phone }}
+            </p>
+          </td>
+        </tr>
+        <tr align="center">
+          <td>
+            <p class="bottom-description">
+              <a href="https://getpayever.com/" target="_blank" rel="noopener noreferrer">
+                <img border="0"
+                     src="cid:powered_by_logo.png"/>
+              </a>
+            </p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

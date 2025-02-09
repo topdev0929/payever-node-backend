@@ -1,0 +1,45 @@
+{
+  "limit": 1,
+  "list": [
+    {
+      "compressed": false,
+      "compressionTries": 0,
+      "subscriptionType": 0,
+      "_id": "*",
+      "url": "https://image.com/dropbox-2.jpg",
+      "mediaType": "image",
+      "name": "dropbox image 1",
+      "attributes": [
+        {
+          "attribute": {
+            "_id": "a0a82e19-4574-4ffa-82be-e3e5d1e60d92",
+            "icon": "http://test.com/mouse.jpg",
+            "name": "color",
+            "type": "dropbox",
+            "createdAt": "2020-01-01T00:00:04.000Z",
+            "updatedAt": "2020-01-01T00:00:04.000Z",
+            "__v": 0
+          },
+          "value": "blue"
+        },
+        {
+          "attribute": {
+            "_id": "a0a82e19-4574-4ffa-82be-e3e5d1e60d91",
+            "icon": "http://test.com/mouse.jpg",
+            "name": "size",
+            "type": "dropbox",
+            "createdAt": "2020-01-01T00:00:04.000Z",
+            "updatedAt": "2020-01-01T00:00:04.000Z",
+            "__v": 0
+          },
+          "value": "big"
+        }
+      ],
+      "createdAt": "*",
+      "updatedAt": "*",
+      "__v": 0
+    }
+  ],
+  "offset": 0,
+  "total": 1
+}

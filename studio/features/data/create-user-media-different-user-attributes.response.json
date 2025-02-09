@@ -1,0 +1,31 @@
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": [
+    {
+      "target": {
+        "url": "https://example.com/someimage.png",
+        "mediaType": "image",
+        "name": "user image 1",
+        "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+        "userAttributes": [
+          {
+            "attribute": "05d32bd2-4cad-400a-ae90-abecff6e4936",
+            "value": "test1"
+          }
+        ]
+      },
+      "value": [
+        {
+          "attribute": "05d32bd2-4cad-400a-ae90-abecff6e4936",
+          "value": "test1"
+        }
+      ],
+      "property": "userAttributes",
+      "children": [],
+      "constraints": {
+        "UserAttributesBusinessConstraint": "One of User attributes *"
+      }
+    }
+  ]
+}

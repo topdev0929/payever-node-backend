@@ -1,0 +1,11 @@
+{
+  "extends": "@pe/dev-kit",
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist/**/*",
+    "features/**/*",
+    "trash"
+  ]
+}
+  

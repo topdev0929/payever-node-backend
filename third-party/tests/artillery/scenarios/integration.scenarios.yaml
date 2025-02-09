@@ -1,0 +1,38 @@
+scenarios:
+  - name: "Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/integration"
+      - get:
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/integration"
+      - post:
+          url: "/api/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            default: false
+            name: "{{ integrationName }}"
+            category: "{{ category }}"
+      - log: "GET /api/integration/{{ integrationName }}"
+      - get:
+          url: "/api/integration/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/integration/category/{{ category }}"
+      - get:
+          url: "/api/integration/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/integration/{{ integrationName }}/action"
+      - post:
+          url: "/api/integration/{{ integrationName }}/action"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            property1: "value1"
+            property2: "value2"

@@ -1,0 +1,10 @@
+<p>Dear Merchant,</p>
+<p>No action is required on your part at this point, but we wanted to let you know that our system has detected unavailability of partner: ___________. The PSP has been already informed about the problems.</p>
+<p>This is a one-time notification, unless the issues persists, then our system will keep you up-to-date about the status.</p>
+<p>Last an acted payment was at: ____________.</p>
+<p>Receiving this email frequently? Read more about the steps to take.</p>
+<p>payever evaluates its payments and partner PSPs across the entire network in real-time. By default, we send these notifications to inform the merchant and contact the responsible PSP to help to keep your checkout availability high.</p>
+<p>
+  {% if business.name is defined %}Business: {{business.name}}<br>{% endif %}
+  {% if errorDateFormatted is defined %}Time: {{errorDateFormatted}}{% endif %}
+</p>

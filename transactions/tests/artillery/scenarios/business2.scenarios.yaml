@@ -1,0 +1,186 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Business"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/business/{{ businessId }}/detail/reference/{{ reference }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/detail/reference/{{ reference }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/business/{{ businessId }}/detail/original_id/{{ originalId }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/detail/original_id/{{ originalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/detail/{{ uuid }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/detail/{{ uuid }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/business/{{ businessId }}/transaction/{{ uuid }}/details"
+      - get: 
+          url: "/api/business/{{ businessId }}/transaction/{{ uuid }}/details"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/transaction/{{ uuid }}/actions"
+      - get: 
+          url: "/api/business/{{ businessId }}/transaction/{{ uuid }}/actions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/transaction/{{ uuid }}/history/{{ action }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/transaction/{{ uuid }}/history/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/history/{{ action }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/history/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/business/{{ businessId }}/{{ uuid }}/action/{{ action }}"
+      - post: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            fields: null
+            files:
+              - "string"
+      
+      - log: "Get /api/business/{{ businessId }}/{{ uuid }}/label/{{ pdf }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/label/{{ pdf }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/business/{{ businessId }}/{{ uuid }}/slip/{{ name }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/slip/{{ name }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/business/{{ businessId }}/{{ uuid }}/legacy-api-action/shipped"
+      - post: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/legacy-api-action/shipped"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            fields: null
+            files:
+              - "string"
+
+      - log: "Post /api/business/{{ businessId }}/{{ uuid }}/legacy-api-action/{{ action }}"
+      - post: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/legacy-api-action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            fields: null
+            files:
+              - "string"
+
+      - log: "Get /api/business/{{ businessId }}/{{ uuid }}/update-status"
+      - get: 
+          url: "/api/business/{{ businessId }}/{{ uuid }}/update-status"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/list"
+      - get: 
+          url: "/api/business/{{ businessId }}/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/business/{{ businessId }}/download-contract/{{ originalId }}"
+      - get: 
+          url: "/api/business/{{ businessId }}/download-contract/{{ originalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+        
+      - log: "Get /api/business/{{ businessId }}/mongo"
+      - get: 
+          url: "/api/business/{{ businessId }}/mongo"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/business/{{ businessId }}/settings"
+      - get: 
+          url: "/api/business/{{ businessId }}/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/business/{{ businessId }}/trigger-example"
+      - post: 
+          url: "/api/business/{{ businessId }}/trigger-example"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            _id: "string"
+            name: "string"
+            createdAt: "string"
+            updatedAt: "string"
+            primaryColor: "string"
+            secondaryColor: "string"
+            primaryTransparency: "string"
+            secondaryTransparency: "string"
+            integrationSubscriptions:
+              - "string"
+            userAccount: null
+            userAccountId: "string"
+      
+      - log: "Get /api/settlements/reports"
+      - get: 
+          url: "/api/settlements/reports"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/settlements/{{ paymentId }}"
+      - get: 
+          url: "/api/settlements/{{ paymentId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/business/{{ businessId }}/export"
+      - get: 
+          url: "/api/business/{{ businessId }}/export"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+            
+
+      

@@ -1,0 +1,52 @@
+scenarios:
+  - name: "Order"
+
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/business/{{ businessId }}/order"
+      - get:
+          url: "/api/business/{{ businessId }}/order"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{ businessId }}/order"
+      - post:
+          url: "/api/business/{{ businessId }}/order"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$._id"
+              as: "orderId"
+
+      - log: "GET /api/business/{{ businessId }}/order/{{ orderId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/order/{{ orderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/order/{{ orderId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/order/{{ orderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/order/{{ orderId }}/permanent"
+      - patch:
+          url: "/api/business/{{ businessId }}/order/{{ orderId }}/permanent"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/order/{{ orderId }}/release"
+      - patch:
+          url: "/api/business/{{ businessId }}/order/{{ orderId }}/release"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/order/{{ orderId }}/close"
+      - patch:
+          url: "/api/business/{{ businessId }}/order/{{ orderId }}/close"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

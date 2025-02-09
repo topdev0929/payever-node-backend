@@ -1,0 +1,26 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+
+scenarios:
+  - name: "Api Partner"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+          - log: "PATCH /api/business/{{businessId}}/enable"
+          - patch:
+              url: "/api/business/{{ businessId }}/enable"
+              headers:
+                authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/partner/{{ userId }}/{{ tagName }}"
+      - delete:
+          url: "/api/partner/{{ userId }}/{{ tagName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/partner/{{ userId }}/{{ tagName }}"
+      - put:
+          url: "/api/partner/{{ userId }}/{{ tagName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

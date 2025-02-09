@@ -1,0 +1,13 @@
+scenarios:
+  - name: "Metric"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/metric"
+      - get:
+          url: "/api/metric"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      

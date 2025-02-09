@@ -1,0 +1,61 @@
+{
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/auth.git"
+  },
+  "main": "dist/src/http.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "cron": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/cron.js\"",
+    "cron:prod": "node dist/src/cron.js",
+    "consume:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint",
+    "probe-mongo": "pe-probe-mongo",
+    "test:artillery": "pe-artillery ./tests/artillery/run.ts",
+    "test:cov": "nyc mocha -r ts-node/register --recursive ./tests/**/*.spec.ts",
+    "test:e2e": "./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:pact": "mocha -r ts-node/register --recursive ./tests/contract/consumer/**.spec.ts --exit",
+    "test:pact:can-i-deploy": "./node_modules/.bin/pact-broker can-i-deploy --pacticipant 'nodejs-backend-transactions' --latest --broker-base-url $PACT_BROKER_BASE_URL --broker-username $PACT_BROKER_USERNAME --broker-password $PACT_BROKER_PASSWORD",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register ./tests/contract/publish.ts",
+    "test:pact:verify": "mocha -r ts-node/register ./tests/contract/provider.spec.ts --timeout 60000 --exit",
+    "test:unit": "mocha -r ts-node/register --recursive --extension ts ./tests/unit"
+  },
+  "dependencies": {
+    "@pe/business-kit": "^1.3.1",
+    "@pe/cron-kit": "^2.0.0",
+    "@pe/elastic-kit": "^5.0.0",
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.2.0",
+    "bcryptjs": "^2.4.3",
+    "date-fns": "^2.28.0",
+    "fastify-multipart": "^4.0.7",
+    "hibp": "^10.0.1",
+    "ip-address": "^5.9.4",
+    "moment": "^2.29.4",
+    "mongoose-unique-validator": "^2.0.3",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "password-validator": "^5.2.1",
+    "pbkdf2": "^3.1.1",
+    "qs": "^6.10.2",
+    "request-ip": "^2.1.3",
+    "rxjs": "^6.6.7",
+    "useragent": "^2.3.0"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^3.1.1",
+    "@pe/cucumber-sdk": "^6.11.5",
+    "@pe/dev-kit": "^3.0.5",
+    "@pe/pact-kit": "^3.0.3",
+    "@types/busboy": "^0.2.3",
+    "@types/node": "^12.20.50",
+    "@types/useragent": "^2.3.0"
+  }
+}

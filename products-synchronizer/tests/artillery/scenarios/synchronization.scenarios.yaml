@@ -1,0 +1,81 @@
+scenarios:
+  - name: "Synchronization"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}"
+      - put:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/disconnect"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/disconnect"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/connect"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/connect"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/disable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/disable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/enable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/toggle"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/toggle"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/trigger"
+      - post:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/inventory/trigger"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/disable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/disable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/enable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/status"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/settings/status"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/disable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/disable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/enable"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/toggle"
+      - patch:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/toggle"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/trigger"
+      - post:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/direction/{{ direction }}/trigger"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

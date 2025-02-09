@@ -1,0 +1,103 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 4,
+      "relation": "eq"
+    },
+    "max_score": 16.12432,
+    "hits": [
+      {
+        "_index": "products2",
+        "_type": "products2",
+        "_id": "cbc98a07-c51e-4066-bcec-e53856847d73",
+        "_score": 16.12432,
+        "_source": {
+          "apps": [],
+          "active": true,
+          "collections": [],
+          "channelSets": [],
+          "imagesUrl": [],
+          "images": [],
+          "example": false,
+          "videosUrl": [],
+          "videos": [],
+          "onSales": false,
+          "isLocked": false,
+          "__t": "Product",
+          "attributes": [],
+          "barcode": "",
+          "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "categories": [
+            {
+              "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "_id": "8c6c712d-835b-48de-a162-8dcbaf5b0edd",
+              "slug": "basheer",
+              "title": "Basheer",
+              "id": "8c6c712d-835b-48de-a162-8dcbaf5b0edd"
+            },
+            {
+              "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "_id": "14c514ba-c9d1-43c6-9914-45e15ec4850d",
+              "slug": "cars",
+              "title": "Cars",
+              "id": "14c514ba-c9d1-43c6-9914-45e15ec4850d"
+            }
+          ],
+          "category": {
+            "ancestors": [],
+            "_id": "14c514ba-c9d1-43c6-9914-45e15ec4850d",
+            "attributes": [],
+            "businessId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+            "name": "Cars",
+            "slug": "cars",
+            "createdAt": "2021-09-24T14:56:14.440Z",
+            "updatedAt": "2021-09-24T14:56:14.440Z",
+            "__v": 0,
+            "id": "14c514ba-c9d1-43c6-9914-45e15ec4850d",
+            "title": "Cars",
+            "businessUuid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+          },
+          "currency": "EUR",
+          "description": "Some product",
+          "options": [],
+          "price": 100,
+          "salePrice": 200,
+          "shipping": {
+            "measure_mass": "kg",
+            "measure_size": "cm",
+            "free": false,
+            "general": false,
+            "weight": 1,
+            "width": 1,
+            "length": 1,
+            "height": 1
+          },
+          "sku": "Prod1",
+          "title": "Product 1",
+          "type": "physical",
+          "variantAttributes": [],
+          "vatRate": null,
+          "createdAt": "2021-09-24T14:56:14.461Z",
+          "updatedAt": "2021-09-24T14:56:14.474Z",
+          "__v": 1,
+          "uuid": "cbc98a07-c51e-4066-bcec-e53856847d73",
+          "hidden": true,
+          "enabled": true,
+          "businessUuid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "product_relations": {
+            "name": "parentProduct"
+          },
+          "mongoId": "cbc98a07-c51e-4066-bcec-e53856847d73"
+        }
+      }
+    ]
+  }
+}

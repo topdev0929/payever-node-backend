@@ -1,0 +1,26 @@
+
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+scenarios:
+  - name: "Campaign"
+    flow:
+      - function: "defineVariablesCampaign"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      - log: "GET /api/campaign-app/business/{{ businessId }}"
+      - get:
+          url: "/api/campaign-app/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

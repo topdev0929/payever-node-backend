@@ -1,0 +1,47 @@
+scenarios:
+  - name: "Terminal"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/terminal"
+      - get:
+          url: "/api/business/{{ businessId }}/terminal"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/terminal/getDefaultLanguage"
+      - get:
+          url: "/api/business/{{ businessId }}/terminal/getDefaultLanguage"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/terminal"
+      - post:
+          url: "/api/business/{{ businessId }}/terminal"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ terminalName }}"
+            logo: "test"
+          capture:
+            - json: "$._id"
+              as: "terminalId"
+      - log: "GET /api/business/{{ businessId }}/terminal/{{ terminalId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/terminal/{{ terminalId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/terminal/{{ terminalId }}/active"
+      - patch:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/terminal/{{ terminalId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/terminal/{{ terminalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

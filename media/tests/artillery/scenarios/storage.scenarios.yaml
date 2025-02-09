@@ -1,0 +1,43 @@
+scenarios:
+  - name: "Storage"
+    flow:
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/storage"
+      - post:
+          url: "/api/storage"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.id"
+              as: "storageId"
+      - log: "POST /api/storage/file"
+      - post:
+          url: "/api/storage/file"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/storage/{{ storageId }}"
+      - get:
+          url: "/api/storage/{{ storageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/storage/{{ storageId }}"
+      - patch:
+          url: "/api/storage/{{ storageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            data: {}
+      - log: "PUT /api/storage/{{ storageId }}"
+      - put:
+          url: "/api/storage/{{ storageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            data: {}
+      - log: "DELETE /api/storage/{{ storageId }}"
+      - delete:
+          url: "/api/storage/{{ storageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

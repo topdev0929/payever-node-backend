@@ -1,0 +1,87 @@
+scenarios:
+  - name: "Async Events"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/synchronizer/{{ businessId }}"
+      - get:
+          url: "/api/synchronizer/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /product-app-settings/{{ businessId }}"
+      - post:
+          url: "/product-app-settings/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /product-app-settings/{{ businessId }}"
+      - get:
+          url: "/product-app-settings/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /{{ businessId }}/filter-attributes"
+      - post:
+          url: "/{{ businessId }}/filter-attributes"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json: []
+      - log: "GET /collections/{{ businessId }}"
+      - get:
+          url: "/collections/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /collections/{{ businessId }}"
+      - post:
+          url: "/collections/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ collectionName }}"
+            slug: "{{ collectionSlug }}"
+            channelSets: []
+            activeSince: "{{ collectionDate }}"
+          capture:
+            - json: "$._id"
+              as: "collectionId"
+      - log: "PUT /collections/{{ businessId }}/{{ collectionId }}/products/associate"
+      - put:
+          url: "/collections/{{ businessId }}/{{ collectionId }}/products/associate"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            "ids": []
+      - log: "GET /collections/{{ businessId }}/active/{{ channelSetId }}"
+      - get:
+          url: "/collections/{{ businessId }}/active/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /collections/{{ businessId }}/{{ collectionId }}"
+      - get:
+          url: "/collections/{{ businessId }}/{{ collectionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /collections/{{ businessId }}/{{ collectionId }}"
+      - patch:
+          url: "/collections/{{ businessId }}/{{ collectionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ collectionNamePatch }}"
+            slug: "{{ collectionSlugPatch }}"
+      - log: "DELETE /collections/{{ businessId }}/{{ collectionId }}"
+      - delete:
+          url: "/collections/{{ businessId }}/{{ collectionId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /collections/{{ businessId }}/list"
+      - delete:
+          url: "/collections/{{ businessId }}/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /business/{{ businessId }}/categories/predict"
+      - post:
+          url: "/business/{{ businessId }}/categories/predict"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            title: "{{ predictTitle }}"

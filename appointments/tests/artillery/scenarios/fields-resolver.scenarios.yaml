@@ -1,0 +1,79 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: "Fields Graphql Resolver"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: ">>> accessToken:  {{ accessToken }}"
+
+      - log: QUERY fields
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query fields($appointmentId: String!) {
+                fields(appointmentId: $appointmentId, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              appointmentId: "{{$randomId()}}"
+
+      - log: MUTATION createField
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation createField($data: CreateFieldDtoFieldDto!, $appointmentId: String!) {
+                createField(businessId: {{businessId}}, data: $data, appointmentId: $appointmentId) {
+                  id
+                }
+              }
+            variables:
+              data:
+                title: "{{$randomString()}}"
+                type: "input"
+                name: "{{$randomString()}}"
+              appointmentId: "{{$randomId()}}"
+
+      - log: MUTATION updateField
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation updateField($data: UpdateFieldDtoFieldDto!, $id: String!) {
+                updateField(businessId: {{businessId}}, data: $data, id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              data:
+                title: "{{$randomString()}}"
+                type: "input"
+                name: "{{$randomString()}}"
+              id: "{{$randomId()}}"
+
+      - log: MUTATION deleteField
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation deleteField($id: String!) {
+                deleteField(businessId: {{businessId}}, id: $id) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"

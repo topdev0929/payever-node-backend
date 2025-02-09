@@ -1,0 +1,13 @@
+diff --git a/node_modules/artillery/core/lib/runner.js b/node_modules/artillery/core/lib/runner.js
+index 5c00531..57f4fd9 100644
+--- a/node_modules/artillery/core/lib/runner.js
++++ b/node_modules/artillery/core/lib/runner.js
+@@ -59,7 +59,7 @@ function loadEngines(
+   const loadedEngines = _.map(
+     Object.assign({}, Engines, script.config.engines),
+     function loadEngine(engineConfig, engineName) {
+-      let moduleName = 'artillery-engine-' + engineName;
++      let moduleName = engineConfig.moduleName || 'artillery-engine-' + engineName;
+       try {
+         if (Engines[engineName]) {
+           moduleName = './engine_' + engineName;

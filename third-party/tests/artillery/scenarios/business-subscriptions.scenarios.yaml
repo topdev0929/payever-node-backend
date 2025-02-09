@@ -1,0 +1,43 @@
+scenarios:
+  - name: "Business Subscriptions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/subscription/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/subscription/category/{{ category }}"
+      - get:
+          url: "/api/business/{{ businessId }}/subscription/category/{{ category }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/subscription/{{ integrationName }}/call"
+      - post:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}/call"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            test: "test"
+      - log: "POST /api/business/{{ businessId }}/subscription/{{ integrationName }}/action/{{ action }}"
+      - post:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/subscription/{{ integrationName }}/disconnect"
+      - delete:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}/disconnect"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/subscription/{{ integrationName }}/connect"
+      - post:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}/connect"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/subscription/{{ integrationName }}/connect/status"
+      - get:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}/connect/status"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

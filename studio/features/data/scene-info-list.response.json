@@ -1,0 +1,141 @@
+[
+  {
+    "color": {
+      "end": {
+        "blue": 0,
+        "green": 0,
+        "hex": "#000000",
+        "red": 0
+      },
+      "start": {
+        "blue": 0,
+        "green": 0,
+        "hex": "#000000",
+        "red": 0
+      }
+    },
+    "frame": {
+      "start": 1,
+      "end": 5
+    },
+    "objectDetection": {
+      "end": [],
+      "start": []
+    },
+    "size": {
+      "height": 720,
+      "width": 1280
+    },
+    "time": {
+      "start": 0,
+      "end": 0.13333333333333333
+    },
+    "tags": [],
+    "_id": "5341a61a-29f0-460d-8538-bf99e7261bec",
+    "order": 1,
+    "video": "http://localhost:2020/video/input1.mp4",
+    "displayAspectRatio": "16:9",
+    "duration": 0.13333333333333333,
+    "sampleAspectRatio": "1:1"
+  },
+  {
+    "color": {
+      "end": {
+        "blue": 55,
+        "green": 52,
+        "hex": "#353437",
+        "red": 53
+      },
+      "start": {
+        "blue": 38,
+        "green": 36,
+        "hex": "#252426",
+        "red": 37
+      }
+    },
+    "frame": {
+      "start": 6,
+      "end": 169
+    },
+    "objectDetection": {
+      "end": [
+        {
+          "bbox": [
+            43.17070007324219,
+            8.961303234100342,
+            1199.6223449707031,
+            553.8841652870178
+          ],
+          "class": "oven",
+          "score": 0.7560101747512817
+        }
+      ],
+      "start": []
+    },
+    "size": {
+      "height": 720,
+      "width": 1280
+    },
+    "time": {
+      "start": 0.16666666666666666,
+      "end": 5.6
+    },
+    "tags": [],
+    "_id": "fb57f3c5-847e-4c9f-abaf-9543bed403a3",
+    "order": 2,
+    "video": "http://localhost:2020/video/input1.mp4",
+    "displayAspectRatio": "16:9",
+    "duration": 5.433333333333333,
+    "sampleAspectRatio": "1:1"
+  },
+  {
+    "color": {
+      "end": {
+        "blue": 59,
+        "green": 57,
+        "hex": "#3a393b",
+        "red": 58
+      },
+      "start": {
+        "blue": 52,
+        "green": 50,
+        "hex": "#333234",
+        "red": 51
+      }
+    },
+    "frame": {
+      "start": 170,
+      "end": 339
+    },
+    "objectDetection": {
+      "end": [
+        {
+          "bbox": [
+            151.20731353759766,
+            356.0867643356323,
+            931.9807052612305,
+            174.5357608795166
+          ],
+          "class": "bench",
+          "score": 0.7104661464691162
+        }
+      ],
+      "start": []
+    },
+    "size": {
+      "height": 720,
+      "width": 1280
+    },
+    "time": {
+      "start": 5.633333333333334,
+      "end": 11.266666666666667
+    },
+    "tags": [],
+    "_id": "4c77970b-66d9-4ada-9d82-177f2f740ef9",
+    "order": 3,
+    "video": "http://localhost:2020/video/input1.mp4",
+    "displayAspectRatio": "16:9",
+    "duration": 5.633333333333334,
+    "sampleAspectRatio": "1:1"
+  }
+]

@@ -1,0 +1,22 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: Builder Appointment
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "POST /api/appointment/builder"
+      - post:
+          url: /api/appointment/builder
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/appointment/builder/business/{{businessId}}/integration"
+      - get:
+          url: /api/appointment/builder/business/{{businessId}}/integration
+          headers:
+            authorization: "Bearer {{ accessToken }}"

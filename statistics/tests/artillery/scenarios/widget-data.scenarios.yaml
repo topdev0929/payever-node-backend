@@ -1,0 +1,17 @@
+scenarios:
+  - name: "Widget Data"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/dashboard/{{ dashboardId }}/widget/widget-types"
+      - get:
+          url: "/api/business/{{ businessId }}/dashboard/{{ dashboardId }}/widget/widget-types"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/dashboard/{{ dashboardId }}/widget/{{ widgetType }}"
+      - get:
+          url: "/api/business/{{ businessId }}/dashboard/{{ dashboardId }}/widget/{{ widgetType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

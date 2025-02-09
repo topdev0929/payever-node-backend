@@ -1,0 +1,15 @@
+scenarios:
+  - name: "Mobile Settings"
+    flow:
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/mobile-settings"
+      - get:
+          url: "/api/mobile-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/mobile-settings"
+      - patch:
+          url: "/api/mobile-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

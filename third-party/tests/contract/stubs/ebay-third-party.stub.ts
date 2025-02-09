@@ -1,0 +1,38 @@
+import { pactConfiguration } from '../config';
+
+export const ebayThirdPartyStub: any =  {
+  id: 'cccccccc-cccc-cccc-cccc-cccccccccccc',
+  url: `http://localhost:${pactConfiguration.consumer.port}`,
+  actions: [
+    {
+      name: 'sync-inventory',
+      url: '/api/action/sync-inventory/:authorizationId',
+      method: 'POST',
+    },
+    {
+      name: 'subtract-inventory',
+      url: '/api/action/subtract-inventory/:authorizationId',
+      method: 'PATCH',
+    },
+    {
+      name: 'add-inventory',
+      url: '/api/action/add-inventory/:authorizationId',
+      method: 'PATCH',
+    },
+    {
+      name: 'sync-products',
+      url: '/api/action/sync-products/:authorizationId',
+      method: 'POST',
+    },
+    {
+      name: 'update-product',
+      url: '/api/action/update-product/:authorizationId',
+      method: 'PATCH',
+    },
+    {
+      name: 'subtract-orders',
+      url: '/api/action/subtract-orders/:authorizationId',
+      method: 'GET',
+    },
+  ],
+};

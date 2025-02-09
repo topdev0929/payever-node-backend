@@ -1,0 +1,131 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Legacy API"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "Business Enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          afterResponse: "setAccessToken"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "Oauth"
+      - function: "oauth"
+
+      - log: "POST /api/payment"
+      - post:
+          url: "/api/payment"
+          afterResponse: "defineApiCallId"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            amount: 5000
+            order_id: 0
+            currency: "EUR"
+
+      - log: "GET /api/{{ apiCallId }}"
+      - get:
+          url: "/api/{{ apiCallId }}"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/start-checkout/{{ apiCallId }}"
+      - get:
+          url: "/api/start-checkout/{{ apiCallId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/start-checkout/{{ apiCallId }}"
+      - post:
+          url: "/api/start-checkout/{{ apiCallId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/widget-flow/{{ apiCallId }}"
+      - post:
+          url: "/api/widget-flow/{{ apiCallId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/payment"
+      - get:
+          url: "/api/payment"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/payment/{{ paymentId }}"
+      - get:
+          url: "/api/payment/{{ paymentId }}"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "POST /api/payment/submit"
+      - post:
+          url: "/api/payment/submit"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+          json:
+            payment_method: "sofort"
+            amount: 1000
+            order_id: "1"
+            currency: "EUR"
+            first_name: "test"
+            last_name: "test"
+            street: "test"
+            zip: "10001"
+            country: "DE"
+            city: "Munich"
+            email: "test@gmail.com"
+            payment_data:
+              iban: "GB33BUKB20201555555555"
+
+      - log: "POST /api/payment/edit/{{ paymentId }}"
+      - post:
+          url: "/api/payment/edit/{{ paymentId }}"
+          headers:
+            authorization: "Bearer {{ oauthAccessToken }}"
+            user-agent: "{{ userAgent }}"
+            
+      - log: "GET /api/business/{{ businessId }}/channelSet"
+      - get:
+          url: "/api/business/{{ businessId }}/channelSet"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/shop/{{ businessId }}/payment-options/{{ channelSetId }}"
+      - get:
+          url: "/api/shop/{{ businessId }}/payment-options/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/shop/{{ businessId }}/payment-options/variants/{{ channelSetId }}"
+      - get:
+          url: "/api/shop/{{ businessId }}/payment-options/variants/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"
+
+      - log: "GET /api/shop/{{ businessId }}/channel-sets"
+      - get:
+          url: "/api/shop/{{ businessId }}/channel-sets"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "{{ userAgent }}"

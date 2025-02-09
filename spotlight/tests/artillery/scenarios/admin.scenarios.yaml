@@ -1,0 +1,11 @@
+scenarios:
+  - name: "Admin"
+    flow:
+      - log: "POST /api/Login"
+      - function: "auth"
+      - log: "GET /api/admin/spotlight/search?query={{ query }}"
+      - get:
+          url: "/api/admin/spotlight/search?query={{ query }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+        

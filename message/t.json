@@ -1,0 +1,109 @@
+{
+  "_id": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+  "app": "shop",
+  "description": "",
+  "messages": [
+    {
+      "_id": "41ef11af-12c0-4dad-97c5-037be794f3a0",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "https://support.payever.org/hc/en-us/articles/360023894674-How-to-setup-a-shop",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Get a quick Tour" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "49faf157-dd4d-4636-b68c-ec25bde94656",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/shop/{{SHOP_ID}}/themes",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Review Theme" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "c0653691-5d2a-4e84-af19-1c8c22f761cf",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/shop/{{SHOP_ID}}/settings",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Add a Logo" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "c5927617-b384-4991-9ff7-05be995bff7d",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/products/list?addExisting=true",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Add Products" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "92ee7700-be16-4769-a377-d5b4c23f156e",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/shop/{{SHOP_ID}}/settings",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Choose Domain" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "feddc59f-654c-4b78-980c-e8df48c71113",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/shop/{{SHOP_ID}}/edit",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Customize Theme" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "6d736c1b-b84e-431d-b9cb-13180f79d725",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/settings/policies",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Add Legal Terms" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "2c08f737-8e06-4000-9d95-da12c2f761cc",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/checkout/{{CHECKOUT_ID}}/panel-payments",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Add Payment Options" }
+      },
+      "type": "box"
+    },
+    {
+      "_id": "f996e5ce-44d2-4f0d-b638-49c3881074f5",
+      "chatTemplate": "f9fd2225-eb67-4981-8674-c4f46bc18fcc",
+      "interactive": {
+        "action": "${MICRO_HOST_FRONTEND_COMMERCEOS}/business/{{BUSINESS_ID}}/shop/{{SHOP_ID}}/settings",
+        "defaultLanguage": "en",
+        "icon": "checklist",
+        "translations": { "en": "Launch live" }
+      },
+      "type": "box"
+    }
+  ],
+  "title": "payever Shop Checklist",
+  "type": "app-channel",
+  "members": []
+}

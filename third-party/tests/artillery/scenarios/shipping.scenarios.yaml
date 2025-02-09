@@ -1,0 +1,41 @@
+scenarios:
+  - name: "Shipping"
+    flow:
+      - function: "defineVariables"
+      - log: "GET /api/business/{{ businessId }}/shipping/{{ integrationName }}/get-subscription"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping/{{ integrationName }}/get-subscription"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shipping/{{ integrationName }}/rates"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping/{{ integrationName }}/rates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rules"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rules"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule"
+      - post:
+          url: "/api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "Free Over"
+            type: "freeOver"
+            freeOver: 1
+          capture:
+            - json: "$._id"
+              as: "ruleId"
+      - log: "PUT /api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule/{{ ruleId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule/{{ ruleId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/shipping-subscription/{{ subscriptionId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

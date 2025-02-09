@@ -1,0 +1,60 @@
+scenarios:
+  - name: "Image Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/image/business/{{ businessId }}/{{ container }}"
+      - post:
+          url: "/api/image/business/{{ businessId }}/{{ container }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+      - post:
+          url: "/api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+      - patch:
+          url: "/api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/image/business/{{ businessId }}/cdn/{{ container }}"
+      - post:
+          url: "/api/image/business/{{ businessId }}/cdn/{{ container }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/image/business/{{ businessId }}/cdn/{{ container }}/{{ blobName }}"
+      - post:
+          url: "/api/image/business/{{ businessId }}/cdn/{{ container }}/{{ blobName }}"
+          beforeRequest: "addMultipartFormData"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+      - delete:
+          url: "/api/image/business/{{ businessId }}/{{ container }}/{{ blobName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+  - name: "Image User"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "{{ accessToken }}"
+      - log: "POST /api/image/user/{{ userId }}/{{ container }}"
+      - post:
+          url: "/api/image/user/{{ userId }}/{{ container }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/image/user/{{ userId }}/{{ container }}/{{ blobName }}"
+      - delete:
+          url: "/api/image/user/{{ userId }}/{{ container }}/{{ blobName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,262 @@
+scalar Date
+
+enum CampaignStatus {
+  new
+  draft
+  sent
+}
+
+enum ScheduleType {
+  now
+  onDate
+  periodicAfterDate
+}
+
+enum ScheduleIntervalType {
+  hour
+  day
+  week
+  month
+}
+
+type ScheduleInterval {
+  number: Int,
+  type: ScheduleIntervalType,
+}
+
+type ScheduleRecurring {
+  target: Int,
+  fulfill: Int,
+}
+
+type ScheduleModel {
+  id: String,
+  date: Date,
+  failCount: Int,
+  history: [Date],
+  cronErrors: [String],
+  interval: ScheduleInterval,
+  recurring: ScheduleRecurring,
+  type: ScheduleType,
+}
+
+type CampaignModel {
+  id: String,
+  themeId: String,
+  business: String,
+  categories: [CategoryModel],
+  channelSet: String,
+  theme: String,
+  name: String,
+  preview: String,
+  contacts: [String],
+  from: String,
+  schedules: [ScheduleModel],
+  status: String,
+  template: String,
+  productIds: [String],
+  date: Date,
+  createdAt: Date,
+  updatedAt: Date,
+}
+
+type Pagination {
+  page: Int,
+  page_count: Int,
+  per_page: Int,
+  item_count: Int,
+}
+
+type Info {
+  pagination: Pagination,
+}
+
+type CampaignsModel {
+  campaigns: [CampaignModel],
+  info: Info,
+}
+
+input SizeInterface {
+  height: Int,
+  width: Int,
+}
+
+type ContactModel {
+  id: String,
+  business: String,
+  contacts: [String],
+}
+
+type CategoryModel {
+  id: String,
+  business: String,
+  description: String,
+  name: String,
+  createdAt: Date,
+  updatedAt: Date,
+}
+
+type CategoriesModel {
+  categories: [CategoryModel],
+  info: Info,
+}
+
+type Query {
+  getCampaigns(
+    businessId: String,
+    status: String,
+    page: Int,
+    limit: Int,
+  ): CampaignsModel
+  getCampaign(
+    businessId: String!,
+    id: String!,
+  ): CampaignModel
+  getCampaignsCount(
+    businessId: String!,
+    status: String,
+  ): Int
+  getCampaignTemplate(
+    businessId: String!,
+    id: String!,
+  ): String
+  extractThemeDetails(
+    businessId: String!,
+    id: String!,
+    accessToken: String!,
+    refreshToken: String!,
+    loginData: String,
+    screenSizes: [SizeInterface]
+  ): String
+
+  getCategories(
+    businessId: String,
+    status: String,
+    page: Int,
+    limit: Int,
+  ): CategoriesModel
+  getCategory(
+    businessId: String!,
+    id: String!,
+  ): CategoryModel
+
+  getContact(
+    businessId: String!,
+  ): ContactModel
+}
+
+
+input ScheduleIntervalInput {
+  number: Int!,
+  type: ScheduleIntervalType!,
+}
+
+input ScheduleRecurringInput {
+  target: Int,
+  fulfill: Int,
+}
+
+input ScheduleInput {
+  date: Date,
+  interval: ScheduleIntervalInput,
+  recurring: ScheduleRecurringInput,
+  type: ScheduleType!,
+}
+
+input CreateCampaignInput {
+  name: String!,
+  themeId: String,
+  preview: String,
+  categories: [String],
+  contacts: [String],
+  from: String,
+  date: Date!,
+  schedules: [ScheduleInput],
+  status: CampaignStatus!,
+  template: String,
+  productIds: [String],
+}
+
+input UpdateCampaignInput {
+  name: String,
+  ThemeId: String,
+  preview: String,
+  categories: [String],
+  contacts: [String],
+  from: String,
+  date: Date,
+  schedules: [ScheduleInput],
+  status: CampaignStatus!,
+  template: String,
+  productIds: [String],
+}
+
+input SetContactInput {
+  contacts: [String]!,
+}
+
+input CreateCategoryInput {
+  name: String!,
+  description: String,
+}
+
+input UpdateCategoryInput {
+  name: String,
+  description: String,
+}
+
+type Mutation {
+  createCampaign(
+    businessId: String!,
+    data: CreateCampaignInput!,
+  ): CampaignModel
+  updateCampaign(
+    businessId: String!,
+    id: String!,
+    data: UpdateCampaignInput!,
+  ): CampaignModel
+  deleteCampaigns(
+    businessId: String!,
+    ids: [String],
+  ): Boolean
+
+  setContact(
+    businessId: String!,
+    data: SetContactInput!,
+  ): ContactModel
+
+  createCategory(
+    businessId: String!,
+    data: CreateCategoryInput!,
+  ): CategoryModel
+  updateCategory(
+    businessId: String!,
+    id: String!,
+    data: UpdateCategoryInput!,
+  ): CategoryModel
+  deleteCategories(
+    businessId: String!,
+    ids: [String],
+  ): Boolean
+
+  convertTheme(
+    businessId: String!,
+    id: String!,
+    accessToken: String!,
+    refreshToken: String!,
+    clientUrl: String!,
+    client: String!,
+    loginData: String,
+    screenSizes: [SizeInterface]
+  ): String
+  sendEmail(
+    businessId: String!,
+    id: String!,
+    accessToken: String!,
+    refreshToken: String!,
+    clientUrl: String!,
+    client: String!,
+    loginData: String,
+    screenSizes: [SizeInterface]
+  ): Boolean
+}

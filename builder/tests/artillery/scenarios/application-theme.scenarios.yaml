@@ -1,0 +1,136 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Application Theme"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+
+      - log: "PUT /api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/switch"
+      - put:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/switch"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$"
+              as: "data"
+      - log: " {{ data }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/install-default"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/install-default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.id"
+              as: "installId"
+      - log: "installId {{ installId }}"
+
+      - log: "DELETE /api/business/{{businessId}}/application/{{applicationId}}/theme/{{installId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{installId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/theme"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: artillery-test
+            content:
+              pages:
+                - id: 39a519e3-d14e-4558-b0ef-1f711d12f70c
+                  name: MEN
+                  variant: front
+                  data:
+                    mark: null
+              context: {}
+              routing: []
+              any: fields
+              canBe: here
+
+          capture:
+            - json: "$.theme._id"
+              as: "createId"
+      - log: "createId {{ createId }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/duplicate"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/duplicate"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+          capture:
+            - json: "$._id"
+              as: "duplicateId"
+      - log: "duplicateId {{ duplicateId }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/themes?page=2&limit=2"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/themes?page=2&limit=2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/theme/name"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/name"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: artillery-test
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/themes/active"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/themes/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme/album"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/album"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/theme/template"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/album/{{albumId}}"
+      - post:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/album/{{albumId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{businessId}}/application/{{applicationId}}/preview"
+      - get:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/preview"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PUT /api/business/{{businessId}}/application/{{applicationId}}/theme/{{themeId}}/instant-setup"
+      - put:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/template/{{themeId}}/instant-setup"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/business/{{businessId}}/application/{{applicationId}}/theme/{{createId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{createId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/business/{{businessId}}/application/{{applicationId}}/theme/{{duplicateId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/application/{{applicationId}}/theme/{{duplicateId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

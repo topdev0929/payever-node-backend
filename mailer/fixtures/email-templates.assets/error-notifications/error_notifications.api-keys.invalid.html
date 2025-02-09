@@ -1,0 +1,10 @@
+<p>Dear Merchant,</p>
+<p>we need your help to resolving an issue with your payever account. The client id/secret that is used for API authorization is invalid, or have expired. Please make sure you are using your API keys correctly.</p>
+<p>Key Name: {{name}}, Client ID: {{clientId}}, Client Secret: {{clientSecret}}</p>
+<p>
+  {% if business.name is defined %}Business: {{business.name}}<br>{% endif %}
+  {% if errorDateFormatted is defined %}Time: {{errorDateFormatted}}{% endif %}
+</p>
+<p>Since future API calls are likely to fail as well, we won’t be able to process any further calls unless the situation will be resolved.</p>
+<p>You can retry the API calls by updating or regenerating new keys inside your account.</p>
+<p>You can nd answers to the most frequent questions in our documentation. You have further questions? Please contact our customer support.</p>

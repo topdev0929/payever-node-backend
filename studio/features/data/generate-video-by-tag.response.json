@@ -1,0 +1,18 @@
+{
+  "status": "waiting",
+  "task": {
+    "type": "generate-video-by-tag",
+    "data": {
+      "body": {
+        "tags": [
+          "car",
+          "motorcycle"
+        ],
+        "audio": "http://localhost:2020/video/audio.mp3",       
+        "duration": 48
+      },
+      "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d"
+    }
+  },
+  "tries": 0
+}

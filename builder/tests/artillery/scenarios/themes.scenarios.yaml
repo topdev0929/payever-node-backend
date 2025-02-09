@@ -1,0 +1,95 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Themes"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "PUT /api/theme/{{themeId}}/image-preview"
+      - put:
+          url: "/api/theme/{{themeId}}/image-preview"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            imagePreview: "test_image"
+
+      - log: "PUT /api/theme/{{themeId}}/page/{{pageId}}/image-preview"
+      - put:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/image-preview"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            data:
+              preview:
+                desktop: 'desktop'
+
+      - log: "GET /api/theme/{{themeId}}/pages"
+      - get:
+          url: "/api/theme/{{themeId}}/pages"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/page/{{pageId}}/elements"
+      - get:
+          url: "/api/theme/{{themeId}}/page/{{pageId}}/elements"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/detail"
+      - get:
+          url: "/api/theme/{{themeId}}/detail"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}"
+      - get:
+          url: "/api/theme/{{themeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/detail?pageId={{pageId}}"
+      - get:
+          url: "/api/theme/{{themeId}}/detail?pageId={{pageId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/theme/{{themeId}}/detail?page={{pageId}}"
+      - get:
+          url: "/api/theme/{{themeId}}/detail?page={{pageId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/theme/{{themeId}}/name"
+      - patch:
+          url: "/api/theme/{{themeId}}/name"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: new name
+
+      - log: "PATCH /api/theme/{{themeId}}/screen"
+      - patch:
+          url: "/api/theme/{{themeId}}/screen"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            defaultScreen: "desktop"
+
+      - log: "PATCH /api/theme/{{themeId}}"
+      - patch:
+          url: "/api/theme/{{themeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: new name

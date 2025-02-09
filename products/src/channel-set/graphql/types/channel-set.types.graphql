@@ -1,0 +1,15 @@
+type ChannelSet {
+  id: String
+  name: String
+  type: String
+  active: Boolean
+  business: String
+  enabledByDefault: Boolean
+  customPolicy: Boolean
+  policyEnabled: Boolean
+  originalId: String
+}
+
+type Query {
+  getChannelSetByBusiness(businessId: String!): [ChannelSet]
+}

@@ -1,0 +1,11 @@
+scenarios:
+  - name: "Slug Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "GET /api/slug/business/{{ businessSlug }}/home"
+      - get:
+          url: "/api/slug/business/{{ businessSlug }}/home"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,40 @@
+{
+  "license": "UNLICENSED",
+  "repository": "ssh://git@gitlab.devpayever.com:10022/error-notifications.git",
+  "description": "Error notifications microservice",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js --queue=async_events_error_notifications_micro\"",
+    "consume:prod": "node dist/src/consumer.js --queue=async_events_error_notifications_micro",
+    "cron": "ts-node src/cron.ts",
+    "cron:prod": "node dist/src/cron.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "probe-mongo": "pe-probe-mongo",
+    "test:cov": "nyc mocha -r ts-node/register --recursive ./tests/**/*.spec.ts",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/**/*.spec.ts"
+  },
+  "dependencies": {
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.3.1",
+    "date-fns": "^2.28.0",
+    "moment": "^2.29.1",
+    "node-cron": "^2.0.3",
+    "qs": "^6.10.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@nestjs/platform-express": "^7.6.18",
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.5"
+  },
+  "nyc": {
+    "functions": 100,
+    "lines": 75
+  }
+}

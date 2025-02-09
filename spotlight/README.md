@@ -1,0 +1,3 @@
+# spotlight
+
+jiraKey: SPOTM

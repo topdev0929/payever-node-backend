@@ -1,0 +1,4 @@
+"Handle";"Title";"Description";"Type";"Hidden";"Enabled";"SKU";"Bar Code";"Inventory Stock";"Inventory Reserved";"Price";"Sales Price";"Currency";"Images";"VAT";"Weight(Kg)";"Width(Cm)";"Length(Cm)";"Height(Cm)"
+"Test_1";"Some service product";"Some description";"service";"true";"true";"678";"123123";"";"";"100.0";"50.0";"";"";"";"";"";"";
+"Test_1";"Variant 1";"Variant 1";"";"false";"";"Variant1_SKU";"123125";"100";"50";"50";"10";"";"replace_me_1.png;https://test.com/dont_replace_me.png;replace_me_2.jpg";"";"";"";"";
+"Test_1";"Variant 2";"Variant 2";"";"false";"";"Variant2_SKU";"123126";"50";"40";"50";"10";"";"replace_me_1.png";"";"";"";"";

@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Stream Media"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}/stream/subscription/{{ subscriptionMediaId }}"
+      - get:
+          url: "/api/{{ businessId }}/stream/subscription/{{ subscriptionMediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/stream/media/{{ userMediaId }}"
+      - get:
+          url: "/api/{{ businessId }}/stream/media/{{ userMediaId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

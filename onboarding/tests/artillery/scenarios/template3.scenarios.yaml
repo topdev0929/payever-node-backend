@@ -1,0 +1,58 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Template"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "PUT /api/template"
+      - put:
+          url: "/api/template"
+          headers:
+            authorization: "Bearer {{ adminAccessToken }}"
+          json:
+            name: "artillery-template-without-name"
+            config: 
+              - verificationRequired: true
+          capture:
+            - json: "$._id"
+              as: "templateId"
+      - log: "PUT /api/template"
+      - put:
+          url: "/api/template"
+          headers:
+            authorization: "Bearer {{ adminAccessToken }}"
+          json:
+            name: "{{name}}"
+            config: 
+              - verificationRequired: true
+      - log: "GET /api/template"
+      - get:
+          url: "/api/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/template/{{ templateId }}"
+      - get:
+          url: "/api/template/{{ templateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/template/name/{{ name }}"
+      - get:
+          url: "/api/template/name/{{ name }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/template/{{ templateId }}"
+      - delete:
+          url: "/api/template/{{ templateId }}"
+          headers:
+            authorization: "Bearer {{ adminAccessToken }}"
+      - log: "DELETE /api/template/name/{{ name }}"
+      - delete:
+          url: "/api/template/name/{{ name }}"
+          headers:
+            authorization: "Bearer {{ adminAccessToken }}"

@@ -1,0 +1,106 @@
+scenarios:
+  - name: "Employees"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/employees/{{ businessId }}"
+      - get:
+          url: "/api/employees/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            page: "{{ page }}"
+            limit: "{{ limit }}"
+      - log: "POST /api/employees/{{ businessId }}"
+      - post:
+          url: "/api/employees/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            json: "$._id"
+            as: "employeeId"
+          json:
+            email: "{{ email }}"
+            position: "{{ position }}"
+            status: "{{ status }}"
+            acls: "{{ acls }}"
+            firstName: "{{ first_name }}"
+            lastName: "{{ last_name }}"
+      - log: "PATCH /api/employees/{{ businessId }}/{{ employeeId }}"
+      - patch:
+          url: "/api/employees/{{ businessId }}/{{ employeeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ email }}"
+            position: "{{ position }}"
+            status: "{{ status }}"
+            acls: "{{ acls }}"
+            firstName: "{{ first_name }}"
+            lastName: "{{ last_name }}"
+      - log: "GET /api/employees/{{ businessId }}/count"
+      - get:
+          url: "/api/employees/{{ businessId }}/count"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/employee-groups/{{ businessId }}"
+      - post:
+          url: "/api/employee-groups/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ groupName }}"
+          capture:
+            json: "$._id"
+            as: "groupId"
+      - log: "GET /api/employee-groups/{{ businessId }}"
+      - get:
+          url: "/api/employee-groups/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            limit: "{{ limit }}"
+            page: "{{ page }}"
+      - log: "PATCH /api/employee-groups/{{ businessId }}/{{ groupId }}"
+      - patch:
+          url: "/api/employee-groups/{{ businessId }}/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ groupName }}"
+      - log: "GET /api/employee-groups/{{ businessId }}/{{ groupId }}"
+      - get:
+          url: "/api/employee-groups/{{ businessId }}/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/employee-groups/{{ businessId }}/count"
+      - get:
+          url: "/api/employee-groups/{{ businessId }}/count"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/employee-groups/{{ businessId }}/{{ groupId }}/add-employees"
+      - post:
+          url: "/api/employee-groups/{{ businessId }}/{{ groupId }}/add-employees"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json: 
+            employees: "{{ employees }}"
+      - log: "POST /api/employee-groups/{{ businessId }}/{{ groupId }}/remove-employees"
+      - post:
+          url: "/api/employee-groups/{{ businessId }}/{{ groupId }}/remove-employees"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json: 
+            employees: "{{ employees }}"
+      - log: "DELETE /api/employee-groups/{{ businessId }}/{{ groupId }}"
+      - delete:
+          url: "/api/employee-groups/{{ businessId }}/{{ groupId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/employees/{{ businessId }}/{{ employeeId }}"
+      - delete:
+          url: "/api/employees/{{ businessId }}/{{ employeeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

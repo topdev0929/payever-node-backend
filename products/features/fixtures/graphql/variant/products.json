@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "e8d3486e-43f6-4a4d-a65e-2c991051786f",
+    "businessId": "85d75e8b-3d02-4743-8083-5bdeaa7c8d0f",
+    "title": "product 1",
+    "price": 3.22,
+    "uuid": "e8d3486e-43f6-4a4d-a65e-2c991051786f",
+    "variants": ["85f873e0-6f78-467c-bd88-1b27e2519843", "9d02053b-eb71-4b74-9ede-0d7525632649"]
+  }
+]

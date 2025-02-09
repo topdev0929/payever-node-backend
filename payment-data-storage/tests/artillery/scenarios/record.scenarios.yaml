@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Record"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/storage/{{ recordId }}"
+      - get:
+          url: "/api/storage/{{ recordId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/storage/{{ recordId }}/flow/{{ flowId }}"
+      - put:
+          url: "/api/storage/{{ recordId }}/flow/{{ flowId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

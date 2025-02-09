@@ -1,0 +1,16 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: Appointment
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/list/{{businessId}}"
+      - get:
+          url: /api/list/{{ businessId }}
+          headers:
+            authorization: "Bearer {{ accessToken }}"

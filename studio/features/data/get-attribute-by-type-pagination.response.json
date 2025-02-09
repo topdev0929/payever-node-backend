@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "6a54f9a7-afa8-46a0-a782-1b2d29cc943c",
+    "icon": "http://test.com/motorcycle.jpg",
+    "name": "motorcycle",
+    "type": "vehicle",
+    "createdAt": "2020-01-01T00:00:02.000Z",
+    "updatedAt": "2020-01-01T00:00:02.000Z",
+    "__v": 0
+  },
+  {
+    "_id": "64a19c1b-4ea0-4675-aafb-f50c2e3ab12d",
+    "icon": "http://test.com/car.jpg",
+    "name": "car",
+    "type": "vehicle",
+    "createdAt": "2020-01-01T00:00:01.000Z",
+    "updatedAt": "2020-01-01T00:00:01.000Z",
+    "__v": 0
+  }
+]

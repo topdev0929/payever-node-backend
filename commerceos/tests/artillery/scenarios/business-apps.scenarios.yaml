@@ -1,0 +1,55 @@
+config: 
+  target: "https://commerceos-backend.test.devpayever.com"
+  phases: 
+    - 
+      duration: 1
+      arrivalRate: 10 
+  http: 
+    timeout: 10
+  variables: 
+    authUrl: "https://auth.test.devpayever.com"
+    userUrl: "https://users.test.devpayever.com"
+    email: "artillery@payever.de"
+    plainPassword: "Payever123!"
+    userId: "bbc716fa-3301-4fea-8f86-dc4719bfe896"
+    clientId: "00b6d075-1b87-4077-bc57-11536fac35a4"
+    clientSecret: "d5653b0b4e3ade27641304b5d1e968e05ac7a627aa0123d5"
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+  processor: "../processors/default.js"
+scenarios:
+  - 
+    name: "Business Apps"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/apps/business/{{ businessId }}"
+      - get:
+          url: "/api/apps/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/apps/business/{{ businessId }}/toggle-installed"
+      - post:
+          url: "/api/apps/business/{{ businessId }}/toggle-installed"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            microUuid: "{{ microUuid }}"
+            installed: true
+      - log: "PATCH /api/apps/business/{{ businessId }}/app/{{ code }}/toggle-setup-status"
+      - patch:
+          url: "/api/apps/business/{{ businessId }}/app/{{ code }}/toggle-setup-status"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            setupStatus: "completed"
+      - log: "PATCH /api/apps/business/{{ businessId }}/app/{{ code }}/change-setup-step"
+      - patch:
+          url: "/api/apps/business/{{ businessId }}/app/{{ code }}/change-setup-step"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            setupStep: "completed"

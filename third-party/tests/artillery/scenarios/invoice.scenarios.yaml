@@ -1,0 +1,33 @@
+scenarios:
+  - name: "Invoice"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice"
+      - get:
+          url: "/api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice"
+      - post:
+          url: "/api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            quantity: 1
+            taxRate: 1
+          capture:
+              - json: "$._id"
+                as: "invoiceId"
+      - log: "POST /api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice/book?invoiceId={{ invoiceId }}"
+      - post:
+          url: "/api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice/book?invoiceId={{ invoiceId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice?invoiceId={{ invoiceId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/accountings/{{ integrationName }}/invoice?invoiceId={{ invoiceId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

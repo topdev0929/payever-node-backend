@@ -1,0 +1,107 @@
+config:
+  phase:
+    - duration: 1
+      arrivalRate: 10
+scenarios:
+  - name: "Avaliability Graphql Resolver"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: ">>> accessToken:  {{ accessToken }}"
+
+      - log: QUERY appointment avaliability
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query appointmentAvaliability($id: String!) {
+                appointmentAvaliability(id: $id, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+
+      - log: QUERY appointment avaliabilities
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              query appointmentAvaliabilities($listQueryDto: ListQueryDto!) {
+                appointmentAvaliabilities(listQueryDto: $listQueryDto, businessId: {{businessId}}) {
+                  id
+                }
+              }
+            variables:
+              orderBy: "created_at"
+              direction: "desc"
+              page: 1
+              limit: 10
+
+      - log: MUTATION createAppointmentAvaliability
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation createAppointmentAvaliability($data: CreateAppointmentAvailabilityDto!) {
+                createAppointmentAvaliability(businessId: {{businessId}}, data: $data) {
+                  id
+                }
+              }
+            variables:
+              data:
+                name: "{{$randomString()}}"
+
+      - log: MUTATION updateAppointmentAvaliability
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation updateAppointmentAvaliability($data: UpdateAppointmentAvailabilityDto!, $id: String!) {
+                updateAppointmentAvaliability(businessId: {{businessId}}, data: $data, id: $id) {
+                  id
+                }
+              }
+            variables:
+              data:
+                name: "{{$randomString()}}"
+              id: "{{$randomId()}}"
+
+      - log: MUTATION set deafult appointment avaliability
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation setDefaultAppointmentAvaliability($id: String!) {
+                setDefaultAppointmentAvaliability(businessId: {{businessId}}, id: $id) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"
+
+      - log: MUTATION delete appointment avaliability
+      - post:
+          url: "/appointments"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            query: |
+              mutation deleteAppointmentAvaliability($id: String!) {
+                deleteAppointmentAvaliability(businessId: {{businessId}}, id: $id) {
+                  id
+                }
+              }
+            variables:
+              id: "{{$randomId()}}"

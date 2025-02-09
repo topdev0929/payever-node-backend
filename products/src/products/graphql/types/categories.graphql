@@ -1,0 +1,52 @@
+type BusinessReference {
+    id: String
+}
+
+type CategoryAttribute {
+    name: String
+    type: String
+}
+
+type ParentCategory {
+    id: String
+    business: BusinessReference
+    description: String
+    name: String
+    slug: String
+    image: String
+}
+
+type Category {
+    id: String
+    business: BusinessReference
+    description: String
+    parent: ParentCategory
+    ancestors: [ParentCategory]
+    name: String
+    slug: String
+    image: String
+    attributes: [CategoryAttribute]
+    inheritedAttributes: [CategoryAttribute]
+}
+
+type GetCategoryResult {
+    result: [Category],
+    totalCount: Int,
+}
+
+type Query {
+    getUsedCategoriesForBuilder(
+        filter: String!,
+        business: String,
+        order: String,
+        pageNumber: Int,
+        paginationLimit: Int,
+    ): GetCategoryResult
+    getCategoriesByProductsForBuilder(
+        filter: String!,
+        business: String,
+        order: String,
+        offset: Int,
+        limit: Int,
+    ): GetCategoryResult
+}

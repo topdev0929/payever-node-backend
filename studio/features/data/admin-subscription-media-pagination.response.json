@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "*",
+    "url": "https://video.com/free-5.flv",
+    "mediaType": "video",
+    "name": "video 1",
+    "subscriptionType": 0,
+    "attributes": [
+      {
+        "attribute": {
+          "_id": "5358b71e-f945-4ed3-bba4-13e56ac70184",
+          "icon": "http://test.com/cat.jpg",
+          "name": "cat",
+          "type": "animal"
+        },
+        "value": "test3"
+      }
+    ],
+    "createdAt": "2020-01-05T00:00:00.000Z",
+    "updatedAt": "2020-01-05T00:00:00.000Z"
+  },
+  {
+    "_id": "*",
+    "url": "https://example.com/pro-4.png",
+    "mediaType": "image",
+    "name": "image 4",
+    "subscriptionType": 4,
+    "attributes": [
+      {
+        "attribute": {
+          "_id": "6a54f9a7-afa8-46a0-a782-1b2d29cc943c",
+          "icon": "http://test.com/motorcycle.jpg",
+          "name": "motorcycle",
+          "type": "vehicle"
+        },
+        "value": "test2"
+      }
+    ],
+    "createdAt": "2020-01-04T00:00:00.000Z",
+    "updatedAt": "2020-01-04T00:00:00.000Z"
+  },
+  {
+    "_id": "*",
+    "url": "https://example.com/premium-3.png",
+    "mediaType": "image",
+    "name": "image 3",
+    "subscriptionType": 2,
+    "attributes": [
+      {
+        "attribute": {
+          "_id": "6a54f9a7-afa8-46a0-a782-1b2d29cc943c",
+          "icon": "http://test.com/motorcycle.jpg",
+          "name": "motorcycle",
+          "type": "vehicle"
+        },
+        "value": "test2"
+      }
+    ],
+    "createdAt": "2020-01-03T00:00:00.000Z",
+    "updatedAt": "2020-01-03T00:00:00.000Z"
+  }
+]

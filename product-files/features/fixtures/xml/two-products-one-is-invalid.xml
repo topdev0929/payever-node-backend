@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<import xsi:noNamespaceSchemaLocation="product.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <products>
+        <product>
+            <sku>1234</sku>
+            <type>digital</type>
+            <title>Valid product</title>
+            <description>Valid product</description>
+            <hidden>false</hidden>
+            <price>100</price>
+            <currency>eur</currency>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>bar-code</bar-code>
+            <enabled>true</enabled>
+        </product>
+        <product>
+            <sku>5678</sku>
+            <type>digital</type>
+            <title>Invalid product</title>
+            <hidden>false</hidden>
+            <currency>eur</currency>
+            <sale>
+                <on-sales>true</on-sales>
+                <sale-price>50.0</sale-price>
+                <sale-percent>50.0</sale-percent>
+                <sale-start-date>2023-01-01</sale-start-date>
+                <sale-end-date>2023-01-31</sale-end-date>
+            </sale>
+            <bar-code>bar-code</bar-code>
+            <enabled>true</enabled>
+            <variants>
+                <variant>
+                    <sku>wrong_variant_sku</sku>
+                </variant>
+            </variants>
+        </product>
+    </products>
+</import>

@@ -1,0 +1,16 @@
+{
+  "_id": "e82c2960-21ad-405f-976d-2b8857714052",
+  "default": false,
+  "icon": "icon-shipping-64.png",
+  "order": 100,
+  "title": "Shipping",
+  "tutorial": {
+    "icon": "#icon-apps-shipping",
+    "title": "payever Shipping",
+    "urls": [
+      {"language": "en", "url": "https://support.payever.org/hc/en-us/articles/360013519499-How-to-set-up-payever-Shipping"},
+      {"language": "de", "url": "https://support.payever.org/hc/de/articles/360013519499-Wie-richte-ich-payever-Shipping-ein"}
+    ],
+  },
+  "type": "shipping"
+}

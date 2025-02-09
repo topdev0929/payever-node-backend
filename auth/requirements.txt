@@ -1,0 +1,14 @@
+Auth:
+1. Credentials validation (login)
+2. Token management
+3. User creation (base data: userID, emai, pass)
+4. Reset password
+5. Maybe 2 factor auth in future
+
+Auth independent and has the own data storage, super fast
+
+Endpoints:
+register
+login
+logout
+auth

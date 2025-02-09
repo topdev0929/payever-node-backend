@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "*",
+    "url": "https://video.com/premium-7.flv",
+    "mediaType": "video",
+    "name": "video 3",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "album": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "createdAt": "2020-01-07T00:00:07.000Z",
+    "updatedAt": "2020-01-07T00:00:07.000Z",
+    "__v": 0
+  },
+  {
+    "_id": "*",
+    "url": "https://example.com/pro-4.png",
+    "mediaType": "image",
+    "name": "image 4",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "album": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "createdAt": "2020-01-04T00:00:04.000Z",
+    "updatedAt": "2020-01-04T00:00:04.000Z",
+    "__v": 0
+  },
+  {
+    "_id": "7d2a9404-e07a-477f-839d-71f591cf1317",
+    "url": "https://example.com/free-1.png",
+    "mediaType": "image",
+    "name": "image 1",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "album": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "createdAt": "2020-01-01T00:00:01.000Z",
+    "updatedAt": "2020-01-01T00:00:01.000Z",
+    "__v": 0
+  }
+]

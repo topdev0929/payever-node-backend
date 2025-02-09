@@ -1,0 +1,70 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation createProduct($product: ProductInput!) {
+  createProduct(product: $product) {
+    title
+    _id
+  }
+}
+
+{
+  "product": {
+    "businessUuid": "df36ccd8-bde0-4d37-8125-2b7cc097a05c",
+    "images": [],
+    "title": "product-1",
+    "description": "product 1",
+    "onSales": false,
+    "price": 1,
+    "salePrice": null,
+    "sku": "prod-1",
+    "barcode": "",
+    "type": "physical",
+    "active": true,
+    "channelSets": [],
+    "categories": [],
+    "variants": [
+      {
+        "id": "b93d47c6-1ce9-4bf3-bce0-79bfb50496bd",
+        "images": [],
+        "options": [
+          {
+            "name": "o",
+            "value": "1"
+          }
+        ],
+        "description": "variant 1",
+        "price": 1,
+        "salePrice": null,
+        "onSales": false,
+        "sku": "prod-1-1",
+        "barcode": ""
+      },
+      {
+        "id": "6b9187d1-f2ce-4f49-addf-ebf317c74dbe",
+        "images": [],
+        "options": [
+          {
+            "name": "o",
+            "value": "2"
+          }
+        ],
+        "description": "variant 2",
+        "price": 1,
+        "salePrice": null,
+        "onSales": false,
+        "sku": "prod-1-2",
+        "barcode": ""
+      }
+    ],
+    "shipping": {
+      "free": false,
+      "general": false,
+      "weight": 1,
+      "width": 1,
+      "length": 1,
+      "height": 1
+    }
+  }
+}

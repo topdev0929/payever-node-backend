@@ -1,0 +1,39 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Site"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/{{ defaultSiteId }}/theme"
+      - get:
+          url: "/api/{{ defaultSiteId }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/{{ defaultSiteId }}/theme/{{ themeId }}"
+      - get:
+          url: "/api/{{ defaultSiteId }}/theme/{{ themeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/page/search?search={{randomName}}"
+      - get:
+          url: "/api/page/search?search={{randomName}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/integration/cache"
+      - post:
+          url: "/api/integration/cache"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            hash: "{{randomName}}"

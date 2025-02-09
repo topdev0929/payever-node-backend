@@ -1,0 +1,21 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:  
+  - name: "Channel Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /channel"
+      - get:
+          url: "{{ httpTarget }}/channel"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1

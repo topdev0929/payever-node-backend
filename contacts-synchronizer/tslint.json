@@ -1,0 +1,7 @@
+{
+  "extends": "@pe/dev-kit",
+  "rules": {
+    "object-literal-sort-keys": false,
+    "align": [true, "parameters"]
+  }
+}

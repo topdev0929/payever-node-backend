@@ -1,0 +1,4 @@
+name: nodejs-backend-commerceos
+endpoints:
+  - commerceos-backend
+

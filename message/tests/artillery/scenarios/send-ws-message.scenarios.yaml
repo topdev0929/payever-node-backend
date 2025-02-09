@@ -1,0 +1,63 @@
+config:
+  timeout: 60
+  ensure:
+    thresholds:
+      - "socketio.messages.ws-client.message.send.response_time.p99": 250
+      - "socketio.messages.ws-client.message.send.response_time.p95": 100
+  phases:
+    - duration: 60
+      rampTo: 10
+      arrivalRate: 2
+      name: Warm up
+    - duration: 120
+      rampTo: 20
+      arrivalRate: 5
+      name: Ramp up load
+    - duration: 600
+      rampTo: 15
+      arrivalRate: 5
+      name: Sustained load
+  engines:
+    socketio-v2: {
+      moduleName: '@pe/artillery-engine-socketio-v2'
+    }
+  socketio:
+    path: '/ws'
+    transports:
+      - 'websocket'
+    query:
+      token: '{{ $processEnvironment.__token__}}'
+
+scenarios:
+  - name: "ws-messages"
+    engine: socketio-v2
+    flow:
+      - think: 1
+      - function: "defineVariables"
+      # - get:
+      #     url: '{{ httpTarget }}/business/{{ businessId }}/messaging'
+      #     headers:
+      #       Authorization: "Bearer {{ token }}"
+      - emit:
+          channel: "messages.ws-client.business-room.join"
+          data: "{{ businessId }}"
+      - emit:
+          channel: "messages.ws-client.chat-room.join"
+          data: "{{ chatId }}"
+      - think: 1
+      - loop:
+        - think: 1
+        - emit:
+            channel: "messages.ws-client.message.send"
+            data:
+              _id: "{{ newUuid }}"
+              content: "test message {{ uuid }}"
+              chat: "{{ chatId }}"
+              sentAt: "{{ now }}"
+            response:
+              channel: "messages.ws-client.message.posted"
+              match:
+                json: "$._id"
+                value: "{{ uuid }}"
+                wait: true
+        count: 10

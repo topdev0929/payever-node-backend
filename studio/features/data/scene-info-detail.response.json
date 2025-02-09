@@ -1,0 +1,39 @@
+{
+  "color": {
+    "end": {
+      "blue": 0,
+      "green": 0,
+      "hex": "#000000",
+      "red": 0
+    },
+    "start": {
+      "blue": 0,
+      "green": 0,
+      "hex": "#000000",
+      "red": 0
+    }
+  },
+  "frame": {
+    "start": 1,
+    "end": 5
+  },
+  "objectDetection": {
+    "end": [],
+    "start": []
+  },
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "time": {
+    "start": 0,
+    "end": 0.13333333333333333
+  },
+  "tags": [],
+  "_id": "5341a61a-29f0-460d-8538-bf99e7261bec",
+  "order": 1,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "displayAspectRatio": "16:9",
+  "duration": 0.13333333333333333,
+  "sampleAspectRatio": "1:1"
+}

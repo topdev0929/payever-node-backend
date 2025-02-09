@@ -1,0 +1,10 @@
+<p>Sehr geehrte Damen und Herren,</p>
+<p>der untenstehende Händler interessiert sich für den Santander Ratenkredit, die nötigen Unterlagen sind der Email angefügt. Wir bitten um die Prüfung der Anlagen und eine entsprechende Rückmeldung. </p>
+<ol>
+  {% if merchant.hasCommercialExcerpt %}<li>{{ commercialExcerpt.fileName }}</li>{% endif %}
+  {% for file in contractFiles %}<li>{{ file.paymentOptionDoc.name }}</li>{% endfor %}
+</ol>
+<p>Business: {{business.name}}</br>
+{% if business.contactEmails|length %}Email: {% for email in business.contactEmails %}{{ email }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
+</p>
+<p>Vielen Dank!</p>

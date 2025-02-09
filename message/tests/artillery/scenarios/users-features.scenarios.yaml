@@ -1,0 +1,176 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios: 
+  - name: "User Features"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /business/{{businessId}}/users"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/users"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$[0]._id"
+              as: "retriavedUserId"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /profile/username/is-occupied/username"
+      - get:
+          url: "{{ httpTarget }}/profile/username/is-occupied/username"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "PATCH /profile/privacy"
+      - patch:
+          url: "{{ httpTarget }}/profile/privacy"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            status: 
+              showTo: "everybody"
+            forwardedMessage:
+              showTo: "everybody"
+            profilePhoto: 
+              showTo: "everybody"
+            channelsAndGroups:
+              canAdd: "everybody"
+          expect:
+              - statusCode: 200
+      - think: 1
+
+      - log: "GET /profile/blacklist"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/users"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "POST /profile/blacklist/{{retriavedUserId}}"
+      - post:
+          url: "{{ httpTarget }}/profile/blacklist/{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "DELETE /profile/blacklist/{{retriavedUserId}}"
+      - delete:
+          url: "{{ httpTarget }}/profile/blacklist/{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "POST /profile/blacklist/{{retriavedUserId}}"
+      - post:
+          url: "{{ httpTarget }}/profile/blacklist/{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            parentFolderId: "delete-{{newUuid}}"
+            isHeadline: true
+            image: "{{newUuid}}"
+            name: "delete-{{newUuid}}"
+            description: "delete-{{newUuid}}"
+            isProtected: true
+            position: 0
+          capture:
+            - json: "$._id"
+              as: folderId
+          expect:
+            - statusCode: 200
+
+      - log: "GET /folders/user{{retriavedUserId}}"
+      - get:
+          url: "{{ httpTarget }}/folders/user{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /folders/user{{retriavedUserId}}/tree"
+      - get:
+          url: "{{ httpTarget }}/folders/user{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /folders/user{{retriavedUserId}}/root-folder"
+      - get:
+          url: "{{ httpTarget }}/folders/user{{retriavedUserId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /folders/user{{retriavedUserId}}/folder/{{folderId}/documents"
+      - get:
+          url: "{{ httpTarget }}/folders/user{{retriavedUserId}}/folder/{{folderId}/documents"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "GET /folders/user{{retriavedUserId}}/root-documents"
+      - get:
+          url: "{{ httpTarget }}/folders/user{{retriavedUserId}}/folder/{{folderId}/documents"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+
+      - log: "POST /folders/user/{{retriavedUserId}}/folder/{{folderId}}"
+      - patch:
+          url: "{{ httpTarget }}/folders/user/{{retriavedUserId}}/folder/{{folderId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            isProtected: false
+          expect:
+            - statusCode: 200
+
+      - log: "POST /folders/user/{{retriavedUserId}}/folder/{{folderId}}"
+      - delete:
+          url: "{{ httpTarget }}/folders/user/{{retriavedUserId}}/folder/{{folderId}}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          json:
+            isProtected: false
+          expect:
+            - statusCode: 200

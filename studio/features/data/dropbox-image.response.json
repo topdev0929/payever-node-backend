@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "downloaded": false,
+      "_id": "1ddeaf05-c728-44c5-a5c5-5eec072e311f",
+      "sourceId": "id:KBjBsL4dyDoAAAAAAAA1-w",
+      "createdAt": "2021-03-03T10:47:34.212Z",
+      "isDownloadable": true,
+      "lastModified": "2020-06-12T15:56:25.000Z",
+      "name": "img2.jpg",
+      "path": "/storage server/payever media/img2.jpg",
+      "size": 14855783,
+      "type": "image",
+      "updatedAt": "2021-03-03T10:47:34.212Z",
+      "__v": 0
+    },
+    {
+      "downloaded": false,
+      "_id": "c61ccd5f-f6fa-4af2-a6c6-dccea9d71b47",
+      "sourceId": "id:KBjBsL4dyDoAAAAAAAA1kg",
+      "createdAt": "2021-03-03T10:35:16.268Z",
+      "isDownloadable": true,
+      "lastModified": "2020-05-14T17:07:59.000Z",
+      "name": "img1.png",
+      "path": "/storage server/payever media/img1.png",
+      "size": 14856123,
+      "type": "image",
+      "updatedAt": "2021-03-03T10:35:16.268Z",
+      "__v": 0
+    }
+  ],
+  "info": {
+    "page": "1",
+    "perPage": 2,
+    "total": 2
+  }
+}

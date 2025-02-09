@@ -1,0 +1,30 @@
+{
+  "_id": "49ac27be-1a34-4c03-a50a-db3d6852f031",
+  "actions": [],
+  "application": {
+    "id": "94194305-ee46-48ce-877c-2860778c9cb0",
+    "data": {
+      "productPages": "/products/:productId",
+      "categoryPages": "/categories/:categoryId"
+    },
+    "routing": [{
+      "pageId": "d23c2dd6-61ff-4c8f-a211-76bc39d53c95",
+      "routeId": "47a02513-371b-428e-a87d-202c5af631f9",
+      "url": "/"
+    }],
+    "context": {
+      "#test": {
+        "service": "products",
+        "method": "getByIds",
+        "params": [
+          ["582ad422-d723-433c-9a5a-85ca84cf8489"]
+        ]
+      }
+    }
+  },
+  "pages": [
+    "d23c2dd6-61ff-4c8f-a211-76bc39d53c95"
+  ],
+  "languageMaps": [],
+  "hash": "6a2f32ef"
+}

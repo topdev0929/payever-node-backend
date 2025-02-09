@@ -1,0 +1,22 @@
+<h3>Sehr geehrte(r) {{ payment.address.last_name }},</h3>
+<p>Am {{ payment.created_at|format_date }} haben Sie auf der Webseite {{business.companyDetails.urlWebsite}} eine
+  Bestellung aufgegeben. Nach heutigen Stand haben Sie die überfällige Zahlung für die folgende Bestellung noch nicht
+  überwiesen: {{ payment.reference }}</p>
+<p>Bitte tätigen Sie so schnell wie möglich die folgende Transaktion:</p>
+<ul>
+  <li>Kontoinhaber: {{business.bankAccount.owner}}</li>
+  <li>Kontonummer: {{business.bankAccount.iban}}</li>
+  <li>Fälligkeitsdatum: {{dueAt|format_date}}</li>
+  <li>Bestellwert: {{payment.total}}</li>
+  <li>Mahngebühren: {{lateFees}}</li>
+  <li>Gesamtbetrag: {{totalWithLateFee}}</li>
+</ul>
+<p>Sollten Sie mehrere Bestellungen getätigt haben, bitten wir Sie separate Zahlungen mit den jeweiligen Verweisen auf
+  die individuellen Bestellungen zu tätigen.</p>
+<p>Sie haben bereits bezahlt? Zum Zeitpunkt der Erfassung haben wir eingegangene Zahlungen, Retouren und Stornierungen
+  bis inklusive dem {{dueAt|format_date}} registriert. Sollten Sie den ausstehenden Betrag bereits überwiesen haben,
+  müssen Sie nichts weiter tun und können diese E-Mail ignorieren.</p>
+<p>Sollten Sie Fragen haben, zögern Sie nicht uns unter der folgenden E-Mail zu kontaktieren: {{business.user.email}}.
+  Für Fragen zu Ihrer Bestellung oder den Produkten, kontaktieren Sie bitte den Händler
+  {{business.companyDetails.urlWebsite}}.</p>
+<p>Mit freundlichen Grüßen,</p>

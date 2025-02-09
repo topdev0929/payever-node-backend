@@ -1,0 +1,7 @@
+name: nodejs-backend-checkout-analytics
+endpoints:
+  - checkout-analytics-backend.{{ $env }}/api/event
+  - checkout-analytics-backend.{{ $env }}/api/event/form/init
+iframes:
+  - checkout-analytics-backend.{{ $env }}/api/event
+  - checkout-analytics-backend.{{ $env }}/api/event/form/init

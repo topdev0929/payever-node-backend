@@ -1,0 +1,47 @@
+{
+  "name":"synchronizer.event.outer-product.upserted",
+  "uuid":"ef854bb3-867c-4f8f-97cd-e99624d7a3c3",
+  "version":0,
+  "encryption":"none",
+  "createdAt":"2019-04-15T07:33:20+00:00",
+  "metadata":{
+    "locale":"en",
+    "client_ip":"54.187.205.235"
+  },
+  "payload":{
+    "business": {
+      "id": "{{businessId}}"
+    },
+    "synchronization": {
+      "taskId": "{{synchronizationTaskId}}"
+    },
+    "payload": {
+      "businessUuid": "{{businessId}}",
+      "images": [
+        "http://image1.url",
+        "http://image2.url"
+      ],
+      "categories": [],
+      "title": "Test product import",
+      "description": "Test description",
+      "origin": "ebay",
+      "brand": "brand1",
+      "condition": "new",
+      "onSales": false,
+      "price": 123,
+      "sku": "testProductSku",
+      "barcode": "12345667",
+      "channelSetCategories": [],
+      "type": "physical",
+      "active": true,
+      "shipping": {
+        "weight": 1,
+        "width": 2,
+        "length": 3,
+        "height": 4,
+        "measure_mass": "kg",
+        "measure_size": "cm"
+      }
+    }
+  }
+}

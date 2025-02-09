@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": false,
+    "allowJs": true,
+    "outDir": "./dist",
+    "types": [
+      "node",
+      "mongoose"
+    ],
+    "skipLibCheck": true,
+  },
+  "include": [
+    "src/**/*",
+    "migrations/**/*",
+    "deprecated-migrations/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,8 @@
+module
+*.js
+features
+fixtures
+index.ts
+node_modules
+test
+migrations

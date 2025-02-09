@@ -1,0 +1,82 @@
+type Album {
+  id: String
+  ancestors: [String]
+  businessId: String
+  description: String
+  icon: String
+  name: String
+  parent: String
+}
+
+input AlbumInput {
+  description: String
+  icon: String
+  name: String!
+  parent: String
+}
+
+input PaginationInput {
+  page: Int
+  limit: Int
+}
+
+type GetAlbumResult {
+    result: [Album],
+    totalCount: Int,
+}
+
+type Query {
+  getAlbum(
+    businessId: String!
+    pagination: PaginationInput
+  ): [Album]
+  findAlbumById(
+    albumId: String!
+    businessId: String!
+  ): Album
+  findAlbumByParent(
+    albumId: String!
+    businessId: String!
+    pagination: PaginationInput
+  ): [Album]
+  findAlbumByAncestor(
+    albumId: String!
+    businessId: String!
+    pagination: PaginationInput
+  ): [Album]
+  getAlbumForBuilder(
+    filter: String!,
+    businessId: String,
+    order: String,
+    offset: Int,
+    limit: Int,
+  ): GetAlbumResult
+}
+
+type Mutation {
+  createAlbum(
+    businessId: String
+    album: AlbumInput
+  ): Album
+  updateAlbum(
+    albumId: String
+    businessId: String
+    album: AlbumInput
+  ): Album
+  deleteAlbum(
+    albumId: String
+    businessId: String
+  ): Boolean
+  createAlbumForBuilder(
+    filter: String!,
+    businessId: String!,
+  ): Album
+  updateAlbumForBuilder(
+    filter: String!,
+    businessId: String!,
+  ): Album
+  deleteAlbumForBuilder(
+    filter: String!,
+    businessId: String!,
+  ): Boolean
+}

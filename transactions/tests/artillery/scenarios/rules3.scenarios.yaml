@@ -1,0 +1,75 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Rules"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Get /api/rules/business/{{ businessId }}"
+      - get: 
+          url: "/api/rules/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/rules/business/{{ businessId }}"
+      - post: 
+          url: "/api/rules/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            action: "move"
+            condition: "equals"
+            description: "string"
+            field: "string"
+            folderId: "string"
+            name: "string"
+            values: null
+            channel: "string"
+            start: "string"
+            startTime: "2023-03-23T10:01:07.819Z"
+      
+      - log: "Get /api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+      - get: 
+          url: "/api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+      - patch: 
+          url: "/api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            action: "move"
+            condition: "equals"
+            description: "string"
+            field: "string"
+            folderId: "string"
+            name: "string"
+            values: null
+            channel: "string"
+            start: "string"
+            startTime: "2023-03-23T10:01:07.819Z"
+
+      - log: "Delete /api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+      - delete: 
+          url: "/api/rules/business/{{ businessId }}/rule/{{ ruleId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/rules/values"
+      - get: 
+          url: "/api/rules/values"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

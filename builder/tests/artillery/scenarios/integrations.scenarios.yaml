@@ -1,0 +1,71 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Application Theme Album"
+    flow:
+      - function: "defineVariables"
+
+      - log: "GET /api/context/cache/v2"
+      - get:
+          url: "/api/context/cache/v2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/context/cache/v2"
+      - post:
+          url: "/api/context/cache/v2"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/context/cache/v2/filter"
+      - post:
+          url: "/api/context/cache/v2/filter"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            uniqueTags:
+              - "product.title"
+
+      - log: "GET /api/v2/integration"
+      - get:
+          url: "/api/v2/integration"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/v2/integration/{{integrationId}}"
+      - get:
+          url: "/api/v2/integration/{{integrationId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/v2/integration/{{integrationId}}/context"
+      - get:
+          url: "/api/v2/integration/{{integrationId}}/context"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/v2/integration/context/{{integrationContextId}}"
+      - get:
+          url: "/api/v2/integration/context/{{integrationContextId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/v2/integration/context/uniquetag/{{integrationUniqueTag}}"
+      - get:
+          url: "/api/v2/integration/context/uniquetag/{{integrationUniqueTag}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/v2/integration/context/fetch"
+      - post:
+          url: "/api/v2/integration/context/fetch"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            uniqueTag: "{{integrationUniqueTag}}"
+            params:
+              businessId: "{{businessId}}"
+

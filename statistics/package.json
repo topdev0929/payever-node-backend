@@ -1,0 +1,60 @@
+{
+  "license": "UNLICENSED",
+  "repository": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/analytics.git",
+  "description": "Analytics microservice",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_statistics_app_micro\"",
+    "consumer:folder": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_statistics_folders_micro\"",
+    "consume:prod": "node dist/src/consumer.js",
+    "cron": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/cron.js\"",
+    "cron:prod": "node dist/src/cron.js",
+    "cube": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/cube.js\"",
+    "cube:prod": "node dist/src/cube.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:pact": " rm -rf -f pacts/ && mocha -r ts-node/register --recursive ./tests/**/*.pact.spec.ts --exit",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/unit/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts",
+    "ws": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/ws.js --queue=async_events_notifications_notify_micro\"",
+    "ws:prod": "node dist/src/ws.js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js"
+  },
+  "dependencies": {
+    "@cubejs-backend/api-gateway": "^0.33.36",
+    "@cubejs-backend/mongobi-driver": "^0.33.34",
+    "@cubejs-backend/mysql-driver": "^0.33.36",
+    "@cubejs-backend/server": "^0.33.36",
+    "@cubejs-backend/server-core": "^0.33.36",
+    "@cubejs-backend/shared": "^0.33.34",
+    "@cubejs-client/core": "^0.33.12",
+    "@nestjs/platform-socket.io": "^7.6.1",
+    "@nestjs/platform-ws": "^7.6.1",
+    "@pe/builder-theme-kit": "^4.0.0",
+    "@pe/business-kit": "^1.2.0",
+    "@pe/common-sdk": "^5.0.0",
+    "@pe/cron-kit": "^1.0.1",
+    "@pe/elastic-kit": "^5.0.0",
+    "@pe/folders-plugin": "^19.0.0",
+    "@pe/migration-kit": "^3.0.0",
+    "@pe/nest-kit": "^10.7.0",
+    "@pe/rules-sdk": "^3.0.0",
+    "express-session": "^1.17.1",
+    "request": "^2.88.2",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^4.1.0",
+    "@pe/cucumber-sdk": "^6.11.1",
+    "@pe/dev-kit": "^3.0.3",
+    "@pe/pact-kit": "^3.0.3"
+  },
+  "nyc": {
+    "functions": 100
+  }
+}

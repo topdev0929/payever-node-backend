@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "target": "es2019",
+    "sourceMap": false
+  },
+  "include": ["src/**/*", "migrations/**/*"],
+  "exclude": ["**/*.spec.ts"]
+}

@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Connection Related Actions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/business/{{ businessId }}/connection/{{ connectionId }}/action/{{ action }}"
+      - post:
+          url: "/api/business/{{ businessId }}/connection/{{ connectionId }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/connection/{{ connectionId }}/action/{{ action }}"
+      - post:
+          url: "/api/connection/{{ connectionId }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

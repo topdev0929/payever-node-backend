@@ -1,0 +1,88 @@
+namespace: default
+priorityClass: app-10stars
+
+#high
+replicas:
+  http:
+    min: 5
+    max: 20
+  consumer:
+    min: 5
+    max: 20
+  ws:
+    min: 1
+    max: 1
+  cron: 1
+
+
+image:
+  nodejs: registry.devpayever.com/nodejs-backend/builder-application
+  pullSecretName: regsecret
+
+service:
+  externalPort: 80
+  containerPort: 3000
+  statusPort: 8081
+  wsPort: 8080
+
+resourcestest:
+  app:
+    requests:
+      cpu: 50m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+  consumer:
+    requests:
+      cpu: 50m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+  job:
+    requests:
+      cpu: 150m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+resourcesstage:
+  app:
+    requests:
+      cpu: 50m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+  consumer:
+    requests:
+      cpu: 50m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+  job:
+    requests:
+      cpu: 150m
+      memory: 150Mi
+    limits:
+      memory: 450Mi
+resourceslive:
+  app:
+    requests:
+      cpu: 150m
+      memory: 250Mi
+    limits:
+      memory: 500Mi
+  consumer:
+    requests:
+      cpu: 150m
+      memory: 512Mi
+    limits:
+      memory: 4352Mi
+  job:
+    requests:
+      cpu: 150m
+      memory: 250Mi
+    limits:
+      memory: 500Mi
+
+
+configMapRef: nodejs-backend-builder
+appName: nodejs-backend-builder

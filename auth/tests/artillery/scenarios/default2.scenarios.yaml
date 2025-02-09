@@ -1,0 +1,21 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/recaptcha?email={{ email }}"
+      - post:
+          url: "/api/recaptcha?email={{ email }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,66 @@
+scenarios:
+  - name: "Admin Inventories"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/inventories"
+      - get:
+          url: "/api/admin/inventories"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/admin/inventories"
+      - post:
+          url: "/api/admin/inventories"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/admin/inventories/{{ inventoryId }}"
+      - get:
+          url: "/api/admin/inventories/{{ inventoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/admin/inventories/{{ inventoryId }}"
+      - delete:
+          url: "/api/admin/inventories/{{ inventoryId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}/add-stock"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}/add-stock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}/subtract-stock"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}/subtract-stock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}/transfer-stock"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}/transfer-stock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}/inventory-location/{{ inventoryLocationId}}/ add-stock"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}/inventory-location/{{ inventoryLocationId}}/ add-stock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/admin/inventories/{{ inventoryId }}/inventory-location/{{ inventoryLocationId}}/subtract-stock"
+      - patch:
+          url: "/api/admin/inventories/{{ inventoryId }}/inventory-location/{{ inventoryLocationId}}/subtract-stock"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

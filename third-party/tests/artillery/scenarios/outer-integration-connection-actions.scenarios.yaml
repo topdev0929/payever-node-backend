@@ -1,0 +1,17 @@
+scenarios:
+  - name: "Outer Integration Connection Actions"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/integration/{{ integrationName }}/connection/{{ authorizationId }}/action/{{ action }}"
+      - post:
+          url: "/api/integration/{{ integrationName }}/connection/{{ authorizationId }}/action/{{ action }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            externalId: "asd"
+            actions:
+              - name: "{{ action }}"
+                url: "/form/payment-form-save"
+

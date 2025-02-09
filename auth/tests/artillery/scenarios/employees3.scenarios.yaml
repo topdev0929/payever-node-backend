@@ -1,0 +1,77 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Employees"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/employees/confirm/{{ employeeId }}" 
+      - patch:
+          url: "/api/employees/confirm/{{ employeeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            password: "test"
+            businessId: "{{ businessId }}"
+            firstName: "test"
+            lastName: "test"
+      - log: "POST /api/employees/confirm/{{ businessId }}/{{ employeeId }}"
+      - post:
+          url: "/api/employees/confirm/{{ businessId }}/{{ employeeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            password: "test"
+            businessId: "{{ businessId }}"
+            firstName: "test"
+            lastName: "test"
+      - log: "POST /api/employees/business/{{businessId}}/employee/{{employeeId}}"
+      - post:
+          url: "/api/employees/business/{{businessId}}/employee/{{employeeId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/employees/invite/{{ businessId }}/{{ employeeId }}" 
+      - patch:
+          url: "/api/employees/invite/{{ businessId }}/{{ employeeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/employees/invite" 
+      - patch:
+          url: "/api/employees/invite"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/employees/verify?token={{ accessToken }}" 
+      - get:
+          url: "/api/employees/verify?token={{ accessToken }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/employees/groups/get-acls/{{groupId}}"
+      - get:
+          url: "/api/employees/groups/get-acls/{{groupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/employees/business/{{businessId}}/get-acls/{{groupId}}"  user
+      - get:
+          url: "/api/employees/business/{{businessId}}/get-acls/{{groupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/employees/business/{{businessId}}/employee/settings"
+      - post:
+          url: "/api/employees/business/{{businessId}}/employee/settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            expiryHours: 1
+      - log: "GET /api/employees/{{ employeeId }}/isRegistered"
+      - get:
+          url: "/api/employees/{{ employeeId }}/isRegistered"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

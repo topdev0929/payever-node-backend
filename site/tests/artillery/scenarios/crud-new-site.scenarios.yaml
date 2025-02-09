@@ -1,0 +1,39 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Site"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "POST /api/business/{{ businessId }}/site"
+      - post:
+          url: "/api/business/{{ businessId }}/site"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ randomName }}"
+            picture: "test"
+
+          capture:
+            - json: "$._id"
+              as: "siteId"
+      - log: "siteId {{ siteId }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/site/{{ siteId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/site/{{ siteId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "DELETE /api/business/{{ businessId }}/site/{{ siteId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/site/{{ siteId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

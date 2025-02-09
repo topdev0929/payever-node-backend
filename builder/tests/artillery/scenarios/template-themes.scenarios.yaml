@@ -1,0 +1,74 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "POST /api/{{templateThemeId}}/template"
+      - post:
+          url: "/api/{{templateThemeId}}/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            codeGroup: testGroup
+            name: test
+            order: 1
+            codeItem: testItem
+            type: product
+
+      - log: "POST /api/template"
+      - post:
+          url: "/api/template"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            codeGroup: testGroup
+            name: test
+            order: 1
+            codeItem: testItem
+            type: product
+
+      - log: "GET /api/templates"
+      - get:
+          url: "/api/templates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templates/base"
+      - get:
+          url: "/api/templates/base"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/template/items"
+      - post:
+          url: "/api/template/items"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            ids:
+              - '{{templateThemeItemId}}'
+
+      - log: "GET /api/template/item/{{templateThemeItemId}}"
+      - get:
+          url: "/api/template/item/{{templateThemeItemId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templates/parent/{{templateGroupId}}"
+      - get:
+          url: "/api/templates/parent/{{templateGroupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templates/parent/{{templateGroupId}}"
+      - get:
+          url: "/api/templates/parent/{{templateGroupId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,11 @@
+<p>Dear Merchant,</p>
+<p>we were unable to successfully process your {% if integration is defined %}<b>{{integration | payment_option}}</b> {% endif %}payment at this time. Reason: {{message}}</p>
+<p>
+  {% if business.name is defined %}Business: {{business.name}}<br>{% endif %}
+  {% if paymentId is defined %}Transaction ID: {{paymentId}}<br>{% endif %}
+  {% if endpoint is defined %}Endpoint: {{endpoint}}<br>{% endif %}
+  {% if errorDateFormatted is defined %}Time: {{errorDateFormatted}}{% endif %}
+</p>
+<p>This is a one-time notification, unless the issues persists, then our system will keep you updated about the status.</p>
+<p>For more details on these errors and to review your recent transactions, you can find the full list of payments in the payever Transactions application.</p>
+<p>Receiving this email too frequent? Customize your settings for the payever Checkout notifications or contact our support.</p>

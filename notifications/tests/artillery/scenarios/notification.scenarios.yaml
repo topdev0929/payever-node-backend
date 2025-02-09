@@ -1,0 +1,18 @@
+scenarios:
+  - name: "Integration"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/notification/kind/{{ kind }}/entity/{{ entity }}/app/{{ app }}"
+      - get:
+          url: "/api/notification/kind/{{ kind }}/entity/{{ entity }}/app/{{ app }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/bus-test/notification/{{ kind }}/{{ entity }}/{{ app }}"
+      - post:
+          url: "/api/bus-test/notification/{{ kind }}/{{ entity }}/{{ app }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            test: "test"

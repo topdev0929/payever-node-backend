@@ -1,0 +1,13 @@
+type Category {
+  # deprecated
+  _id: String
+
+  id: String
+  businessUuid: String
+  slug: String
+  type: String
+}
+
+type Product {
+  categories: [Category]
+}

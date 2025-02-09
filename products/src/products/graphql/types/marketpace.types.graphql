@@ -1,0 +1,18 @@
+type SubscriptionInterface {
+  name: String
+  businessId: String!
+  installed: Boolean
+  connected: Boolean
+}
+
+type Marketplace {
+  _id: String
+  businessId: String!
+  type: String!
+  name: String
+  subscription: SubscriptionInterface
+}
+
+type Query {
+  getBusinessMarketplaces(businessId: String!): [Marketplace]
+}

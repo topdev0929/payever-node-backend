@@ -1,0 +1,93 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Legacy Api"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Post /api/v3/order" 
+      - post: 
+          url: "/api/v3/order"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            reference: "string"
+            purchase:
+              json:
+                amount: 0
+                currency: "string"
+                delivery_fee: 0
+                down_payment: 0
+            customer:
+              json:
+                birthdate: "2023-03-23T07:06:11.361Z"
+                phone: "string"
+                email: "string"
+            cart: 
+                - json :
+                    identifier: "string"
+                    name: "string"
+                    brand: "string"
+                    quantity: 0
+                    sku: "string"
+                    unit_price: 0
+                    tax_rate: 0
+                    total_amount: 0
+                    total_tax_amount: 0
+                    description: "string"
+                    image_url: "string"
+                    product_url: "string"
+                    category: "string"
+                    attributes:
+                      json:
+                        weight: 0
+                        dimensions:
+                          json:
+                            height: 0
+                            width: 0
+                            length: 0
+            billing_address:
+              json:
+                salutation: "string"
+                first_name: "string"
+                last_name: "string"
+                street: "string"
+                street_number: "string"
+                zip: "string"
+                country: "string"
+                region: "string"
+                city: "string"
+                organization_name: "string"
+                street_line_2: "string"
+                street_name: "string"
+                house_extension: "string"
+            shipping_address:
+              json:
+                salutation: "string"
+                first_name: "string"
+                last_name: "string"
+                street: "string"
+                street_number: "string"
+                zip: "string"
+                country: "string"
+                region: "string"
+                city: "string"
+                organization_name: "string"
+                street_line_2: "string"
+                street_name: "string"
+                house_extension: "string"
+            business_id: "string"
+      - log: "Get /api/legacy-api/transactions/{{ originalId }}"
+      - get:
+          url: "/api/legacy-api/transactions/{{ originalId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          
+      

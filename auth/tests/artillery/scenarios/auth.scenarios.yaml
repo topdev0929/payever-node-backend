@@ -1,0 +1,86 @@
+config:
+  phases:
+    - duration: 100
+      arrivalRate: 1
+scenarios:
+  - name: "Auth"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/login"
+      - post:
+          url: "/api/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ email }}"
+            plainPassword: "{{ plainPassword }}"
+      - log: "POST /api/integration/login" 
+      - post:
+          url: "/api/integration/login"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            email: "{{ email }}"
+            plainPassword: "{{ plainPassword }}"
+      - log: "POST /api/login-as-user" 
+      - post:
+          url: "/api/login-as-user"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ userId }}"
+      - log: "POST /api/guest-token"
+      - post:
+          url: "/api/guest-token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/refresh" 
+      - get:
+          url: "/api/refresh"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{businessUuid}}/{{appCode}}/has-permissions"
+      - get:
+          url: "/api/business/{{businessUuid}}/{{appCode}}/has-permissions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/sessions" 
+      - get:
+          url: "/api/sessions"
+          afterResponse: "pep" 
+          headers:
+            log: "{{ accessToken }}"
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/{{ businessId }}"
+      - put:
+          url: "/api/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/permissions/{{ userId }}/business/{{ businessId }}" 
+      - put:
+          url: "/api/permissions/{{ userId }}/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            acls:
+              - microservice: "users"
+      - log: "POST /api/logout"
+      - post:
+          url: "/api/logout"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/sessions"  
+      - delete:
+          url: "/api/sessions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            tokens:
+              - "{{ accessToken }}"

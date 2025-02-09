@@ -1,0 +1,23 @@
+type RecommendationItem {
+ id: String,
+ images: [String],
+ name: String,
+}
+
+type Recommendation {
+  recommendations: [RecommendationItem],
+  tag: String,
+}
+
+type Query {
+  getRecommendations(
+    businessUuid: String!,
+    pageNumber: Int,
+    paginationLimit: Int,
+    tagFilter: String,
+  ): [Recommendation]
+
+  getProductRecommendations(
+    id: String!
+  ): Recommendation
+}

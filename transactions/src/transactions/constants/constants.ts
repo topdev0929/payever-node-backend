@@ -1,0 +1,10 @@
+export const ACTION_ITEM_VALIDATOR: string = 'action_item_validator';
+export const ACTION_AMOUNT_VALIDATOR: string = 'action_amount_validator';
+export const DEFAULT_COLUMN_WIDTH: number = 20;
+export const REPORT_HEADER_COLOR: string = 'CCCCCC';
+export const REPORT_OVERALL_COLOR: string = 'E8E8E8';
+export const ENCODING_TYPE_BASE_64: string = 'base64';
+export const BUSINESS_EXPORT_REPORT_EMAIL_SUBJECT: string = 'Business export report for';
+export const BUSINESS_EXPORT_REPORT_EMAIL_BODY: string = 'See attached files';
+export const BUSINESS_XLSX_EXPORT_REPORT_FILENAME: string = 'settlement_report.xlsx';
+export const BUSINESS_PDF_EXPORT_REPORT_FILENAME: string = 'settlement_report.pdf';

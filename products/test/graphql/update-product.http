@@ -1,0 +1,51 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation updateProduct($product: ProductUpdateInput!) {
+  updateProduct(product: $product) {
+    title
+    _id
+  }
+}
+
+{
+  "product": {
+    "businessUuid": "2382ffce-5620-4f13-885d-3c069f9dd9b4",
+    "images": [],
+    "id": "085ff2c1-18a8-458f-93bf-1b85b646b35d",
+    "title": "Prod1",
+    "description": "Some product1",
+    "onSales": false,
+    "price": 4,
+    "salePrice": 2,
+    "sku": "Prod1",
+    "barcode": "",
+    "type": "physical",
+    "active": true,
+    "channelSets": [],
+    "categories": [
+      {
+        "id": "5cc31516a04db100139f40d4",
+        "slug": "basheer",
+        "title": "Basheer",
+        "businessUuid": "2382ffce-5620-4f13-885d-3c069f9dd9b4"
+      },
+      {
+        "id": "5d10fc70eba4ba002af9180a",
+        "slug": "Cars",
+        "title": "Cars",
+        "businessUuid": "2382ffce-5620-4f13-885d-3c069f9dd9b4"
+      }
+    ],
+    "variants": [],
+    "shipping": {
+      "free": false,
+      "general": false,
+      "weight": 1,
+      "width": 3,
+      "length": 2,
+      "height": 4
+    }
+  }
+}

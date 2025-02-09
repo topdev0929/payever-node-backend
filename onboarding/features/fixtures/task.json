@@ -1,0 +1,105 @@
+{
+  "status": "created",
+  "user": {
+    "email": "merchant@example.com",
+    "id": "9a08b4bf-1068-4b5c-9428-e5233bbcafae"
+  },
+  "userAgent": "cucumber-mocked-http-client",
+  "incomingData": {
+    "apps": {
+      "install": ["connect","checkout","pos","shop","transactions"]
+    },
+    "business": {
+      "name": "John-Doe-Company-64",
+      "logo": "http://logos.net/mylogo1.png",
+      "companyAddress": {
+        "city": "Ottawa",
+        "country": "CA",
+        "street": "123 Fake Street",
+        "zipCode": "a1b2c3"
+      },
+      "companyDetails": {
+        "industry": "BRANCHE_OTHER",
+        "phone": "154987711",
+        "product": "Product-name"
+      },
+      "bankAccount": {
+        "bankName": "WhiteBank",
+        "country": "CA",
+        "city": "Ottawa",
+        "owner": "King",
+        "bic": "44123312",
+        "iban": "551233123"
+      },
+      "taxes": {
+        "companyRegisterNumber": "55123312",
+        "taxId": "512333123213",
+        "taxNumber": "551233354151",
+        "turnoverTaxAct": true
+      },
+      "contactEmails": [
+        "inbox@company.org", "sales@company.org", "sales-company@gmail.com"
+      ],
+      "defaultLanguage": "en",
+      "currentWallpaper": {
+        "theme": "dark",
+        "wallpaper": "https://i.pinimg.com/originals/20/79/03/2079033abc8314be554f9d24f562a199.jpg"
+      }
+    },
+    "checkout": {
+      "logo": "http://logos.net/mylogo1.png",
+      "settings": {
+        "styles": {
+          "buttonBackgroundColor": "#ffffff",
+          "buttonTextColor": "#804020",
+          "pageBackgroundColor": "#000000"
+        }
+      },
+      "sections": {
+        "preset": "pos"
+      }
+    },
+    "connect": {
+      "install": [
+        "santander_invoice_de",
+        "santander_factoring_de",
+        "device-payments",
+        "twilio",
+        "qr",
+        "magento",
+        "shopify"
+      ]
+    },
+    "connect-settings": {
+      "santander_invoice_de": {
+        "login": "3bf509d8-9bd4-46a4-bfbd-13fd0fe909b3",
+        "password": "b797e5d6a4fb",
+        "sender": "225dd731-c265-44dd-a981-be5002e150f8",
+        "channel": "867ea3b2-8357-4969-b435-86e7fe93b0d8"
+      },
+      "santander_factoring_de": {
+        "login": "e049bf92-f7d1-449a-9f12-7cd59405793e",
+        "password": "832aa1127a17",
+        "sender": "e503de22-f2f9-405a-a664-e15d527978ee",
+        "channel": "02676a4c-c125-49e1-b5bf-6552fb2ed900"
+      },
+      "device-payments": {
+        "secondFactor": false,
+        "autoresponderEnabled": true,
+        "verificationType": 0
+      },
+      "twilio": {
+        "accountSid": "accountSidValue",
+        "authToken": "authTokenValue"
+      },
+      "qr": {
+        "displayAvatar": false,
+        "type": "png"
+      },
+      "magento": {},
+      "shopify": {}
+    },
+    "pos": false,
+    "wallpaper": true
+  }
+}

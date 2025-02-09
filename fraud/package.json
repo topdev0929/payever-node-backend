@@ -1,0 +1,32 @@
+{
+  "license": "UNLICENSED",
+  "repository": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/fraud.git",
+  "description": "Fraud micro",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consume:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js"
+  },
+  "dependencies": {
+    "@pe/business-kit": "^2.1.2",
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.3.1",
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {
+    "@pe/cucumber-sdk": "^6.12.5",
+    "@pe/dev-kit": "^3.0.5"
+  },
+  "nyc": {
+    "functions": 100,
+    "lines": 75
+  }
+}

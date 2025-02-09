@@ -1,0 +1,64 @@
+[{
+  "_id": "7e8e6df4-e76d-445c-a72f-78b5625cb49f",
+  "versions": [],
+  "builderVersion": "2",
+  "versionNumber": null,
+  "name": "New theme",
+  "snapshot": "4477cb5d-e31c-4abb-a2e1-0489d5458a1e",
+  "type": "template",
+  "isDefault": true,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412233215"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412235564"
+    }
+  },
+  "favicon": null,
+  "language": {
+    "defaultLanguage": {
+      "title": "English (United States)",
+      "key": "en",
+      "active": true,
+      "locale": "english"
+    },
+    "languages": {
+      "en": {
+        "title": "English (United States)",
+        "key": "en",
+        "active": true,
+        "locale": "english"
+      }
+    },
+    "mainLanguage": null,
+    "editorLanguage": null,
+    "autoDetect": false
+  },
+  "screens": {
+    "desktop": {
+      "key": "desktop",
+      "title": "Desktop",
+      "width": 1200,
+      "padding": 88,
+      "icon": "desktop"
+    },
+    "tablet": {
+      "key": "tablet",
+      "title": "Tablet",
+      "width": 768,
+      "padding": 0,
+      "icon": "tablet"
+    },
+    "mobile": {
+      "key": "mobile",
+      "title": "Mobile",
+      "width": 360,
+      "padding": 0,
+      "icon": "mobile"
+    }
+  },
+  "__v": 0
+}]

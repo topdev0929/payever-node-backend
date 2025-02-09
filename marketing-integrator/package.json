@@ -1,0 +1,34 @@
+{
+  "name": "marketing-integrator",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consume:prod": "node dist/src/consumer.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js\"",
+    "cron": "ts-node -r tsconfig-paths/register src/cron.ts",
+    "cron:prod": "node dist/src/cron.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js"
+  },
+  "dependencies": {
+    "@pe/business-kit": "^2.0.0",
+    "@pe/common-sdk": "^5.0.0",
+    "@pe/nest-kit": "^11.0.0",
+    "csv-parser": "^2.3.1",
+    "imap-simple": "^4.3.0",
+    "node-schedule": "^1.3.2",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@pe/cucumber-sdk": "^6.11.5",
+    "@pe/dev-kit": "^3.0.3",
+    "@types/imap-simple": "^4.2.4"
+  }
+}

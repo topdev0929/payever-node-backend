@@ -1,0 +1,134 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Folders User"
+    flow:
+      - function: "defineVariables"
+
+      - log: "Auth Login"
+      - function: "auth"
+
+      - log: "Post /api/folders/user/{{ userId }}" 
+      - post: 
+          url: "/api/folders/user/{{ userId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "{{ parentFolderId }}"
+            isHeadline: "{{ isHeadline }}"
+            image: "{{ image }}"
+            name: "{{ name }}"
+            description: "{{ description }}"
+            isProtected: "{{ isProtected }}"
+            position: "{{ position }}"
+
+      - log: "Get /api/folders/user/{{ userId }}" 
+      - get:
+          url: "/api/folders/user/{{ userId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/folders/user/{{ userId }}/tree" 
+      - get:
+          url: "/api/folders/user/{{ userId }}/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Get /api/folders/user/{{ userId }}/root-folder" 
+      - get:
+          url: "/api/folders/user/{{ userId }}/root-folder"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/folders/user/{{ userId }}/folder/{{ folderId }}"
+      - patch:
+          url: "/api/folders/user/{{ userId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            parentFolderId: "{{ parentFolderId }}"
+            isHeadline: "{{ isHeadline }}"
+            image: "{{ image }}"
+            name: "{{ name }}"
+            description: "{{ description }}"
+            isProtected: "{{ isProtected }}"
+            position: "{{ position }}"
+      
+      - log: "Delete /api/folders/user/{{ userId }}/folder/{{ folderId }}"
+      - delete:
+          url: "/api/folders/user/{{ userId }}/folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/user/{{ userId }}/update-positions"
+      - post:
+          url: "/api/folders/user/{{ userId }}/update-positions"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            positions:
+              - json:
+                  _id: "string"
+                  position: 0
+
+      - log: "Get /api/folders/user/{{ userId }}/folder/{{ folderId }}/documents"
+      - get: 
+          url: "/api/folders/user/{{ userId }}/folder/{{ folderId }}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Get /api/folders/user/{{ userId }}/root-documents"
+      - get: 
+          url: "/api/folders/user/{{ userId }}/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/user/{{ userId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+      - post:
+          url: "/api/folders/user/{{ userId }}/document/{{ locationId }}/move-to-folder/{{ folderId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/user/{{ userId }}/document/{{ locationId }}/move-to-root"
+      - post:
+          url: "/api/folders/user/{{ userId }}/document/{{ locationId }}/move-to-root"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Post /api/folders/user/{{ userId }}/document/{{ documentId }}/first-location"
+      - post:
+          url: "/api/folders/user/{{ userId }}/document/{{ documentId }}/first-location"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            documentId: "string"
+            contact: "string"
+            integrationName: "string"
+            title: "string"
+            type: "string"
+            applicationId: "string"
+            parentFolderId: "string"
+      
+      - log: "Post /api/folders/user/{{ userId }}/document/{{ documentId }}/locations"
+      - post:
+          url: "/api/folders/user/{{ userId }}/document/{{ documentId }}/locations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            _id: "string"
+            parentFolderId: "string"

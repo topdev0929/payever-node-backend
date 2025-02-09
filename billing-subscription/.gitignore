@@ -1,0 +1,30 @@
+# Mac OS X
+.DS_Store
+
+# Node.js
+node_modules/
+npm-debug.log
+
+/.idea
+/.vscode
+
+# dotenv
+.env
+*.env
+
+/dist
+/.nyc_output
+
+pacts
+
+# trash
+trash
+
+# mergetool
+*.orig
+
+.npmrc
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json

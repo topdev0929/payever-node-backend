@@ -1,0 +1,33 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+  http:
+    timeout: 150
+
+scenarios:
+  - name: "Channel Set"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/business/{{ businessId }}/channel-set/{{ channelSetId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/channel-set/{{ channelSetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+      - get:
+          url: "/api/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+      - post:
+          url: "/api/business/{{ businessId }}/channel-set/type/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

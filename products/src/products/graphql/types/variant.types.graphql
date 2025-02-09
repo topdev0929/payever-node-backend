@@ -1,0 +1,49 @@
+type Variant {
+  _id: String
+  barcode: String
+  businessUuid: String
+  description: String
+  onSales: Boolean
+  images: [String]
+  imagesUrl: [String]
+  options: [Option]
+  price: Float
+  salePrice: Float
+  sku: String
+  apps: [String]
+  attributes: [ProductAttribute]
+}
+
+input CreateVariant {
+  barcode: String
+  description: String
+  onSales: Boolean
+  images: [String]
+  options: [CreateOption]
+  price: Float
+  salePrice: Float
+  sku: String
+  attributes: [ProductAttributeInput]
+}
+
+input UpdateVariant {
+  barcode: String
+  description: String
+  onSales: Boolean
+  images: [String]
+  options: [UpdateOption]
+  price: Float
+  salePrice: Float
+  sku: String
+  attributes: [ProductAttributeInput]
+}
+
+type Query {
+  getVariant(id: String): Variant
+}
+
+type Mutation {
+  createVariant(productId: String, data: CreateVariant): Variant
+  updateVariant(id: String, data: UpdateVariant): Variant
+  deleteVariant(id: String): Variant
+}

@@ -1,0 +1,174 @@
+[{
+  "_id": "618e3dfc-1b1e-449f-baf7-c6f2976c877a",
+  "elementId": "db3845a0-31b5-4181-8389-5d6fab39cf82",
+  "page": "36ff7ee3-6ccb-4eaa-9206-97bdb0664521",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412235448"
+    }
+  },
+  "element": {
+    "id": "db3845a0-31b5-4181-8389-5d6fab39cf82",
+    "type": "document",
+    "data": {
+      "version": 45
+    },
+    "parent": null,
+    "prev": null,
+    "next": null,
+    "styles": {
+      "desktop": {
+        "backgroundColor": "#ffffff"
+      },
+      "tablet": {
+        "backgroundColor": "#ffffff"
+      },
+      "mobile": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "versionNumber": 1
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412235448"
+    }
+  },
+  "versionNumber": 1
+},{
+  "_id": "50ceb7c7-d4be-4e83-8ac5-d512aab38075",
+  "elementId": "2aebe99f-b276-4d41-be97-3bac54801900",
+  "page": "36ff7ee3-6ccb-4eaa-9206-97bdb0664521",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412235467"
+    }
+  },
+  "element": {
+    "id": "2aebe99f-b276-4d41-be97-3bac54801900",
+    "type": "section",
+    "data": {
+      "name": "header",
+      "version": 45
+    },
+    "meta": {
+      "deletable": false
+    },
+    "parent": {
+      "id": "db3845a0-31b5-4181-8389-5d6fab39cf82",
+      "type": "document"
+    },
+    "styles": {
+      "desktop": {
+        "height": 200
+      },
+      "tablet": {
+        "height": 200
+      },
+      "mobile": {
+        "height": 200
+      }
+    },
+    "prev": null,
+    "next": "3a12154d-1a3f-4f00-a859-0885c0494967",
+    "versionNumber": 1
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412235467"
+    }
+  },
+  "versionNumber": 1
+},{
+  "_id": "105b73a8-6df1-4ec9-a62e-b96713f174cf",
+  "elementId": "3a12154d-1a3f-4f00-a859-0885c0494967",
+  "page": "36ff7ee3-6ccb-4eaa-9206-97bdb0664521",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412235482"
+    }
+  },
+  "element": {
+    "id": "3a12154d-1a3f-4f00-a859-0885c0494967",
+    "type": "section",
+    "data": {
+      "name": "body",
+      "version": 45
+    },
+    "meta": {
+      "deletable": false
+    },
+    "parent": {
+      "id": "db3845a0-31b5-4181-8389-5d6fab39cf82",
+      "type": "document"
+    },
+    "styles": {
+      "desktop": {
+        "height": 600
+      },
+      "tablet": {
+        "height": 600
+      },
+      "mobile": {
+        "height": 600
+      }
+    },
+    "prev": "2aebe99f-b276-4d41-be97-3bac54801900",
+    "next": "9b53602c-b3bf-4bac-9f12-981a7bb0303a",
+    "versionNumber": 1
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412235482"
+    }
+  },
+  "versionNumber": 1
+},{
+  "_id": "33d51244-ad93-4a3b-9f62-956e127a2c5e",
+  "elementId": "9b53602c-b3bf-4bac-9f12-981a7bb0303a",
+  "page": "36ff7ee3-6ccb-4eaa-9206-97bdb0664521",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1679412235498"
+    }
+  },
+  "element": {
+    "id": "9b53602c-b3bf-4bac-9f12-981a7bb0303a",
+    "type": "section",
+    "data": {
+      "name": "footer",
+      "version": 45
+    },
+    "meta": {
+      "deletable": false
+    },
+    "parent": {
+      "id": "db3845a0-31b5-4181-8389-5d6fab39cf82",
+      "type": "document"
+    },
+    "styles": {
+      "desktop": {
+        "height": 200
+      },
+      "tablet": {
+        "height": 200
+      },
+      "mobile": {
+        "height": 200
+      }
+    },
+    "prev": "3a12154d-1a3f-4f00-a859-0885c0494967",
+    "next": null,
+    "versionNumber": 1
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1679412235498"
+    }
+  },
+  "versionNumber": 1
+}]

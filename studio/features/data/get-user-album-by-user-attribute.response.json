@@ -1,0 +1,32 @@
+[
+  {
+    "ancestors": [],
+    "_id": "0ebb5ea6-61de-46f7-833f-599018b7861f",
+    "businessId": "08d30292-0b3c-4b5d-a6ec-93ba43d6c81d",
+    "createdAt": "2020-01-01T00:00:00.000Z",
+    "description": "some description",
+    "name": "album 1 level 0",
+    "updatedAt": "2020-01-01T00:00:00.000Z",
+    "userAttributes": [
+      {
+        "attribute": {
+          "_id": "17526ce8-94d3-4dab-99cd-667997bfa356",
+          "icon": "http://test.com/car.jpg",
+          "name": "car",
+          "type": "vehicle"
+        },
+        "value": "ford"
+      },
+      {
+        "attribute": {
+          "_id": "541e9ae1-3119-4e0a-a34b-b37d662996b1",
+          "icon": "http://test.com/motorcycle.jpg",
+          "name": "motorcycle",
+          "type": "vehicle"
+        },
+        "value": "honda"
+      }
+    ],
+    "__v": 0
+  }
+]

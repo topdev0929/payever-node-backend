@@ -1,0 +1,27 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation UpdateVariant($id: String!, $vi: VariantInput!) {
+  updateVariant(id: $id, variantInput: $vi) {
+    _id
+  }
+}
+
+{
+  "id": "3ee9fd9f-ae1d-4cc9-b3a9-474870465dac",
+  "vi": {
+    "businessUuid": "aa",
+    "title": "aa",
+    "options": [
+      {
+        "name": "o1",
+        "value": "v1"
+      },
+      {
+        "name": "o2",
+        "value": "v2"
+      }
+    ]
+  }
+}

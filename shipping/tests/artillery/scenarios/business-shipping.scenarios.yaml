@@ -1,0 +1,26 @@
+scenarios:
+  - name: "Business Shipping"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}"
+      - get:
+          url: "/api/business/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/methods"
+      - get:
+          url: "/api/business/{{ businessId }}/methods"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/custom"
+      - get:
+          url: "/api/business/{{ businessId }}/custom"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/subscription/{{ integrationName }}"
+      - get:
+          url: "/api/business/{{ businessId }}/subscription/{{ integrationName }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

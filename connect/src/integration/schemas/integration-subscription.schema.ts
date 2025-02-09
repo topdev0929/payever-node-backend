@@ -1,0 +1,34 @@
+import { Schema } from 'mongoose';
+import { v4 as uuid } from 'uuid';
+
+const IntegrationSubscriptionSchemaName: string = 'IntegrationSubscription';
+
+const IntegrationSubscriptionSchema: Schema = new Schema(
+  {
+    _id: { type: String, default: uuid },
+    businessId: { type: Schema.Types.String, ref: 'Business' },
+    installed: {
+      default: false,
+      type: Boolean,
+    },
+    integration: { type: Schema.Types.String, required: true, ref: 'Integration' },
+    payload: Schema.Types.Mixed,
+    scopes: {
+      type: [String],
+    },
+  },
+  {
+    timestamps: { },
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
+);
+
+IntegrationSubscriptionSchema.virtual('business', {
+  foreignField: '_id',
+  justOne: true,
+  localField: 'businessId',
+  ref: 'Business',
+});
+
+export { IntegrationSubscriptionSchemaName, IntegrationSubscriptionSchema };

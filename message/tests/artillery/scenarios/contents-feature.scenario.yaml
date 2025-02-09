@@ -1,0 +1,92 @@
+config:
+  timeout: 60
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios: 
+  - name: "Contents Feature"
+    flow:
+      - function: "defaultDefineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /business/{{businessId}}/contents"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.length"
+              as: "contentLength"
+          expect:
+            - statusCode: 200
+
+      - log: "POST /business/{{businessId}}/contents"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents"
+          headers:
+             Content-Type: "application/json"
+             Authorization: "Bearer {{ accessToken }}"
+          json:
+             business: "{{businessId}}"
+             icon: "icon-bot-other"
+             name: "Shop/Delete"
+             url: "https://payever.com/shop/delete"
+          capture:
+             - json: "$._id"
+               as: "contentId"
+          expect:
+            statusCode: 201
+      - think: 1
+
+      - log: "GET /business/{{businessId}}/contents/{{ contentId }}"
+      - get:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents/{{ contentId }}"
+          afterResponse: "printStatus"
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ accessToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      - log: "PATCH /business/{{businessId}}/contents/{{ contentId }}"
+      - patch:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents/{{ contentId }}"
+          afterResponse: "printStatus"
+          headers:
+             Content-Type: "application/json"
+             Authorization: "Bearer {{ accessToken }}"
+          json:
+             icon: "icon-bot-delete"
+             name: "Shop/Deletee"
+          expect:
+            statusCode: 200
+      - think: 1
+
+      - log: "POST /business/{{businessId}}/contents/{{ contentId }}/select"
+      - post:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents/{{ contentId }}/select"
+          afterResponse: "printStatus"
+          headers:
+             Content-Type: "application/json"
+             Authorization: "Bearer {{ accessToken }}"
+          json:
+             business: "{{businessId}}"
+             icon: "icon-bot-other"
+             name: "Shop/Delete"
+             url: "https://payever.com/shop/delete"
+          expect:
+            statusCode: 201    
+      - think: 1
+
+      - log: "DELETE /business/{{businessId}}/contents/{{ contentId }}"
+      - delete:
+          url: "{{ httpTarget }}/business/{{businessId}}/contents/{{ contentId }}"
+          afterResponse: "printStatus"
+          headers:
+             Content-Type: "application/json"
+             Authorization: "Bearer {{ accessToken }}"
+          expect:
+            statusCode: 200

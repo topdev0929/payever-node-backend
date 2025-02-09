@@ -1,0 +1,21 @@
+scenarios:
+  - name: "Payments"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{ businessId }}/payments/{{ integrationName }}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/payments/{{ integrationName }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/payments/{{ integrationName }}/{{ paymentOptionId }}/credentials/reset"
+      - patch:
+          url: "/api/business/{{ businessId }}/payments/{{ integrationName }}/{{ paymentOptionId }}/credentials/reset"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/payments/{{ integrationName }}/{{ paymentOptionId }}/credentials/set"
+      - patch:
+          url: "/api/business/{{ businessId }}/payments/{{ integrationName }}/{{ paymentOptionId }}/credentials/set"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

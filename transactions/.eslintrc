@@ -1,0 +1,4 @@
+{
+  "extends": "./node_modules/@pe/dev-kit/.eslintrc.js",
+  "ignorePatterns": [ "module", "index.ts", "features", "migrations", "pact.publish.ts", "tests", "fixtures" ]
+}

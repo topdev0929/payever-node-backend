@@ -1,0 +1,23 @@
+scenarios:
+  - name: "Connection Api"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "GET /api/business/{{businessId}}/connection"
+      - get:
+          url: "/api/business/{{businessId}}/connection"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{businessId}}/connection/{{connectionId}}/install"
+      - patch:
+          url: "/api/business/{{businessId}}/connection/{{connectionId}}/install"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{businessId}}/connection/{{connectionId}}/uninstall"
+      - patch:
+          url: "/api/business/{{businessId}}/connection/{{connectionId}}/uninstall"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

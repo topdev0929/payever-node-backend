@@ -1,0 +1,14 @@
+const common = [
+  // `--format ${process.env.CI || !process.stdout.isTTY ? 'progress' : 'progress-bar'}`,
+  "--format progress",
+  "--parallel 1",
+  "--require-module ts-node/register",
+  "--require ./features/bootstrap/**/*.ts",
+  "--require ./features/step_definitions/**/*.ts",
+  '--publish-quiet',
+  '--exit',
+].join(" ");
+
+module.exports = {
+  default: common,
+};

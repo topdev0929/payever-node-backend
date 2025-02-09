@@ -1,0 +1,129 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Admin Integrations"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/admin/integrations"
+      - get:
+          url: "/api/admin/integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Post /api/admin/integrations"
+      - post:
+          url: "/api/admin/integrations"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            name: string
+            category: string
+            categoryIcon: string
+            displayOptions:
+              titleTranslations:
+                da: string
+                de: string
+                en: string
+                es: string
+                'no': string
+                sv: string
+              icon: string
+            installationOptions:
+              optionIcon: string
+              price: string
+              links:
+              - string
+              countryList:
+              - string
+              category: string
+              developerTranslations:
+                da: string
+                de: string
+                en: string
+                es: string
+                'no': string
+                sv: string
+              languages: string
+              description: string
+              appSupport: string
+              website: string
+              pricingLink: string
+
+      - log: "GET /api/admin/integrations/{{ integrationId }}"
+      - get:
+          url: "/api/admin/integrations/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      - log: "Patch /api/admin/integrations/{{ integrationId }}"
+      - patch:
+          url: "/api/admin/integrations/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            name: string
+            category: string
+            categoryIcon: string
+            displayOptions:
+              titleTranslations:
+                da: string
+                de: string
+                en: string
+                es: string
+                'no': string
+                sv: string
+              icon: string
+            installationOptions:
+              optionIcon: string
+              price: string
+              links:
+              - string
+              countryList:
+              - string
+              category: string
+              developerTranslations:
+                da: string
+                de: string
+                en: string
+                es: string
+                'no': string
+                sv: string
+              languages: string
+              description: string
+              appSupport: string
+              website: string
+              pricingLink: string
+
+      - log: "Delete /api/admin/integrations/{{ integrationId }}"
+      - delete:
+          url: "/api/admin/integrations/{{ integrationId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Patch /api/admin/integrations/{{ integrationId }}/allowed-businesses"
+      - patch:
+          url: "/api/admin/integrations/{{ integrationId }}/allowed-businesses"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+          json:
+            - "string"
+
+      - log: "Delete /api/admin/integrations/{{ integrationId }}/allowed-businesses"
+      - delete:
+          url: "/api/admin/integrations/{{ integrationId }}/allowed-businesses"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+      
+      

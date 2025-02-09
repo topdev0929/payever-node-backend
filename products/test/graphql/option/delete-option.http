@@ -1,0 +1,11 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  deleteOption(id: "20b3ffe2-0d5f-4269-b54f-627c57cecbd9") {
+    _id
+    name
+    value
+  }
+}

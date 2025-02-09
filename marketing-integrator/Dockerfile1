@@ -1,0 +1,18 @@
+FROM alpine:latest
+
+RUN set -ex \
+    && apk add --no-cache \
+        bash \
+        nodejs \
+        npm
+
+VOLUME /payever
+WORKDIR /payever
+
+COPY . /payever
+
+RUN cd /payever && npm ci
+
+RUN echo "*/15 * * * * export PATH=\"$(npm bin):\$PATH\" && cd /payever && npm run cli contacts:sync:mail-to-crm && npm run cli contacts:sync:crm-to-mailchimp" >> /etc/crontabs/root
+
+CMD ["crond", "-f"]

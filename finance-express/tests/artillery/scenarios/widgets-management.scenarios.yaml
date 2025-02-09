@@ -1,0 +1,51 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "WidgetsManagement"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "accessToken: {{accessToken}}"
+      - function: "enableBusiness"
+
+      - log: "POST /api/business/{{businessId}}/widget"
+      - post:
+          url: "/api/business/{{businessId}}/widget"
+          headers:
+            authorization: "Bearer {{accessToken}}"
+          json:
+            amountLimits: "{{amountLimits}}" 
+            checkoutId: "{{checkoutId}}" 
+            checkoutMode: "{{checkoutMode}}" 
+            checkoutPlacement: "{{checkoutPlacement}}" 
+            isVisible: "{{isVisible}}" 
+            maxWidth: "{{maxWidth}}" 
+            minWidth: "{{minWidth}}" 
+            payments: "{{payments}}" 
+            ratesOrder: "{{ratesOrder}}" 
+            styles: "{{styles}}" 
+            type: "{{type}}" 
+            cancelUrl: "{{cancelUrl}}" 
+            failureUrl: "{{failureUrl}}" 
+            noticeUrl: "{{noticeUrl}}" 
+            pendingUrl: "{{pendingUrl}}" 
+            successUrl: "{{successUrl}}"
+          afterResponse: "defineWidgetId"
+
+      - log: "PUT /api/business/{{businessId}}/widget/{{widgetId}}"
+      - put:
+          url: "/api/business/{{businessId}}/widget/{{widgetId}}"
+          headers:
+            authorization: "Bearer {{accessToken}}"
+          json:
+            maxWidth: 5000
+
+      - log: "DELETE /api/business/{{businessId}}/widget/{{widgetId}}"
+      - delete:
+          url: "/api/business/{{businessId}}/widget/{{widgetId}}"
+          headers:
+            authorization: "Bearer {{accessToken}}"

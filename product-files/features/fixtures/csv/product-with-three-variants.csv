@@ -1,0 +1,5 @@
+"Handle";"Title";"Description";"Type";"Hidden";"Enabled";"SKU";"Bar Code";"Inventory Stock";"Inventory Reserved";"Price";"Sales Price";"Currency";"Images";"Attribute1 Name";"Attribute1 Value";"Attribute1 Type";"Attribute2 Name";"Attribute2 Value";"Attribute2 Type"
+"Test_1";"Some service product";"Some description";"service";"true";"true";"sku1234";"test123123";;;"100.0";"50.0";;"https://test.com/some.png;https://test.com/someother.png";;;;;;
+"Test_1";"Variant 1";"Variant 1";;"false";;"sku12345";"test123125";100;50;50;10;;;"Test attribute1";"Test value1";"text";"Test attribute2";"Test value2";"text"
+"Test_1";"Variant 2";"Variant 2";;"false";;"sku123456";"test";50;40;50;10;;;"Test attribute1";"Test value1";"text";;;
+"Test_1";"Variant 3";"Variant 3";;"false";;"sku1234567";"test";50;40;50;10;;;;;;;;

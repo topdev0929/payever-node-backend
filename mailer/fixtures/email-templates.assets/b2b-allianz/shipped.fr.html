@@ -1,0 +1,14 @@
+<h3>Cher {{ payment.address.last_name }},</h3>
+<p>La {{ payment.created_at|format_date }}, vous avez passé une commande sur le site {{ business.companyDetails.urlWebsite }}. Votre commande est soumise aux conditions générales de vente d'Allianz Trade que vous avez acceptées.</p>
+<p>Vous trouverez ici les données du compte pour votre paiement en suspens :</p>
+<ul>
+  <li>Titulaire du compte : {{ business.bankAccount.owner }}</li>
+  <li>Numéro de compte : {{ business.bankAccount.iban }}</li>
+  <li>Montant total : {{ payment.total }}</li>
+  <li>Date d’échéance : {{ dueAt|format_date }}</li>
+</ul>
+<p>Merci de traiter le virement au plus tard le {{ dueAt|format_date }} et de faire référence au numéro de commande {{ payment.reference }} dans votre transaction.</p>
+<p>Si vous avez passé plusieurs commandes, nous vous prions d'effectuer des paiements séparés en faisant référence à chaque commande individuelle.</p>
+<p>Si vous avez des questions, n'hésitez pas à nous contacter à l'adresse e-mail suivante : {{ business.user.email }}. Pour toute question concernant votre commande ou les produits, veuillez contacter le distributeur {{ business.companyDetails.urlWebsite }}.</p>
+<p>Nous espérons que vous êtes satisfait de la marchandise commandée.</p>
+<p>Avec nos meilleures salutations</p>

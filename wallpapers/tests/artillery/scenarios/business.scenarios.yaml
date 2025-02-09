@@ -1,0 +1,37 @@
+scenarios:
+  - name: "Business"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/wallpapers"
+      - get:
+          url: "/api/business/{{ businessId }}/wallpapers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/wallpapers"
+      - post:
+          url: "/api/business/{{ businessId }}/wallpapers"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: "{{ wallpaper }}"
+            theme: "default"
+      - log: "POST /api/business/{{ businessId }}/wallpapers/active"
+      - post:
+          url: "/api/business/{{ businessId }}/wallpapers/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: "{{ wallpaperActive }}"
+            theme: "default"
+      - log: "DELETE /api/business/{{ businessId }}/wallpapers/{{ wallpaper }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/wallpapers/{{ wallpaper }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/wallpapers/active"
+      - delete:
+          url: "/api/business/{{ businessId }}/wallpapers/active"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

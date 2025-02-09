@@ -1,0 +1,226 @@
+[
+  {
+    "_id": "192cdf4b-bd88-4799-a81f-feb3dd972223",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165021658"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "a6ae99d9-4bf4-46fa-87ed-5cc93bdc820c"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/roundedrectangle.png",
+    "screen": "desktop",
+    "title": "Rounded Rectangle",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417140278"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "9316d2ab-9796-4ed8-ab36-74483f21f63c",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165023145"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "3335217d-0cf3-4a26-8554-1be05a60f7ca"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/line.png",
+    "screen": "desktop",
+    "title": "Line",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417139154"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "97f00254-4733-4a1a-85b0-ef91db93f0dc",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165024175"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "705c0edf-8afc-4534-8739-8a3e460fecb3",
+      "97ca89d3-3bd5-4b6b-9ff0-c7842136a69a",
+      "73ab4fde-e814-4f70-8893-be8f5d6c9744",
+      "f4ddc612-b117-4602-87e5-f569d5f68795",
+      "edb5e888-5f7b-4c47-a518-bc795c8ae97c",
+      "5add649f-e5bf-4bef-9ee0-198dcb7553d9",
+      "6342d98c-f4c5-42f7-95c2-17f9e19951f5"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/table.png",
+    "screen": "desktop",
+    "title": "Table",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417135505"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "9eae4be4-a760-46d0-beee-79e808eaf426",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165029499"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "24653267-401a-4126-85d6-f8a2a07dd62e"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/logo.png",
+    "screen": "desktop",
+    "title": "Company Logo",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417132731"
+      }
+    },
+    "migrationVersion": 2
+  },
+  {
+    "_id": "b6cf7f10-9f6e-4e4b-8b1d-be8a286cde45",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165031449"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "6cfff55a-1a69-4766-8803-8344d0aca132"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/oval.png",
+    "screen": "desktop",
+    "title": "Oval",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417131436"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "f91971d0-33db-4ef4-bd01-460b4e992b59",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165033901"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "30302b13-b4a7-48fa-817e-d9b5deea5f15"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/rectangle.png",
+    "screen": "desktop",
+    "title": "Rectangle",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417130255"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "ff81c010-85d8-4a7f-97da-7a9110d9fde7",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1661165035430"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "93bf70c7-8765-4e36-abe3-d50adc460ae3"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/text.png",
+    "screen": "desktop",
+    "title": "Text",
+    "type": "template",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417129438"
+      }
+    },
+    "tags": ["insert-menu"],
+    "migrationVersion": 2
+  },
+  {
+    "_id": "dcae2a0e-34eb-11ed-a261-0242ac120002",
+    "__v": 0,
+    "album": null,
+    "application": null,
+    "basic": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1663248892604"
+      }
+    },
+    "description": "0",
+    "elements": [
+      "9aaa8230-cbdc-4df7-81b1-dfcaf88e7259",
+      "c9231cb6-7bf1-4368-a4e4-ffcb10c770db",
+      "540ace30-ff11-4359-9235-76b312f2201a",
+      "418734dc-63ab-450c-a13b-b306359994ae",
+      "de53452b-033d-4942-8295-fe3a6566f3a7"
+    ],
+    "image": "https://cdn.payever.org/icons-shapes/table.png",
+    "screen": "desktop",
+    "title": "Product Table",
+    "type": "template",
+    "tags": ["insert-menu"],
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668417138034"
+      }
+    }
+  }
+]

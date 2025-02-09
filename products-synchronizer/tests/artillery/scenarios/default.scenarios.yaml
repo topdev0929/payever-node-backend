@@ -1,0 +1,33 @@
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/synchronization/business/{{ businessId }}/tasks"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/tasks"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/synchronization/business/{{ businessId }}/tasks/{{ taskId }}"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/tasks/{{ taskId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/synchronization/business/{{ businessId }}/tasks"
+      - put:
+          url: "/api/synchronization/business/{{ businessId }}/tasks"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            kind: "file-import"
+      - log: "GET /api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/tasks"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/integration/{{ integrationId }}/tasks"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/synchronization/business/{{ businessId }}/tasks/{{ taskId }}/events"
+      - get:
+          url: "/api/synchronization/business/{{ businessId }}/tasks/{{ taskId }}/events"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

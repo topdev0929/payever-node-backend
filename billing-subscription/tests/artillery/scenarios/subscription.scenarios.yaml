@@ -1,0 +1,22 @@
+scenarios:
+  - name: "Subscription network"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "GET /api/subscriptions/{{businessId}}"
+      - get:
+          url: "/api/subscriptions/{{businessId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture:
+            - json: "$.[0]._id"
+              as: "subscriptionId"
+              strict: false
+      - log: "DELETE /api/subscriptions/{{subscriptionId}}"
+      - delete:
+          url: "/api/subscriptions/{{subscriptionId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

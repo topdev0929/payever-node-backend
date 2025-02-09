@@ -1,0 +1,63 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Site"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/site/by-domain?domain={{ domain }}"
+      - get:
+          url: "/api/site/by-domain?domain={{ domain }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/site/theme/by-domain?domain={{ domain }}"
+      - get:
+          url: "/api/site/theme/by-domain?domain={{ domain }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/site"
+      - get:
+          url: "/api/business/{{ businessId }}/site"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/site/{{ defaultSiteId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/site/{{ defaultSiteId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PUT /api/business/{{ businessId }}/site/{{ defaultSiteId }}/default"
+      - put:
+          url: "/api/business/{{ businessId }}/site/{{ defaultSiteId }}/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/business/{{ businessId }}/site/default"
+      - get:
+          url: "/api/business/{{ businessId }}/site/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/site/access/{{ defaultSiteId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/site/access/{{ defaultSiteId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/business/{{ businessId }}/site/access/{{ defaultSiteId }}/create-token"
+      - post:
+          url: "/api/business/{{ businessId }}/site/access/{{ defaultSiteId }}/create-token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            password: "{{ password }}"

@@ -1,0 +1,21 @@
+scenarios:
+  - name: "Admin Site Templates"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - log: "GET /api/admin/templates"
+      - get:
+          url: "/api/admin/templates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/templates/{{ templateId }}"
+      - get:
+          url: "/api/admin/templates/{{ templateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/templates/{{ templateId }}/body"
+      - get:
+          url: "/api/admin/templates/{{ templateId }}/body"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

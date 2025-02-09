@@ -1,0 +1,63 @@
+config:
+  phases:
+    -
+      duration: 10
+      arrivalRate: 1
+  http:
+    timeout: 150
+
+scenarios:
+  - name: "Default"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/{{ businessId }}"
+      - get:
+          url: "/api/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/{{ businessId }}"
+      - patch:
+          url: "/api/{{ businessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/blog/by-domain?domain={{ domain }}"
+      - get:
+          url: "/api/blog/by-domain?domain={{ domain }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/blog/theme/by-domain?domain={{ domain }}"
+      - get:
+          url: "/api/blog/theme/by-domain?domain={{ domain }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "PATCH /api/business/{{ businessId }}/blog/access/{{ blogId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/blog/access/{{ blogId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme/page?variant={{ variant }}"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme/page?variant={{ variant }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/templating/themes/{{ applicationId }}/theme/page/{{ pageId }}"
+      - get:
+          url: "/api/templating/themes/{{ applicationId }}/theme/page/{{ pageId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

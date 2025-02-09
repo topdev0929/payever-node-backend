@@ -1,0 +1,15 @@
+{
+  "_id": "02a00b2d-783d-4af5-b32f-1d129acedd21",
+  "body": {
+    "6c9c449c-4ca6-4679-a71f-43d5199bc942": {
+      "service": "products",
+      "method": "getByIds",
+      "params": [
+        [
+          "582ad422-d723-433c-9a5a-85ca84cf8489"
+        ]
+      ]
+    }
+  },
+  "page": "d23c2dd6-61ff-4c8f-a211-76bc39d53c95"
+}

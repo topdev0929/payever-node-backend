@@ -1,0 +1,3 @@
+export const SEND_NOTIFICATION_CONNECT_TIMEOUT: number = 1000;
+export const SEND_NOTIFICATION_TIMEOUT: number = 10000;
+export const SEND_NOTIFICATION_MAX_REDIRECTS: number = 3;

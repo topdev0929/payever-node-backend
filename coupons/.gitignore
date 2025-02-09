@@ -1,0 +1,11 @@
+.env
+node_modules
+npm-debug.log
+.vscode
+dist/
+.idea/
+.npmrc
+
+# artillery tests
+/tests/artillery/_tests
+/tests/artillery/report*.json

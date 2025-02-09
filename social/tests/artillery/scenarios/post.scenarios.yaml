@@ -1,0 +1,114 @@
+config:
+  http:
+    timeout: 1000
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Post"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "authAdmin"
+      - function: "enableBusiness"
+      - log: "{{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/channel-rules"
+      - get:
+          url: "/api/business/{{ businessId }}/channel-rules"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/post"
+      - get:
+          url: "/api/business/{{ businessId }}/post"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/post/media-post?post={{ postDataImage }}"
+      - post:
+          url: "/api/business/{{ businessId }}/post/media-post?post={{ postDataImage }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          beforeRequest: "setFormDataImage"
+          capture:
+            json: "$.id"
+            as: "postId"
+      - log: "PATCH /api/business/{{ businessId }}/post/update-media-post/{{ postId }}?post={{ postDataImage }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/post/update-media-post/{{ postId }}?post={{ postDataImage }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          beforeRequest: "setFormDataImage"
+      - log: "PATCH /api/business/{{ businessId }}/post/{{ postId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            "{{ postDataImageJson }}"
+      - log: "GET /api/business/{{ businessId }}/post/{{ postId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/post/duplicate-post"
+      - post:
+          url: "/api/business/{{ businessId }}/post/duplicate-post"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "{{ postId }}"
+          capture:
+            json: "$.id"
+            as: "duplicatePostId"
+      - log: "DELETE /api/business/{{ businessId }}/post/{{ postId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/post/{{ duplicatePostId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/post/{{ duplicatePostId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/post/media-post?post={{ postDataImage }}"
+      - post:
+          url: "/api/business/{{ businessId }}/post/media-post?post={{ postDataImage }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          beforeRequest: "setFormDataMultipleImages"
+          capture:
+            json: "$.id"
+            as: "postId"
+      - log: "DELETE /api/business/{{ businessId }}/post/{{ postId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/post/media-post?post={{ postDataMessage }}"
+      - post:
+          url: "/api/business/{{ businessId }}/post/media-post?post={{ postDataMessage }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          beforeRequest: "setFormDataMessage"
+          capture:
+            json: "$.id"
+            as: "postId"
+      - log: "DELETE /api/business/{{ businessId }}/post/{{ postId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/post/media-post?post={{ postDataVideo }}"
+      - post:
+          url: "/api/business/{{ businessId }}/post/media-post?post={{ postDataVideo }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          beforeRequest: "setFormDataSmallVideo"
+          capture:
+            json: "$.id"
+            as: "postId"
+      - log: "DELETE /api/business/{{ businessId }}/post/{{ postId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/post/{{ postId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

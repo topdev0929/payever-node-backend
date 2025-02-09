@@ -1,0 +1,38 @@
+import { ChannelRestrictionsInterface } from '../interfaces';
+
+export const ChannelRestrictionsMapping: Map<string, ChannelRestrictionsInterface> =
+  new Map<string, ChannelRestrictionsInterface>(
+    [
+      ['debitoor', { exclude: ['santander.*', 'invoice', '.*pos.*', 'cash'] }],
+      ['facebook', { exclude: ['.*pos.*'] }],
+      ['other_shopsystem', { exclude: ['.*pos.*'] }],
+      ['api', { exclude: ['.*pos.*'] }],
+      ['store', { exclude: ['.*pos.*'] }],
+      ['shop', { exclude: ['.*pos.*'] }],
+      ['pos', { allowOnly: ['.*pos.*', 'stripe', 'paypal', 'apple_pay', 'google_pay'] }],
+      ['link', { }],
+      ['marketing', { exclude: ['.*pos.*'] }],
+      ['finance_express', { allowOnly: ['santander.*'], exclude: ['.*pos.*'] }],
+      ['shopware', { exclude: ['.*pos.*'] }],
+      ['magento', { exclude: ['.*pos.*'] }],
+      ['wooCommerce', { exclude: ['.*pos.*'] }],
+      ['woo_commerce', { exclude: ['.*pos.*'] }],
+      ['presta', { exclude: ['.*pos.*'] }],
+      ['oxid', { exclude: ['.*pos.*'] }],
+      ['shopify', { exclude: ['.*pos.*'] }],
+      ['xt_commerce', { exclude: ['.*pos.*'] }],
+      ['plentymarkets', { exclude: ['.*pos.*'] }],
+      ['jtl', { exclude: ['.*pos.*'] }],
+      ['dandomain', { exclude: ['.*pos.*'] }],
+      ['commercetools', { exclude: ['.*pos.*'] }],
+      ['facebook_messenger', { exclude: ['.*pos.*'] }],
+      ['whatsapp', { exclude: ['.*pos.*'] }],
+      ['instagram', { exclude: ['.*pos.*'] }],
+      ['ccvshop', { exclude: ['.*pos.*'] }],
+      ['opencart', { exclude: ['.*pos.*'] }],
+      ['shopware-cloud', { exclude: ['.*pos.*'] }],
+      ['oro_commerce', { exclude: ['.*pos.*'] }],
+      ['connectin', { exclude: ['.*pos.*'] }],
+      ['smartstore', { exclude: ['.*pos.*'] }],
+    ],
+  );

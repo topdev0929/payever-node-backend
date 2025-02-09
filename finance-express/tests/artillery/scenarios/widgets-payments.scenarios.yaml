@@ -1,0 +1,25 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "WidgetsPayments"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "accessToken: {{accessToken}}"
+      - function: "enableBusiness"
+
+      - log: "POST /api/business/{{businessId}}/rates"
+      - post:
+          url: "/api/business/{{businessId}}/rates"
+          headers:
+            authorization: "Bearer {{accessToken}}"
+
+      - log: "POST /api/business/{{businessId}}/calculate-rates"
+      - post:
+          url: "/api/business/{{businessId}}/calculate-rates"
+          headers:
+            authorization: "Bearer {{accessToken}}"

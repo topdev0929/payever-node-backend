@@ -1,0 +1,481 @@
+[{
+  "_id": "5341a61a-29f0-460d-8538-bf99e7261bec",
+  "order": 1,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 0,
+      "green": 0,
+      "hex": "#000000",
+      "red": 0
+    },
+    "end": {
+      "blue": 0,
+      "green": 0,
+      "hex": "#000000",
+      "red": 0
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 0.13333333333333333,
+  "frame": {
+    "start": 1,
+    "end": 5
+  },
+  "objectDetection": {
+    "end": [],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 0,
+    "end": 0.13333333333333333
+  }
+},{
+  "_id": "fb57f3c5-847e-4c9f-abaf-9543bed403a3",
+  "order": 2,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 38,
+      "green": 36,
+      "hex": "#252426",
+      "red": 37
+    },
+    "end": {
+      "blue": 55,
+      "green": 52,
+      "hex": "#353437",
+      "red": 53
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 5.433333333333333,
+  "frame": {
+    "start": 6,
+    "end": 169
+  },
+  "objectDetection": {
+    "end": [
+      {
+        "bbox": [
+          43.17070007324219,
+          8.961303234100342,
+          1199.6223449707031,
+          553.8841652870178
+        ],
+        "class": "oven",
+        "score": 0.7560101747512817
+      }
+    ],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 0.16666666666666666,
+    "end": 5.6
+  }
+},{
+  "_id": "4c77970b-66d9-4ada-9d82-177f2f740ef9",
+  "order": 3,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 52,
+      "green": 50,
+      "hex": "#333234",
+      "red": 51
+    },
+    "end": {
+      "blue": 59,
+      "green": 57,
+      "hex": "#3a393b",
+      "red": 58
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 5.633333333333334,
+  "frame": {
+    "start": 170,
+    "end": 339
+  },
+  "objectDetection": {
+    "end": [
+      {
+        "bbox": [
+          151.20731353759766,
+          356.0867643356323,
+          931.9807052612305,
+          174.5357608795166
+        ],
+        "class": "bench",
+        "score": 0.7104661464691162
+      }
+    ],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 5.633333333333334,
+    "end": 11.266666666666667
+  }
+},{
+  "_id": "44480af6-a961-4b08-a315-15bd5837c91c",
+  "order": 4,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 103,
+      "green": 99,
+      "hex": "#666367",
+      "red": 102
+    },
+    "end": {
+      "blue": 106,
+      "green": 103,
+      "hex": "#6a676a",
+      "red": 106
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 2.433333333333332,
+  "frame": {
+    "start": 340,
+    "end": 413
+  },
+  "objectDetection": {
+    "end": [],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 11.3,
+    "end": 13.733333333333333
+  }
+},{
+  "_id": "a75c9ef3-66ab-4b5a-9fcf-5eac3b882fe1",
+  "order": 5,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 99,
+      "green": 97,
+      "hex": "#646163",
+      "red": 100
+    },
+    "end": {
+      "blue": 93,
+      "green": 91,
+      "hex": "#5d5b5d",
+      "red": 93
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 1.2333333333333325,
+  "frame": {
+    "start": 414,
+    "end": 451
+  },
+  "objectDetection": {
+    "end": [],
+    "start": [
+      {
+        "bbox": [
+          545.7283782958984,
+          305.054132938385,
+          185.3929901123047,
+          332.04655408859253
+        ],
+        "class": "cell phone",
+        "score": 0.5592491626739502
+      }
+    ]
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 13.766666666666667,
+    "end": 15
+  }
+},{
+  "_id": "743c4f47-c80c-4a58-a333-4b90400807cc",
+  "order": 6,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 107,
+      "green": 105,
+      "hex": "#6c696b",
+      "red": 108
+    },
+    "end": {
+      "blue": 94,
+      "green": 92,
+      "hex": "#5e5c5e",
+      "red": 94
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 0.8666666666666671,
+  "frame": {
+    "start": 452,
+    "end": 478
+  },
+  "objectDetection": {
+    "end": [
+      {
+        "bbox": [
+          299.69146728515625,
+          76.25625371932983,
+          963.7094116210938,
+          637.8657174110413
+        ],
+        "class": "airplane",
+        "score": 0.5002885460853577
+      }
+    ],
+    "start": [
+      {
+        "bbox": [
+          128.36600303649902,
+          499.1536045074463,
+          41.871843338012695,
+          134.20177459716797
+        ],
+        "class": "traffic light",
+        "score": 0.7346804738044739
+      }
+    ]
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 15.033333333333333,
+    "end": 15.9
+  }
+},{
+  "_id": "c70fefb0-b28e-4d30-a266-e52d494de00f",
+  "order": 7,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 61,
+      "green": 59,
+      "hex": "#403b3d",
+      "red": 64
+    },
+    "end": {
+      "blue": 64,
+      "green": 62,
+      "hex": "#403e40",
+      "red": 64
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 0.33333333333333215,
+  "frame": {
+    "start": 479,
+    "end": 489
+  },
+  "objectDetection": {
+    "end": [
+      {
+        "bbox": [
+          461.43470764160156,
+          237.592134475708,
+          351.0371398925781,
+          215.90486526489258
+        ],
+        "class": "tv",
+        "score": 0.6702987551689148
+      }
+    ],
+    "start": [
+      {
+        "bbox": [
+          540.5990600585938,
+          238.20305585861206,
+          346.4906311035156,
+          214.9138855934143
+        ],
+        "class": "tv",
+        "score": 0.5444397330284119
+      }
+    ]
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 15.933333333333334,
+    "end": 16.266666666666666
+  }
+},{
+  "_id": "fb4ee8d9-ce1a-45e7-b5f5-573b4dc90952",
+  "order": 8,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 61,
+      "green": 59,
+      "hex": "#3e3b3d",
+      "red": 62
+    },
+    "end": {
+      "blue": 97,
+      "green": 95,
+      "hex": "#605f61",
+      "red": 96
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 3.2666666666666657,
+  "frame": {
+    "start": 490,
+    "end": 588
+  },
+  "objectDetection": {
+    "end": [
+      {
+        "bbox": [
+          160.05510330200195,
+          365.0900602340698,
+          45.973777770996094,
+          76.11963272094727
+        ],
+        "class": "traffic light",
+        "score": 0.5691491961479187
+      }
+    ],
+    "start": [
+      {
+        "bbox": [
+          459.9656677246094,
+          226.33355140686035,
+          355.64170837402344,
+          204.08846855163574
+        ],
+        "class": "tv",
+        "score": 0.6103780269622803
+      }
+    ]
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 16.3,
+    "end": 19.566666666666666
+  }
+},{
+  "_id": "f77c19ab-0afc-49d9-aa8f-39d4c054c35c",
+  "order": 9,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 96,
+      "green": 94,
+      "hex": "#605e60",
+      "red": 96
+    },
+    "end": {
+      "blue": 92,
+      "green": 90,
+      "hex": "#5c5a5c",
+      "red": 92
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 1.5,
+  "frame": {
+    "start": 589,
+    "end": 634
+  },
+  "objectDetection": {
+    "end": [],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 19.6,
+    "end": 21.1
+  }
+},{
+  "_id": "50998061-6e42-43af-b1f9-d311f72133ff",
+  "order": 10,
+  "video": "http://localhost:2020/video/input1.mp4",
+  "color": {
+    "start": {
+      "blue": 96,
+      "green": 94,
+      "hex": "#605e60",
+      "red": 96
+    },
+    "end": {
+      "blue": 96,
+      "green": 94,
+      "hex": "#605e60",
+      "red": 96
+    }
+  },
+  "displayAspectRatio": "16:9",
+  "duration": 0.33333333333333215,
+  "frame": {
+    "start": 635,
+    "end": 645
+  },
+  "objectDetection": {
+    "end": [],
+    "start": []
+  },
+  "sampleAspectRatio": "1:1",
+  "size": {
+    "height": 720,
+    "width": 1280
+  },
+  "tags": [],
+  "time": {
+    "start": 21.133333333333333,
+    "end": 21.466666666666665
+  }
+}
+]

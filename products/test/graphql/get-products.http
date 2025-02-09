@@ -1,0 +1,61 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  getProducts(businessUuid: "2382ffce-5620-4f13-885d-3c069f9dd9b4", paginationLimit: 20, pageNumber: 1, orderBy: "createdAt", orderDirection: "desc", filterById: [], search: "", filters: []) {
+    products {
+      images
+      _id
+      id
+      title
+      description
+      onSales
+      price
+      salePrice
+      sku
+      barcode
+      currency
+      type
+      active
+      categories {
+        title
+      }
+      channelSets {
+        id
+        type
+        name
+      }
+      variants {
+        id
+        images
+        options {
+          name
+          value
+        }
+        description
+        onSales
+        price
+        salePrice
+        sku
+        barcode
+      }
+      shipping {
+        free
+        general
+        weight
+        width
+        length
+        height
+      }
+    }
+    info {
+      pagination {
+        page
+        page_count
+        per_page
+        item_count
+      }
+    }
+  }
+}

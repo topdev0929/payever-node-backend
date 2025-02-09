@@ -1,0 +1,38 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - name: "Integration Wrapper"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+
+      - log: "GET /api/integration-wrapper/{{ wrapperType }}"
+      - get:
+          url: "/api/integration-wrapper/{{ wrapperType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "GET /api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}"
+      - get:
+          url: "/api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Patch /api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}/install"
+      - patch:
+          url: "/api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}/install"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"
+
+      - log: "Patch /api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}/uninstall"
+      - patch:
+          url: "/api/business/{{ businessId }}/integration-wrapper/{{ wrapperType }}/uninstall"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+            user-agent: "Artillery (https://artillery.io)"

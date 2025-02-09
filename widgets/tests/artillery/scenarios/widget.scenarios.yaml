@@ -1,0 +1,197 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  default: 
+    headers: 
+      content-type: "application/json"
+      user-agent: "Artillery (https://artillery.io)"
+scenarios:
+  - name: "Widget"
+    flow:
+      - function: "defineVariablesWidget"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH {{ authUrl }}/api/business/{{businessId}}/enable"
+      - patch:
+          url: "{{ authUrl }}/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          afterResponse: "afterEnableEbusiness"
+      
+      - log: "POST /api/admin/widgets"
+      - post:
+          url: "/api/admin/widgets"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            type: "{{ widgetType }}"
+            title: "string"
+            icon: "string"
+            default: true
+            helpURL: "string"
+            tutorial:
+              json:
+                title": "string"
+                icon": "string"
+                url": "string"
+            order": 0
+          afterResponse: "setWidgetIdAdmin"
+
+      - log: "GET /api/widget"
+      - get:
+          url: "/api/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/widget/type/{{ widgetType }}"
+      - get:
+          url: "/api/widget/type/{{ widgetType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/personal/widget"
+      - get:
+          url: "/api/personal/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/widget/{{ widgetId }}"
+      - get:
+          url: "/api/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/widget/{{ widgetId }}"
+      - patch:
+          url: "/api/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            icon: "{{ widgetIcon }}"
+      - log: "GET /api/business/{{ businessId }}/widget"
+      - get:
+          url: "/api/business/{{ businessId }}/widget"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/widget/{{ widgetId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/widget/{{ widgetId }}/install"
+      - patch:
+          url: "/api/business/{{ businessId }}/widget/{{ widgetId }}/install"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/widget-tutorial"
+      - get:
+          url: "/api/business/{{ businessId }}/widget-tutorial"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/widget-tutorial/{{ widgetId }}/watched"
+      - patch:
+          url: "/api/business/{{ businessId }}/widget-tutorial/{{ widgetId }}/watched"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/widget/{{ widgetId }}/uninstall"
+      - patch:
+          url: "/api/business/{{ businessId }}/widget/{{ widgetId }}/uninstall"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/widget/{{ widgetId }}"
+      - delete:
+          url: "/api/widget/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-week"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-week"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-month"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-month"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-total"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-total"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/last-sold"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/last-sold"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-week/random"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-week/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-month/random"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-month/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/popular-total/random"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/popular-total/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/last-sold/random"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/last-sold/random"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/popular-week"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/popular-week"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/popular-month"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/popular-month"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-sold"
+      - get:
+          url: "/api/products-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-sold"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/business/{{ businessId }}/last-daily"
+      - get:
+          url: "/api/transactions-app/business/{{ businessId }}/last-daily"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/personal/last-daily"
+      - get:
+          url: "/api/transactions-app/personal/last-daily"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/business/{{ businessId }}/last-monthly"
+      - get:
+          url: "/api/transactions-app/business/{{ businessId }}/last-monthly"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/personal/last-monthly"
+      - get:
+          url: "/api/transactions-app/personal/last-monthly"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-daily"
+      - get:
+          url: "/api/transactions-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-daily"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/transactions-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-monthly"
+      - get:
+          url: "/api/transactions-app/business/{{ businessId }}/channel-set/{{ channelSetId }}/last-monthly"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/studio-app/business/{{ businessId }}/last"
+      - get:
+          url: "/api/studio-app/business/{{ businessId }}/last"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/widgets/{{ widgetId }}"
+      - delete:
+          url: "/api/admin/widgets/{{ widgetId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

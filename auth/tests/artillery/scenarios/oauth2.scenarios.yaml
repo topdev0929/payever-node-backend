@@ -1,0 +1,81 @@
+config:
+  phases:
+    - duration: 50
+      arrivalRate: 2
+scenarios:
+  - name: "Oauth"
+    flow:    
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "PATCH /api/business/{{businessId}}/enable"
+      - patch:
+          url: "/api/business/{{ businessId }}/enable"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      
+      - log: "Get /oauth/{{businessId}}/clients"
+      - get:
+          url: "/oauth/{{businessId}}/clients"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Post /oauth/{{businessId}}/clients"
+      - post:
+          url: "/oauth/{{businessId}}/clients"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "string"
+            organizationId: "string"
+            redirectUri: "string"
+
+      - log: "Get /oauth/{{businessId}}/clients/{{id}}"
+      - get:
+          url: "/oauth/{{businessId}}/clients/{{id}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Delete /oauth/{{businessId}}/clients/{{id}}"
+      - delete:
+          url: "/oauth/{{businessId}}/clients/{{id}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+
+      - log: "Get /oauth/v2/token"
+      - get:
+          url: "/oauth/v2/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Post /oauth/v2/token"
+      - post:
+          url: "/oauth/v2/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            access_token: "{{ accessToken }}"
+            expires_in: 0,
+            token_type: "0"
+            scope: "{{scope}}"
+            refresh_token: "{{ refreshToken }}"
+
+      - log: "Get /v3/oauth/token"
+      - get:
+          url: "/v3/oauth/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "Post /v3/oauth/token"
+      - post:
+          url: "/v3/oauth/token"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            access_token: "{{ accessToken }}"
+            expires_in: 0,
+            token_type: "0"
+            scopes:
+              - "{{scope}}"
+            refresh_token: "{{ refreshToken }}"

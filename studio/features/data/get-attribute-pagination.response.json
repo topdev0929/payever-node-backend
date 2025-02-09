@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "a0a82e19-4574-4ffa-82be-e3e5d1e60d9b",
+    "name": "mouse",
+    "type": "animal",
+    "createdAt": "2020-01-01T00:00:04.000Z",
+    "updatedAt": "2020-01-01T00:00:04.000Z"
+  },
+  {
+    "_id": "5358b71e-f945-4ed3-bba4-13e56ac70184",
+    "name": "cat",
+    "type": "animal",
+    "createdAt": "2020-01-01T00:00:03.000Z",
+    "updatedAt": "2020-01-01T00:00:03.000Z"
+  },
+  {
+    "_id": "6a54f9a7-afa8-46a0-a782-1b2d29cc943c",
+    "name": "motorcycle",
+    "type": "vehicle",
+    "createdAt": "2020-01-01T00:00:02.000Z",
+    "updatedAt": "2020-01-01T00:00:02.000Z"
+  }
+]

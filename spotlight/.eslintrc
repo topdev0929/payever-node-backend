@@ -1,0 +1,4 @@
+{
+    "extends": "./node_modules/@pe/dev-kit/.eslintrc.js",
+    "ignorePatterns": ["module",  "features", "migrations", "deprecated-migrations", "features-posts-app", "features-products-app", "features-messenger-app" ]
+  }

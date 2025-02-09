@@ -1,0 +1,11 @@
+<p>Dear Merchant,</p>
+<p>unfortunately we are experiencing issues sending you payment notifications associated with your account: {{business.name}}. payever sends events to your server to notify you of payment updates, such as a newly-created or updated payment transactions.</p>
+<p>The URL related to the failing payment notifications is: {{noticeUrl}}</p>
+<p>
+  {% if business.name is defined %}Business: {{business.name}}<br>{% endif %}
+  {% if paymentId is defined %}Transaction ID: {{paymentId}}<br>{% endif %}
+  {% if errorDateFormatted is defined %}Time: {{errorDateFormatted}}{% endif %}
+</p>
+<p>We have attempted to send payment notifications to this endpoint {{deliveryAttempts}} times since the first failure on {{firstFailure}}.</p>
+<p>In most cases, a failing notice_url does not impact your payments, however the correct statuses for your payments may be delayed if your endpoint is unable to successfully receive them.</p>
+<p>For more in-depth information on how to use payment notifications, we recommend reviewing our documentation or contact our customer support.</p>

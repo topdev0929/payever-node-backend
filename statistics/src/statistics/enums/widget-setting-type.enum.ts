@@ -1,0 +1,15 @@
+export enum WidgetSettingTypeEnum {
+  DaysAgo = 'daysAgo',
+  DateTimeFrom = 'dateTimeFrom',
+  DateTimeTo = 'dateTimeTo',
+  DateTimeRelative = 'dateTimeRelative',
+  Granularity = 'granularity',
+  Size = 'size',
+  ViewType = 'viewType',
+  Alias = 'alias',
+  Filter = 'filter',
+  Text = 'text',
+  Metric = 'metric',
+  Dimension = 'dimension',
+  UserInput = 'userInput',
+}

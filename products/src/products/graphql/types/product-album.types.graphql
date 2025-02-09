@@ -1,0 +1,36 @@
+input PaginationInput {
+  page: Int
+  limit: Int
+}
+
+type Query {
+    getProductNoAlbum(
+        businessId: String!
+        pagination: PaginationInput
+    ): Products
+    getProductByAlbum(
+        albumId: String
+        businessId: String
+        pagination: PaginationInput
+    ): Products
+}
+
+type Mutation {
+    linkProductToAlbum(
+        albumId: String!
+        businessId: String!
+        productId: String!
+    ): Boolean
+    linkProductToAlbumForBuilder(
+        filter: String!,
+        business: String,
+    ): Boolean
+    unlinkProductFromAlbum(
+        businessId: String!
+        productId: String!
+    ): Boolean
+    unlinkProductFromAlbumForBuilder(
+        filter: String!,
+        business: String,
+    ): Boolean
+}

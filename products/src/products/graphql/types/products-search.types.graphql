@@ -1,0 +1,56 @@
+type ProductSearch {
+  _id: String
+  id: String
+  album: String
+  businessUuid: String
+  business: BusinessDetail
+  currency: String
+  company: String
+  images: [String]
+  imagesUrl: [String]
+  matchedText: String
+  videos: [String]
+  videosUrl: [String]
+  title: String
+  description: String
+  onSales: Boolean
+  price: Float
+  priceAndCurrency: String
+  salePriceAndCurrency: String
+  salePrice: Float
+  sku: String
+  barcode: String
+  categories: [Category]
+  category: CategoryReference,
+  type: String
+  channelSetCategory: ChannelSetCategory
+  condition: String
+  brand: String
+  channelSets: [ChannelSets]
+  active: Boolean
+  variants: [Variant]
+  shipping: Shipping
+  seo: ProductSeo
+  marketplaces: [ProductMarketplace]
+  apps: [String]
+  attributes: [ProductAttribute]
+  variantAttributes: [VariationAttribute]
+  collections: [Collection]
+  recommendations: [RecommendationItem]
+  stock: Int
+  variantCount: Int
+}
+
+type GetProductsSearchResult {
+    result: [ProductSearch],
+    totalCount: Int,
+}
+
+type Query {
+  searchForBuilder(
+    business: String!,
+    search: String!,
+    offset: Int,
+    limit: Int,
+  ): GetProductsSearchResult
+}

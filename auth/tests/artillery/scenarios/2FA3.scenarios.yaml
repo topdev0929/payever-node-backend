@@ -1,0 +1,29 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "2FA"
+    flow:
+      - function: "defineVariables"
+      - log: "POST /api/login"
+      - post:
+          url: "/api/login"
+          json:
+            email: "{{ email }}"
+            plainPassword: "{{ plainPassword }}"
+          capture:
+            - json: "$.refreshToken"
+              as: "refreshToken"
+      - log: "POST /api/2fa/resend {{ refreshToken }}"
+      - post:
+          url: "/api/2fa/resend"
+          headers:
+            authorization: "Bearer {{ refreshToken }}"
+      - log: "POST /api/2fa/auth"
+      - post:
+          url: "/api/2fa/auth"
+          headers:
+            authorization: "Bearer {{ refreshToken }}"
+          json:
+            secondFactorCode: 123456

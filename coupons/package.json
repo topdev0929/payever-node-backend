@@ -1,0 +1,48 @@
+{
+  "name": "coupons",
+  "main": "dist/http.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node src/cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "consumer": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_coupons_micro\"",
+    "consumer:folder": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/consumer.js -- --queue=async_events_coupons_folders_micro\"",
+    "consume:prod": "node dist/src/consumer.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "migrations": "./node_modules/.bin/db-migrate",
+    "migrations:prod": "db-migrate --migrations-dir=dist/migrations",
+    "probe-mongo": "pe-probe-mongo",
+    "test:e2e": "./node_modules/.bin/cucumber-js",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js",
+    "test:unit": "mocha -r ts-node/register --recursive --extension ts ./tests/unit",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/coupons.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@pe/business-kit": "^2.0.0",
+    "@pe/channels-sdk": "^9.0.1",
+    "@pe/folders-plugin": "^19.1.0",
+    "@pe/migration-kit": "^2.0.0",
+    "@pe/nest-kit": "^11.0.0",
+    "@pe/rules-sdk": "^3.1.0",
+    "@pe/subscriptions-sdk": "^4.1.0",
+    "qs": "^6.9.4",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^4.1.0",
+    "@pe/cucumber-sdk": "^6.0.0",
+    "@pe/dev-kit": "^3.0.3",
+    "@types/mocha": "^8.0.4",
+    "@types/passport": "^1.0.4",
+    "@types/qs": "^6.9.5",
+    "@types/redis": "^2.8.28"
+  }
+}

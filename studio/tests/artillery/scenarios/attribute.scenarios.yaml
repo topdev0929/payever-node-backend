@@ -1,0 +1,105 @@
+scenarios:
+  - name: "Attribute"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/attribute"
+      - get:
+          url: "/api/attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/attribute"
+      - post:
+          url: "/api/attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            icon: "{{ attributeIcon }}"
+            name: "{{ attributeName }}"
+            type: "{{ attributeType }}"
+          capture:
+            - json: "$._id"
+              as: "attributeId"
+      - log: "GET /api/attribute/{{ attributeId }}"
+      - get:
+          url: "/api/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/attribute/{{ attributeId }}"
+      - patch:
+          url: "/api/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            icon: "{{ attributeIcon }}"
+            name: "{{ attributeName }}"
+            type: "{{ attributeType }}"
+      - log: "GET /api/attribute/type"
+      - get:
+          url: "/api/attribute/type"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/attribute/type/{{ attributeType }}"
+      - get:
+          url: "/api/attribute/type/{{ attributeType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/attribute/{{ attributeId }}"
+      - delete:
+          url: "/api/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Business Attribute"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/{{ businessId }}/attribute"
+      - get:
+          url: "/api/{{ businessId }}/attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/{{ businessId }}/attribute"
+      - post:
+          url: "/api/{{ businessId }}/attribute"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            icon: "{{ attributeIcon }}"
+            name: "{{ attributeName }}"
+            type: "{{ attributeType }}"
+          capture:
+            - json: "$._id"
+              as: "attributeId"
+      - log: "GET /api/{{ businessId }}/attribute/{{ attributeId }}"
+      - get:
+          url: "/api/{{ businessId }}/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/{{ businessId }}/attribute/{{ attributeId }}"
+      - patch:
+          url: "/api/{{ businessId }}/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            icon: "{{ attributeIcon }}"
+            name: "{{ attributeName }}"
+            type: "{{ attributeType }}"
+      - log: "GET /api/{{ businessId }}/attribute/type"
+      - get:
+          url: "/api/{{ businessId }}/attribute/type"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/{{ businessId }}/attribute/type/{{ attributeType }}"
+      - get:
+          url: "/api/{{ businessId }}/attribute/type/{{ attributeType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/{{ businessId }}/attribute/{{ attributeId }}"
+      - delete:
+          url: "/api/{{ businessId }}/attribute/{{ attributeId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

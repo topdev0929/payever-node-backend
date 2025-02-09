@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "7d2a9404-e07a-477f-839d-71f591cf1317",
+    "url": "https://example.com/free-1.png",
+    "mediaType": "image",
+    "name": "image 1",
+    "attributes": [
+      {
+        "attribute": {
+          "_id": "64a19c1b-4ea0-4675-aafb-f50c2e3ab12d",
+          "icon": "http://test.com/car.jpg",
+          "name": "car",
+          "type": "vehicle"
+        },
+        "value": "test1"
+      }
+    ],
+    "subscriptionType": 0,
+    "createdAt": "2020-01-01T00:00:00.000Z",
+    "updatedAt": "2020-01-01T00:00:00.000Z"
+  }
+]

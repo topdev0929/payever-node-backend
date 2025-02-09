@@ -1,0 +1,9 @@
+export const BusinessIntegrationSubSchemaName: string = 'BusinessIntegrationSubscription';
+export const BusinessSchemaName: string = 'Business';
+export const DisplayOptionsSchemaName: string = ' DisplayOptions';
+export const IntegrationSchemaName: string = 'Integration';
+export const IntegrationSubscriptionSchemaName: string = 'IntegrationSubscription';
+export const TerminalIntegrationSubSchemaName: string = 'TerminalIntegrationSubscription';
+export const TerminalSchemaName: string = 'Terminal';
+export const TerminalAccessConfigSchemaName: string = 'TerminalAccessConfig';
+export const PendingInstallationSchemaName: string = 'PendingInstallation';

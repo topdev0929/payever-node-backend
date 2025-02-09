@@ -1,0 +1,17 @@
+<table class="table body-box-table">
+  <tbody>
+  <tr><td width="35%"><p><strong>Your Online Shop: </strong></p></td><td><p>{{ payment.business.name }}</p></td></tr>
+  <tr><td width="35%"><p><strong>Customer Name:</strong></p></td><td><p>{{ payment.customer_name }}</p>
+  <tr><td width="35%"><p><strong>Address:</strong></p></td><td><p>{{ payment.address.fullAddress }}</p>
+  {% if payment.customer_email %}<tr><td width="35%"><p><strong>Email Address:</strong></p></td><td><p>{{ payment.customer_email }}</p></td></tr>{% endif %}
+  <tr><td width="35%"><p><strong>Reference:</strong></p></td><td><p>{{ payment.reference }}</p></td></tr>
+  {% if items|length %}
+  {% for item in items %}
+  <tr width="100%"><td width="35%"><p>{% if loop.first %}<strong>Shopping Cart:</strong>{% endif %}</p></td><td><p>{{ item.quantity }}&times;&nbsp;{{ item.name }}</p></td></tr>
+  {% endfor %}
+  {% endif %}
+  <tr><td width="35%"><p><strong>Amount:</strong></p></td><td><p>{{ payment.amount | number_format_currency(payment.currency) }}</p></td></tr>
+  {% if payment.amount != payment.total %}<tr><td width="35%"><p><strong>Total:</strong></p></td><td><p>{{ payment.total | number_format_currency(payment.currency) }}</p></td></tr>{% endif %}
+  <tr><td width="35%"><strong>Credit Card:</strong></td><td> **** {{ payment_details.cardLast4Digits | default(payment_details.card_last_4_digits | default('N/A')) }}</td></tr>
+  </tbody>
+</table>

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <xs:element name="import" type="import"/>
+
+    <xs:complexType name="import">
+        <xs:sequence>
+            <xs:element name="products" maxOccurs="unbounded" type="product-list"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="product-list">
+        <xs:sequence>
+            <xs:element type="product" name="product" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="product">
+        <xs:sequence>
+            <xs:element name="sku" type="xs:string" minOccurs="0"/>
+            <xs:element name="type" type="product-type" minOccurs="0"/>
+            <xs:element name="title" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="images" type="image-list" minOccurs="0"/>
+            <xs:element name="hidden" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="price" type="xs:float" minOccurs="0"/>
+            <xs:element name="currency" type="currency" minOccurs="0"/>
+            <xs:element name="sale" type="sale" minOccurs="0"/>
+            <xs:element name="bar-code" type="xs:string" minOccurs="0"/>
+            <xs:element name="enabled" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="inventory" type="inventory" minOccurs="0"/>
+            <xs:element name="product-categories" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="product-category" type="product-category" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="channel-sets" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="channel-set" type="channel-set" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="shipping" type="product-shipping" minOccurs="0"/>
+            <xs:element name="variants" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="variant" type="product-variant" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="image-list">
+        <xs:sequence>
+            <xs:element name="image" type="image" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="image">
+        <xs:attribute name="url" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="product-category">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="channel-set">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="product-shipping">
+        <xs:sequence>
+            <xs:element name="free" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="general" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="weight" type="xs:float"/>
+            <xs:element name="width" type="xs:float"/>
+            <xs:element name="length" type="xs:float"/>
+            <xs:element name="height" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="product-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="physical"/>
+            <xs:enumeration value="digital"/>
+            <xs:enumeration value="service"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="product-variant">
+        <xs:sequence>
+            <xs:element name="sku" type="xs:string" minOccurs="0"/>
+            <xs:element name="title" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="images" type="image-list" minOccurs="0"/>
+            <xs:element name="hidden" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="price" type="xs:float" minOccurs="0"/>
+            <xs:element name="sale" type="sale" minOccurs="0"/>
+            <xs:element name="bar-code" type="xs:string" minOccurs="0"/>
+            <xs:element name="inventory" type="inventory" minOccurs="0"/>
+            <xs:element name="attributes" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="attribute" minOccurs="0" maxOccurs="unbounded" type="product-attribute"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="options" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="option" minOccurs="0" maxOccurs="unbounded" type="product-option"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="inventory">
+        <xs:sequence>
+            <xs:element name="stock" type="xs:float"/>
+            <xs:element name="reserved" type="xs:float"/>
+            <xs:element name="is-trackable" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="is-negative-stock-allowed" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="product-attribute">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="product-option">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sale">
+        <xs:sequence>
+            <xs:element name="on-sales" type="xs:boolean"/>
+            <xs:element name="sale-price" type="xs:float"/>
+            <xs:element name="sale-percent" type="xs:float"/>
+            <xs:element name="sale-start-date" type="xs:string"/>
+            <xs:element name="sale-end-date" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

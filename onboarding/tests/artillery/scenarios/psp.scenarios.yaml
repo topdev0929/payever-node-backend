@@ -1,0 +1,73 @@
+config:
+  phases:
+    - duration: 100
+      arrivalRate: 1
+scenarios:
+  - name: "PSP"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "Organization Auth"
+      - function: "organizationAuth"
+      - log: "POST /api/psp"
+      - post:
+          url: "/api/psp"
+          afterResponse: "pep"
+          json:
+            platformLogin: true
+            auth:
+              email: "{{newMail}}"
+              first_name: "test1"
+              last_name: "testi2"
+            business:
+              name: "artiller"
+              company_address:
+                country: "us"
+                city: "Los Angeles 1"
+                street: "New York Ave. 1"
+                zip: "902101"
+            payment_methods:
+              type: "qr"
+              credentials:
+                type: "png"
+          headers:
+            authorization: "Bearer {{ organizationAccessToken }}"
+          capture:
+            - json: "$.business_id"
+              as: "capturedBusinessId"
+      - log: "GET /api/psp"
+      - get:
+          url: "/api/psp"
+          headers:
+            authorization: "Bearer {{organizationAccessToken}}"
+
+      - log: "GET /api/psp/{{capturedBusinessId}}"
+      - get:
+          url: "/api/psp/{{capturedBusinessId}}"
+          headers:
+            authorization: "Bearer {{organizationAccessToken}}"
+
+      - log: "POST /api/psp/{{capturedBusinessId}}/payment-method"
+      - post:
+          url: "/api/psp/{{capturedBusinessId}}/payment-method"
+          json:
+            type: "{{paymentMethod}}"
+            credentials:
+              type: "png"
+          headers:
+            authorization: "Bearer {{organizationAccessToken}}"
+      - log: "DELETE /api/psp/{{capturedBusinessId}}/payment-method"
+      - delete:
+          url: "/api/psp/{{capturedBusinessId}}/payment-method"
+          json:
+            type: "{{paymentMethod}}"
+          headers:
+            authorization: "Bearer {{organizationAccessToken}}"
+      - log: "DELETE /api/psp/{{capturedBusinessId}}"
+      - delete:
+          url: "/api/psp/{{capturedBusinessId}}"
+          headers:
+            authorization: "Bearer {{organizationAccessToken}}"

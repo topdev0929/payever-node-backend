@@ -1,0 +1,26 @@
+scenarios:
+  - name: "Channel"
+    flow:
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/plugin/command/list"
+      - get:
+          url: "/api/plugin/command/list"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/plugin/command"
+      - post:
+          url: "/api/plugin/command"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "set-command-host"
+            value: "test"
+          capture:
+            - json: "$._id"
+              as: "commandId"
+      - log: "DELETE /api/plugin/command/{{ commandId }}"
+      - delete:
+          url: "/api/plugin/command/{{ commandId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

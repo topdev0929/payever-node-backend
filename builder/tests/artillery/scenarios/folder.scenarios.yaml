@@ -1,0 +1,70 @@
+config:
+  phases:
+    - duration: 10
+      arrivalRate: 1
+
+scenarios:
+  - name: "Folder"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - function: "enableBusiness"
+
+      - log: "GET /api/folders/application/{{applicationId}}/folder/{{folderId}}/documents"
+      - get:
+          url: "/api/folders/application/{{applicationId}}/folder/{{folderId}}/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/folders/application/{{applicationId}}/root-documents"
+      - get:
+          url: "/api/folders/application/{{applicationId}}/root-documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/folders/business/{{businessId}}/tree"
+      - get:
+          url: "/api/folders/business/{{businessId}}/tree"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "POST /api/folders/business/{{businessId}}"
+      - post:
+          url: "/api/folders/business/{{businessId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "new-grid"
+            position: 0
+          capture:
+            - json: "$._id"
+              as: "folderId"
+      - log: "folder created {{ folderId }}"
+
+      - log: "PATCH /api/folders/business/{{businessId}}/folder/{{folderId}}"
+      - patch:
+          url: "/api/folders/business/{{businessId}}/folder/{{folderId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "new-grid updated"
+            position: 0
+
+      - log: "DELETE /api/folders/business/{{businessId}}/folder/{{folderId}}"
+      - delete:
+          url: "/api/folders/business/{{businessId}}/folder/{{folderId}}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/folders/theme/default"
+      - get:
+          url: "/api/folders/theme/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+      - log: "GET /api/folders/theme/default/documents"
+      - get:
+          url: "/api/folders/theme/default/documents"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

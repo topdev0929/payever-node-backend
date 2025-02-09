@@ -1,0 +1,28 @@
+config:
+  phases:
+    - duration: 25
+      arrivalRate: 4
+scenarios:
+  - name: "Setup"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "Enable Business"
+      - function: "enableBusiness"
+      - log: "POST /api/setup"
+      - post:
+          url: "/api/setup"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            wallpaper: false
+            pos: false
+      - log: "POST /api/setup/bulk/upload"            
+      - post:
+          url: "/api/setup/bulk/upload"
+          beforeRequest: "beforeRequest"          
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          formData:
+            name: "test"

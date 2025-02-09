@@ -1,0 +1,38 @@
+{
+  "license": "UNLICENSED",
+  "repository": "ssh://git@gitlab.devpayever.com:10022/nodejs-backend/checkout.git",
+  "description": "Payment Data Storage microservice",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "cli": "ts-node cli.ts",
+    "cli:prod": "node dist/src/cli.js",
+    "cron": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/cron.js\"",
+    "cron:prod": "node dist/src/cron.js",
+    "http": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/http.js\"",
+    "http:prod": "node dist/src/http.js",
+    "lint": "pe-lint -c tslint.js",
+    "probe-mongo": "pe-probe-mongo",
+    "test:cov": "nyc mocha -r ts-node/register --recursive ./tests/**/*.spec.ts",
+    "test:e2e": "nyc --include '**/*.controller.ts' --check-coverage true ./node_modules/.bin/cucumber-js",
+    "test:pact": " rm -rf -f pacts/ && mocha -r ts-node/register --recursive ./tests/**/*.pact.spec.ts --exit",
+    "test:pact:can-i-deploy": "./node_modules/.bin/pact-broker can-i-deploy --pacticipant nodejs-backend-third-party --latest",
+    "test:pact:publish": "ts-node -r tsconfig-paths/register ./tests/contract/pact.publish.ts",
+    "test:pact:verify": "mocha -r ts-node/register ./tests/contract/verify.ts --timeout 60000 --exit",
+    "test:unit": "mocha -r ts-node/register --recursive ./tests/**/*.spec.ts",
+    "test:artillery": "ts-node -r tsconfig-paths/register ./tests/artillery/run.ts",
+    "test:coverage": "nyc --reporter @pe/cucumber-sdk/module/lcov --include '*' ./node_modules/.bin/cucumber-js"
+  },
+  "dependencies": {
+    "@pe/cron-kit": "*",
+    "@pe/migration-kit": "^3.0.0",
+    "@pe/nest-kit": "^11.3.1",
+    "deepmerge": "^4.2.2",
+    "nock": "^13.3.7"
+  },
+  "devDependencies": {
+    "@pe/artillery-kit": "^2.0.5",
+    "@pe/cucumber-sdk": "^6.12.6",
+    "@pe/dev-kit": "^3.0.3",
+    "@pe/pact-kit": "^3.0.3"
+  }
+}

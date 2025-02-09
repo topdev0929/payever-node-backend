@@ -1,0 +1,38 @@
+scenarios:
+  - name: "Channel"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/shopsystem/type/{{ channelType }}/api-key"
+      - get:
+          url: "/api/business/{{ businessId }}/shopsystem/type/{{ channelType }}/api-key"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/shopsystem/type/{{ channelType }}/api-key"
+      - post:
+          url: "/api/business/{{ businessId }}/shopsystem/type/{{ channelType }}/api-key"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            id: "test"
+      - log: "GET /api/business/{{ businessId }}/shopsystem/{{ shopSystemId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/shopsystem/{{ shopSystemId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shopsystem"
+      - get:
+          url: "/api/business/{{ businessId }}/shopsystem"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/shopsystem/type/{{ channelType }}"
+      - get:
+          url: "/api/business/{{ businessId }}/shopsystem/type/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/shopsystem/type/{{ channelType }}"
+      - post:
+          url: "/api/business/{{ businessId }}/shopsystem/type/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

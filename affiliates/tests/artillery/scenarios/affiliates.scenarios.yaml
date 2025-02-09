@@ -1,0 +1,410 @@
+scenarios:
+  - name: "Affiliates"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/business/{{ businessId }}/affiliates"
+      - post:
+          url: "/api/business/{{ businessId }}/affiliates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            firstName: "{{ firstName }}"
+            lastName: "{{ lastName }}"
+            email: "{{ email }}"
+          capture:
+            - json: "$._id"
+              as: "businessAffiliateId"
+      - log: "GET /api/business/{{ businessId }}/affiliates"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/affiliates-bank"
+      - post:
+          url: "/api/business/{{ businessId }}/affiliates-bank"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            accountHolder: "{{ accountHolder }}"
+            accountNumber: "{{ accountNumber }}"
+            bankName: "{{ bankName }}"
+            city: "{{ city }}"
+            country: "{{ country }}"
+          capture:
+            - json: "$._id"
+              as: "affiliateBankId"
+      - log: "GET /api/business/{{ businessId }}/affiliates-bank"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-bank"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/affiliates-bank/{{ affiliateBankId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/affiliates-bank/{{ affiliateBankId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            accountHolder: "{{ accountHolder }}"
+            accountNumber: "{{ accountNumber }}"
+            bankName: "{{ bankName }}"
+            city: "{{ city }}"
+            country: "{{ country }}"
+      - log: "DELETE /api/business/{{ businessId }}/affiliates-bank/{{ affiliateBankId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/affiliates-bank/{{ affiliateBankId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/affiliates-branding"
+      - post:
+          url: "/api/business/{{ businessId }}/affiliates-branding"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            favicon: "{{ favicon }}"
+            logo: "{{ logo }}"
+            isDefault: "{{ isDefault }}"
+            name: "{{ brandingName }}"
+          capture:
+            - json: "$._id"
+              as: "affiliateBrandingId"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding/default"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding/isValidName"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding/isValidName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            name: "{{ brandingName }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            favicon: "{{ favicon }}"
+            logo: "{{ logo }}"
+            isDefault: "{{ isDefault }}"
+            name: "{{ brandingName }}"
+      - log: "PATCH /api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}/default"
+      - patch:
+          url: "/api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}/default"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          capture: 
+            json: "$._id"
+            as: "accessId"
+      - log: "GET /api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/is-live"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/is-live"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/domain/check"
+      - post:
+          url: "/api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/domain/check"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/{{ accessId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/affiliates-branding/access/{{ affiliateBrandingId }}/{{ accessId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/business/{{ businessId }}/affiliates-program"
+      - post:
+          url: "/api/business/{{ businessId }}/affiliates-program"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            assets: "{{ assets }}"
+            affiliateBranding: "{{ affiliateBrandingId }}"
+            appliesTo: "{{ appliesTo }}"
+            categories: "{{ categories }}"
+            comission: "{{ comission }}"
+            comissionType: "{{ comissionType }}"
+            cookie: "{{ cookie }}"
+            currency: "{{ currency }}"
+            defaultCommission: "{{ defaultCommission }}"
+            inviteLink: "{{ inviteLink }}"
+            startedAt: "{{ startedAt }}"
+            name: "{{ programName }}"
+            products: "{{ products }}"
+            programApi: "{{ programApi }}"
+            status: "{{ status }}"
+            url: "{{ url }}"
+          capture:
+            - json: "$._id"
+              as: "affiliateProgramId"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            assets: "{{ assets }}"
+            affiliateBranding: "{{ affiliateBrandingId }}"
+            appliesTo: "{{ appliesTo }}"
+            categories: "{{ categories }}"
+            comission: "{{ comission }}"
+            comissionType: "{{ comissionType }}"
+            cookie: "{{ cookie }}"
+            currency: "{{ currency }}"
+            defaultCommission: "{{ defaultCommission }}"
+            inviteLink: "{{ inviteLink }}"
+            startedAt: "{{ startedAt }}"
+            name: "{{ programName }}"
+            products: "{{ products }}"
+            programApi: "{{ programApi }}"
+            status: "{{ status }}"
+            url: "{{ url }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program/branding/{{ affiliateBrandingId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program/branding/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program/generate-cookie"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program/generate-cookie"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            affiliateProgramId: "{{ affiliateProgramId }}"
+            affiliateId: "{{ businessAffiliateId }}"
+          capture:
+            - json: "$.hash"
+              as: "hash"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program/generate-cookie"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program/generate-cookie"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            affiliateProgramId: "{{ affiliateProgramId }}"
+            affiliateId: "{{ businessAffiliateId }}"
+      - log: "GET /api/business/{{ businessId }}/affiliates-program/generate-cookie"
+      - get:
+          url: "/api/business/{{ businessId }}/affiliates-program/generate-cookie"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            hash: "{{ hash }}"
+      - log: "POST /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}"
+      - post:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ domainName }}"
+          capture:
+            - json: "$._id"
+              as: "domainId"
+      - log: "GET /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}"
+      - get:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}"
+      - patch:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            name: "{{ domainName }}"
+      - log: "POST /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}/check"
+      - post:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}/check"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/isValidName"
+      - get:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/isValidName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/affiliates-branding/by-domain"
+      - get:
+          url: "/api/affiliates-branding/by-domain"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/affiliates/{{ businessAffiliateId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/affiliates/{{ businessAffiliateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/domain/{{ affiliatesBrandingId }}/{{ domainId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/affiliates-program/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+      - delete:
+          url: "/api/business/{{ businessId }}/affiliates-branding/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+  - name: "Affiliates Admin"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/admin/business-affiliates"
+      - post:
+          url: "/api/admin/business-affiliates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            affiliate: 
+              firstName: "{{ firstName }}"
+              lastName: "{{ lastName }}"
+              email: "{{ email }}"
+          capture:
+            - json: "$._id"
+              as: "businessAffiliateId"
+      - log: "GET /api/admin/business-affiliates"
+      - get:
+          url: "/api/admin/business-affiliates"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/business-affiliates/{{ businessAffiliateId }}"
+      - get:
+          url: "/api/admin/business-affiliates/{{ businessAffiliateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/business-affiliates/{{ businessAffiliateId }}"
+      - patch:
+          url: "/api/admin/business-affiliates/{{ businessAffiliateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            businessId: "{{ businessId }}"
+            affiliate: 
+              firstName: "{{ firstName }}"
+              lastName: "{{ lastName }}"
+              email: "{{ email }}"
+      - log: "DELETE /api/admin/business-affiliates/{{ businessAffiliateId }}"
+      - delete:
+          url: "/api/admin/business-affiliates/{{ businessAffiliateId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/affiliates-brandings"
+      - post:
+          url: "/api/admin/affiliates-brandings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            favicon: "{{ favicon }}"
+            logo: "{{ logo }}"
+            isDefault: "{{ isDefault }}"
+            name: "{{ brandingName }}"
+            businessId: "{{ businessId }}"
+          capture:
+            - json: "$._id"
+              as: "affiliateBrandingId"
+      - log: "GET /api/admin/affiliates-brandings"
+      - get:
+          url: "/api/admin/affiliates-brandings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+      - get:
+          url: "/api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+      - patch:
+          url: "/api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/affiliates-brandings/business/{{ businessId }}/isValidName"
+      - get:
+          url: "/api/admin/affiliates-brandings/business/{{ businessId }}/isValidName"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          qs:
+            name: "{{ brandingName }}"
+      - log: "DELETE /api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+      - delete:
+          url: "/api/admin/affiliates-brandings/{{ affiliateBrandingId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/admin/affiliates-programs"
+      - post:
+          url: "/api/admin/affiliates-programs"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            assets: "{{ assets }}"
+            affiliateBranding: "{{ affiliateBrandingId }}"
+            appliesTo: "{{ appliesTo }}"
+            categories: "{{ categories }}"
+            comission: "{{ comission }}"
+            comissionType: "{{ comissionType }}"
+            cookie: "{{ cookie }}"
+            currency: "{{ currency }}"
+            defaultCommission: "{{ defaultCommission }}"
+            inviteLink: "{{ inviteLink }}"
+            startedAt: "{{ startedAt }}"
+            name: "{{ programName }}"
+            products: "{{ products }}"
+            programApi: "{{ programApi }}"
+            status: "{{ status }}"
+            url: "{{ url }}"
+            businessId: "{{ businessId}}"
+          capture:
+            - json: "$._id"
+              as: "affiliateProgramId"
+      - log: "GET /api/admin/affiliates-programs"
+      - get:
+          url: "/api/admin/affiliates-programs"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/admin/affiliates-programs/{{ affiliateProgramId }}"
+      - get:
+          url: "/api/admin/affiliates-programs/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/admin/affiliates-programs/{{ affiliateProgramId }}"
+      - patch:
+          url: "/api/admin/affiliates-programs/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "DELETE /api/admin/affiliates-programs/{{ affiliateProgramId }}"
+      - delete:
+          url: "/api/admin/affiliates-programs/{{ affiliateProgramId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+
+

@@ -1,0 +1,15 @@
+<h3>Gentile {{ payment.address.last_name }},</h3>
+<p>In data {{ payment.created_at|format_date }} ha effettuato un ordine sul sito web {{business.companyDetails.urlWebsite}}. Ad oggi, non ha ancora trasferito il pagamento in ritardo per il seguente ordine: {{ payment.reference }}</p>
+<p>La preghiamo di effettuare la seguente transazione il prima possibile:</p>
+<ul>
+  <li>Titolare del conto: {{business.bankAccount.owner}}</li>
+  <li>Numero di conto: {{business.bankAccount.iban}}</li>
+  <li>Data di scadenza: {{dueAt|format_date}}</li>
+  <li>Valore dell'ordine: {{payment.total}}</li>
+  <li>Spese di sollecito: {{lateFees}}</li>
+  <li>Importo totale: {{totalWithLateFee}}</li>
+</ul>
+<p>Se avete effettuato più ordini, vi preghiamo di effettuare pagamenti separati con i rispettivi riferimenti ai singoli ordini.</p>
+<p>Avete già pagato? Al momento dell'iscrizione, abbiamo registrato i pagamenti ricevuti, i resi e le cancellazioni fino a {{dueAt|format_date}} compresa. Se avete già pagato l'importo residuo, non dovete fare nulla e potete ignorare questa e-mail.</p>
+<p>Per qualsiasi domanda, non esitate a contattarci al seguente indirizzo e-mail: {{business.user.email}}. Per domande sull'ordine o sui prodotti, si prega di contattare il rivenditore {{business.companyDetails.urlWebsite}}.</p>
+<p>Cordiali saluti,</p>

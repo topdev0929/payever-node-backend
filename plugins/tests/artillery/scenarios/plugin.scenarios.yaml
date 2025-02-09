@@ -1,0 +1,41 @@
+scenarios:
+  - name: "Channel"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "POST /api/plugin/channel/{{ channelType }}"
+      - post:
+          url: "/api/plugin/channel/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/plugin/channel/{{ channelType }}"
+      - get:
+          url: "/api/plugin/channel/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "GET /api/plugin/channel/{{ channelType }}/latest"
+      - get:
+          url: "/api/plugin/channel/{{ channelType }}/latest"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "POST /api/plugin/publish/{{ channelType }}"
+      - post:
+          url: "/api/plugin/publish/{{ channelType }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+          json:
+            filename: "test"
+            version: "test"
+            minCmsVersion: "test"
+            maxCmsVersion: "test"
+      - log: "GET /api/plugin/{{ pluginId }}"
+      - get:
+          url: "/api/plugin/{{ pluginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PATCH /api/plugin/{{ pluginId }}"
+      - patch:
+          url: "/api/plugin/{{ pluginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

@@ -1,0 +1,16 @@
+scenarios:
+  - name: "Business Shipping Settings"
+    flow:
+      - function: "defineVariables"
+      - log: "Login"
+      - function: "auth"
+      - log: "GET /api/business/{{ businessId }}/shipping-settings"
+      - get:
+          url: "/api/business/{{ businessId }}/shipping-settings"
+          headers:
+            authorization: "Bearer {{ accessToken }}"
+      - log: "PUT /api/business/{{ businessId }}/shipping-settings/default-origin/{{ shippingOriginId }}"
+      - put:
+          url: "/api/business/{{ businessId }}/shipping-settings/default-origin/{{ shippingOriginId }}"
+          headers:
+            authorization: "Bearer {{ accessToken }}"

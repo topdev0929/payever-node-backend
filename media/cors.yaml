@@ -1,0 +1,4 @@
+name: nodejs-backend-media
+endpoints:
+  - media.{{ $env }}/api/storage
+  - media.{{ $env }}/api/image
